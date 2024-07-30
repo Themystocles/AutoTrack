@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrackApi\\AutoTrackApi\\AutoTrack\\AutoTrack.csproj": {}
+    "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\AutoTrack.csproj": {}
   },
   "projects": {
-    "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrackApi\\AutoTrackApi\\AutoTrack\\AutoTrack.csproj": {
+    "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\AutoTrack.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrackApi\\AutoTrackApi\\AutoTrack\\AutoTrack.csproj",
+        "projectUniqueName": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\AutoTrack.csproj",
         "projectName": "AutoTrack",
-        "projectPath": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrackApi\\AutoTrackApi\\AutoTrack\\AutoTrack.csproj",
+        "projectPath": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\AutoTrack.csproj",
         "packagesPath": "C:\\Users\\themy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrackApi\\AutoTrackApi\\AutoTrack\\obj\\",
+        "outputPath": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\themy\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,6 +44,26 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.9, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
