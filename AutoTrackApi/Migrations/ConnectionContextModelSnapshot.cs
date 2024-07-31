@@ -16,55 +16,51 @@ namespace AutoTrack.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.3");
 
-            modelBuilder.Entity("AutoTrackApi.Model.Cliente", b =>
+            modelBuilder.Entity("AutoTrackApi.Model.Servico", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Bairro")
+                    b.Property<string>("Descricao")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Cidade")
+                    b.Property<string>("FormaPag")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Cpf")
+                    b.Property<string>("Mecanico")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Endereco")
+                    b.Property<string>("Peca_Servico")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("InsEstadual")
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Saida")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("InsMunicipal")
+                    b.Property<string>("ValorTot")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("InsTelefone2")
+                    b.Property<string>("ValorUni")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Telefone")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Uf")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("cep")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("VeiculoId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Clientes");
+                    b.HasIndex("VeiculoId");
+
+                    b.ToTable("servicos");
                 });
 
             modelBuilder.Entity("AutoTrackApi.Model.Veiculo", b =>
@@ -143,18 +139,85 @@ namespace AutoTrack.Migrations
                     b.ToTable("Veiculos");
                 });
 
+            modelBuilder.Entity("Cliente", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Cep")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Cidade")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Cpf")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Endereco")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("InsEstadual")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("InsMunicipal")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("InsTelefone2")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Telefone")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Uf")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clientes");
+                });
+
+            modelBuilder.Entity("AutoTrackApi.Model.Servico", b =>
+                {
+                    b.HasOne("AutoTrackApi.Model.Veiculo", null)
+                        .WithMany("servico")
+                        .HasForeignKey("VeiculoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("AutoTrackApi.Model.Veiculo", b =>
                 {
-                    b.HasOne("AutoTrackApi.Model.Cliente", "cliente")
+                    b.HasOne("Cliente", null)
                         .WithMany("Veiculos")
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("cliente");
                 });
 
-            modelBuilder.Entity("AutoTrackApi.Model.Cliente", b =>
+            modelBuilder.Entity("AutoTrackApi.Model.Veiculo", b =>
+                {
+                    b.Navigation("servico");
+                });
+
+            modelBuilder.Entity("Cliente", b =>
                 {
                     b.Navigation("Veiculos");
                 });

@@ -56,5 +56,24 @@ namespace AutoTrack.Controllers
             await _geralPersist.AddAsync(veiculo);
             return CreatedAtAction(nameof(GetVeiculos), new { id = veiculo.Id }, veiculo);
         }
+    
+     [HttpGet("servicos")]
+        public async Task<ActionResult<IEnumerable<Veiculo>>> GetServicos()
+        {
+            var servicos = await _geralPersist.GetAll<Servico>();
+            return Ok(servicos);
+        }
+
+        [HttpPost("servicos")]
+        public async Task<IActionResult> PostServico([FromBody] Servico servico)
+        {
+            if (servico == null)
+            {
+                return BadRequest("Veículo is null");
+            }
+
+            await _geralPersist.AddAsync(servico);
+            return CreatedAtAction(nameof(GetVeiculos), new { id = servico.Id }, servico);
+        }
     }
 }

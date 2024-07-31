@@ -7,6 +7,7 @@ namespace AutoTrackApi.DataContext
     {
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Veiculo> Veiculos { get; set; }
+         public DbSet<Servico> servicos { get; set; }
 
         public ConnectionContext(DbContextOptions<ConnectionContext> options) : base(options)
         {

@@ -24,5 +24,6 @@ namespace AutoTrackApi.Model
     public string ProxTrocaFiltro { get; set; }
     public string Garantia { get; set; }
     public int ClienteId { get; set; }
+    public List<Servico> servico { get; set; }
 }
 }
