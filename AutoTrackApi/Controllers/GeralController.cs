@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AutoTrack.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class GeralController : ControllerBase
     {
         private readonly IGeralPersist _geralPersist;
@@ -22,6 +22,12 @@ namespace AutoTrack.Controllers
         public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
         {
             var clientes = await _geralPersist.GetAll<Cliente>();
+            return Ok(clientes);
+        }
+         [HttpGet("clientes/{cpf}")]
+        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientesByCpf(string cpf)
+        {
+            var clientes = await _geralPersist.GetClienteByCpf(cpf);
             return Ok(clientes);
         }
 
