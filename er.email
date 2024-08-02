@@ -1,0 +1,47 @@
+[33mcommit 1e13c38ab8966762469c54b8eae62b3000993dac[m[33m ([m[1;36mHEAD -> [m[1;32mThemystocles[m[33m, [m[1;31morigin/Themystocles[m[33m)[m
+Author: Themystocles <themystocles@outlook.com>
+Date:   Thu Aug 1 10:36:33 2024 -0300
+
+    Alterando arquivo global
+
+[33mcommit 36f5bbf873a048a52bfa50a1e1aeda97b32e99f2[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Themystocles <themystocles@outlook.com>
+Date:   Thu Aug 1 10:30:48 2024 -0300
+
+    Adicionando nova branch
+
+[33mcommit 683213502546a04dec95690d3ff521943ec2d17e[m
+Author: Themystocles <themystocles@outlook.com>
+Date:   Thu Aug 1 09:29:27 2024 -0300
+
+    Adicionando o Front
+
+[33mcommit c250125abf54f0b18854acbe59c3bad97966ca89[m
+Author: Themystocles <themystocles@outlook.com>
+Date:   Wed Jul 31 14:15:39 2024 -0300
+
+    Adicionando a classe Servicos
+
+[33mcommit 141b14412166f0b876d451ce7147feefca83970d[m
+Author: Themystocles <themystocles@outlook.com>
+Date:   Tue Jul 30 10:40:45 2024 -0300
+
+    Adicionando As models, Interfaces e Controler do projeto
+
+[33mcommit 295e3bd946baa766a7d18e668f8afb0c1ff71bc3[m
+Author: Themystocles <themystocles@outlook.com>
+Date:   Tue Jul 30 08:44:35 2024 -0300
+
+    Adicionando as depedencias do projeto
+
+[33mcommit 3480385944c6f4466fe99177aa9e088f4c82f3fb[m
+Author: Themystocles <themystocles@outlook.com>
+Date:   Mon Jul 29 08:03:45 2024 -0300
+
+    Criando a api
+
+[33mcommit 11c47614990607e7ed77d623ece25a8f8e0971cf[m
+Author: Themystocles <themystocles@outlook.com>
+Date:   Sat Jul 27 19:52:55 2024 -0300
+
+    Primeirocommit

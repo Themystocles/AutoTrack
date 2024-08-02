@@ -24,12 +24,12 @@ namespace AutoTrack.Controllers
             var clientes = await _geralPersist.GetAll<Cliente>();
             return Ok(clientes);
         }
-         [HttpGet("clientes/{cpf}")]
-        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientesByCpf(string cpf)
-        {
-            var clientes = await _geralPersist.GetClienteByCpf(cpf);
-            return Ok(clientes);
-        }
+       //  [HttpGet("clientes/{cpf}")]
+       // public async Task<ActionResult<IEnumerable<Cliente>>> GetClientesByCpf(string cpf)
+      //  {
+//            var clientes = await _geralPersist.GetClienteByCpf(cpf);
+      //      return Ok(clientes);
+      //  }
 
         [HttpPost("clientes")]
         public async Task<IActionResult> PostCliente([FromBody] Cliente cliente)

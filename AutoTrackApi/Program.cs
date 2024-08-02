@@ -10,6 +10,7 @@ builder.Services.AddDbContext<ConnectionContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IGeralPersist, GeralPersist>();
+builder.Services.AddScoped<IClientePersist, ClientePersist>();
 
 // Adiciona serviços ao contêiner
 builder.Services.AddControllers();
