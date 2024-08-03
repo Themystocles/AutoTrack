@@ -1,25 +1,53 @@
 <div class="p-6 bg-gray-900 min-h-screen flex flex-col items-center">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <div class="card bg-gray-800 text-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-        <h3 class="text-xl font-semibold mb-2">Cliente</h3>
-        <p>Informações do Cliente</p>
-        <button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300">Ver Mais</button>
-      </div>
-      <div class="card bg-gray-800 text-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-        <h3 class="text-xl font-semibold mb-2">Veículo</h3>
-        <p>Detalhes do Veículo</p>
-        <button class="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-300">Ver Mais</button>
-      </div>
-      <div class="card bg-gray-800 text-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-        <h3 class="text-xl font-semibold mb-2">Serviço</h3>
-        <p>Descrição do Serviço</p>
-        <button class="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-300">Ver Mais</button>
-      </div>
-      <div class="card bg-gray-800 text-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-        <h3 class="text-xl font-semibold mb-2">Montagem</h3>
-        <p>Informações sobre Montagem</p>
-        <button class="mt-4 px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors duration-300">Ver Mais</button>
-      </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+    <div class="card bg-gray-800 text-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">
+      <h3 class="text-xl font-semibold mb-2">Cliente</h3>
+      <input type="text" placeholder="CPF ou CNPJ" class="bg-gray-700 p-2 rounded mb-2 w-full">
+      <input type="text" placeholder="Filtro 2" class="bg-gray-700 p-2 rounded mb-2 w-full">
+      <input type="text" placeholder="Filtro 3" class="bg-gray-700 p-2 rounded mb-2 w-full">
+      <button class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-300 self-end"
+              (click)="verMais('cliente')">Ver Mais</button>
+    </div>
+    <div class="card bg-gray-800 text-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">
+      <h3 class="text-xl font-semibold mb-2">Veículo</h3>
+      <input type="text" placeholder="Filtro 1" class="bg-gray-700 p-2 rounded mb-2 w-full">
+      <input type="text" placeholder="Filtro 2" class="bg-gray-700 p-2 rounded mb-2 w-full">
+      <input type="text" placeholder="Filtro 3" class="bg-gray-700 p-2 rounded mb-2 w-full">
+      <button class="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-300 self-end"
+              (click)="verMais('veiculo')">Ver Mais</button>
+    </div>
+    <div class="card bg-gray-800 text-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">
+      <h3 class="text-xl font-semibold mb-2">Serviço</h3>
+      <input type="text" placeholder="Filtro 1" class="bg-gray-700 p-2 rounded mb-2 w-full">
+      <input type="text" placeholder="Filtro 2" class="bg-gray-700 p-2 rounded mb-2 w-full">
+      <input type="text" placeholder="Filtro 3" class="bg-gray-700 p-2 rounded mb-2 w-full">
+      <button class="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-300 self-end"
+              (click)="verMais('servico')">Ver Mais</button>
+    </div>
+    <div class="card bg-gray-800 text-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col">
+      <h3 class="text-xl font-semibold mb-2">Montagem</h3>
+      <input type="text" placeholder="Filtro 1" class="bg-gray-700 p-2 rounded mb-2 w-full">
+      <input type="text" placeholder="Filtro 2" class="bg-gray-700 p-2 rounded mb-2 w-full">
+      <input type="text" placeholder="Filtro 3" class="bg-gray-700 p-2 rounded mb-2 w-full">
+      <button class="mt-4 px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors duration-300 self-end"
+              (click)="verMais('montagem')">Ver Mais</button>
     </div>
   </div>
-  
+
+  <table *ngIf="resultados.length" class="mt-6 bg-gray-800 text-white rounded-lg shadow-md w-full">
+    <thead>
+      <tr>
+        <th class="p-4 text-left">Campo 1</th>
+        <th class="p-4 text-left">Campo 2</th>
+        <th class="p-4 text-left">Campo 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let resultado of resultados" class="border-t border-gray-700">
+        <td class="p-4">{{ resultado.campo1 }}</td>
+        <td class="p-4">{{ resultado.campo2 }}</td>
+        <td class="p-4">{{ resultado.campo3 }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

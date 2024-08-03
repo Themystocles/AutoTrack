@@ -9,6 +9,7 @@ import { CardComponent } from './Components/Layout/card/card.component';
 import { FooterComponent } from './Components/Layout/footer/footer.component';
 import { ClienteComponent } from './Components/Cliente/cliente.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +17,8 @@ import { ClienteComponent } from './Components/Cliente/cliente.component';
     SidebarComponent,
     CardComponent,
     FooterComponent,
-    ClienteComponent
+    ClienteComponent,
+   
   ],
   imports: [
     BrowserModule,
