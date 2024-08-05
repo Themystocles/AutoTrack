@@ -8,6 +8,8 @@ import { SidebarComponent } from './Components/Layout/sidebar/sidebar.component'
 import { CardComponent } from './Components/Layout/card/card.component';
 import { FooterComponent } from './Components/Layout/footer/footer.component';
 import { ClienteComponent } from './Components/Cliente/cliente.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { ClienteComponent } from './Components/Cliente/cliente.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

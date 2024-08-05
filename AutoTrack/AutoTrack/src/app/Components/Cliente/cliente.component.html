@@ -1,1 +1,76 @@
-<p>cliente works!</p>
+<div class="p-4 bg-gray-800 text-white">
+    <!-- Input e botão para buscar cliente -->
+    <div class="mb-4">
+      <input 
+        [(ngModel)]="CPForCNPJ" 
+        placeholder="Digite o CPF do cliente" 
+        class="border border-gray-600 bg-gray-700 p-2 rounded-md text-white"
+      >
+      <button 
+        (click)="GetClienteByCPForCNPJ()" 
+        class="ml-2 bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700"
+      >
+        Buscar
+      </button>
+    </div>
+  
+    <!-- Exibe detalhes do cliente -->
+    <div *ngIf="Cliente" class="bg-gray-900 p-4 rounded-md shadow-md">
+      <h2 class="text-xl font-semibold mb-2">Detalhes do Cliente</h2>
+      <table class="min-w-full bg-gray-800 border border-gray-600 rounded-md">
+        <tbody>
+          <tr>
+            <td class="p-2 font-semibold">Nome:</td>
+            <td class="p-2">{{Cliente.nome}}</td>
+          </tr>
+          <tr>
+            <td class="p-2 font-semibold">CPF:</td>
+            <td class="p-2">{{Cliente.cpf}}</td>
+          </tr>
+          <tr>
+            <td class="p-2 font-semibold">Inscrição Estadual:</td>
+            <td class="p-2">{{Cliente.insEstadual}}</td>
+          </tr>
+          <tr>
+            <td class="p-2 font-semibold">Telefone:</td>
+            <td class="p-2">{{Cliente.telefone}}</td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <!-- Tabela para veículos -->
+      <div class="mt-4">
+        <h3 class="text-lg font-semibold mb-2">Veículos</h3>
+        <table class="min-w-full bg-gray-800 border border-gray-600 rounded-md">
+          <thead>
+            <tr>
+              <th class="p-2 border-b border-gray-600">Placa</th>
+              <th class="p-2 border-b border-gray-600">Ano de Fabricação</th>
+              <th class="p-2 border-b border-gray-600">Ano do Modelo</th>
+              <th class="p-2 border-b border-gray-600">Serviços</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let veiculo of Cliente.veiculos">
+              <td class="p-2">{{veiculo.placa}}</td>
+              <td class="p-2">{{veiculo.anoFab}}</td>
+              <td class="p-2">{{veiculo.anoModelo}}</td>
+              <td class="p-2">
+                <!-- Exibe serviços do veículo -->
+                <ul class="space-y-2">
+                  <li *ngFor="let servico of veiculo.servicos" class="bg-gray-700 p-2 border border-gray-600 rounded-md">
+                    <p><strong>ID:</strong> {{servico.id}}</p>
+                    <p><strong>Descrição:</strong> {{servico.descricao}}</p>
+                    <p><strong>Mecânico:</strong> {{servico.mecanico}}</p>
+                    <p><strong>Valor Unitário:</strong> {{servico.valorUni}}</p>
+                    <p><strong>Valor Total:</strong> {{servico.valorTot}}</p>
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
