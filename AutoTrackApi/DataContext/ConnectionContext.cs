@@ -15,10 +15,12 @@ namespace AutoTrackApi.DataContext
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            
             if (!optionsBuilder.IsConfigured)
             {
                 // Usar a string de conexão do appsettings.json
                 optionsBuilder.UseSqlite("Data Source=AutoTrack.db");
+                
             }
         }
     }

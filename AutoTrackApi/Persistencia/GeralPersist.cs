@@ -26,14 +26,7 @@ namespace AutoTrackApi.Persistencia
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task<Cliente> GetClienteByCpf(string cpf)
-        {
-            return await _context.Clientes
-            .Include(c => c.Veiculos)
-            .ThenInclude(V => V.servicos)
-            .FirstOrDefaultAsync(c => c.Cpf == cpf);
-        }
-
+    
         public Task<Cliente> GetClienteBynumeroTel(string telefone)
         {
             throw new NotImplementedException();

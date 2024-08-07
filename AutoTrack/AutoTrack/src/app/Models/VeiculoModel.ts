@@ -1,3 +1,4 @@
+import { Cliente } from "./ClienteModel";
 import { Servico } from "./ServicoMode";
 
 export class Veiculo {
@@ -18,6 +19,7 @@ export class Veiculo {
   proxTrocaFiltro?: string;
   garantia?: string;
   clienteId?: number;
+  cliente? : Cliente;
   servicos?: Servico[];
 
   constructor(init?: Partial<Veiculo>) {

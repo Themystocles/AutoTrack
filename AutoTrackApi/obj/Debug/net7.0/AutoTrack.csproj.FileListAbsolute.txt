@@ -67,3 +67,7 @@ C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrack
 C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\obj\Debug\net7.0\AutoTrack.pdb
 C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\obj\Debug\net7.0\AutoTrack.genruntimeconfig.cache
 C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\obj\Debug\net7.0\ref\AutoTrack.dll
+C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll

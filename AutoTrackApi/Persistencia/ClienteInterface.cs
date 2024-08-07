@@ -25,9 +25,20 @@ namespace AutoTrackApi.Persistencia
             .FirstOrDefaultAsync(c => c.Cpf == cpf);
         }
 
-        public Task<Cliente> GetClienteBynumeroTel(string telefone)
+        public async Task<Cliente> GetClienteByNome(string nome)
         {
-            throw new NotImplementedException();
+         return await _context.Clientes
+        .Include(c => c.Veiculos)
+            .ThenInclude(v => v.servicos)
+        .Where(c => c.Nome.ToLower().Contains(nome.ToLower()))
+        .FirstOrDefaultAsync();
+        }
+        public async Task<Cliente> GetClienteBynumeroTel(string telefone)
+        {
+            return await _context.Clientes
+            .Include(c => c.Veiculos)
+            .ThenInclude(V => V.servicos)
+            .FirstOrDefaultAsync(c => c.Telefone == telefone);
         }
     }
 }

@@ -17,6 +17,7 @@ namespace AutoTrackApi.Model
         public string Mecanico { get; set; }
         public string Saida { get; set; }
         public int VeiculoId { get; set; }
+       // public List<Veiculo> veiculos { get; set; }
        
 
 

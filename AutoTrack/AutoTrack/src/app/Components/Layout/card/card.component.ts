@@ -11,9 +11,15 @@ import { Component } from '@angular/core';
 export class CardComponent {
 
   showCliente = false;
+  showVeiculo = false;
 
   toggleCliente() {
     this.showCliente = !this.showCliente;
+    this.showVeiculo = false;
+  }
+  toggleVeiculo() {
+    this.showVeiculo = !this.showVeiculo;
+    this.showCliente = false;
   }
   
 

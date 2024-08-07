@@ -12,9 +12,13 @@ namespace AutoTrack.Controllers
     {
         private readonly IGeralPersist _geralPersist;
 
-        public VeiculoController(IGeralPersist geralPersist)
+        private readonly IVeiculoPersist _veiculoPersist;
+        
+
+        public VeiculoController(IGeralPersist geralPersist,IVeiculoPersist veiculoPersist )
         {
             _geralPersist = geralPersist;
+            _veiculoPersist = veiculoPersist;
         }
 
         [HttpGet]
@@ -34,6 +38,27 @@ namespace AutoTrack.Controllers
 
             await _geralPersist.AddAsync(veiculo);
             return CreatedAtAction(nameof(GetVeiculos), new { id = veiculo.Id }, veiculo);
+        }
+
+         [HttpGet("veiculo/{placa}")]
+        public async Task<ActionResult<IEnumerable<Veiculo>>> getVeiculoByPlaca(string placa)
+        {
+             var veiculo = await _veiculoPersist.GetVeiculoByPlaca(placa);
+            if (veiculo == null)
+            {
+                return NotFound();
+            }
+            return Ok(veiculo);
+        }
+         [HttpGet("chassi/{chassi}")]
+        public async Task<ActionResult<IEnumerable<Veiculo>>> getVeiculoByChassi(string chassi)
+        {
+            var veiculo = await _veiculoPersist.GetVeiculoByChassi(chassi);
+            if (veiculo == null)
+            {
+                return NotFound();
+            }
+            return Ok(veiculo);
         }
     }
 }

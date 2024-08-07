@@ -11,9 +11,12 @@ builder.Services.AddDbContext<ConnectionContext>(options =>
 
 builder.Services.AddScoped<IGeralPersist, GeralPersist>();
 builder.Services.AddScoped<IClientePersist, ClientePersist>();
+builder.Services.AddScoped<IVeiculoPersist, VeiculoPersist>();
 
 // Adiciona serviços ao contêiner
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+      .AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

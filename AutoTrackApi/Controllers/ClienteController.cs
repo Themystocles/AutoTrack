@@ -36,6 +36,27 @@ namespace AutoTrack.Controllers
             }
             return Ok(cliente);
         }
+        [HttpGet("telefone/{telefone}")]
+        public async Task<ActionResult<Cliente>> GetClienteByTelefone(string telefone)
+        {
+            var cliente = await _clientePersist.GetClienteBynumeroTel(telefone);
+            if (cliente == null)
+            {
+                return NotFound();
+            }
+            return Ok(cliente);
+        }
+        [HttpGet("nome/{nome}")]
+        public async Task<ActionResult<Cliente>> GetClienteByNome(string nome)
+        {
+            var cliente = await _clientePersist.GetClienteByNome(nome);
+            if (cliente == null)
+            {
+                return NotFound();
+            }
+            return Ok(cliente);
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> PostCliente([FromBody] Cliente cliente)

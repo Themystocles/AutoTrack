@@ -10,6 +10,7 @@ import { FooterComponent } from './Components/Layout/footer/footer.component';
 import { ClienteComponent } from './Components/Cliente/cliente.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { VeiculoComponent } from './veiculo/veiculo.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { FormsModule } from '@angular/forms';
     CardComponent,
     FooterComponent,
     ClienteComponent,
+    VeiculoComponent,
    
   ],
   imports: [

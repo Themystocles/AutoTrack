@@ -1,6 +1,7 @@
 <div class="p-4 bg-gray-800 text-white">
-    <!-- Input e botão para buscar cliente -->
-    <div class="mb-4">
+  <!-- Input e botões para buscar cliente -->
+  <div class="mb-4 flex space-x-2">
+    <div class="flex items-center space-x-2">
       <input 
         [(ngModel)]="CPForCNPJ" 
         placeholder="Digite o CPF do cliente" 
@@ -8,69 +9,93 @@
       >
       <button 
         (click)="GetClienteByCPForCNPJ()" 
-        class="ml-2 bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700"
+        class="bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700"
       >
-        Buscar
+        Buscar por CPF
       </button>
     </div>
-  
-    <!-- Exibe detalhes do cliente -->
-    <div *ngIf="Cliente" class="bg-gray-900 p-4 rounded-md shadow-md">
-      <h2 class="text-xl font-semibold mb-2">Detalhes do Cliente</h2>
-      <table class="min-w-full bg-gray-800 border border-gray-600 rounded-md">
-        <tbody>
-          <tr>
-            <td class="p-2 font-semibold">Nome:</td>
-            <td class="p-2">{{Cliente.nome}}</td>
-          </tr>
-          <tr>
-            <td class="p-2 font-semibold">CPF:</td>
-            <td class="p-2">{{Cliente.cpf}}</td>
-          </tr>
-          <tr>
-            <td class="p-2 font-semibold">Inscrição Estadual:</td>
-            <td class="p-2">{{Cliente.insEstadual}}</td>
-          </tr>
-          <tr>
-            <td class="p-2 font-semibold">Telefone:</td>
-            <td class="p-2">{{Cliente.telefone}}</td>
-          </tr>
-        </tbody>
-      </table>
-  
-      <!-- Tabela para veículos -->
-      <div class="mt-4">
-        <h3 class="text-lg font-semibold mb-2">Veículos</h3>
-        <table class="min-w-full bg-gray-800 border border-gray-600 rounded-md">
-          <thead>
-            <tr>
-              <th class="p-2 border-b border-gray-600">Placa</th>
-              <th class="p-2 border-b border-gray-600">Ano de Fabricação</th>
-              <th class="p-2 border-b border-gray-600">Ano do Modelo</th>
-              <th class="p-2 border-b border-gray-600">Serviços</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let veiculo of Cliente.veiculos">
-              <td class="p-2">{{veiculo.placa}}</td>
-              <td class="p-2">{{veiculo.anoFab}}</td>
-              <td class="p-2">{{veiculo.anoModelo}}</td>
-              <td class="p-2">
-                <!-- Exibe serviços do veículo -->
-                <ul class="space-y-2">
-                  <li *ngFor="let servico of veiculo.servicos" class="bg-gray-700 p-2 border border-gray-600 rounded-md">
-                    <p><strong>ID:</strong> {{servico.id}}</p>
-                    <p><strong>Descrição:</strong> {{servico.descricao}}</p>
-                    <p><strong>Mecânico:</strong> {{servico.mecanico}}</p>
-                    <p><strong>Valor Unitário:</strong> {{servico.valorUni}}</p>
-                    <p><strong>Valor Total:</strong> {{servico.valorTot}}</p>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+
+    <div class="flex items-center space-x-2">
+      <input 
+        [(ngModel)]="Telefone" 
+        placeholder="Digite o Telefone do cliente" 
+        class="border border-gray-600 bg-gray-700 p-2 rounded-md text-white "
+      >
+      <button 
+        (click)="GetClienteByTelefone()" 
+        class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700"
+      >
+        Buscar por Telefone
+      </button>
+    </div>
+    
+    <div class="flex items-center space-x-2">
+      <input 
+        [(ngModel)]="Nome" 
+        placeholder="Digite o Nome do cliente" 
+        class="border border-gray-600 bg-gray-700 p-2 rounded-md text-white"
+      >
+      <button 
+        (click)="GetClienteByNome()" 
+        class="bg-red-600 text-white p-2 rounded-md hover:bg-red-700"
+      >
+        Buscar por Nome
+      </button>
+    </div>
+
+    
+  </div>
+
+  <!-- Exibe detalhes do cliente -->
+  <div *ngIf="Cliente" class="bg-gray-900 p-4 rounded-md shadow-md">
+    <h2 class="text-xl font-semibold mb-2">Detalhes do Cliente</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div>
+        <p><strong>Nome:</strong> {{Cliente.nome}}</p>
+        <p><strong>CPF:</strong> {{Cliente.cpf}}</p>
+        <p><strong>Inscrição Estadual:</strong> {{Cliente.insEstadual}}</p>
+        <p><strong>Telefone:</strong> {{Cliente.telefone}}</p>
       </div>
     </div>
   </div>
-  
+
+  <!-- Tabela para veículos -->
+  <div *ngIf="Cliente.veiculos?.length" class="bg-gray-900 p-4 rounded-md shadow-md mt-4">
+    <h3 class="text-lg font-semibold mb-2">Veículos</h3>
+    <div *ngFor="let veiculo of Cliente.veiculos" class="bg-gray-800 p-4 rounded-md mb-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <p><strong>Carro:</strong> {{veiculo.carro}}</p>
+        <p><strong>Placa:</strong> {{veiculo.placa}}</p>
+        <p><strong>Especie:</strong> {{veiculo.especie}}</p>
+        <p><strong>Combustivel:</strong> {{veiculo.combustivel}}</p>
+        <p><strong>Potência:</strong> {{veiculo.potencia}}</p>
+        <p><strong>Ano Fabricação:</strong> {{veiculo.anoFab}}</p>
+        <p><strong>Capacidade:</strong> {{veiculo.capacidade}}</p>
+        <p><strong>Ano Modelo:</strong> {{veiculo.anoModelo}}</p>
+        <p><strong>Chassi:</strong> {{veiculo.chassi}}</p>
+        <p><strong>Cor:</strong> {{veiculo.cor}}</p>
+        <p><strong>Observação:</strong> {{veiculo.observacao}}</p>
+        <p><strong>KM Atual:</strong> {{veiculo.kmAtual}}</p>
+        <p><strong>Prox Manutenção:</strong> {{veiculo.proxManutencao}}</p>
+        <p><strong>Prox Troca de filtro:</strong> {{veiculo.proxTrocaFiltro}}</p>
+        <p><strong>Garantia:</strong> {{veiculo.garantia}}</p>
+      </div>
+      <div class="mt-4">
+        <h4 class="text-md font-semibold mb-2">Serviços</h4>
+        <ul class="space-y-2">
+          <li *ngFor="let servico of veiculo.servicos" class="bg-gray-700 p-2 border border-gray-600 rounded-md">
+            <p><strong>ID:</strong> {{servico.id}}</p>
+            <p><strong>Descrição:</strong> {{servico.descricao}}</p>
+            <p><strong>Quantidade:</strong> {{servico.quantidade}}</p>
+            <p><strong>Peça Serviço:</strong> {{servico.peca_Servico}}</p>
+            <p><strong>Valor Unitário:</strong> {{servico.valorUni}}</p>
+            <p><strong>Valor Total:</strong> {{servico.valorTot}}</p>
+            <p><strong>Forma de Pagamento:</strong> {{servico.formaPag}}</p>
+            <p><strong>Mecanico:</strong> {{servico.mecanico}}</p>
+            <p><strong>Saida:</strong> {{servico.saida}}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

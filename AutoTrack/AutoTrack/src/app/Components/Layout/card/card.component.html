@@ -14,7 +14,7 @@
         <h3 class="text-xl font-semibold mb-4 text-center">Veículo</h3>
         <p class="text-center mb-4">Gerencie informações dos veículos</p>
       </div>
-      <button (click)="toggleCliente()" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-300 w-full">
+      <button (click)="toggleVeiculo()" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors duration-300 w-full">
         Ver Mais
       </button>
     </div>
@@ -23,7 +23,7 @@
         <h3 class="text-xl font-semibold mb-4 text-center">Serviço</h3>
         <p class="text-center mb-4">Visualize e gerencie os serviços oferecidos</p>
       </div>
-      <button (click)="toggleCliente()" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-300 w-full">
+      <button class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-300 w-full">
         Ver Mais
       </button>
     </div>
@@ -32,12 +32,15 @@
         <h3 class="text-xl font-semibold mb-4 text-center">Montagem</h3>
         <p class="text-center mb-4">Acompanhe a montagem e o progresso</p>
       </div>
-      <button (click)="toggleCliente()" class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors duration-300 w-full">
+      <button class="px-4 py-2 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition-colors duration-300 w-full">
         Ver Mais
       </button>
     </div>
   </div>
 
-  <!-- Condicionalmente exibe o componente -->
+  <!-- Condicionalmente exibe o componente de cliente -->
   <app-cliente *ngIf="showCliente" class="mt-6 w-full"></app-cliente>
+
+  <!-- Condicionalmente exibe o componente de veículo -->
+  <app-veiculo *ngIf="showVeiculo" class="mt-6 w-full"></app-veiculo>
 </div>
