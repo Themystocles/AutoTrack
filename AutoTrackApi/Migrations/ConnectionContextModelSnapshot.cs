@@ -22,6 +22,10 @@ namespace AutoTrack.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("DataServico")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Descricao")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -196,25 +200,29 @@ namespace AutoTrack.Migrations
 
             modelBuilder.Entity("AutoTrackApi.Model.Servico", b =>
                 {
-                    b.HasOne("AutoTrackApi.Model.Veiculo", null)
-                        .WithMany("servico")
+                    b.HasOne("AutoTrackApi.Model.Veiculo", "veiculo")
+                        .WithMany("servicos")
                         .HasForeignKey("VeiculoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("veiculo");
                 });
 
             modelBuilder.Entity("AutoTrackApi.Model.Veiculo", b =>
                 {
-                    b.HasOne("Cliente", null)
+                    b.HasOne("Cliente", "Cliente")
                         .WithMany("Veiculos")
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Cliente");
                 });
 
             modelBuilder.Entity("AutoTrackApi.Model.Veiculo", b =>
                 {
-                    b.Navigation("servico");
+                    b.Navigation("servicos");
                 });
 
             modelBuilder.Entity("Cliente", b =>

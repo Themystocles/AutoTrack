@@ -12,6 +12,7 @@ builder.Services.AddDbContext<ConnectionContext>(options =>
 builder.Services.AddScoped<IGeralPersist, GeralPersist>();
 builder.Services.AddScoped<IClientePersist, ClientePersist>();
 builder.Services.AddScoped<IVeiculoPersist, VeiculoPersist>();
+builder.Services.AddScoped<IServicoPersist, ServicoPersist>();
 
 // Adiciona serviços ao contêiner
 builder.Services.AddControllers()

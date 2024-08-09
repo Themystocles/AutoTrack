@@ -14,6 +14,6 @@ public class Cliente
     public string Cidade { get; set; }
     public string Cep { get; set; }
     public string Uf { get; set; }
-    public List<Veiculo> Veiculos { get; set; }
-   // public List<Servico> Servicos { get; set; } //Qunado for Fazer novamente o migration, comentar essa propriedade
+   public List<Veiculo> Veiculos { get; set; } 
+  
 }

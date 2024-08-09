@@ -1,3 +1,5 @@
+import { Veiculo } from "./VeiculoModel";
+
 export class Servico {
     id?: number;
     descricao?: string;
@@ -9,7 +11,8 @@ export class Servico {
     mecanico?: string;
     saida?: string;
     veiculoId?: number;
-  
+    dataServ?: string;
+    veiculo?: Veiculo;
     constructor(init?: Partial<Servico>) {
       Object.assign(this, init);
     }

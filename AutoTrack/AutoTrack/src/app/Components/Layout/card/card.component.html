@@ -1,5 +1,7 @@
 <div class="p-6 bg-gray-900 min-h-screen flex flex-col items-center">
+  <!-- Grid com os cards -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+    <!-- Card Cliente -->
     <div class="card bg-gray-800 text-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between">
       <div>
         <h3 class="text-xl font-semibold mb-4 text-center">Cliente</h3>
@@ -9,6 +11,8 @@
         Ver Mais
       </button>
     </div>
+    
+    <!-- Card Veículo -->
     <div class="card bg-gray-800 text-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between">
       <div>
         <h3 class="text-xl font-semibold mb-4 text-center">Veículo</h3>
@@ -18,15 +22,19 @@
         Ver Mais
       </button>
     </div>
+    
+    <!-- Card Serviço -->
     <div class="card bg-gray-800 text-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between">
       <div>
         <h3 class="text-xl font-semibold mb-4 text-center">Serviço</h3>
         <p class="text-center mb-4">Visualize e gerencie os serviços oferecidos</p>
       </div>
-      <button class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-300 w-full">
+      <button (click)="toggleServico()" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors duration-300 w-full">
         Ver Mais
       </button>
     </div>
+    
+    <!-- Card Montagem -->
     <div class="card bg-gray-800 text-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col justify-between">
       <div>
         <h3 class="text-xl font-semibold mb-4 text-center">Montagem</h3>
@@ -38,9 +46,12 @@
     </div>
   </div>
 
-  <!-- Condicionalmente exibe o componente de cliente -->
+  <!-- Condicionalmente exibe o componente de Cliente -->
   <app-cliente *ngIf="showCliente" class="mt-6 w-full"></app-cliente>
 
-  <!-- Condicionalmente exibe o componente de veículo -->
+  <!-- Condicionalmente exibe o componente de Veículo -->
   <app-veiculo *ngIf="showVeiculo" class="mt-6 w-full"></app-veiculo>
+
+  <!-- Condicionalmente exibe o componente de Serviço -->
+  <app-servico *ngIf="showServico" class="mt-6 w-full"></app-servico>
 </div>

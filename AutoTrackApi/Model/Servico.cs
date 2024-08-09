@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AutoTrackApi.Model
 {
@@ -16,8 +18,11 @@ namespace AutoTrackApi.Model
         public string FormaPag { get; set; }
         public string Mecanico { get; set; }
         public string Saida { get; set; }
+        public string DataServico { get; set; }
         public int VeiculoId { get; set; }
-       // public List<Veiculo> veiculos { get; set; }
+        public Veiculo? veiculo { get; set; }
+      
+        
        
 
 

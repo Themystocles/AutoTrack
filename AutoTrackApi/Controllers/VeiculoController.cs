@@ -59,6 +59,6 @@ namespace AutoTrack.Controllers
                 return NotFound();
             }
             return Ok(veiculo);
-        }
+        } 
     }
 }

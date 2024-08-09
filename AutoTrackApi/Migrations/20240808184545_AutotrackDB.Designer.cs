@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoTrack.Migrations
 {
     [DbContext(typeof(ConnectionContext))]
-    [Migration("20240731171049_AutoTrack")]
-    partial class AutoTrack
+    [Migration("20240808184545_AutotrackDB")]
+    partial class AutotrackDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,10 @@ namespace AutoTrack.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("DataServico")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -199,25 +203,29 @@ namespace AutoTrack.Migrations
 
             modelBuilder.Entity("AutoTrackApi.Model.Servico", b =>
                 {
-                    b.HasOne("AutoTrackApi.Model.Veiculo", null)
-                        .WithMany("servico")
+                    b.HasOne("AutoTrackApi.Model.Veiculo", "veiculo")
+                        .WithMany("servicos")
                         .HasForeignKey("VeiculoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("veiculo");
                 });
 
             modelBuilder.Entity("AutoTrackApi.Model.Veiculo", b =>
                 {
-                    b.HasOne("Cliente", null)
+                    b.HasOne("Cliente", "Cliente")
                         .WithMany("Veiculos")
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Cliente");
                 });
 
             modelBuilder.Entity("AutoTrackApi.Model.Veiculo", b =>
                 {
-                    b.Navigation("servico");
+                    b.Navigation("servicos");
                 });
 
             modelBuilder.Entity("Cliente", b =>

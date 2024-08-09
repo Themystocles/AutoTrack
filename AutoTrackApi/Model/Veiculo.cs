@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -24,8 +25,7 @@ namespace AutoTrackApi.Model
     public string ProxTrocaFiltro { get; set; }
     public string Garantia { get; set; }
     public int ClienteId { get; set; }
-
-    public Cliente Cliente { get; set; }    // quando for fazer o migrartion comentar essa prorpiedade
-    public List<Servico> servicos { get; set; }
+    public Cliente? Cliente { get; set; }   
+    public List<Servico> servicos { get; set; } 
 }
 }

@@ -5,7 +5,7 @@
 namespace AutoTrack.Migrations
 {
     /// <inheritdoc />
-    public partial class AutoTrack : Migration
+    public partial class AutotrackDB : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -81,6 +81,7 @@ namespace AutoTrack.Migrations
                     FormaPag = table.Column<string>(type: "TEXT", nullable: false),
                     Mecanico = table.Column<string>(type: "TEXT", nullable: false),
                     Saida = table.Column<string>(type: "TEXT", nullable: false),
+                    DataServico = table.Column<string>(type: "TEXT", nullable: false),
                     VeiculoId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

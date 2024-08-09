@@ -11,6 +11,7 @@ import { ClienteComponent } from './Components/Cliente/cliente.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { VeiculoComponent } from './veiculo/veiculo.component';
+import { ServicoComponent } from './servico/servico.component';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { VeiculoComponent } from './veiculo/veiculo.component';
     FooterComponent,
     ClienteComponent,
     VeiculoComponent,
+    ServicoComponent,
    
   ],
   imports: [
