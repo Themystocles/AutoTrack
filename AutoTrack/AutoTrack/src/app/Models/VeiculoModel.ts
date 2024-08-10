@@ -1,4 +1,5 @@
 import { Cliente } from "./ClienteModel";
+import { Montagem } from "./MontagemModel";
 import { Servico } from "./ServicoMode";
 
 export class Veiculo {
@@ -18,9 +19,11 @@ export class Veiculo {
   proxManutencao?: string;
   proxTrocaFiltro?: string;
   garantia?: string;
+  renavam?: string;
   clienteId?: number;
   cliente? : Cliente;
   servicos?: Servico[];
+  montagens?: Montagem[];
 
   constructor(init?: Partial<Veiculo>) {
     Object.assign(this, init);

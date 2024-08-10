@@ -11,7 +11,7 @@ import { Veiculo } from '../Models/VeiculoModel';
 export class ServicoComponent {
   servdata! : string
   servico : Servico[] = [];
-  
+
 
   constructor(public servicoservice : ServicoService) {
     

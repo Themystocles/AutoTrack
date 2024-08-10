@@ -25,9 +25,9 @@ export class FiltroServicesService {
     const urlID = `${this.urlTel}/${id}`
     return this.http.get<Cliente>(urlID)
   }
-  getClientByNome(id: string): Observable<Cliente>{
-    const urlID = `${this.urlNome}/${id}`
-    return this.http.get<Cliente>(urlID)
+  getClientByNome(nome: string): Observable<Cliente[]> {
+    const urlID = `${this.urlNome}/${nome}`;
+    return this.http.get<Cliente[]>(urlID);
   }
   getVeiculoByplaca(id: string): Observable<Veiculo>{
     const urlID = `${this.urlPlaca}/${id}`

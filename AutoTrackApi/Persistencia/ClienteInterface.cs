@@ -22,23 +22,31 @@ namespace AutoTrackApi.Persistencia
             return await _context.Clientes
             .Include(c => c.Veiculos)
             .ThenInclude(V => V.servicos)
+            .Include(c => c.Veiculos)
+            .ThenInclude(m => m.montagens)
             .FirstOrDefaultAsync(c => c.Cpf == cpf);
         }
 
-        public async Task<Cliente> GetClienteByNome(string nome)
-        {
-         return await _context.Clientes
-        .Include(c => c.Veiculos)
+         public async Task<List<Cliente>> GetClientesByNome(string nome)
+    {
+        return await _context.Clientes
+            .Include(c => c.Veiculos)
             .ThenInclude(v => v.servicos)
-        .Where(c => c.Nome.ToLower().Contains(nome.ToLower()))
-        .FirstOrDefaultAsync();
-        }
+             .Include(c => c.Veiculos)
+            .ThenInclude(m => m.montagens)
+            .Where(c => c.Nome.ToLower().Contains(nome.ToLower()))
+            .ToListAsync();
+    }
         public async Task<Cliente> GetClienteBynumeroTel(string telefone)
         {
             return await _context.Clientes
             .Include(c => c.Veiculos)
             .ThenInclude(V => V.servicos)
+            .Include(c => c.Veiculos)
+            .ThenInclude(m => m.montagens)
             .FirstOrDefaultAsync(c => c.Telefone == telefone);
         }
+
+       
     }
 }

@@ -9,7 +9,7 @@ namespace AutoTrackApi.Interface
     {
         Task<Cliente> GetClienteByCpf(string cpf);
         Task<Cliente> GetClienteBynumeroTel(string telefone);
-        Task<Cliente> GetClienteByNome(string nome);
+        Task<List<Cliente>> GetClientesByNome(string nome);
         
     }
 }

@@ -23,7 +23,8 @@ namespace AutoTrackApi.Persistencia
         {
             var veiculo = await _context.Veiculos
             .Include(v => v.Cliente) // Inclui o cliente relacionado
-            .Include(v => v.servicos) // Inclui os serviços relacionados
+            .Include(v => v.servicos)
+            .Include(m => m.montagens) // Inclui os serviços relacionados
             .FirstOrDefaultAsync(v => v.Chassi == chassi);
 
         return veiculo;
@@ -37,6 +38,7 @@ namespace AutoTrackApi.Persistencia
              var veiculo = await _context.Veiculos
             .Include(v => v.Cliente) // Inclui o cliente relacionado
             .Include(v => v.servicos) // Inclui os serviços relacionados
+            .Include(m => m.montagens)
             .FirstOrDefaultAsync(v => v.Placa == placa);
 
         return veiculo;

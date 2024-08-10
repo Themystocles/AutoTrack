@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { VeiculoComponent } from './veiculo/veiculo.component';
 import { ServicoComponent } from './servico/servico.component';
+import { MontagemComponent } from './montagem/montagem.component';
+import { ClientePostComponent } from './Components/Cliente-post/cliente-post.component';
 
 
 @NgModule({
@@ -24,6 +26,8 @@ import { ServicoComponent } from './servico/servico.component';
     ClienteComponent,
     VeiculoComponent,
     ServicoComponent,
+    MontagemComponent,
+    ClientePostComponent,
    
   ],
   imports: [

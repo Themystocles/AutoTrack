@@ -1,13 +1,12 @@
 <div class="flex flex-col h-screen bg-gray-900 text-gray-100">
   <app-header></app-header>
   <div class="flex flex-1">
-  <app-sidebar></app-sidebar>
-  <app-card></app-card>
- 
-    
+    <app-sidebar class="w-64"></app-sidebar> <!-- Ajuste a largura do sidebar -->
+    <main class="flex-1 p-4">
+      <!-- Ajuste o padding e outras propriedades conforme necessário -->
+      <app-card *ngIf="showCard"></app-card>
+      <router-outlet></router-outlet>
+    </main>
   </div>
-
   <app-footer></app-footer>
-  
- 
 </div>

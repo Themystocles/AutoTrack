@@ -49,7 +49,7 @@ namespace AutoTrack.Controllers
         [HttpGet("nome/{nome}")]
         public async Task<ActionResult<Cliente>> GetClienteByNome(string nome)
         {
-            var cliente = await _clientePersist.GetClienteByNome(nome);
+            var cliente = await _clientePersist.GetClientesByNome(nome);
             if (cliente == null)
             {
                 return NotFound();

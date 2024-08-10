@@ -1,85 +1,103 @@
 <div class="p-4 bg-gray-800 text-white">
-    <!-- Input e botões para buscar veículo -->
-    <div class="mb-4 flex space-x-2">
-      <!-- Busca por Placa -->
-      <div class="flex items-center space-x-2">
-        <input 
-          [(ngModel)]="veiculoPlaca" 
-          placeholder="Digite a placa do veículo" 
-          class="border border-gray-600 bg-gray-700 p-2 rounded-md text-white"
-        >
-        <button 
-          (click)="GetveiculoByPlaca()" 
-          class="bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700"
-        >
-          Buscar por Placa
-        </button>
-      </div>
-  
-      <!-- Busca por Chassi -->
-      <div class="flex items-center space-x-2">
-        <input 
-          [(ngModel)]="veiculoChassi" 
-          placeholder="Digite o Chassi" 
-          class="border border-gray-600 bg-gray-700 p-2 rounded-md text-white"
-        >
-        <button 
-          (click)="GetveiculoByChassi()" 
-          class="bg-green-600 text-white p-2 rounded-md hover:bg-green-700"
-        >
-          Buscar por Chassi
-        </button>
-      </div>
+  <!-- Input e botões para buscar veículo -->
+  <div class="mb-4 flex flex-wrap gap-2">
+    <!-- Busca por Placa -->
+    <div class="flex items-center space-x-2 w-full md:w-auto">
+      <input 
+        [(ngModel)]="veiculoPlaca" 
+        placeholder="Digite a placa do veículo" 
+        class="border border-gray-600 bg-gray-700 p-2 rounded-md text-white w-full md:w-auto"
+      >
+      <button 
+        (click)="GetveiculoByPlaca()" 
+        class="bg-blue-600 text-white p-2 h-10 rounded-md hover:bg-blue-700 whitespace-nowrap"
+      >
+        Buscar por Placa
+      </button>
     </div>
-  
-    <!-- Exibe detalhes do veículo -->
-    <div *ngIf="Veiculo" class="bg-gray-900 p-4 rounded-md shadow-md">
-      <h2 class="text-xl font-semibold mb-2">Detalhes do Veículo</h2>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div>
-          <p><strong>Carro:</strong> {{Veiculo.carro}}</p>
-          <p><strong>Placa:</strong> {{Veiculo.placa}}</p>
-          <p><strong>Chassi:</strong> {{Veiculo.chassi}}</p>
-          <p><strong>Cor:</strong> {{Veiculo.cor}}</p>
-          <p><strong>Observação:</strong> {{Veiculo.observacao}}</p>
-          <p><strong>KM Atual:</strong> {{Veiculo.kmAtual}}</p>
-        </div>
-      </div>
-    </div>
-  
-    <!-- Exibe detalhes do cliente -->
-    <div *ngIf="Veiculo && Veiculo.cliente" class="bg-gray-900 p-4 rounded-md shadow-md mt-4">
-      <h2 class="text-xl font-semibold mb-2">Detalhes do Cliente</h2>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div>
-          <p><strong>Nome:</strong> {{Veiculo.cliente.nome}}</p>
-          <p><strong>CPF:</strong> {{Veiculo.cliente.cpf}}</p>
-          <p><strong>Telefone:</strong> {{Veiculo.cliente.telefone}}</p>
-          <p><strong>Endereço:</strong> {{Veiculo.cliente.endereco}}</p>
-          <p><strong>Bairro:</strong> {{Veiculo.cliente.bairro}}</p>
-          <p><strong>Cidade:</strong> {{Veiculo.cliente.cidade}}</p>
-          <p><strong>CEP:</strong> {{Veiculo.cliente.cep}}</p>
-          <p><strong>UF:</strong> {{Veiculo.cliente.uf}}</p>
-        </div>
-      </div>
-    </div>
-  
-    <!-- Exibe serviços do veículo -->
-    <div *ngIf="Veiculo && Veiculo.servicos" class="bg-gray-900 p-4 rounded-md shadow-md mt-4">
-      <h3 class="text-lg font-semibold mb-2">Serviços</h3>
-      <ul class="space-y-2">
-        <li *ngFor="let servico of Veiculo.servicos" class="bg-gray-800 p-4 border border-gray-600 rounded-md">
-          <p><strong>ID:</strong> {{servico.id}}</p>
-          <p><strong>Descrição:</strong> {{servico.descricao}}</p>
-          <p><strong>Quantidade:</strong> {{servico.quantidade}}</p>
-          <p><strong>Peça Serviço:</strong> {{servico.peca_Servico}}</p>
-          <p><strong>Valor Unitário:</strong> {{servico.valorUni}}</p>
-          <p><strong>Valor Total:</strong> {{servico.valorTot}}</p>
-          <p><strong>Forma de Pagamento:</strong> {{servico.formaPag}}</p>
-          <p><strong>Mecanico:</strong> {{servico.mecanico}}</p>
-          <p><strong>Saida:</strong> {{servico.saida}}</p>
-        </li>
-      </ul>
+
+    <!-- Busca por Chassi -->
+    <div class="flex items-center space-x-2 w-full md:w-auto">
+      <input 
+        [(ngModel)]="veiculoChassi" 
+        placeholder="Digite o Chassi" 
+        class="border border-gray-600 bg-gray-700 p-2 rounded-md text-white w-full md:w-auto"
+      >
+      <button 
+        (click)="GetveiculoByChassi()" 
+        class="bg-green-600 text-white p-2 h-10 rounded-md hover:bg-green-700 whitespace-nowrap"
+      >
+        Buscar por Chassi
+      </button>
     </div>
   </div>
-  
+
+  <!-- Exibe detalhes do veículo -->
+  <div *ngIf="Veiculo" class="bg-gray-900 p-4 rounded-md shadow-md">
+    <h2 class="text-xl font-semibold mb-2">Detalhes do Veículo</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div>
+        <p><strong>Carro:</strong> {{Veiculo.carro}}</p>
+        <p><strong>Placa:</strong> {{Veiculo.placa}}</p>
+        <p><strong>Chassi:</strong> {{Veiculo.chassi}}</p>
+        <p><strong>Cor:</strong> {{Veiculo.cor}}</p>
+        <p><strong>Observação:</strong> {{Veiculo.observacao}}</p>
+        <p><strong>KM Atual:</strong> {{Veiculo.kmAtual}}</p>
+        <p><strong>Renavan:</strong> {{Veiculo.renavam}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exibe detalhes do cliente -->
+  <div *ngIf="Veiculo && Veiculo.cliente" class="bg-gray-900 p-4 rounded-md shadow-md mt-4">
+    <h2 class="text-xl font-semibold mb-2">Detalhes do Cliente</h2>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div>
+        <p><strong>Nome:</strong> {{Veiculo.cliente.nome}}</p>
+        <p><strong>CPF:</strong> {{Veiculo.cliente.cpf}}</p>
+        <p><strong>Telefone:</strong> {{Veiculo.cliente.telefone}}</p>
+        <p><strong>Endereço:</strong> {{Veiculo.cliente.endereco}}</p>
+        <p><strong>Bairro:</strong> {{Veiculo.cliente.bairro}}</p>
+        <p><strong>Cidade:</strong> {{Veiculo.cliente.cidade}}</p>
+        <p><strong>CEP:</strong> {{Veiculo.cliente.cep}}</p>
+        <p><strong>UF:</strong> {{Veiculo.cliente.uf}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exibe serviços do veículo -->
+  <div *ngIf="Veiculo && Veiculo.servicos" class="bg-gray-900 p-4 rounded-md shadow-md mt-4">
+    <h3 class="text-lg font-semibold mb-2">Serviços</h3>
+    <ul class="space-y-2">
+      <li *ngFor="let servico of Veiculo.servicos" class="bg-gray-800 p-4 border border-gray-600 rounded-md">
+        <p><strong>ID:</strong> {{servico.id}}</p>
+        <p><strong>Descrição:</strong> {{servico.descricao}}</p>
+        <p><strong>Quantidade:</strong> {{servico.quantidade}}</p>
+        <p><strong>Peça Serviço:</strong> {{servico.peca_Servico}}</p>
+        <p><strong>Valor Unitário:</strong> {{servico.valorUni}}</p>
+        <p><strong>Valor Total:</strong> {{servico.valorTot}}</p>
+        <p><strong>Forma de Pagamento:</strong> {{servico.formaPag}}</p>
+        <p><strong>Mecanico:</strong> {{servico.mecanico}}</p>
+        <p><strong>Saida:</strong> {{servico.saida}}</p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Exibe montagens do veículo -->
+  <div *ngIf="Veiculo && Veiculo.montagens" class="bg-gray-900 p-4 rounded-md shadow-md mt-4">
+    <h3 class="text-lg font-semibold mb-2">Montagem</h3>
+    <ul class="space-y-2">
+      <li *ngFor="let montagem of Veiculo.montagens" class="bg-gray-800 p-4 border border-gray-600 rounded-md">
+        <p><strong>ID:</strong> {{montagem.id}}</p>
+        <p><strong>Descrição:</strong> {{montagem.anoFab}}</p>
+        <p><strong>Quantidade:</strong> {{montagem.data}}</p>
+        <p><strong>Peça Serviço:</strong> {{montagem.documentacaoAno}}</p>
+        <p><strong>Valor Unitário:</strong> {{montagem.kitDaLoja}}</p>
+        <p><strong>Valor Total:</strong> {{montagem.litro}}</p>
+        <p><strong>Forma de Pagamento:</strong> {{montagem.geracaoInstaladores}}</p>
+        <p><strong>Mecanico:</strong> {{montagem.numeroOrdemRequalificacao}}</p>
+        <p><strong>Saida:</strong> {{montagem.redutorValor}}</p>
+      </li>
+    </ul>
+  </div>
+</div>
