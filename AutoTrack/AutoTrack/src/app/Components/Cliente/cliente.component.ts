@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from 'src/app/Models/ClienteModel';
 import { Veiculo } from 'src/app/Models/VeiculoModel';
-import { FiltroServicesService } from 'src/app/Services/filtro-services.service';
+import { FiltroServicesService } from 'src/app/Services/filtro-cliente.service';
 
 @Component({
   selector: 'app-cliente',

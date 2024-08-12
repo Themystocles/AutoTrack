@@ -5,7 +5,7 @@
 namespace AutoTrack.Migrations
 {
     /// <inheritdoc />
-    public partial class AutotrackDB : Migration
+    public partial class Autotrackapi : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -54,6 +54,7 @@ namespace AutoTrack.Migrations
                     ProxManutencao = table.Column<string>(type: "TEXT", nullable: false),
                     ProxTrocaFiltro = table.Column<string>(type: "TEXT", nullable: false),
                     Garantia = table.Column<string>(type: "TEXT", nullable: false),
+                    Renavam = table.Column<string>(type: "TEXT", nullable: false),
                     ClienteId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
@@ -63,6 +64,50 @@ namespace AutoTrack.Migrations
                         name: "FK_Veiculos_Clientes_ClienteId",
                         column: x => x.ClienteId,
                         principalTable: "Clientes",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "montagens",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    data = table.Column<string>(type: "TEXT", nullable: false),
+                    GeracaoInstaladores = table.Column<string>(type: "TEXT", nullable: false),
+                    RedutorValor = table.Column<decimal>(type: "TEXT", nullable: false),
+                    NumeroSerie = table.Column<string>(type: "TEXT", nullable: false),
+                    FormaPagamento = table.Column<string>(type: "TEXT", nullable: false),
+                    MarcaCilindro = table.Column<string>(type: "TEXT", nullable: false),
+                    NumeroCilindro = table.Column<int>(type: "INTEGER", nullable: false),
+                    Quilo = table.Column<decimal>(type: "TEXT", nullable: false),
+                    Litro = table.Column<decimal>(type: "TEXT", nullable: false),
+                    AnoFab = table.Column<int>(type: "INTEGER", nullable: false),
+                    DocumentacaoAno = table.Column<int>(type: "INTEGER", nullable: false),
+                    AnoReteste = table.Column<int>(type: "INTEGER", nullable: false),
+                    Requalificadora = table.Column<string>(type: "TEXT", nullable: false),
+                    NumeroNFEquipamento = table.Column<string>(type: "TEXT", nullable: false),
+                    NumeroOrdemRequalificacao = table.Column<string>(type: "TEXT", nullable: false),
+                    NumeroLaudoMontagem = table.Column<string>(type: "TEXT", nullable: false),
+                    MarcaValvula = table.Column<string>(type: "TEXT", nullable: false),
+                    NumeroNFServicoMontagem = table.Column<string>(type: "TEXT", nullable: false),
+                    NumeroValvula = table.Column<string>(type: "TEXT", nullable: false),
+                    Selo = table.Column<string>(type: "TEXT", nullable: false),
+                    Orcamento = table.Column<decimal>(type: "TEXT", nullable: false),
+                    QuantPecaServico = table.Column<int>(type: "INTEGER", nullable: false),
+                    ValorUnitario = table.Column<decimal>(type: "TEXT", nullable: false),
+                    ValorTotal = table.Column<decimal>(type: "TEXT", nullable: false),
+                    KitDaLoja = table.Column<bool>(type: "INTEGER", nullable: false),
+                    VeiculoId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_montagens", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_montagens_Veiculos_VeiculoId",
+                        column: x => x.VeiculoId,
+                        principalTable: "Veiculos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -96,6 +141,11 @@ namespace AutoTrack.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_montagens_VeiculoId",
+                table: "montagens",
+                column: "VeiculoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_servicos_VeiculoId",
                 table: "servicos",
                 column: "VeiculoId");
@@ -109,6 +159,9 @@ namespace AutoTrack.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "montagens");
+
             migrationBuilder.DropTable(
                 name: "servicos");
 

@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutoTrackApi.Model
 {
+    [Table("montagens")]
     public class Montagem
     {
         public int Id { get; set; } 

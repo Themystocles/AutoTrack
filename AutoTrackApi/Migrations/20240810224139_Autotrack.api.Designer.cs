@@ -10,14 +10,118 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoTrack.Migrations
 {
     [DbContext(typeof(ConnectionContext))]
-    [Migration("20240808184545_AutotrackDB")]
-    partial class AutotrackDB
+    [Migration("20240810224139_Autotrack.api")]
+    partial class Autotrackapi
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.3");
+
+            modelBuilder.Entity("AutoTrackApi.Model.Montagem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AnoFab")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("AnoReteste")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("DocumentacaoAno")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("FormaPagamento")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("GeracaoInstaladores")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("KitDaLoja")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Litro")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MarcaCilindro")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MarcaValvula")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("NumeroCilindro")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("NumeroLaudoMontagem")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NumeroNFEquipamento")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NumeroNFServicoMontagem")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NumeroOrdemRequalificacao")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NumeroSerie")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NumeroValvula")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("Orcamento")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("QuantPecaServico")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("Quilo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("RedutorValor")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Requalificadora")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Selo")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("ValorTotal")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal>("ValorUnitario")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("VeiculoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("data")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VeiculoId");
+
+                    b.ToTable("montagens");
+                });
 
             modelBuilder.Entity("AutoTrackApi.Model.Servico", b =>
                 {
@@ -139,6 +243,10 @@ namespace AutoTrack.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Renavam")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ClienteId");
@@ -201,6 +309,17 @@ namespace AutoTrack.Migrations
                     b.ToTable("Clientes");
                 });
 
+            modelBuilder.Entity("AutoTrackApi.Model.Montagem", b =>
+                {
+                    b.HasOne("AutoTrackApi.Model.Veiculo", "veiculo")
+                        .WithMany("montagens")
+                        .HasForeignKey("VeiculoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("veiculo");
+                });
+
             modelBuilder.Entity("AutoTrackApi.Model.Servico", b =>
                 {
                     b.HasOne("AutoTrackApi.Model.Veiculo", "veiculo")
@@ -225,6 +344,8 @@ namespace AutoTrack.Migrations
 
             modelBuilder.Entity("AutoTrackApi.Model.Veiculo", b =>
                 {
+                    b.Navigation("montagens");
+
                     b.Navigation("servicos");
                 });
 

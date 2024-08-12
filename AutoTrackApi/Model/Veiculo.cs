@@ -27,8 +27,8 @@ namespace AutoTrackApi.Model
     public string Renavam { get; set; }
     public int ClienteId { get; set; }
     public Cliente? Cliente { get; set; }   
-    public List<Servico> servicos { get; set; } 
-    public List<Montagem> montagens { get; set; } 
+    public List<Servico>? servicos { get; set; } 
+    public List<Montagem>? montagens { get; set; } 
     
 }
 }

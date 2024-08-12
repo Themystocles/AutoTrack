@@ -117,7 +117,7 @@ namespace AutoTrack.Migrations
 
                     b.HasIndex("VeiculoId");
 
-                    b.ToTable("Montagem");
+                    b.ToTable("montagens");
                 });
 
             modelBuilder.Entity("AutoTrackApi.Model.Servico", b =>
