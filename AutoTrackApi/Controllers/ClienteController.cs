@@ -58,16 +58,5 @@ namespace AutoTrack.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> PostCliente([FromBody] Cliente cliente)
-        {
-            if (cliente == null)
-            {
-                return BadRequest("Cliente is null");
-            }
-
-            await _geralPersist.AddAsync(cliente);
-            return CreatedAtAction(nameof(GetClientes), new { id = cliente.Id }, cliente);
-        }
-    }
+       }
 }

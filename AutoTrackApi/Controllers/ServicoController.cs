@@ -26,7 +26,7 @@ public class ServicoController : ControllerBase
         return Ok(servicos);
     }
 
-    [HttpPost]
+   /* [HttpPost]
     public async Task<IActionResult> PostServico([FromBody] Servico servico)
     {
         if (servico == null)
@@ -36,7 +36,7 @@ public class ServicoController : ControllerBase
 
         await _geralPersist.AddAsync(servico);
         return CreatedAtAction(nameof(GetServicos), new { id = servico.Id }, servico);
-    }
+    }*/
 
     [HttpGet("servico/{dataServ}")]
     public async Task<ActionResult<IEnumerable<Servico>>> GetServicosByDate(string dataServ)

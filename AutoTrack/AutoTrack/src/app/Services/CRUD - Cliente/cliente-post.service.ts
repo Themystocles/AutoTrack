@@ -8,7 +8,7 @@ import { Cliente } from 'src/app/Models/ClienteModel';
 })
 export class ClientePostService {
 
-  public url = 'http://localhost:5203/api/Cliente'
+  public url = 'http://localhost:5203/api/Geral/clientes'
 
   constructor(public http : HttpClient) { }
 

@@ -27,6 +27,7 @@ export class Montagem {
   valorUnitario?: number;
   valorTotal?: number;
   kitDaLoja?: boolean;
+  veiculoId?: number;
   veiculo?: Veiculo;
 
     constructor(init?: Partial<Montagem>) {

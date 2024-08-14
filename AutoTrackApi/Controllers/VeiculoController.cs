@@ -28,7 +28,7 @@ namespace AutoTrack.Controllers
             return Ok(veiculos);
         }
 
-        [HttpPost]
+      /*  [HttpPost]
         public async Task<IActionResult> PostVeiculo([FromBody] Veiculo veiculo)
         {
             if (veiculo == null)
@@ -38,7 +38,7 @@ namespace AutoTrack.Controllers
 
             await _geralPersist.AddAsync(veiculo);
             return CreatedAtAction(nameof(GetVeiculos), new { id = veiculo.Id }, veiculo);
-        }
+        }*/
 
          [HttpGet("veiculo/{placa}")]
         public async Task<ActionResult<IEnumerable<Veiculo>>> getVeiculoByPlaca(string placa)

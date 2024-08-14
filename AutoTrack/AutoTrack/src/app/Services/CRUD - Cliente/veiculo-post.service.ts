@@ -11,7 +11,7 @@ import { Veiculo } from 'src/app/Models/VeiculoModel';
 export class VeiculoPostService {
 
   public urlNome = 'http://localhost:5203/api/cliente/nome'
-  public url = 'http://localhost:5203/api/Veiculo'
+  public url = 'http://localhost:5203/api/Geral/Veiculos'
 
   constructor(public http : HttpClient) { }
 

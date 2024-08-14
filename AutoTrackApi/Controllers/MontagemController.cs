@@ -25,17 +25,7 @@ namespace AutoTrackApi.Controllers
         return Ok(montagem);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> PostMontagem([FromBody] Montagem montagem)
-    {
-        if (montagem == null)
-        {
-            return BadRequest("Serviço is null");
-        }
-
-        await _geralPersist.AddAsync(montagem);
-        return CreatedAtAction(nameof(GetMontagem), new { id = montagem.Id }, montagem);
-    }
+   
 
     [HttpGet("montagem/{datamont}")]
     public async Task<ActionResult<IEnumerable<Montagem>>> GetMontbyData(string dataMont)
@@ -49,6 +39,7 @@ namespace AutoTrackApi.Controllers
 
         return Ok(montagem);
     }
+  
 }
 
 }

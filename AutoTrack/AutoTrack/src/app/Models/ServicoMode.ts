@@ -11,10 +11,10 @@ export class Servico {
     mecanico?: string;
     saida?: string;
     veiculoId?: number;
-    dataServ?: string;
+    dataServico?: string; // Nome atualizado para corresponder à API
     veiculo?: Veiculo;
+    
     constructor(init?: Partial<Servico>) {
       Object.assign(this, init);
     }
-  }
-  
+}

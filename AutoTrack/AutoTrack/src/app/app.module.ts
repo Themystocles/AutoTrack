@@ -15,6 +15,9 @@ import { ServicoComponent } from './servico/servico.component';
 import { MontagemComponent } from './montagem/montagem.component';
 import { ClientePostComponent } from './Components/Cliente-post/cliente-post.component';
 import { VeiculoPostComponent } from './veiculo-post/veiculo-post.component';
+import { ServicoPostComponent } from './servico-post/servico-post.component';
+import { MontagemPostComponent } from './montagem-post/montagem-post.component';
+
 
 
 @NgModule({
@@ -30,6 +33,9 @@ import { VeiculoPostComponent } from './veiculo-post/veiculo-post.component';
     MontagemComponent,
     ClientePostComponent,
     VeiculoPostComponent,
+    ServicoPostComponent,
+    MontagemPostComponent,
+  
    
   ],
   imports: [
