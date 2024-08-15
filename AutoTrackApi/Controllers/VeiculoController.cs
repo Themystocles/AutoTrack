@@ -28,18 +28,7 @@ namespace AutoTrack.Controllers
             return Ok(veiculos);
         }
 
-      /*  [HttpPost]
-        public async Task<IActionResult> PostVeiculo([FromBody] Veiculo veiculo)
-        {
-            if (veiculo == null)
-            {
-                return BadRequest("Veículo is null");
-            }
-
-            await _geralPersist.AddAsync(veiculo);
-            return CreatedAtAction(nameof(GetVeiculos), new { id = veiculo.Id }, veiculo);
-        }*/
-
+   
          [HttpGet("veiculo/{placa}")]
         public async Task<ActionResult<IEnumerable<Veiculo>>> getVeiculoByPlaca(string placa)
         {
@@ -60,5 +49,15 @@ namespace AutoTrack.Controllers
             }
             return Ok(veiculo);
         } 
+         [HttpGet("id/{id}")]
+        public async Task<ActionResult<Veiculo>> GetVeiculoById(int id)
+        {
+            var veiculo = await _veiculoPersist.GetVeiculoByID(id);
+            if (veiculo == null)
+            {
+                return NotFound();
+            }
+            return Ok(veiculo);
+        }
     }
 }

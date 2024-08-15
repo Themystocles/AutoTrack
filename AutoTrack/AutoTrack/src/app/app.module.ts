@@ -19,6 +19,8 @@ import { ServicoPostComponent } from './servico-post/servico-post.component';
 import { MontagemPostComponent } from './montagem-post/montagem-post.component';
 import { ClienteListComponent } from './cliente-list/cliente-list.component';
 import { ClientePutComponent } from './cliente-put/cliente-put.component';
+import { VeiculoListComponent } from './veiculo-list/veiculo-list.component';
+import { VeiculoPutComponent } from './veiculo-put/veiculo-put.component';
 
 
 
@@ -39,6 +41,8 @@ import { ClientePutComponent } from './cliente-put/cliente-put.component';
     MontagemPostComponent,
     ClienteListComponent,
     ClientePutComponent,
+    VeiculoListComponent,
+    VeiculoPutComponent,
   
    
   ],

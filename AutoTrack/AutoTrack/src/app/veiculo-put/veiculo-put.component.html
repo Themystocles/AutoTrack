@@ -1,0 +1,111 @@
+<div class="bg-gray-800 p-8 rounded-lg shadow-lg max-w-6xl mx-auto">
+    <h2 class="text-white text-3xl mb-6 text-center">Editar Veículo</h2>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6" *ngIf="Veiculo">
+      <!-- Campo Carro -->
+      <div class="mb-4 col-span-1">
+        <label for="carro" class="block text-white mb-1">Carro</label>
+        <input id="carro" name="carro" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.carro" required>
+      </div>
+  
+      <!-- Campo Placa -->
+      <div class="mb-4 col-span-1">
+        <label for="placa" class="block text-white mb-1">Placa</label>
+        <input id="placa" name="placa" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.placa" required>
+      </div>
+  
+      <!-- Campo Espécie -->
+      <div class="mb-4 col-span-1">
+        <label for="especie" class="block text-white mb-1">Espécie</label>
+        <input id="especie" name="especie" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.especie">
+      </div>
+  
+      <!-- Campo Combustível -->
+      <div class="mb-4 col-span-1">
+        <label for="combustivel" class="block text-white mb-1">Combustível</label>
+        <input id="combustivel" name="combustivel" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.combustivel">
+      </div>
+  
+      <!-- Campo Potência -->
+      <div class="mb-4 col-span-1">
+        <label for="potencia" class="block text-white mb-1">Potência</label>
+        <input id="potencia" name="potencia" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.potencia">
+      </div>
+  
+      <!-- Campo Ano de Fabricação -->
+      <div class="mb-4 col-span-1">
+        <label for="anoFab" class="block text-white mb-1">Ano de Fabricação</label>
+        <input id="anoFab" name="anoFab" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.anoFab">
+      </div>
+  
+      <!-- Campo Capacidade -->
+      <div class="mb-4 col-span-1">
+        <label for="capacidade" class="block text-white mb-1">Capacidade</label>
+        <input id="capacidade" name="capacidade" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.capacidade">
+      </div>
+  
+      <!-- Campo Ano do Modelo -->
+      <div class="mb-4 col-span-1">
+        <label for="anoModelo" class="block text-white mb-1">Ano do Modelo</label>
+        <input id="anoModelo" name="anoModelo" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.anoModelo">
+      </div>
+  
+      <!-- Campo Chassi -->
+      <div class="mb-4 col-span-1">
+        <label for="chassi" class="block text-white mb-1">Chassi</label>
+        <input id="chassi" name="chassi" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.chassi">
+      </div>
+  
+      <!-- Campo Cor -->
+      <div class="mb-4 col-span-1">
+        <label for="cor" class="block text-white mb-1">Cor</label>
+        <input id="cor" name="cor" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.cor">
+      </div>
+  
+      <!-- Campo Observação -->
+      <div class="mb-4 col-span-1">
+        <label for="observacao" class="block text-white mb-1">Observação</label>
+        <input id="observacao" name="observacao" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.observacao">
+      </div>
+  
+      <!-- Campo KM Atual -->
+      <div class="mb-4 col-span-1">
+        <label for="kmAtual" class="block text-white mb-1">KM Atual</label>
+        <input id="kmAtual" name="kmAtual" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.kmAtual">
+      </div>
+  
+      <!-- Campo Próxima Manutenção -->
+      <div class="mb-4 col-span-1">
+        <label for="proxManutencao" class="block text-white mb-1">Próxima Manutenção</label>
+        <input id="proxManutencao" name="proxManutencao" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.proxManutencao">
+      </div>
+  
+      <!-- Campo Próxima Troca de Filtro -->
+      <div class="mb-4 col-span-1">
+        <label for="proxTrocaFiltro" class="block text-white mb-1">Próxima Troca de Filtro</label>
+        <input id="proxTrocaFiltro" name="proxTrocaFiltro" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.proxTrocaFiltro">
+      </div>
+  
+      <!-- Campo Garantia -->
+      <div class="mb-4 col-span-1">
+        <label for="garantia" class="block text-white mb-1">Garantia</label>
+        <input id="garantia" name="garantia" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.garantia">
+      </div>
+  
+      <!-- Campo RENAVAM -->
+      <div class="mb-4 col-span-1">
+        <label for="renavam" class="block text-white mb-1">RENAVAM</label>
+        <input id="renavam" name="renavam" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Veiculo.renavam">
+      </div>
+  
+      <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded col-span-4 mt-4">Atualizar</button>
+    </form>
+  
+    <!-- Mensagem de Sucesso -->
+    <div *ngIf="showSuccessMessage" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+      <div class="bg-green-600 text-white p-6 rounded-lg shadow-lg max-w-md mx-auto text-center relative">
+        <strong class="block text-2xl mb-4">Veículo atualizado com sucesso!</strong>
+        <button (click)="showSuccessMessage = false" class="absolute top-2 right-2 text-white text-xl">&times;</button>
+      </div>
+    </div>
+  </div>
+  

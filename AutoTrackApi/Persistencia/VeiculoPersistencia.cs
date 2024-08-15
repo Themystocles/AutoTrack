@@ -29,9 +29,12 @@ namespace AutoTrackApi.Persistencia
 
         return veiculo;
            
-        } 
+        }
 
-      
+        public async Task<Veiculo> GetVeiculoByID(int IDveiculo)
+        {
+            return await _context.Veiculos.FirstOrDefaultAsync(c=> c.Id == IDveiculo);
+        }
 
         public async Task<Veiculo> GetVeiculoByPlaca(string placa)
         {
