@@ -47,6 +47,10 @@ namespace AutoTrackApi.Persistencia
             .FirstOrDefaultAsync(c => c.Telefone == telefone);
         }
 
-       
+        public async Task<Cliente> GetClienteByID(int idcliente)
+        {
+            return await _context.Clientes.FirstOrDefaultAsync(c=> c.Id == idcliente);
+        }
+
     }
 }

@@ -27,19 +27,34 @@ namespace AutoTrack.Controllers
         }
 
         [HttpPost("clientes")]
-        public async Task<IActionResult> PostCliente([FromBody] Cliente cliente)
+        public async Task<IActionResult> PostCliente([FromBody] ClienteDto clienteDto)
         {
-            if (cliente == null)
+            if (clienteDto == null)
             {
                 return BadRequest("Cliente is null");
             }
+            var Cliente = new Cliente
+            {
+                Nome = clienteDto.Nome,
+                Cpf = clienteDto.Cpf,
+                InsEstadual = clienteDto.InsEstadual,
+                InsMunicipal = clienteDto.InsMunicipal,
+                Telefone = clienteDto.Telefone,
+                InsTelefone2 = clienteDto.InsTelefone2,
+                Endereco = clienteDto.Endereco,
+                Bairro = clienteDto.Bairro,
+                Cidade = clienteDto.Cidade,
+                Cep = clienteDto.Cep,
+                Uf = clienteDto.Uf
 
-            await _geralPersist.AddAsync(cliente);
-            return CreatedAtAction(nameof(GetClientes), new { id = cliente.Id }, cliente);
+            };
+
+            await _geralPersist.AddAsync(Cliente);
+            return CreatedAtAction(nameof(GetClientes), new { id = Cliente.Id }, Cliente);
         }
 
         [HttpPut("cliente/{id}")]
-        public async Task<IActionResult> PutCliente(int id, [FromBody] ClienteCreateDto clienteDto)
+        public async Task<IActionResult> PutCliente(int id, [FromBody] ClienteDto clienteDto)
         {
             if (id != clienteDto.Id)
             {
@@ -82,29 +97,29 @@ namespace AutoTrack.Controllers
                 return NotFound("Cliente não encontrado.");
             }
 
-             // Mapear DTO para a entidade Veiculo
-    veiculoExistente.Carro = veiculoDto.Carro;
-    veiculoExistente.Placa = veiculoDto.Placa;
-    veiculoExistente.Especie = veiculoDto.Especie;
-    veiculoExistente.Combustivel = veiculoDto.Combustivel;
-    veiculoExistente.Potencia = veiculoDto.Potencia;
-    veiculoExistente.AnoFab = veiculoDto.AnoFab;
-    veiculoExistente.Capacidade = veiculoDto.Capacidade;
-    veiculoExistente.AnoModelo = veiculoDto.AnoModelo;
-    veiculoExistente.Chassi = veiculoDto.Chassi;
-    veiculoExistente.Cor = veiculoDto.Cor;
-    veiculoExistente.Observacao = veiculoDto.Observacao;
-    veiculoExistente.KmAtual = veiculoDto.KmAtual;
-    veiculoExistente.ProxManutencao = veiculoDto.ProxManutencao;
-    veiculoExistente.ProxTrocaFiltro = veiculoDto.ProxTrocaFiltro;
-    veiculoExistente.Garantia = veiculoDto.Garantia;
-    veiculoExistente.Renavam = veiculoDto.Renavam;
+            // Mapear DTO para a entidade Veiculo
+            veiculoExistente.Carro = veiculoDto.Carro;
+            veiculoExistente.Placa = veiculoDto.Placa;
+            veiculoExistente.Especie = veiculoDto.Especie;
+            veiculoExistente.Combustivel = veiculoDto.Combustivel;
+            veiculoExistente.Potencia = veiculoDto.Potencia;
+            veiculoExistente.AnoFab = veiculoDto.AnoFab;
+            veiculoExistente.Capacidade = veiculoDto.Capacidade;
+            veiculoExistente.AnoModelo = veiculoDto.AnoModelo;
+            veiculoExistente.Chassi = veiculoDto.Chassi;
+            veiculoExistente.Cor = veiculoDto.Cor;
+            veiculoExistente.Observacao = veiculoDto.Observacao;
+            veiculoExistente.KmAtual = veiculoDto.KmAtual;
+            veiculoExistente.ProxManutencao = veiculoDto.ProxManutencao;
+            veiculoExistente.ProxTrocaFiltro = veiculoDto.ProxTrocaFiltro;
+            veiculoExistente.Garantia = veiculoDto.Garantia;
+            veiculoExistente.Renavam = veiculoDto.Renavam;
 
             await _geralPersist.Editar(veiculoExistente);
             return Ok(veiculoExistente);
         }
 
-          [HttpPut("servico/{id}")]
+        [HttpPut("servico/{id}")]
         public async Task<IActionResult> putservico(int id, [FromBody] ServicoDto servicoDto)
         {
             if (id != servicoDto.Id)
@@ -118,22 +133,22 @@ namespace AutoTrack.Controllers
                 return NotFound("Cliente não encontrado.");
             }
 
-     // Mapear DTO para a entidade Servico
-    servicoExistente.Descricao = servicoDto.Descricao;
-    servicoExistente.Quantidade = servicoDto.Quantidade;
-    servicoExistente.Peca_Servico = servicoDto.PecaServico;
-    servicoExistente.ValorUni = servicoDto.ValorUni;
-    servicoExistente.ValorTot = servicoDto.ValorTot;
-    servicoExistente.FormaPag = servicoDto.FormaPag;
-    servicoExistente.Mecanico = servicoDto.Mecanico;
-    servicoExistente.Saida = servicoDto.Saida;
-    servicoExistente.DataServico = servicoDto.DataServico;
+            // Mapear DTO para a entidade Servico
+            servicoExistente.Descricao = servicoDto.Descricao;
+            servicoExistente.Quantidade = servicoDto.Quantidade;
+            servicoExistente.Peca_Servico = servicoDto.PecaServico;
+            servicoExistente.ValorUni = servicoDto.ValorUni;
+            servicoExistente.ValorTot = servicoDto.ValorTot;
+            servicoExistente.FormaPag = servicoDto.FormaPag;
+            servicoExistente.Mecanico = servicoDto.Mecanico;
+            servicoExistente.Saida = servicoDto.Saida;
+            servicoExistente.DataServico = servicoDto.DataServico;
 
             await _geralPersist.Editar(servicoExistente);
             return Ok(servicoExistente);
         }
 
-   [HttpPut("montagem/{id}")]
+        [HttpPut("montagem/{id}")]
         public async Task<IActionResult> putmontagem(int id, [FromBody] MontagemDtos montagemDto)
         {
             if (id != montagemDto.Id)
@@ -147,32 +162,32 @@ namespace AutoTrack.Controllers
                 return NotFound("Cliente não encontrado.");
             }
 
-     // Mapear DTO para a entidade Montagem
-    montagemExistente.data = montagemDto.Data;
-    montagemExistente.GeracaoInstaladores = montagemDto.GeracaoInstaladores;
-    montagemExistente.RedutorValor = montagemDto.RedutorValor;
-    montagemExistente.NumeroSerie = montagemDto.NumeroSerie;
-    montagemExistente.FormaPagamento = montagemDto.FormaPagamento;
-    montagemExistente.MarcaCilindro = montagemDto.MarcaCilindro;
-    montagemExistente.NumeroCilindro = montagemDto.NumeroCilindro;
-    montagemExistente.Quilo = montagemDto.Quilo;
-    montagemExistente.Litro = montagemDto.Litro;
-    montagemExistente.AnoFab = montagemDto.AnoFab;
-    montagemExistente.DocumentacaoAno = montagemDto.DocumentacaoAno;
-    montagemExistente.AnoReteste = montagemDto.AnoReteste;
-    montagemExistente.Requalificadora = montagemDto.Requalificadora;
-    montagemExistente.NumeroNFEquipamento = montagemDto.NumeroNFEquipamento;
-    montagemExistente.NumeroOrdemRequalificacao = montagemDto.NumeroOrdemRequalificacao;
-    montagemExistente.NumeroLaudoMontagem = montagemDto.NumeroLaudoMontagem;
-    montagemExistente.MarcaValvula = montagemDto.MarcaValvula;
-    montagemExistente.NumeroNFServicoMontagem = montagemDto.NumeroNFServicoMontagem;
-    montagemExistente.NumeroValvula = montagemDto.NumeroValvula;
-    montagemExistente.Selo = montagemDto.Selo;
-    montagemExistente.Orcamento = montagemDto.Orcamento;
-    montagemExistente.QuantPecaServico = montagemDto.QuantPecaServico;
-    montagemExistente.ValorUnitario = montagemDto.ValorUnitario;
-    montagemExistente.ValorTotal = montagemDto.ValorTotal;
-    montagemExistente.KitDaLoja = montagemDto.KitDaLoja;
+            // Mapear DTO para a entidade Montagem
+            montagemExistente.data = montagemDto.Data;
+            montagemExistente.GeracaoInstaladores = montagemDto.GeracaoInstaladores;
+            montagemExistente.RedutorValor = montagemDto.RedutorValor;
+            montagemExistente.NumeroSerie = montagemDto.NumeroSerie;
+            montagemExistente.FormaPagamento = montagemDto.FormaPagamento;
+            montagemExistente.MarcaCilindro = montagemDto.MarcaCilindro;
+            montagemExistente.NumeroCilindro = montagemDto.NumeroCilindro;
+            montagemExistente.Quilo = montagemDto.Quilo;
+            montagemExistente.Litro = montagemDto.Litro;
+            montagemExistente.AnoFab = montagemDto.AnoFab;
+            montagemExistente.DocumentacaoAno = montagemDto.DocumentacaoAno;
+            montagemExistente.AnoReteste = montagemDto.AnoReteste;
+            montagemExistente.Requalificadora = montagemDto.Requalificadora;
+            montagemExistente.NumeroNFEquipamento = montagemDto.NumeroNFEquipamento;
+            montagemExistente.NumeroOrdemRequalificacao = montagemDto.NumeroOrdemRequalificacao;
+            montagemExistente.NumeroLaudoMontagem = montagemDto.NumeroLaudoMontagem;
+            montagemExistente.MarcaValvula = montagemDto.MarcaValvula;
+            montagemExistente.NumeroNFServicoMontagem = montagemDto.NumeroNFServicoMontagem;
+            montagemExistente.NumeroValvula = montagemDto.NumeroValvula;
+            montagemExistente.Selo = montagemDto.Selo;
+            montagemExistente.Orcamento = montagemDto.Orcamento;
+            montagemExistente.QuantPecaServico = montagemDto.QuantPecaServico;
+            montagemExistente.ValorUnitario = montagemDto.ValorUnitario;
+            montagemExistente.ValorTotal = montagemDto.ValorTotal;
+            montagemExistente.KitDaLoja = montagemDto.KitDaLoja;
 
             await _geralPersist.Editar(montagemExistente);
             return Ok(montagemExistente);
@@ -187,15 +202,38 @@ namespace AutoTrack.Controllers
         }
 
         [HttpPost("veiculos")]
-        public async Task<IActionResult> PostVeiculo([FromBody] Veiculo veiculo)
+        public async Task<IActionResult> PostVeiculo([FromBody] VeiculoPostDto veiculoPostDto)
         {
-            if (veiculo == null)
+            if (veiculoPostDto == null)
             {
                 return BadRequest("Veículo is null");
             }
 
-            await _geralPersist.AddAsync(veiculo);
-            return CreatedAtAction(nameof(GetVeiculos), new { id = veiculo.Id }, veiculo);
+            var Veiculo = new Veiculo
+            {
+
+                Carro = veiculoPostDto.Carro,
+                Placa = veiculoPostDto.Placa,
+                Especie = veiculoPostDto.Especie,
+                Combustivel = veiculoPostDto.Combustivel,
+                Potencia = veiculoPostDto.Potencia,
+                AnoFab = veiculoPostDto.AnoFab,
+                Capacidade = veiculoPostDto.Capacidade,
+                AnoModelo = veiculoPostDto.AnoModelo,
+                Chassi = veiculoPostDto.Chassi,
+                Cor = veiculoPostDto.Cor,
+                Observacao = veiculoPostDto.Observacao,
+                KmAtual = veiculoPostDto.KmAtual,
+                ProxManutencao = veiculoPostDto.ProxManutencao,
+                ProxTrocaFiltro = veiculoPostDto.ProxTrocaFiltro,
+                Garantia = veiculoPostDto.Garantia,
+                Renavam = veiculoPostDto.Renavam,
+                ClienteId = veiculoPostDto.ClienteId
+                
+            };
+
+            await _geralPersist.AddAsync(Veiculo);
+            return CreatedAtAction(nameof(GetVeiculos), new { id = Veiculo.Id }, Veiculo);
         }
 
         [HttpGet("servicos")]
@@ -216,22 +254,25 @@ namespace AutoTrack.Controllers
             await _geralPersist.AddAsync(servico);
             return CreatedAtAction(nameof(GetServicos), new { id = servico.Id }, servico);
         }
-    [HttpGet("montagem")]
-    public async Task<ActionResult<IEnumerable<Montagem>>> GetMontagem()
-    {
-        var montagem = await _geralPersist.GetAll<Montagem>();
-        return Ok(montagem);
-    }
-    [HttpPost("montagem")]
-    public async Task<IActionResult> PostMontagem([FromBody] Montagem montagem)
-    {
-        if (montagem == null)
-        {
-            return BadRequest("Serviço is null");
-        }
 
-        await _geralPersist.AddAsync(montagem);
-        return CreatedAtAction(nameof(GetMontagem), new { id = montagem.Id }, montagem);
-    }
+        
+
+        [HttpGet("montagem")]
+        public async Task<ActionResult<IEnumerable<Montagem>>> GetMontagem()
+        {
+            var montagem = await _geralPersist.GetAll<Montagem>();
+            return Ok(montagem);
+        }
+        [HttpPost("montagem")]
+        public async Task<IActionResult> PostMontagem([FromBody] Montagem montagem)
+        {
+            if (montagem == null)
+            {
+                return BadRequest("Serviço is null");
+            }
+
+            await _geralPersist.AddAsync(montagem);
+            return CreatedAtAction(nameof(GetMontagem), new { id = montagem.Id }, montagem);
+        }
     }
 }

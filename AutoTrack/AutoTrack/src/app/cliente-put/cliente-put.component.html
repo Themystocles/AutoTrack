@@ -1,0 +1,80 @@
+<div class="bg-gray-800 p-8 rounded-lg shadow-lg max-w-6xl mx-auto">
+  <h2 class="text-white text-3xl mb-6 text-center">Editar Cliente</h2>
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6" *ngIf="Cliente">
+    <!-- Campo Nome -->
+    <div class="mb-4 col-span-1">
+      <label for="nome" class="block text-white mb-1">Nome</label>
+      <input id="nome" name="nome" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.nome" required>
+    </div>
+
+    <!-- Campo CPF -->
+    <div class="mb-4 col-span-1">
+      <label for="cpf" class="block text-white mb-1">CPF</label>
+      <input id="cpf" name="cpf" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.cpf" required>
+    </div>
+
+    <!-- Campo Inscrição Estadual -->
+    <div class="mb-4 col-span-1">
+      <label for="insEstadual" class="block text-white mb-1">Inscrição Estadual</label>
+      <input id="insEstadual" name="insEstadual" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.insEstadual">
+    </div>
+
+    <!-- Campo Inscrição Municipal -->
+    <div class="mb-4 col-span-1">
+      <label for="insMunicipal" class="block text-white mb-1">Inscrição Municipal</label>
+      <input id="insMunicipal" name="insMunicipal" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.insMunicipal">
+    </div>
+
+    <!-- Campo Telefone -->
+    <div class="mb-4 col-span-1">
+      <label for="telefone" class="block text-white mb-1">Telefone</label>
+      <input id="telefone" name="telefone" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.telefone">
+    </div>
+
+    <!-- Campo Telefone 2 -->
+    <div class="mb-4 col-span-1">
+      <label for="insTelefone2" class="block text-white mb-1">Telefone 2</label>
+      <input id="insTelefone2" name="insTelefone2" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.insTelefone2">
+    </div>
+
+    <!-- Campo Endereço -->
+    <div class="mb-4 col-span-3">
+      <label for="endereco" class="block text-white mb-1">Endereço</label>
+      <input id="endereco" name="endereco" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.endereco">
+    </div>
+
+    <!-- Campo Bairro -->
+    <div class="mb-4 col-span-1">
+      <label for="bairro" class="block text-white mb-1">Bairro</label>
+      <input id="bairro" name="bairro" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.bairro">
+    </div>
+
+    <!-- Campo Cidade -->
+    <div class="mb-4 col-span-1">
+      <label for="cidade" class="block text-white mb-1">Cidade</label>
+      <input id="cidade" name="cidade" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.cidade">
+    </div>
+
+    <!-- Campo CEP -->
+    <div class="mb-4 col-span-1">
+      <label for="cep" class="block text-white mb-1">CEP</label>
+      <input id="cep" name="cep" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.cep">
+    </div>
+
+    <!-- Campo UF -->
+    <div class="mb-4 col-span-1">
+      <label for="uf" class="block text-white mb-1">UF</label>
+      <input id="uf" name="uf" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.uf">
+    </div>
+  
+    <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded col-span-3 mt-4">Atualizar</button>
+  </form>
+
+  <!-- Mensagem de Sucesso -->
+  <div *ngIf="showSuccessMessage" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+    <div class="bg-green-600 text-white p-6 rounded-lg shadow-lg max-w-md mx-auto text-center relative">
+      <strong class="block text-2xl mb-4">Cliente atualizado com sucesso!</strong>
+      <button (click)="showSuccessMessage = false" class="absolute top-2 right-2 text-white text-xl">&times;</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="p-6 bg-gray-900 text-gray-100">
+    <div class="mb-4">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="filterClientes()"
+        placeholder="Pesquisar por nome, CPF ou telefone"
+        class="w-full px-4 py-2 text-gray-900 placeholder-gray-500 bg-gray-800 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+    <ul class="space-y-4">
+      <li *ngFor="let cliente of filteredClientes" class="bg-gray-800 p-4 rounded-lg shadow-md">
+        <div class="flex justify-between items-center">
+          <div>
+            <h3 class="text-xl font-semibold">{{ cliente.nome }}</h3>
+            <p class="text-gray-400">{{ cliente.cpf }}</p>
+            <p class="text-gray-400">{{ cliente.telefone }}</p>
+            <p class="text-gray-400">{{ cliente.cidade }}</p>
+          </div>
+          <button
+            [routerLink]="['/cliente-put', cliente.id]"
+            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            Editar
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  

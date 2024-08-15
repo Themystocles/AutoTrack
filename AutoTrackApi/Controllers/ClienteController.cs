@@ -25,6 +25,16 @@ namespace AutoTrack.Controllers
             var clientes = await _geralPersist.GetAll<Cliente>();
             return Ok(clientes);
         }
+        [HttpGet("id/{id}")]
+        public async Task<ActionResult<Cliente>> GetClienteByID(int id)
+        {
+            var cliente = await _clientePersist.GetClienteByID(id);
+            if (cliente == null)
+            {
+                return NotFound();
+            }
+            return Ok(cliente);
+        }
 
         [HttpGet("{cpf}")]
         public async Task<ActionResult<Cliente>> GetClienteByCpf(string cpf)
@@ -58,5 +68,5 @@ namespace AutoTrack.Controllers
         }
 
 
-       }
+    }
 }

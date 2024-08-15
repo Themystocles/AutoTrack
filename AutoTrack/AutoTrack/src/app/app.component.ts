@@ -21,6 +21,7 @@ export class AppComponent {
 
   // Define as rotas nas quais o app-card deve desaparecer
   private isCardRoute(url: string): boolean {
-    return url.includes('/cliente-post')|| url.includes('/veiculo-post') || url.includes('/servico-post') || url.includes('/montagem-post'); // Substitua com a rota que deve esconder o app-card
+    return url.includes('/cliente-post')|| url.includes('/veiculo-post') || url.includes('/servico-post') || url.includes('/montagem-post')
+    || url.includes('/cliente-list') || url.includes('/cliente-put'); // Substitua com a rota que deve esconder o app-card
   }
 }

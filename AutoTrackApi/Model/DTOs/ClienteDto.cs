@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AutoTrackApi.Model.DTOs
 {
-    public class ClienteCreateDto
+    public class ClienteDto
     {
     public int Id { get; set; }
     public string Nome { get; set; }

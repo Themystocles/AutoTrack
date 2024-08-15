@@ -17,6 +17,10 @@ export class FiltroServicesService {
 
   constructor(public http : HttpClient ) { }
 
+  getAllClientes():Observable<Cliente[]>{
+    return this.http.get<Cliente[]>(this.url);
+  }
+
   getClientByCpf(id: string): Observable<Cliente>{
     const urlID = `${this.url}/${id}`
     return this.http.get<Cliente>(urlID)
