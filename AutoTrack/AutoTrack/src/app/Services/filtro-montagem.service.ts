@@ -11,11 +11,15 @@ import { Montagem } from '../Models/MontagemModel';
 export class MontagemService {
 
   public url = 'http://localhost:5203/api/Montagem/montagem'
+  public urlMont = 'http://localhost:5203/api/Geral/montagem'
 
   constructor(public http : HttpClient) { }
 
   getMontagembydate(id: string): Observable<Montagem[]>{
     const urlID = `${this.url}/${id}`
     return this.http.get<Montagem[]>(urlID)
+  }
+  getAllMontagem(): Observable<Montagem[]>{
+       return this.http.get<Montagem[]>(this.urlMont)
   }
 }

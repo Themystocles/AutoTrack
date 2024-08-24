@@ -1,0 +1,67 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ServicoPutService } from '../../../Services/CRUD - Cliente/servico-put.service';
+import { OrcamentoPostService } from 'src/app/Services/CRUD - Cliente/orcamento-post.service';
+import { Servico } from '../../../Models/ServicoMode';
+import { Orcamento } from 'src/app/Models/OrcamentoModel';
+
+@Component({
+  selector: 'app-servico-put',
+  templateUrl: './servico-put.component.html',
+  styleUrls: ['./servico-put.component.scss']
+})
+export class ServicoPutComponent implements OnInit {
+  servicoId!: string;
+  servico: Servico = {} as Servico;
+  showSuccessMessage = false;
+  newOrcamento: Orcamento = {} as Orcamento;
+
+  constructor(
+    private route: ActivatedRoute,
+    private servicoService: ServicoPutService,
+    private orcamentoPostService: OrcamentoPostService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    this.servicoId = this.route.snapshot.paramMap.get('id')!;
+    this.loadServico();
+  }
+
+  loadServico(): void {
+    this.servicoService.GetServicoById(this.servicoId).subscribe(
+      res => this.servico = res,
+      error => console.error('Erro ao carregar o serviço:', error)
+    );
+  }
+
+  onSubmit(form: any): void {
+    if (form.valid) {
+      this.servicoService.UpdateServico(this.servicoId, this.servico).subscribe(
+        () => {
+          this.showSuccessMessage = true;
+          setTimeout(() => this.router.navigate(['/servico-list']), 2000);
+        },
+        error => console.error('Erro ao atualizar serviço:', error)
+      );
+    }
+  }
+
+  addOrcamento(): void {
+    if (this.newOrcamento.nomeServico && this.newOrcamento.quantidade) {
+      this.newOrcamento.servicoId = Number(this.servicoId);
+      this.orcamentoPostService.PostOrcamento(this.newOrcamento).subscribe(
+        (orcamento: Orcamento) => {
+          if (!this.servico.orcamentos) {
+            this.servico.orcamentos = [];
+          }
+          this.servico.orcamentos.push(orcamento);
+          this.newOrcamento = {} as Orcamento;
+        },
+        error => console.error('Erro ao adicionar orçamento:', error)
+      );
+    } else {
+      console.error('Preencha todos os campos do orçamento.');
+    }
+  }
+}

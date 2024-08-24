@@ -33,5 +33,6 @@ namespace AutoTrackApi.Model.DTOs
         public decimal ValorUnitario { get; set; }
         public decimal ValorTotal { get; set; }
         public bool KitDaLoja { get; set; }
+        public List<OrcamentoDto> Orcamentos { get; set; }
     }
 }

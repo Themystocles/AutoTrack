@@ -26,24 +26,37 @@ public class ServicoController : ControllerBase
         return Ok(servicos);
     }
 
-   /* [HttpPost]
-    public async Task<IActionResult> PostServico([FromBody] Servico servico)
-    {
-        if (servico == null)
-        {
-            return BadRequest("Serviço is null");
-        }
-
-        await _geralPersist.AddAsync(servico);
-        return CreatedAtAction(nameof(GetServicos), new { id = servico.Id }, servico);
-    }*/
 
     [HttpGet("servico/{dataServ}")]
-    public async Task<ActionResult<IEnumerable<Servico>>> GetServicosByDate(string dataServ)
+    public async Task<ActionResult<IEnumerable<Servico>>> GetServicosByDate(DateTime dataServ)
     {
         var servicos = await _ServicoPersist.GetServicosByDate(dataServ);
 
         if (servicos == null || !servicos.Any())
+        {
+            return NotFound();
+        }
+
+        return Ok(servicos);
+    }
+      [HttpGet("servico/mecanico")]
+    public async Task<ActionResult<IEnumerable<Servico>>> GetServicosByDate(string mecanico)
+    {
+        var servicos = await _ServicoPersist.GetServicosByMecanico(mecanico);
+
+        if (servicos == null || !servicos.Any())
+        {
+            return NotFound();
+        }
+
+        return Ok(servicos);
+    }
+    [HttpGet("idServico/{idServico}")]
+    public async Task<ActionResult<IEnumerable<Servico>>> GetServicoById(int idServico)
+    {
+        var servicos = await _ServicoPersist.GetServicoById(idServico);
+
+        if (servicos == null)
         {
             return NotFound();
         }

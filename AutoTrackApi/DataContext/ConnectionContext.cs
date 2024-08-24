@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using AutoTrackApi.Model;
+using AutoTrackApi.Model.Entities;
 
 namespace AutoTrackApi.DataContext
 {
@@ -9,6 +10,8 @@ namespace AutoTrackApi.DataContext
         public DbSet<Veiculo> Veiculos { get; set; }
         public DbSet<Servico> servicos { get; set; }
         public DbSet<Montagem> montagens { get; set; }
+        public DbSet<Orcamento> orcamentos { get; set; }
+        public DbSet<Estoque> estoques { get; set; }
 
         public ConnectionContext(DbContextOptions<ConnectionContext> options) : base(options)
         {

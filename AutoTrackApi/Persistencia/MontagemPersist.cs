@@ -17,11 +17,20 @@ namespace AutoTrackApi.Persistencia
         {
             _context = context;
         }
+
+        public async Task<Montagem> GetMontagemById(int idMontagem)
+        {
+            return await _context.montagens
+            .Include(m => m.orcamentos)
+            .FirstOrDefaultAsync(M => M.Id == idMontagem );
+        }
+
         public async Task<IEnumerable<Montagem>> GetMontagemsByData(string dataMont)
         {
              var montagens = await _context.montagens
                 .AsNoTracking() // Evita rastreamento de mudanças para melhorar a performance
-                .Include(v => v.veiculo) // Inclui apenas o veículo relacionado ao serviço
+                .Include(v => v.veiculo)
+                .Include(o => o.orcamentos)  // Inclui apenas o veículo relacionado ao serviço
                 .Where(m => m.data == dataMont) // Filtra pelos serviços com a data especificada
                 .ToListAsync(); // Converte o resultado para uma lista
 

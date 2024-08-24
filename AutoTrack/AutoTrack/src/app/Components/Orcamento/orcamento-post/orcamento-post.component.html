@@ -1,0 +1,42 @@
+<div class="bg-gray-800 text-white p-4 rounded-lg shadow-md">
+  <form (ngSubmit)="submitOrcamentos()" class="space-y-4">
+    <div *ngFor="let orcamento of orcamentos; let i = index" class="bg-gray-800 p-4 rounded-lg shadow-sm">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div>
+          <label for="quantidade-{{i}}" class="block text-sm font-medium">Quantidade:</label>
+          <input type="number" id="quantidade-{{i}}" [(ngModel)]="orcamento.quantidade" name="quantidade-{{i}}" required
+            (input)="updateQuantidade(i)" 
+            class="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:border-indigo-500 focus:ring-indigo-500"/>
+        </div>
+        <div>
+          <label for="nomeServico-{{i}}" class="block text-sm font-medium">Nome do Serviço:</label>
+          <select id="nomeServico-{{i}}" [(ngModel)]="orcamento.nomeServico" name="nomeServico-{{i}}" (change)="updateValorParcial(i)" required
+            class="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:border-indigo-500 focus:ring-indigo-500">
+            <option *ngFor="let produto of getProdutoOptions()" [value]="produto">{{ produto }}</option>
+          </select>
+        </div>
+        <div>
+          <label for="produto-{{i}}" class="block text-sm font-medium">Produto:</label>
+          <input type="text" id="produto-{{i}}" [(ngModel)]="orcamento.produto" name="produto-{{i}}" required
+            class="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:border-indigo-500 focus:ring-indigo-500"/>
+        </div>
+        <div>
+          <label for="valorParcial-{{i}}" class="block text-sm font-medium">Valor Parcial:</label>
+          <input type="number" id="valorParcial-{{i}}" [(ngModel)]="orcamento.valorParcial" name="valorParcial-{{i}}" required
+            class="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:border-indigo-500 focus:ring-indigo-500"/>
+        </div>
+        <div>
+          <label for="valorTotal-{{i}}" class="block text-sm font-medium">Valor Total:</label>
+          <input type="number" id="valorTotal-{{i}}" [(ngModel)]="orcamento.valorTotal" name="valorTotal-{{i}}" readonly
+            class="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:border-indigo-500 focus:ring-indigo-500"/>
+        </div>
+        <button type="button" (click)="removeOrcamento(i)"
+          class="col-span-full px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">Remover</button>
+      </div>
+    </div>
+    <div class="flex justify-end">
+      <button type="button" (click)="addOrcamento()"
+        class="px-4 py-2 bg-gray-700 text-white rounded-md hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500">Adicionar Orçamento</button>
+    </div>
+  </form>
+</div>

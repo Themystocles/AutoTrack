@@ -1,3 +1,4 @@
+import { Orcamento } from "./OrcamentoModel";
 import { Veiculo } from "./VeiculoModel";
 
 export class Servico {
@@ -13,6 +14,8 @@ export class Servico {
     veiculoId?: number;
     dataServico?: string; // Nome atualizado para corresponder à API
     veiculo?: Veiculo;
+    orcamentos?: Orcamento[];
+    
     
     constructor(init?: Partial<Servico>) {
       Object.assign(this, init);

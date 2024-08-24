@@ -1,3 +1,4 @@
+import { Orcamento } from "./OrcamentoModel";
 import { Veiculo } from "./VeiculoModel";
 
 export class Montagem {
@@ -29,6 +30,7 @@ export class Montagem {
   kitDaLoja?: boolean;
   veiculoId?: number;
   veiculo?: Veiculo;
+  orcamentos?: Orcamento[];
 
     constructor(init?: Partial<Montagem>) {
       Object.assign(this, init);

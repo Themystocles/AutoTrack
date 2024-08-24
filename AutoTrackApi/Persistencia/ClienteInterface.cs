@@ -22,8 +22,10 @@ namespace AutoTrackApi.Persistencia
             return await _context.Clientes
             .Include(c => c.Veiculos)
             .ThenInclude(V => V.servicos)
+            .ThenInclude(s => s.orcamentos)
             .Include(c => c.Veiculos)
             .ThenInclude(m => m.montagens)
+             .ThenInclude(m => m.orcamentos) 
             .FirstOrDefaultAsync(c => c.Cpf == cpf);
         }
 
@@ -31,9 +33,13 @@ namespace AutoTrackApi.Persistencia
     {
         return await _context.Clientes
             .Include(c => c.Veiculos)
-            .ThenInclude(v => v.servicos)
+             .ThenInclude(v => v.servicos)
+              .ThenInclude(s => s.orcamentos)
+
              .Include(c => c.Veiculos)
-            .ThenInclude(m => m.montagens)
+              .ThenInclude(v => v.montagens) 
+                .ThenInclude(m => m.orcamentos) 
+
             .Where(c => c.Nome.ToLower().Contains(nome.ToLower()))
             .ToListAsync();
     }
@@ -42,8 +48,10 @@ namespace AutoTrackApi.Persistencia
             return await _context.Clientes
             .Include(c => c.Veiculos)
             .ThenInclude(V => V.servicos)
+            .ThenInclude(s => s.orcamentos)
             .Include(c => c.Veiculos)
             .ThenInclude(m => m.montagens)
+            .ThenInclude(m => m.orcamentos) 
             .FirstOrDefaultAsync(c => c.Telefone == telefone);
         }
 

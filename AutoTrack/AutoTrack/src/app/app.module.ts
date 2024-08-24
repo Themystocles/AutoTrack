@@ -7,20 +7,37 @@ import { HeaderComponent } from './Components/Layout/header/header.component';
 import { SidebarComponent } from './Components/Layout/sidebar/sidebar.component';
 import { CardComponent } from './Components/Layout/card/card.component';
 import { FooterComponent } from './Components/Layout/footer/footer.component';
-import { ClienteComponent } from './Components/Cliente/cliente.component';
+import { ClienteComponent } from './Components/Cliente/Cliente/cliente.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { VeiculoComponent } from './veiculo/veiculo.component';
-import { ServicoComponent } from './servico/servico.component';
-import { MontagemComponent } from './montagem/montagem.component';
-import { ClientePostComponent } from './Components/Cliente-post/cliente-post.component';
-import { VeiculoPostComponent } from './veiculo-post/veiculo-post.component';
-import { ServicoPostComponent } from './servico-post/servico-post.component';
-import { MontagemPostComponent } from './montagem-post/montagem-post.component';
-import { ClienteListComponent } from './cliente-list/cliente-list.component';
-import { ClientePutComponent } from './cliente-put/cliente-put.component';
-import { VeiculoListComponent } from './veiculo-list/veiculo-list.component';
-import { VeiculoPutComponent } from './veiculo-put/veiculo-put.component';
+import { VeiculoComponent } from './Components/Veiculo/veiculo/veiculo.component';
+import { ServicoComponent } from './Components/Servico/servico/servico.component';
+//import { MontagemComponent } from './montagem/montagem.component';
+import { ClientePostComponent } from './Components/Cliente/Cliente-post/cliente-post.component';
+//import { VeiculoPostComponent } from './veiculo-post/veiculo-post.component';
+import { ServicoPostComponent } from './Components/Servico/servico-post/servico-post.component';
+import { MontagemPostComponent } from './Components/Montagem/montagem-post/montagem-post.component';
+import { ClienteListComponent } from './Components/Cliente/cliente-list/cliente-list.component';
+import { ClientePutComponent } from './Components/Cliente/cliente-put/cliente-put.component';
+//import { VeiculoListComponent } from './veiculo-list/veiculo-list.component';
+import { VeiculoPutComponent } from './Components/Veiculo/veiculo-put/veiculo-put.component';
+//import { ServicoListComponent } from './servico-list/servico-list.component';
+//import { MontagemListComponent } from './montagem-list/montagem-list.component';
+import { ServicoPutComponent } from './Components/Servico/servico-put/servico-put.component';
+//import { MontagemPutComponent } from './montagem-put/montagem-put.component';
+import { OrcamentoListComponent } from './Components/Orcamento/orcamento-list/orcamento-list.component';
+import { OrcamentoPostComponent } from './Components/Orcamento/orcamento-post/orcamento-post.component';
+import { VeiculoListComponent } from './Components/Veiculo/veiculo-list/veiculo-list.component';
+import { VeiculoPostComponent } from './Components/Veiculo/veiculo-post/veiculo-post.component';
+import { ServicoListComponent } from './Components/Servico/servico-list/servico-list.component';
+import { MontagemComponent } from './Components/Montagem/montagem/montagem.component';
+import { MontagemListComponent } from './Components/Montagem/montagem-list/montagem-list.component';
+import { MontagemPutComponent } from './Components/Montagem/montagem-put/montagem-put.component';
+//import { MontagemListComponent } from './Components/Montagem/montagem-list/montagem-list.component';
+
+
+
+
 
 
 
@@ -43,6 +60,14 @@ import { VeiculoPutComponent } from './veiculo-put/veiculo-put.component';
     ClientePutComponent,
     VeiculoListComponent,
     VeiculoPutComponent,
+    ServicoListComponent,
+    MontagemListComponent,
+    ServicoPutComponent,
+    MontagemPutComponent,
+    OrcamentoListComponent,
+    OrcamentoPostComponent,
+   
+    
   
    
   ],

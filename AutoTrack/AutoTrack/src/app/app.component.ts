@@ -22,6 +22,7 @@ export class AppComponent {
 
   private isCardRoute(url: string): boolean {
     return url.includes('/cliente-post')|| url.includes('/veiculo-post') || url.includes('/servico-post') || url.includes('/montagem-post')
-    || url.includes('/cliente-list') || url.includes('/cliente-put')|| url.includes('/veiculo-list') || url.includes('/veiculo-put');
+    || url.includes('/cliente-list') || url.includes('/cliente-put')|| url.includes('/veiculo-list') || url.includes('/veiculo-put')|| url.includes('/servico-list') 
+    || url.includes('/servico-put') || url.includes('/montagem-list') || url.includes('/montagem-put')
   }
 }

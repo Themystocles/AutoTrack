@@ -8,6 +8,9 @@ namespace AutoTrackApi.Interface
 {
     public interface IServicoPersist
     {
-        Task<IEnumerable<Servico>> GetServicosByDate(string dataserv);
+        Task<Servico> GetServicoById(int id);
+        Task<IEnumerable<Servico>> GetServicosByDate(DateTime dataserv);
+
+        Task<IEnumerable<Servico>> GetServicosByMecanico(string Mecanico);
     }
 }

@@ -39,6 +39,18 @@ namespace AutoTrackApi.Controllers
 
         return Ok(montagem);
     }
+       [HttpGet("idmontagem/{idMontagem}")]
+    public async Task<ActionResult<IEnumerable<Montagem>>> GetServicoById(int idMontagem)
+    {
+        var Montagem = await _MontagemPersist.GetMontagemById(idMontagem);
+
+        if (Montagem == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(Montagem);
+    }
   
 }
 

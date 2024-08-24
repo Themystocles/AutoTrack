@@ -15,7 +15,7 @@ export class FiltroServicesService {
   public urlPlaca = 'http://localhost:5203/api/veiculo/veiculo'
  
 
-  constructor(public http : HttpClient ) { }
+  constructor(public http : HttpClient) { }
 
   getAllClientes():Observable<Cliente[]>{
     return this.http.get<Cliente[]>(this.url);

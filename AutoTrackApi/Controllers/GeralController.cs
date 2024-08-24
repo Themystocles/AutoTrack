@@ -1,6 +1,7 @@
 using AutoTrackApi.Interface;
 using AutoTrackApi.Model;
 using AutoTrackApi.Model.DTOs;
+using AutoTrackApi.Model.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -25,6 +26,13 @@ namespace AutoTrack.Controllers
             var clientes = await _geralPersist.GetAll<Cliente>();
             return Ok(clientes);
         }
+        [HttpGet("orcamentos")]
+        public async Task<ActionResult<IEnumerable<Orcamento>>> GetOrcamento()
+        {
+            var Orcamento = await _geralPersist.GetAll<Orcamento>();
+            return Ok(Orcamento);
+        }
+       
 
         [HttpPost("clientes")]
         public async Task<IActionResult> PostCliente([FromBody] ClienteDto clienteDto)
@@ -119,34 +127,73 @@ namespace AutoTrack.Controllers
             return Ok(veiculoExistente);
         }
 
-        [HttpPut("servico/{id}")]
-        public async Task<IActionResult> putservico(int id, [FromBody] ServicoDto servicoDto)
+[HttpPut("servico/{id}")]
+public async Task<IActionResult> PutServico(int id, [FromBody] ServicoDto servicoDto)
+{
+    if (id != servicoDto.Id)
+    {
+        return BadRequest("O Id da URL não corresponde ao Id do serviço.");
+    }
+
+    var servicoExistente = await _geralPersist.GetByIdAsync<Servico>(id);
+    if (servicoExistente == null)
+    {
+        return NotFound("Serviço não encontrado.");
+    }
+
+    // Atualizar o serviço
+    servicoExistente.Descricao = servicoDto.Descricao;
+    servicoExistente.Quantidade = servicoDto.Quantidade;
+    servicoExistente.Peca_Servico = servicoDto.Peca_Servico;
+    servicoExistente.ValorUni = servicoDto.ValorUni;
+    servicoExistente.ValorTot = servicoDto.ValorTot;
+    servicoExistente.FormaPag = servicoDto.FormaPag;
+    servicoExistente.Mecanico = servicoDto.Mecanico;
+    servicoExistente.Saida = servicoDto.Saida;
+    servicoExistente.DataServico = servicoDto.DataServico;
+
+    // Atualizar orçamentos associados
+    foreach (var orcamentoDto in servicoDto.Orcamentos)
+    {
+        var orcamentoExistente = await _geralPersist.GetByIdAsync<Orcamento>(orcamentoDto.Id);
+
+        if (orcamentoExistente == null)
         {
-            if (id != servicoDto.Id)
+            // Se o orçamento não existir, criá-lo
+            var novoOrcamento = new Orcamento
             {
-                return BadRequest("O Id da URL não corresponde ao Id do cliente.");
-            }
-
-            var servicoExistente = await _geralPersist.GetByIdAsync<Servico>(id);
-            if (servicoExistente == null)
-            {
-                return NotFound("Cliente não encontrado.");
-            }
-
-            // Mapear DTO para a entidade Servico
-            servicoExistente.Descricao = servicoDto.Descricao;
-            servicoExistente.Quantidade = servicoDto.Quantidade;
-            servicoExistente.Peca_Servico = servicoDto.PecaServico;
-            servicoExistente.ValorUni = servicoDto.ValorUni;
-            servicoExistente.ValorTot = servicoDto.ValorTot;
-            servicoExistente.FormaPag = servicoDto.FormaPag;
-            servicoExistente.Mecanico = servicoDto.Mecanico;
-            servicoExistente.Saida = servicoDto.Saida;
-            servicoExistente.DataServico = servicoDto.DataServico;
-
-            await _geralPersist.Editar(servicoExistente);
-            return Ok(servicoExistente);
+                Id = orcamentoDto.Id,
+                Quantidade = orcamentoDto.Quantidade,
+                NomeServico = orcamentoDto.NomeServico,
+                Produto = orcamentoDto.Produto,
+                ValorParcial = orcamentoDto.ValorParcial,
+                ValorTotal = orcamentoDto.ValorTotal,
+                ServicoId = orcamentoDto.ServicoId,
+                EstoqueId = orcamentoDto.EstoqueId,
+                MontagemId = orcamentoDto.MontagemId
+            };
+            await _geralPersist.Editar(novoOrcamento);
         }
+        else
+        {
+            // Atualizar o orçamento existente
+            orcamentoExistente.Quantidade = orcamentoDto.Quantidade;
+            orcamentoExistente.NomeServico = orcamentoDto.NomeServico;
+            orcamentoExistente.Produto = orcamentoDto.Produto;
+            orcamentoExistente.ValorParcial = orcamentoDto.ValorParcial;
+            orcamentoExistente.ValorTotal = orcamentoDto.ValorTotal;
+            orcamentoExistente.EstoqueId = orcamentoDto.EstoqueId;
+            orcamentoExistente.MontagemId = orcamentoDto.MontagemId;
+
+            await _geralPersist.Editar(orcamentoExistente);
+        }
+    }
+
+    await _geralPersist.Editar(servicoExistente);
+
+    return Ok(servicoExistente);
+}
+
 
         [HttpPut("montagem/{id}")]
         public async Task<IActionResult> putmontagem(int id, [FromBody] MontagemDtos montagemDto)
@@ -189,6 +236,44 @@ namespace AutoTrack.Controllers
             montagemExistente.ValorTotal = montagemDto.ValorTotal;
             montagemExistente.KitDaLoja = montagemDto.KitDaLoja;
 
+            // Atualizar orçamentos associados
+            foreach (var orcamentoDto in montagemDto.Orcamentos)
+    {
+        var orcamentoExistente = await _geralPersist.GetByIdAsync<Orcamento>(orcamentoDto.Id);
+
+        if (orcamentoExistente == null)
+        {
+            // Se o orçamento não existir, criá-lo
+            var novoOrcamento = new Orcamento
+            {
+                Id = orcamentoDto.Id,
+                Quantidade = orcamentoDto.Quantidade,
+                NomeServico = orcamentoDto.NomeServico,
+                Produto = orcamentoDto.Produto,
+                ValorParcial = orcamentoDto.ValorParcial,
+                ValorTotal = orcamentoDto.ValorTotal,
+                ServicoId = orcamentoDto.ServicoId,
+                EstoqueId = orcamentoDto.EstoqueId,
+                MontagemId = orcamentoDto.MontagemId
+            };
+            await _geralPersist.Editar(novoOrcamento);
+        }
+        else
+        {
+            // Atualizar o orçamento existente
+            orcamentoExistente.Quantidade = orcamentoDto.Quantidade;
+            orcamentoExistente.NomeServico = orcamentoDto.NomeServico;
+            orcamentoExistente.Produto = orcamentoDto.Produto;
+            orcamentoExistente.ValorParcial = orcamentoDto.ValorParcial;
+            orcamentoExistente.ValorTotal = orcamentoDto.ValorTotal;
+            orcamentoExistente.EstoqueId = orcamentoDto.EstoqueId;
+            orcamentoExistente.MontagemId = orcamentoDto.MontagemId;
+
+            await _geralPersist.Editar(orcamentoExistente);
+        }
+    }
+
+
             await _geralPersist.Editar(montagemExistente);
             return Ok(montagemExistente);
         }
@@ -200,6 +285,30 @@ namespace AutoTrack.Controllers
             var veiculos = await _geralPersist.GetAll<Veiculo>();
             return Ok(veiculos);
         }
+        [HttpPost("Orcamento")]
+public async Task<IActionResult> PostOrcamento([FromBody] OrcamentoDto orcamentoDto)
+{
+    if (orcamentoDto == null)
+    {
+        return BadRequest("Orçamento is null");
+    }
+    
+    var orcamento = new Orcamento
+    {
+        Id = orcamentoDto.Id,
+        Quantidade = orcamentoDto.Quantidade,
+        NomeServico = orcamentoDto.NomeServico,
+        Produto = orcamentoDto.Produto,
+        ValorParcial = orcamentoDto.ValorParcial,
+        ValorTotal = orcamentoDto.ValorTotal,
+        ServicoId = orcamentoDto.ServicoId != 0 ? orcamentoDto.ServicoId : (int?)null,
+        MontagemId = orcamentoDto.MontagemId != 0 ? orcamentoDto.MontagemId : (int?)null,
+        EstoqueId = orcamentoDto.EstoqueId != 0 ? orcamentoDto.EstoqueId : (int?)null
+    };
+
+    await _geralPersist.AddAsync(orcamento);
+    return CreatedAtAction(nameof(GetVeiculos), new { id = orcamento.Id }, orcamento);
+}
 
         [HttpPost("veiculos")]
         public async Task<IActionResult> PostVeiculo([FromBody] VeiculoPostDto veiculoPostDto)

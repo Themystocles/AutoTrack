@@ -1,0 +1,87 @@
+<div class="bg-gray-800 p-8 rounded-lg shadow-lg max-w-6xl mx-auto">
+  <h2 class="text-white text-3xl mb-6 text-center">Cadastrar Serviço</h2>
+
+  <!-- Campo para Buscar Veículo -->
+  <div class="mb-4">
+    <label for="placaveiculo" class="block text-white mb-1">Buscar Veículo por Placa</label>
+    <input id="placaveiculo" name="placaveiculo" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="placaveiculo">
+    <button (click)="GetVeiculoByPlaca()" class="mt-2 w-full bg-blue-600 text-white p-3 rounded">Buscar Veículo</button>
+  </div>
+
+  <!-- Exibição do Veículo Selecionado -->
+  <div *ngIf="veiculo" class="mb-4 p-4 bg-gray-700 rounded-lg">
+    <label class="block text-white mb-1">Veículo Encontrado:</label>
+    <p><span class="font-medium">Placa:</span> {{veiculo.placa}}</p>
+    <p><span class="font-medium">ID:</span> {{veiculo.id}}</p>
+    <p><span class="font-medium">Chassi:</span> {{veiculo.chassi}}</p>
+  </div>
+
+  <!-- Formulário de Cadastro de Serviço -->
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="space-y-6">
+    <!-- Campos do Serviço -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Campo Descrição -->
+      <div>
+        <label for="descricao" class="block text-white mb-1">Descrição</label>
+        <input id="descricao" name="descricao" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.descricao" required>
+      </div>
+      <!-- Campo Quantidade -->
+      <div>
+        <label for="quantidade" class="block text-white mb-1">Quantidade</label>
+        <input id="quantidade" name="quantidade" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.quantidade" required>
+      </div>
+      <!-- Campo Peça/Serviço -->
+      <div>
+        <label for="peca_Servico" class="block text-white mb-1">Peça/Serviço</label>
+        <input id="peca_Servico" name="peca_Servico" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.peca_Servico" required>
+      </div>
+      <!-- Campo Valor Unitário -->
+      <div>
+        <label for="valorUni" class="block text-white mb-1">Valor Unitário</label>
+        <input id="valorUni" name="valorUni" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.valorUni" required>
+      </div>
+      <!-- Campo Valor Total -->
+      <div>
+        <label for="valorTot" class="block text-white mb-1">Valor Total</label>
+        <input id="valorTot" name="valorTot" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.valorTot" required>
+      </div>
+      <!-- Campo Forma de Pagamento -->
+      <div>
+        <label for="formaPag" class="block text-white mb-1">Forma de Pagamento</label>
+        <input id="formaPag" name="formaPag" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.formaPag" required>
+      </div>
+      <!-- Campo Mecânico -->
+      <div>
+        <label for="mecanico" class="block text-white mb-1">Mecânico</label>
+        <input id="mecanico" name="mecanico" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.mecanico" required>
+      </div>
+      <!-- Campo Saída -->
+      <div>
+        <label for="saida" class="block text-white mb-1">Saída</label>
+        <input id="saida" name="saida" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.saida" required>
+      </div>
+      <!-- Campo Data do Serviço -->
+      <div>
+        <label for="dataServ" class="block text-white mb-1">Data do Serviço</label>
+        <input id="dataServ" name="dataServ" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.dataServico" required>
+      </div>
+    </div>
+
+    <!-- Inclusão do componente OrcamentoPostComponent -->
+    <div class="bg-gray-700 p-6 rounded-lg shadow-lg mt-8">
+      <h3 class="text-white text-2xl mb-4">Adicionar Orçamentos</h3>
+      <app-orcamento-post (orcamentosChange)="receiveOrcamentos($event)"></app-orcamento-post>
+    </div>
+    
+    <!-- Botão de Submit -->
+    <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded mt-6">Cadastrar Serviço</button>
+  </form>
+
+  <!-- Mensagem de Sucesso -->
+  <div *ngIf="showSuccessMessage" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+    <div class="bg-green-600 text-white p-6 rounded-lg shadow-lg max-w-md mx-auto text-center relative">
+      <strong class="block text-2xl mb-4">Serviço cadastrado com sucesso!</strong>
+      <button (click)="showSuccessMessage = false" class="absolute top-2 right-2 text-white text-xl">&times;</button>
+    </div>
+  </div>
+</div>
