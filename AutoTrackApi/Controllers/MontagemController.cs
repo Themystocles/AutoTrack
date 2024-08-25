@@ -28,7 +28,7 @@ namespace AutoTrackApi.Controllers
    
 
     [HttpGet("montagem/{datamont}")]
-    public async Task<ActionResult<IEnumerable<Montagem>>> GetMontbyData(string dataMont)
+    public async Task<ActionResult<IEnumerable<Montagem>>> GetMontbyData(DateTime dataMont)
     {
         var montagem = await _MontagemPersist.GetMontagemsByData(dataMont);
 

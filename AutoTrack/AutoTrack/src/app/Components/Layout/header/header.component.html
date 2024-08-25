@@ -5,10 +5,18 @@
       <h1 class="text-2xl font-bold">AutoTrack</h1> <!-- Texto Dashboard -->
     </a>
     <nav>
-      <ul class="flex space-x-4">
+      <ul class="flex space-x-4 items-center">
         <li><a href="/" class="hover:text-gray-400">Home</a></li>
         <li><a href="#" class="hover:text-gray-400">Perfil</a></li>
-        <li><a href="#" class="hover:text-gray-400">Configurações</a></li>
+        <li class="relative">
+          <a href="#" class="hover:text-gray-400 flex items-center space-x-1">
+            <span>Notificações</span>
+            <!-- Badge de notificação -->
+            <span class="bg-red-500 text-white text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">
+              3 <!-- Número de notificações -->
+            </span>
+          </a>
+        </li>
         <li><a href="#" class="hover:text-gray-400">Sair</a></li>
       </ul>
     </nav>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
+import { empty } from 'rxjs';
 import { Cliente } from 'src/app/Models/ClienteModel';
 import { Veiculo } from 'src/app/Models/VeiculoModel';
 import { FiltroServicesService } from 'src/app/Services/filtro-cliente.service';
@@ -58,6 +59,7 @@ export class ClienteComponent implements OnInit {
     this.FiltroServices.getClientByNome(this.Nome).subscribe(
       res => {
         this.searchResults = res;
+        if(!res || res.length === 0){alert('O filtro não consegue encontrar um cliente com esse nome')}
         this.Cliente = new Cliente(); // Limpa os dados do cliente
       },
       err => {

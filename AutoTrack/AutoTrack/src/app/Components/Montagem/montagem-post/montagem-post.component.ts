@@ -42,7 +42,7 @@ export class MontagemPostComponent {
   }
 
   onSubmit(form: any) {
-    if (!this.montagem.veiculoId || !this.montagem.data?.trim() ) {
+    if (!this.montagem.veiculoId || !this.montagem.formaPagamento?.trim() ) {
       alert('Por favor, preencha todos os campos obrigatórios.');
       return;
     }

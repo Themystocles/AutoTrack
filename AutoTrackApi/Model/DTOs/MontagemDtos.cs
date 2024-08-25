@@ -8,7 +8,7 @@ namespace AutoTrackApi.Model.DTOs
     public class MontagemDtos
     {
         public int Id { get; set; }
-        public string Data { get; set; }
+        public DateTime Data { get; set; }
         public string GeracaoInstaladores { get; set; }
         public decimal RedutorValor { get; set; }
         public string NumeroSerie { get; set; }

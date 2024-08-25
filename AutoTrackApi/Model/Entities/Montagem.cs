@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using AutoTrackApi.Model.Entities;
+using AutoTrack.Migrations;
 
 namespace AutoTrackApi.Model
 {
@@ -11,7 +12,7 @@ namespace AutoTrackApi.Model
     public class Montagem
     {
         public int Id { get; set; } 
-        public string data { get; set; }
+        public DateTime data { get; set; } = DateTime.Now;
         public string GeracaoInstaladores { get; set; }
         public decimal RedutorValor { get; set; }
         public string NumeroSerie { get; set; }
