@@ -27,14 +27,14 @@
 
     <!-- Campo Telefone -->
     <div class="mb-4 col-span-1">
-      <label for="telefone" class="block text-white mb-1">Telefone</label>
-      <input id="telefone" name="telefone" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.telefone">
+      <label for="telefone" class="block text-white mb-1">Telefone Celular</label>
+      <input id="telefone" name="telefone" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.telefone" mask="(00) 00000-0000">
     </div>
 
     <!-- Campo Telefone 2 -->
     <div class="mb-4 col-span-1">
-      <label for="insTelefone2" class="block text-white mb-1">Telefone 2</label>
-      <input id="insTelefone2" name="insTelefone2" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.insTelefone2">
+      <label for="insTelefone2" class="block text-white mb-1">Telefone Celular 2</label>
+      <input id="insTelefone2" name="insTelefone2" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.insTelefone2" mask="(00) 00000-0000">
     </div>
 
     <!-- Campo Endereço -->
@@ -58,8 +58,9 @@
     <!-- Campo CEP -->
     <div class="mb-4 col-span-1">
       <label for="cep" class="block text-white mb-1">CEP</label>
-      <input id="cep" name="cep" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.cep">
+      <input id="cep" name="cep" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="cep" required>
     </div>
+    <button type="button" (click)="PesquisaPorCep()" class="w-full bg-blue-600 text-white p-3 rounded mt-2">Pesquisar CEP</button>
 
     <!-- Campo UF -->
     <div class="mb-4 col-span-1">

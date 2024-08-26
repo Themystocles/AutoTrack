@@ -80,13 +80,10 @@
       <li *ngFor="let servico of Veiculo.servicos" class="bg-gray-800 p-4 border border-gray-600 rounded-md">
         <p><strong>ID:</strong> {{servico.id}}</p>
         <p><strong>Descrição:</strong> {{servico.descricao}}</p>
-        <p><strong>Quantidade:</strong> {{servico.quantidade}}</p>
-        <p><strong>Peça Serviço:</strong> {{servico.peca_Servico}}</p>
-        <p><strong>Valor Unitário:</strong> {{servico.valorUni}}</p>
-        <p><strong>Valor Total:</strong> {{servico.valorTot}}</p>
+        
         <p><strong>Forma de Pagamento:</strong> {{servico.formaPag}}</p>
         <p><strong>Mecanico:</strong> {{servico.mecanico}}</p>
-        <p><strong>Saida:</strong> {{servico.saida}}</p>
+        <p><strong>Saida:</strong> {{servico.observacao}}</p>
 
         <!-- Exibe orçamentos relacionados ao serviço -->
         <div *ngIf="servico.orcamentos" class="mt-4">

@@ -33,6 +33,17 @@ import { ServicoListComponent } from './Components/Servico/servico-list/servico-
 import { MontagemComponent } from './Components/Montagem/montagem/montagem.component';
 import { MontagemListComponent } from './Components/Montagem/montagem-list/montagem-list.component';
 import { MontagemPutComponent } from './Components/Montagem/montagem-put/montagem-put.component';
+import { DatePipe } from '@angular/common';
+import { NgxMaskModule } from 'ngx-mask';
+
+
+
+
+
+
+
+
+
 //import { MontagemListComponent } from './Components/Montagem/montagem-list/montagem-list.component';
 
 
@@ -66,6 +77,7 @@ import { MontagemPutComponent } from './Components/Montagem/montagem-put/montage
     MontagemPutComponent,
     OrcamentoListComponent,
     OrcamentoPostComponent,
+    
    
     
   
@@ -75,9 +87,15 @@ import { MontagemPutComponent } from './Components/Montagem/montagem-put/montage
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxMaskModule.forRoot()
+    
+    
+    
+    
+    
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

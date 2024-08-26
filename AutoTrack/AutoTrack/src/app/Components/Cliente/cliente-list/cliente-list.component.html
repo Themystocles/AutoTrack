@@ -37,7 +37,7 @@
           <h3 class="text-xl font-semibold">{{ cliente.nome }}</h3>
           <p class="text-gray-400">CPF: {{ cliente.cpf }}</p>
           <p class="text-gray-400">Telefone: {{ cliente.telefone }}</p>
-          <p class="text-gray-400">Cidade: {{ cliente.cidade }}</p>
+          
         </div>
         <button
           [routerLink]="['/cliente-put', cliente.id]"

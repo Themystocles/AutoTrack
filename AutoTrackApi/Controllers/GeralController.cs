@@ -143,13 +143,10 @@ public async Task<IActionResult> PutServico(int id, [FromBody] ServicoDto servic
 
     // Atualizar o serviço
     servicoExistente.Descricao = servicoDto.Descricao;
-    servicoExistente.Quantidade = servicoDto.Quantidade;
-    servicoExistente.Peca_Servico = servicoDto.Peca_Servico;
-    servicoExistente.ValorUni = servicoDto.ValorUni;
-    servicoExistente.ValorTot = servicoDto.ValorTot;
+    
     servicoExistente.FormaPag = servicoDto.FormaPag;
     servicoExistente.Mecanico = servicoDto.Mecanico;
-    servicoExistente.Saida = servicoDto.Saida;
+    servicoExistente.Observacao = servicoDto.Observacao;
     servicoExistente.DataServico = servicoDto.DataServico;
 
     // Atualizar orçamentos associados

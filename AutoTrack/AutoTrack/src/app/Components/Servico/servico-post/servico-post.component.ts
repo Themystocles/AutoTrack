@@ -44,12 +44,10 @@ export class ServicoPostComponent {
   onSubmit(form: any) {
     if (this.servico.veiculoId === 0 || 
         !this.servico.descricao?.trim() || 
-        !this.servico.peca_Servico?.trim() || 
-        !this.servico.valorUni?.trim() || 
-        !this.servico.valorTot?.trim() || 
+        
         !this.servico.formaPag?.trim() || 
         !this.servico.mecanico?.trim() || 
-        !this.servico.saida?.trim() ) {
+        !this.servico.observacao?.trim() ) {
       alert('Por favor, preencha todos os campos obrigatórios.');
       return;
     }

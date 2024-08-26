@@ -2,12 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { Servico } from 'src/app/Models/ServicoMode';
 //import { Servico } from '../Models/ServicoMode';
 import { ServicoService } from 'src/app/Services/filtro-servico.service';
+import { DatePipe } from '@angular/common';
 //import { ServicoService } from '../Services/filtro-servico.service';
 
 @Component({
   selector: 'app-servico-list',
   templateUrl: './servico-list.component.html',
-  styleUrls: ['./servico-list.component.scss']
+    styleUrls: ['./servico-list.component.scss'],
+    providers: [DatePipe]
+    
 })
 export class ServicoListComponent implements OnInit {
   
@@ -15,10 +18,14 @@ export class ServicoListComponent implements OnInit {
   searchTerm: string = '';
   filteredServicos: Servico[] = [];
 
-  constructor(public servicoServices: ServicoService) {}
+  constructor(private datapipe: DatePipe, public servicoServices: ServicoService) {}
+  
 
   ngOnInit(): void {
     this.getAllServicos();
+  }
+  formatarData(data: Date | string): string {
+    return this.datapipe.transform(data, 'dd/MM/yyyy') || '';
   }
 
   getAllServicos(): void {

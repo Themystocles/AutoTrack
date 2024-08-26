@@ -33,10 +33,9 @@
       <li *ngFor="let veiculo of filteredVeiculo" class="bg-gray-800 p-5 rounded-lg shadow-md hover:bg-gray-700 transition-colors duration-200 ease-in-out">
         <div class="flex justify-between items-center">
           <div>
-            <h3 class="text-xl font-semibold">{{ veiculo.placa }}</h3>
+            <h3 class="text-xl font-semibold">{{ veiculo.carro }}</h3>
             <p class="text-gray-400">Placa: {{ veiculo.placa }}</p>
-            <p class="text-gray-400">Cor: {{ veiculo.cor }}</p>
-            <p class="text-gray-400">Combustivel: {{ veiculo.combustivel }}</p>
+            <p class="text-gray-400">Chassi: {{ veiculo.chassi }}</p>
           </div>
           <button
             [routerLink]="['/veiculo-put', veiculo.id]"
