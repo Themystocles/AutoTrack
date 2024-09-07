@@ -1,11 +1,48 @@
-<aside class="w-64 bg-gray-800 text-white p-4 border-r border-gray-700 h-full">
-  <h2 class="text-xl font-bold mb-6">Menu</h2>
+<aside class="w-64 bg-gray-800 text-white p-6 border-r border-gray-700 h-full">
+  <h2 class="text-2xl font-bold mb-8">Menu</h2>
   <nav>
-    <ul>
-      <li class="mb-2"><a routerLink="/cliente-list" class="block p-2 rounded hover:bg-gray-700">Clientes</a></li>
-      <li class="mb-2"><a routerLink="/veiculo-list" class="block p-2 rounded hover:bg-gray-700">Veículos</a></li>
-      <li class="mb-2"><a routerLink="/servico-list" class="block p-2 rounded hover:bg-gray-700">Serviços</a></li>
-      <li class="mb-2"><a routerLink="/montagem-list" class="block p-2 rounded hover:bg-gray-700">Montagem</a></li>
+    <ul class="space-y-6">
+      <!-- Seção Clientes, Veículos, Serviços, Montagem -->
+      <li>
+        <a routerLink="/cliente-list" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out">
+          <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M3 6h18M3 14h18M3 18h18M3 2h18"></path></svg>Clientes
+        </a>
+      </li>
+      <li>
+        <a routerLink="/veiculo-list" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out">
+          <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.5-4.5m0 0L21 6m-1.5 1.5L15 10m6 0H9m6 0V3m6 7h-6m0 0L9 14l-4.5-4.5"></path></svg>Veículos
+        </a>
+      </li>
+      <li>
+        <a routerLink="/servico-list" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out">
+          <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v9m0 0l6-6M12 12l-6-6M9 21h6m-6 0H3v-6m0 6h6m6-6v6m0-6h6v6h-6v-6"></path></svg>Serviços
+        </a>
+      </li>
+      <li>
+        <a routerLink="/montagem-list" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out">
+          <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v18m0-18h6m-6 0L4 6m12 0L15 3"></path></svg>Montagem
+        </a>
+      </li>
+
+      <!-- Linha Separadora -->
+      <li class="border-t border-gray-700 my-6"></li>
+
+      <!-- Seção Financeiro -->
+      <li>
+        <a routerLink="/financeiro" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out">
+          <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11v2m0 4v2m-6-2h12M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"></path></svg>Financeiro
+        </a>
+      </li>
+
+      <!-- Linha Separadora -->
+      <li class="border-t border-gray-700 my-6"></li>
+
+      <!-- Seção Estoque -->
+      <li>
+        <a routerLink="/estoque" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out">
+          <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15h12M6 9h12m-6 6V3"></path></svg>Estoque
+        </a>
+      </li>
     </ul>
   </nav>
 </aside>

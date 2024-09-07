@@ -51,7 +51,39 @@ namespace AutoTrackApi.Controllers
 
         return Ok(Montagem);
     }
+
+    [HttpGet("montagem/nao-pagos")]
+public async Task<IActionResult> GetCountServicosNaoPagos()
+{
+    var count = await _MontagemPersist.GetCountMontagensNaoPagos();
+    return Ok(count);
+}
+[HttpGet("listMontagens/nao-pagos")]
+public async Task<IActionResult> getServicosnãopagos()
+{
+    var montagem = await _MontagemPersist.GetMontagensNaoPagos();
+    return Ok(montagem);
+}
+
+[HttpGet("montagem/instaladores")]
+public async Task<ActionResult <IEnumerable<Montagem>>> GetMontagembyInstaladores(string instalador){
+
+    var montagem = await _MontagemPersist.GetMontagensByMecanico(instalador);
+
+       if (montagem == null || !montagem.Any())
+        {
+            return NotFound();
+        }
+
+
+    return Ok(montagem);
+
+
+
+
+}
   
 }
+
 
 }

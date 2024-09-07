@@ -1,6 +1,53 @@
 <div class="bg-gray-800 p-8 rounded-lg shadow-lg max-w-6xl mx-auto">
   <h2 class="text-white text-3xl mb-6 text-center">Editar Serviço</h2>
-  
+  <div>
+    <label for="requalificacao" class="block text-white mb-1">Tipo de Serviço</label>
+    <select id="requalificacao" name="requalificacao" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.requalificacao" required>
+      <option value="Simples">Simples</option>
+      <option value="Requalificação">Requalificação</option>
+      
+    </select>
+  </div>
+  <div *ngIf="servico.requalificacao != 'Simples' ">
+    <div class="grid grid-cols-3 gap-4">
+      <div>
+        <label for="marcaCilindro" class="block text-white mb-1">Marca Cilindro</label>
+        <input id="marcaCilindro" name="marcaCilindro" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.marcaCilindro" >
+      </div>
+      <div>
+        <label for="numeroCilindro" class="block text-white mb-1">Número Cilindro</label>
+        <input id="numeroCilindro" name="numeroCilindro" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.numeroCilindro" >
+      </div>
+      <div>
+        <label for="requalificadora" class="block text-white mb-1">requalificadora</label>
+        <input id="requalificadora" name="requalificadora" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.requalificadora" >
+      </div>
+      <div>
+        <label for="Ordem" class="block text-white mb-1">Ordem</label>
+        <input id="Ordem" name="Ordem" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.ordem" >
+      </div>
+      <div>
+        <label for="notaDeServico" class="block text-white mb-1">Nota de Serviço</label>
+        <input id="notaDeServico" name="notaDeServico" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.notaDeServico" >
+      </div>
+      <div>
+        <label for="laudo" class="block text-white mb-1">Laudo</label>
+        <input id="laudo" name="laudo" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.laudo" >
+      </div>
+      <div>
+        <label for="notaDaValvula" class="block text-white mb-1">Nota da Valvula</label>
+        <input id="notaDaValvula" name="notaDaValvula" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.notaDaValvula" >
+      </div>
+      <div>
+        <label for="marcaValvula" class="block text-white mb-1">Marca Valvula</label>
+        <input id="marcaValvula" name="marcaValvula" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.marcaValvula" >
+      </div>
+      <div>
+        <label for="numeroValvula" class="block text-white mb-1">Número da valvula</label>
+        <input id="numeroValvula" name="numeroValvula" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.numeroValvula" >
+      </div>
+    </div>
+  </div>
   <!-- Formulário para editar serviço -->
   <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" *ngIf="servico">
     <!-- Campo Descrição -->
@@ -15,17 +62,31 @@
       <input id="formaPag" name="formaPag" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.formaPag">
     </div>
 
+     
     <!-- Campo Mecânico -->
     <div class="mb-4 col-span-1">
       <label for="mecanico" class="block text-white mb-1">Mecânico</label>
       <input id="mecanico" name="mecanico" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.mecanico">
     </div>
 
+   
+
+    
+  
+
    <!-- Campo Observação -->
 <div class="mb-4 col-span-1 md:col-span-2 lg:col-span-3">
   <label for="observacao" class="block text-white mb-1">Observação</label>
   <textarea id="observacao" name="observacao" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.observacao" rows="5"></textarea>
 </div>
+
+   <!-- Campo valor total -->
+   <div class="mb-4 col-span-1 md:col-span-2 lg:col-span-3">
+    <label for="total" class="block text-white mb-1">Valor Total</label>
+    <input id="total" name="total" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.totalorcamento" rows="5">
+  </div>
+
+  
 
 
 
@@ -37,6 +98,20 @@
       <label for="dataServico" class="block text-white mb-1">Data do Serviço</label>
       <input  id="dataServico" name="dataServico" type="date" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.dataServico">
     </div>
+       <!-- Campo data alerta -->
+       <div>
+        <label *ngIf="servico.dataalerta" class="text-gray-700">
+          Data Alerta: {{ servico.dataalerta | date: 'dd/MM/yyyy' }}
+        </label>
+        <label for="dataalerta" class="block text-white mb-1">Data Alerta</label>
+        <input id="dataalerta" name="dataalerta" type="date" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.dataalerta" >
+      </div>
+          <!-- Campo Pago? -->
+<div>
+  <label for="Pago?" class="block text-white mb-1">Pago</label><br>
+  
+  <input id="Pago" name="Pago" type="checkbox" class="form-checkbox h-6 w-6 text-blue-600 rounded-md border-gray-300 focus:ring focus:ring-blue-500 focus:ring-opacity-50" [(ngModel)]="servico.pago">
+</div>
 
     <!-- Lista de Orçamentos -->
     <div *ngIf="servico.orcamentos && servico.orcamentos.length > 0" class="col-span-1 md:col-span-2 lg:col-span-3 mb-6">
@@ -49,15 +124,15 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           <div class="mb-4">
             <label for="quantidade_{{orcamento.id}}" class="block text-white mb-1">Quantidade</label>
-            <input id="quantidade_{{orcamento.id}}" name="quantidade_{{orcamento.id}}" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.quantidade">
+            <input id="quantidade_{{orcamento.id}}" name="quantidade_{{orcamento.id}}" type="number" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.quantidade">
           </div>
           <div class="mb-4">
             <label for="valorParcial_{{orcamento.id}}" class="block text-white mb-1">Valor Parcial</label>
-            <input id="valorParcial_{{orcamento.id}}" name="valorParcial_{{orcamento.id}}" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.valorParcial">
+            <input id="valorParcial_{{orcamento.id}}" name="valorParcial_{{orcamento.id}}" type="number" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.valorParcial">
           </div>
           <div class="mb-4">
             <label for="valorTotal_{{orcamento.id}}" class="block text-white mb-1">Valor Total</label>
-            <input id="valorTotal_{{orcamento.id}}" name="valorTotal_{{orcamento.id}}" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.valorTotal">
+            <input id="valorTotal_{{orcamento.id}}" name="valorTotal_{{orcamento.id}}" type="number" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.valorTotal">
           </div>
         </div>
       </div>
@@ -74,18 +149,20 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           <div class="mb-4">
             <label for="novoQuantidade" class="block text-white mb-1">Quantidade</label>
-            <input id="novoQuantidade" name="novoQuantidade" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.quantidade" required>
+            <input id="novoQuantidade" name="novoQuantidade" type="number" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.quantidade" required>
           </div>
           <div class="mb-4">
             <label for="novoValorParcial" class="block text-white mb-1">Valor Parcial</label>
-            <input id="novoValorParcial" name="novoValorParcial" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.valorParcial" required>
+            <input id="novoValorParcial" name="novoValorParcial" type="number" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.valorParcial" required>
           </div>
           <div class="mb-4">
             <label for="novoValorTotal" class="block text-white mb-1">Valor Total</label>
-            <input id="novoValorTotal" name="novoValorTotal" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.valorTotal" required>
+            <input id="novoValorTotal" name="novoValorTotal" type="number" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.valorTotal" required>
           </div>
         </div>
-        <button type="submit" class="bg-blue-500 text-white p-3 rounded">Adicionar Orçamento</button>
+        <button  type="submit"class="flex items-center p-3 bg-gray-700 text-white rounded-full shadow-lg hover:bg-gray-600 focus:outline-none focus:ring-4 focus:ring-gray-400 transition duration-300 ease-in-out"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7H5"></path>
+        </svg></button>
       </form>
     </div>
 

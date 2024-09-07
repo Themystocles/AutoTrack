@@ -50,6 +50,8 @@ export class ServicoPutComponent implements OnInit {
   addOrcamento(): void {
     if (this.newOrcamento.nomeServico && this.newOrcamento.quantidade) {
       this.newOrcamento.servicoId = Number(this.servicoId);
+      this.servico.totalorcamento! += Number(this.newOrcamento.valorTotal);
+
       this.orcamentoPostService.PostOrcamento(this.newOrcamento).subscribe(
         (orcamento: Orcamento) => {
           if (!this.servico.orcamentos) {

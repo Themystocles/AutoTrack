@@ -22,11 +22,24 @@ export class VeiculoComponent {
   
 
 GetveiculoByPlaca(){
+  const veiculotrim = this.veiculoPlaca.trim()
   
-this.FiltroServices.getVeiculoByPlaca(this.veiculoPlaca).subscribe(res => this.Veiculo = res)
+this.FiltroServices.getVeiculoByPlaca(veiculotrim).subscribe(res =>{
+   this.Veiculo = res},
+   err => {alert("Não foram encontrados veículos com essa placa")
+    
+  
+   }
+   
+)
 }
 GetveiculoByChassi(){
-  
-  this.FiltroServices.getVeiculoBychassi(this.veiculoChassi).subscribe(res => this.Veiculo = res)
+  const veiculochassitrim = this.veiculoChassi.trim()
+  this.FiltroServices.getVeiculoBychassi(veiculochassitrim).subscribe(res =>{
+     this.Veiculo = res},
+     err =>{alert("Não foram encontrados veículos com o chassi informado")}
+    
+    
+    )
   }
 }

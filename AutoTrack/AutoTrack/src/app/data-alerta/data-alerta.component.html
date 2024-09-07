@@ -1,0 +1,85 @@
+<div *ngIf="showAlert && servico.length > 0" class="flex items-center p-3 bg-red-500 text-white rounded-lg shadow-md border border-red-700">
+    <svg class="w-6 h-6 text-white mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01m-6 2h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+    </svg>
+    <p class="font-semibold text-xs flex-1">Você tem {{ servico.length }} cliente(s) programado(s) para hoje.</p>
+    <button (click)="toggleDetails()" class="ml-4 px-3 py-1 bg-yellow-300 text-gray-800 rounded-full hover:bg-yellow-200 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition duration-150 text-xs">
+      Ver mais
+    </button>
+</div>
+
+
+
+
+ <!-- Detalhes dos clientes programados -->
+<div *ngIf="showDetails" class="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
+    <div class="bg-gray-900 text-white p-6 rounded-lg max-w-4xl w-full overflow-auto max-h-[80vh] relative">
+      <button (click)="closeDetails()" class="absolute top-4 right-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-150">
+        Fechar
+      </button>
+      
+      <div class="space-y-6 pt-8">
+        <div *ngFor="let serv of servico" class="bg-gray-800 border border-gray-700 rounded-lg p-4">
+          <!-- Cabeçalho com informações básicas -->
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-semibold text-lg">Cliente: {{ serv.veiculo?.cliente?.nome }}</h3>
+            <span class="text-sm text-gray-400">Data do Serviço: {{ serv.dataServico }}</span>
+          </div>
+  
+          <!-- Detalhes em Cartões -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Cliente -->
+            <div class="bg-gray-700 p-4 rounded-lg">
+              <h4 class="font-semibold text-md mb-2">Detalhes do Cliente</h4>
+              <div class="space-y-2 text-sm">
+                <p><span class="font-semibold">Nome:</span> {{ serv.veiculo?.cliente?.nome }}</p>
+                <p><span class="font-semibold">CPF:</span> {{ serv.veiculo?.cliente?.cpf }}</p>
+                <p><span class="font-semibold">Telefone:</span> {{ serv.veiculo?.cliente?.telefone }}</p>
+              </div>
+            </div>
+  
+            <!-- Veículo -->
+            <div class="bg-gray-700 p-4 rounded-lg">
+              <h4 class="font-semibold text-md mb-2">Detalhes do Veículo</h4>
+              <div class="space-y-2 text-sm">
+                <p><span class="font-semibold">Placa:</span> {{ serv.veiculo?.placa }}</p>
+                <p><span class="font-semibold">Modelo:</span> {{ serv.veiculo?.carro }}</p>
+                <p><span class="font-semibold">Chassi:</span> {{ serv.veiculo?.chassi }}</p>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Informações Adicionais -->
+          <div class="bg-gray-700 p-4 rounded-lg mt-4">
+            <h4 class="font-semibold text-md mb-2">Informações do Serviço</h4>
+            <div class="space-y-2 text-sm">
+              <p><span class="font-semibold">Mecânico:</span> {{ serv.mecanico }}</p>
+              <p><span class="font-semibold">Data do Alerta:</span> {{ serv.dataalerta }}</p>
+            </div>
+          </div>
+  
+          <!-- Orçamentos -->
+          <div class="bg-gray-700 p-4 rounded-lg mt-4">
+            <h4 class="font-semibold text-md mb-2">Orçamentos</h4>
+            <ul class="list-disc pl-5 text-sm space-y-2">
+              <li *ngFor="let orc of serv.orcamentos">
+                <div class="flex justify-between">
+                  <span class="font-semibold">Descrição:</span>
+                  <span>{{ orc.nomeServico }}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-semibold">Valor:</span>
+                  <span>{{ orc.quantidade }}</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+  
+          <button (click)="navigateToServico(serv.id)" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-150">
+            Aqui
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

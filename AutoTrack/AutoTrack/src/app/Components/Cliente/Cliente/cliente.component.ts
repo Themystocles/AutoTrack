@@ -28,7 +28,8 @@ export class ClienteComponent implements OnInit {
   }
 
   GetClienteByCPForCNPJ() {
-    this.FiltroServices.getClientByCpf(this.CPForCNPJ).subscribe(
+    const CPFCNPJTrim = this.CPForCNPJ.trim()
+    this.FiltroServices.getClientByCpf(CPFCNPJTrim).subscribe(
       res => {
         this.Cliente = res;
         this.searchResults = []; // Limpa os resultados da pesquisa
@@ -43,7 +44,8 @@ export class ClienteComponent implements OnInit {
   }
 
   GetClienteByTelefone() {
-    this.FiltroServices.getClientByTelefone(this.Telefone).subscribe(
+    const TelefoneTrim = this.Telefone.trim()
+    this.FiltroServices.getClientByTelefone(TelefoneTrim).subscribe(
       res => {
         this.Cliente = res;
         this.searchResults = []; // Limpa os resultados da pesquisa
@@ -58,7 +60,8 @@ export class ClienteComponent implements OnInit {
   }
 
   GetClienteByNome() {
-    this.FiltroServices.getClientByNome(this.Nome).subscribe(
+    const nomeTrim = this.Nome.trim()
+    this.FiltroServices.getClientByNome(nomeTrim).subscribe(
       res => {
         this.searchResults = res;
         if(!res || res.length === 0){alert('O filtro não consegue encontrar um cliente com esse nome')}

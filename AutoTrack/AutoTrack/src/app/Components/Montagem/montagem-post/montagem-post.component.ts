@@ -4,6 +4,7 @@ import { Veiculo } from '../../../Models/VeiculoModel';
 import { Montagem } from '../../../Models/MontagemModel';
 import { OrcamentoPostComponent } from '../../Orcamento/orcamento-post/orcamento-post.component';
 import { Orcamento } from '../../../Models/OrcamentoModel'; // Adicione o modelo Orcamento se não estiver importado
+import { Router, RouteReuseStrategy } from '@angular/router';
 
 @Component({
   selector: 'app-montagem-post',
@@ -16,10 +17,12 @@ export class MontagemPostComponent {
   montagem: Montagem = new Montagem();
   showSuccessMessage: boolean = false;
   orcamentos: Orcamento[] = []; 
+  somaTotal: number = 0; // Adiciona a variável somaTotal
 
   @ViewChild(OrcamentoPostComponent) orcamentoComponent?: OrcamentoPostComponent;
+  
 
-  constructor(public montagemservices: MontagemPostService) {}
+  constructor(public montagemservices: MontagemPostService, public router : Router) {}
 
   GetVeiculoByPlaca() {
     if (!this.placaveiculo.trim()) {
@@ -42,6 +45,7 @@ export class MontagemPostComponent {
   }
 
   onSubmit(form: any) {
+    this.montagem.valorTotal = this.somaTotal;
     if (!this.montagem.veiculoId || !this.montagem.formaPagamento?.trim() ) {
       alert('Por favor, preencha todos os campos obrigatórios.');
       return;
@@ -57,6 +61,7 @@ export class MontagemPostComponent {
           }
         }
         this.showSuccessMessage = true;
+        setTimeout(() => this.router.navigate(['/montagem-list']), 2000);
         form.reset();
         this.veiculo = undefined; // Limpa o objeto veiculo após o envio
         this.montagem = new Montagem(); // Reseta o objeto montagem
@@ -71,5 +76,8 @@ export class MontagemPostComponent {
 
   receiveOrcamentos(orcamentos: Orcamento[]) {
     this.orcamentos = orcamentos;
+  }
+  updateSomaTotal(somaTotal: number) {
+    this.somaTotal = somaTotal; // Atualiza a somaTotal com o valor recebido
   }
 }

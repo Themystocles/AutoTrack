@@ -16,8 +16,6 @@ export class Veiculo {
   cor?: string;
   observacao?: string;
   kmAtual?: string;
-  proxManutencao?: string;
-  proxTrocaFiltro?: string;
   garantia?: string;
   renavam?: string;
   clienteId?: number;

@@ -32,6 +32,8 @@ export class MontagemListComponent implements OnInit{
     const term = this.searchTerm.toLowerCase();
     this.filteredMontagens = this.Montagem.filter(Montagem =>
       (Montagem.data?.toLowerCase().includes(term) || '') 
+      ||
+      (Montagem.instaladores?.toLowerCase().includes(term) || '')
     );
   }
 

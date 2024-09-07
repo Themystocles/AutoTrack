@@ -1,0 +1,94 @@
+<!-- Exibe detalhes dos serviços -->
+<div class="space-y-4">
+  <div *ngFor="let serv of servico | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" class="bg-gray-900 p-4 rounded-md shadow-md">
+    <!-- Tabela com detalhes do cliente e do veículo -->
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-700">
+        <thead class="bg-gray-800">
+          <tr>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Cliente</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Veículo</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Serviço</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Orçamento</th>
+          </tr>
+        </thead>
+        <tbody class="bg-gray-800 divide-y divide-gray-700">
+          <tr>
+            <!-- Detalhes do cliente -->
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div *ngIf="serv.veiculo && serv.veiculo.cliente">
+                <p><strong>Nome:</strong> {{ serv.veiculo.cliente.nome }}</p>
+                <p><strong>CPF:</strong> {{ serv.veiculo.cliente.cpf }}</p>
+                <p><strong>Telefone:</strong> {{ serv.veiculo.cliente.telefone }}</p>
+                <p><strong>Rua:</strong> {{ serv.veiculo.cliente.endereco }}</p>
+                <p><strong>Bairro:</strong> {{ serv.veiculo.cliente.bairro }}</p>
+                <p><strong>cep:</strong> {{ serv.veiculo.cliente.cep }}</p>
+                <button [routerLink]="['/cliente-put', serv.veiculo.cliente.id]" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500 transition-all duration-300">
+                  Editar
+                </button>
+              </div>
+            </td>
+            <!-- Detalhes do veículo -->
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div *ngIf="serv.veiculo">
+                <p><strong>Carro:</strong> {{ serv.veiculo.carro }}</p>
+                <p><strong>Placa:</strong> {{ serv.veiculo.placa }}</p>
+                <p><strong>Chassi:</strong> {{ serv.veiculo.chassi }}</p>
+                <p><strong>Cor:</strong> {{ serv.veiculo.cor }}</p>
+                <p><strong>KM Atual:</strong> {{ serv.veiculo.kmAtual }}</p>
+                <button [routerLink]="['/veiculo-put', serv.veiculo.id]" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500 transition-all duration-300">
+                  Editar
+                </button>
+              </div>
+            </td>
+            <!-- Detalhes do serviço -->
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div>
+                <p><strong>ID:</strong> {{ serv.id }}</p>
+                <p><strong>Descrição:</strong> {{ serv.descricao }}</p>
+                <p><strong>Forma de Pagamento:</strong> {{ serv.formaPag }}</p>
+                <p><strong>Mecânico:</strong> {{ serv.mecanico }}</p>
+                <p><strong>Saída:</strong> {{ serv.observacao }}</p>
+                <button [routerLink]="['/servico-put', serv.id]" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500 transition-all duration-300">
+                  Editar
+                </button>
+              </div>
+            </td>
+            <!-- Detalhes dos orçamentos -->
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div *ngIf="serv.orcamentos && serv.orcamentos.length > 0">
+                <div *ngFor="let orcamento of serv.orcamentos" class="border-t border-gray-600 pt-2">
+                  
+                  <p><strong>Nome Serviço:</strong> {{ orcamento.nomeServico }}</p>
+                  <div class="flex space-x-4 mt-2">
+                  <p><strong>Quantidade:</strong> {{ orcamento.quantidade }}</p>
+                  <p><strong>Valor Parcial:</strong> {{ orcamento.valorParcial }}</p>
+                  <p><strong>Valor Total:</strong> {{ orcamento.valorTotal }}</p>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Controle de paginação -->
+  <div class="flex justify-center mt-4">
+    <nav class="flex items-center space-x-2">
+      <!-- Botão de Página Anterior -->
+      <button (click)="currentPage = currentPage > 1 ? currentPage - 1 : 1" class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-500 transition-colors duration-200 disabled:opacity-50" [attr.disabled]="currentPage === 1 ? true : null">
+        Anterior
+      </button>
+      
+      <!-- Texto da Página -->
+      <span class="text-gray-200 font-semibold">Página {{currentPage}}</span>
+      
+      <!-- Botão de Próxima Página -->
+      <button (click)="currentPage = currentPage + 1" class="px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-500 transition-colors duration-200">
+        Próxima
+      </button>
+    </nav>
+  </div>
+</div>

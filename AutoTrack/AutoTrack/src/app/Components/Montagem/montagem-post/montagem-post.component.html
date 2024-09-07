@@ -19,15 +19,11 @@
   <!-- Formulário de Cadastro de Montagem -->
   <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="space-y-6">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Campo Data -->
-          <div>
-              <label for="data" class="block text-white mb-1">Data</label>
-              <input id="data" name="data" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.data">
-          </div>
+        
  <!-- Campo Geração Instaladores -->
  <div>
-  <label for="geracaoInstaladores" class="block text-white mb-1">Geração Instaladores</label>
-  <input id="geracaoInstaladores" name="geracaoInstaladores" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.geracaoInstaladores">
+  <label for="geracaoInstaladores" class="block text-white mb-1">Geração</label>
+  <input id="geracaoInstaladores" name="geracaoInstaladores" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.geracaoInstaladores" mask="">
 </div>
 
 <!-- Campo Kit da Loja -->
@@ -37,8 +33,8 @@
 </div>
 <!-- Campo Redutor Valor -->
 <div class="mb-4 col-span-1">
-<label for="redutorValor" class="block text-white mb-1">Redutor Valor</label>
-<input id="redutorValor" name="redutorValor" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.redutorValor">
+<label for="redutorValor" class="block text-white mb-1">Redutor Marca</label>
+<input id="redutorValor" name="redutorValor" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.redutorMarca">
 </div>
 
 <!-- Campo Número Série -->
@@ -62,7 +58,7 @@
 <!-- Campo Número Cilindro -->
 <div class="mb-4 col-span-1">
 <label for="numeroCilindro" class="block text-white mb-1">Número Cilindro</label>
-<input id="numeroCilindro" name="numeroCilindro" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.numeroCilindro">
+<input id="numeroCilindro" name="numeroCilindro" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.numeroCilindro">
 </div>
 
 <!-- Campo Quilo -->
@@ -80,19 +76,15 @@
 <!-- Campo Ano de Fabricação -->
 <div class="mb-4 col-span-1">
 <label for="anoFab" class="block text-white mb-1">Ano de Fabricação</label>
-<input id="anoFab" name="anoFab" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.anoFab">
+<input id="anoFab" name="anoFab" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.anoFab" mask="00-00-0000">
 </div>
 
-<!-- Campo Documentação Ano -->
-<div class="mb-4 col-span-1">
-<label for="documentacaoAno" class="block text-white mb-1">Documentação Ano</label>
-<input id="documentacaoAno" name="documentacaoAno" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.documentacaoAno">
-</div>
+
 
 <!-- Campo Ano de Reteste -->
 <div class="mb-4 col-span-1">
 <label for="anoReteste" class="block text-white mb-1">Ano de Reteste</label>
-<input id="anoReteste" name="anoReteste" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.anoReteste">
+<input id="anoReteste" name="anoReteste" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.anoReteste" mask="00-00-0000">
 </div>
 
 <!-- Campo Requalificadora -->
@@ -143,42 +135,29 @@
 <input id="selo" name="selo" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.selo">
 </div>
 
-<!-- Campo Orçamento -->
-<div class="mb-4 col-span-1">
-<label for="orcamento" class="block text-white mb-1">Orçamento</label>
-<input id="orcamento" name="orcamento" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.orcamento">
-</div>
 
-<!-- Campo Quantidade Peça Serviço -->
-<div class="mb-4 col-span-1">
-<label for="quantPecaServico" class="block text-white mb-1">Quantidade Peça Serviço</label>
-<input id="quantPecaServico" name="quantPecaServico" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.quantPecaServico">
-</div>
 
-<!-- Campo Valor Unitário -->
+<!-- Campo Instaladores -->
 <div class="mb-4 col-span-1">
-<label for="valorUnitario" class="block text-white mb-1">Valor Unitário</label>
-<input id="valorUnitario" name="valorUnitario" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.valorUnitario">
+<label for="instaladores" class="block text-white mb-1">Instaladores</label>
+<input id="instaladores" name="instaladores" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.instaladores">
 </div>  
          
 
 <!-- Campo Valor Total -->
-<div class="mb-4 col-span-1">
-  <label for="valorTotal" class="block text-white mb-1">Valor Total</label>
-  <input id="valorTotal" name="valorTotal" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.valorTotal">
-</div>
-
-          <!-- Campo Veículo ID -->
-          <div>
-              <label for="veiculoId" class="block text-white mb-1">Veículo ID</label>
-              <input id="veiculoId" name="veiculoId" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.veiculoId">
-          </div>
+    <!-- Exibição da Soma Total -->
+    <div class="mt-6">
+        <label for="Totalorcamento" class="block text-white mb-1">TOTAL</label>
+        <input id="Totalorcamento" name="Totalorcamento" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [value]="somaTotal" readonly>
       </div>
+  
+
+              </div>
 
       <!-- Inclusão do componente OrcamentoPostComponent -->
       <div class="bg-gray-700 p-6 rounded-lg shadow-lg mt-8">
           <h3 class="text-white text-2xl mb-4">Adicionar Orçamentos</h3>
-          <app-orcamento-post (orcamentosChange)="receiveOrcamentos($event)"></app-orcamento-post>
+          <app-orcamento-post (orcamentosChange)="receiveOrcamentos($event)" (somaTotalChange)="updateSomaTotal($event)"></app-orcamento-post>
       </div>
 
       <!-- Botão de Submit -->

@@ -30,7 +30,7 @@
       <!-- Campo Placa -->
       <div class="mb-4 col-span-1">
           <label for="placa" class="block text-white mb-1">Placa</label>
-          <input id="placa" name="placa" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="veiculo.placa" required>
+          <input id="placa" name="placa" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="veiculo.placa " required (ngModelChange)="veiculo.placa = veiculo.placa?.toUpperCase()" mask="AAA-AAAA">
       </div>
 
       <!-- Campo Espécie -->
@@ -93,18 +93,7 @@
           <input id="kmAtual" name="kmAtual" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="veiculo.kmAtual" required>
       </div>
 
-      <!-- Campo Próxima Manutenção -->
-      <div class="mb-4 col-span-1">
-          <label for="proxManutencao" class="block text-white mb-1">Próxima Manutenção</label>
-          <input id="proxManutencao" name="proxManutencao" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="veiculo.proxManutencao" required>
-      </div>
-
-      <!-- Campo Próxima Troca de Filtro -->
-      <div class="mb-4 col-span-1">
-          <label for="proxTrocaFiltro" class="block text-white mb-1">Próxima Troca de Filtro</label>
-          <input id="proxTrocaFiltro" name="proxTrocaFiltro" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="veiculo.proxTrocaFiltro" required>
-      </div>
-
+    
       <!-- Campo Garantia -->
       <div class="mb-4 col-span-1">
           <label for="garantia" class="block text-white mb-1">Garantia</label>
@@ -120,6 +109,10 @@
       <!-- Botão de Submit -->
       <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded col-span-1 md:col-span-2 lg:col-span-3 mt-4">Cadastrar Veículo</button>
   </form>
+
+  <div *ngIf="erroMessage" class="alert alert-danger" style="font-size: 1.2em; padding: 20px; border-radius: 5px; margin-top: 15px; border: 2px solid red; background-color: #f8d7da; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center; color: black;">
+    {{ erroMessage }}
+  </div>
 
 
 <!-- Mensagem de Sucesso -->

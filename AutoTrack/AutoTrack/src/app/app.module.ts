@@ -35,18 +35,13 @@ import { MontagemListComponent } from './Components/Montagem/montagem-list/monta
 import { MontagemPutComponent } from './Components/Montagem/montagem-put/montagem-put.component';
 import { DatePipe } from '@angular/common';
 import { NgxMaskModule } from 'ngx-mask';
-
-
-
-
-
-
-
-
-
-//import { MontagemListComponent } from './Components/Montagem/montagem-list/montagem-list.component';
-
-
+import { AlertaComponent } from './alerta/alerta.component';
+import { MontagemalertaComponent } from './Components/Montagem/montagemalerta/montagemalerta.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { PrintComponent } from './print/print.component';
+import { DataAlertaComponent } from './data-alerta/data-alerta.component';
+import { SelecionarprintComponent } from './selecionarprint/selecionarprint.component';
+import { PrintMontComponent } from './print-mont/print-mont.component';
 
 
 
@@ -77,6 +72,13 @@ import { NgxMaskModule } from 'ngx-mask';
     MontagemPutComponent,
     OrcamentoListComponent,
     OrcamentoPostComponent,
+    AlertaComponent,
+    MontagemalertaComponent,
+    PrintComponent,
+    DataAlertaComponent,
+    SelecionarprintComponent,
+    PrintMontComponent,
+ 
     
    
     
@@ -88,7 +90,8 @@ import { NgxMaskModule } from 'ngx-mask';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    NgxPaginationModule
     
     
     

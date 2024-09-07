@@ -14,15 +14,16 @@ namespace AutoTrackApi.Model
         public int Id { get; set; } 
         public DateTime data { get; set; } = DateTime.Now;
         public string GeracaoInstaladores { get; set; }
-        public decimal RedutorValor { get; set; }
+        public string RedutorMarca { get; set; }
         public string NumeroSerie { get; set; }
         public string FormaPagamento { get; set; }
+        public bool pago { get; set; }
         public string MarcaCilindro { get; set; }
-        public int NumeroCilindro { get; set; }
+        public string NumeroCilindro { get; set; }
         public decimal Quilo { get; set; }
         public decimal Litro { get; set; }
         public int AnoFab { get; set; }
-        public int DocumentacaoAno { get; set; }
+       
         public int AnoReteste { get; set; }
         public string Requalificadora { get; set; }
         public string NumeroNFEquipamento { get; set; }
@@ -32,9 +33,9 @@ namespace AutoTrackApi.Model
         public string NumeroNFServicoMontagem { get; set; }
         public string NumeroValvula { get; set; }
         public string Selo { get; set; }
-        public decimal Orcamento { get; set; }
-        public int QuantPecaServico { get; set; }
-        public decimal ValorUnitario { get; set; }
+        
+      
+        public string? Instaladores { get; set; }
         public decimal ValorTotal { get; set; }
         public bool KitDaLoja { get; set; }
         public int VeiculoId { get; set; }

@@ -15,6 +15,12 @@ import { VeiculoPostComponent } from './Components/Veiculo/veiculo-post/veiculo-
 import { ServicoListComponent } from './Components/Servico/servico-list/servico-list.component';
 import { MontagemListComponent } from './Components/Montagem/montagem-list/montagem-list.component';
 import { MontagemPutComponent } from './Components/Montagem/montagem-put/montagem-put.component';
+import { AlertaComponent } from './alerta/alerta.component';
+import { MontagemalertaComponent } from './Components/Montagem/montagemalerta/montagemalerta.component';
+import { PrintComponent } from './print/print.component';
+import { SelecionarprintComponent } from './selecionarprint/selecionarprint.component';
+import { PrintMontComponent } from './print-mont/print-mont.component';
+
 
 const routes: Routes = [
   
@@ -27,9 +33,19 @@ const routes: Routes = [
   { path: 'servico-post', component: ServicoPostComponent },
   { path: 'servico-list', component: ServicoListComponent },
   { path: 'servico-put/:id', component: ServicoPutComponent },
+  { path: 'servico-notificacao', component: AlertaComponent},
   { path: 'montagem-post', component: MontagemPostComponent },
   { path: 'montagem-list', component: MontagemListComponent },
-  { path: 'montagem-put/:id', component: MontagemPutComponent}
+  { path: 'montagem-put/:id', component: MontagemPutComponent},
+  { path: 'montagem-notificacao', component: MontagemalertaComponent},
+  { path: 'imprimir', component: SelecionarprintComponent},
+  { path: 'imprimir/Serv', component: PrintComponent },
+  { path: 'imprimir/Mont', component: PrintMontComponent},
+
+ 
+  
+  
+
 ];
 
 @NgModule({

@@ -50,6 +50,7 @@ export class MontagemPutComponent implements OnInit {
   addOrcamento(): void {
     if (this.newOrcamento.nomeServico && this.newOrcamento.quantidade) {
       this.newOrcamento.montagemId = Number(this.MontagemId);
+      this.Montagem.valorTotal! += Number(this.newOrcamento.valorTotal)
       this.orcamentoPostService.PostOrcamento(this.newOrcamento).subscribe(
         (orcamento: Orcamento) => {
           if (!this.Montagem.orcamentos) {

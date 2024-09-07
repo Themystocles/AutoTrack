@@ -1,98 +1,132 @@
 <div class="p-4 bg-gray-800 text-white">
-    <!-- Input e botão para buscar montagens -->
-    <div class="mb-4 flex flex-wrap gap-2">
-      <!-- Busca por Data -->
-      <div class="flex items-center space-x-2 w-full md:w-auto">
-        <input 
-          [(ngModel)]="montDate" 
-          type="date"
-          placeholder="Digite a data da montagem" 
-          class="border border-gray-600 bg-gray-700 p-2 rounded-md text-white w-full md:w-auto"
-        >
-        <button 
-          (click)="GetMontagemByDate()" 
-          class="bg-blue-600 text-white p-2 h-10 rounded-md hover:bg-blue-700 whitespace-nowrap"
-        >
-          Buscar por Data
-        </button>
-      </div>
-      <div class="ml-auto mt-4 md:mt-0">
-        <a 
-          href="/montagem-post" 
-          class="inline-block px-4 py-2 text-lg font-medium text-gray-200 bg-gray-800 border border-gray-600 rounded-lg shadow-lg hover:bg-gray-700 transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl"
-        >
-          Cadastrar Nova Montagem
-        </a>
-      </div>
+  <!-- Input e botão para buscar montagens -->
+  <div class="mb-4 flex flex-wrap gap-2 items-center">
+    <!-- Busca por Data -->
+    <div class="flex items-center space-x-2 w-full md:w-auto">
+      <input 
+        type="date" 
+        [(ngModel)]="montDate" 
+        placeholder="Digite a data da montagem" 
+        class="border border-gray-600 bg-gray-700 p-2 rounded-md text-white w-full md:w-auto"
+      >
+      <button 
+        (click)="GetMontagemByDate()" 
+        class="bg-blue-600 text-white p-2 h-10 rounded-md hover:bg-blue-700 whitespace-nowrap"
+      >
+        Buscar por Data
+      </button>
     </div>
-  
-    <!-- Exibe detalhes das montagens -->
-    <div *ngIf="montagem.length > 0" class="space-y-4">
-      <div *ngFor="let mont of montagem" class="bg-gray-900 p-4 rounded-md shadow-md">
-        <h2 class="text-xl font-semibold mb-2">Detalhes da Montagem</h2>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <div>
-            <p><strong>ID:</strong> {{mont.id}}</p>
-            <p><strong>Data:</strong> {{mont.data}}</p>
-            <p><strong>Geração Instaladores:</strong> {{mont.geracaoInstaladores}}</p>
-            <p><strong>Redutor Valor:</strong> {{mont.redutorValor}}</p>
-            <p><strong>Número Série:</strong> {{mont.numeroSerie}}</p>
-            <p><strong>Forma de Pagamento:</strong> {{mont.formaPagamento}}</p>
-            <p><strong>Marca Cilindro:</strong> {{mont.marcaCilindro}}</p>
-            <p><strong>Número Cilindro:</strong> {{mont.numeroCilindro}}</p>
-            <p><strong>Quilo:</strong> {{mont.quilo}}</p>
-            <p><strong>Litro:</strong> {{mont.litro}}</p>
-            <p><strong>Ano Fabricação:</strong> {{mont.anoFab}}</p>
-            <p><strong>Documentação Ano:</strong> {{mont.documentacaoAno}}</p>
-            <p><strong>Ano Reteste:</strong> {{mont.anoReteste}}</p>
-            <p><strong>Requalificadora:</strong> {{mont.requalificadora}}</p>
-            <p><strong>Número NF Equipamento:</strong> {{mont.numeroNFEquipamento}}</p>
-            <p><strong>Número Ordem Requalificação:</strong> {{mont.numeroOrdemRequalificacao}}</p>
-            <p><strong>Número Laudo Montagem:</strong> {{mont.numeroLaudoMontagem}}</p>
-            <p><strong>Marca Válvula:</strong> {{mont.marcaValvula}}</p>
-            <p><strong>Número NF Serviço Montagem:</strong> {{mont.numeroNFServicoMontagem}}</p>
-            <p><strong>Número Válvula:</strong> {{mont.numeroValvula}}</p>
-            <p><strong>Selo:</strong> {{mont.selo}}</p>
-            <p><strong>Orçamento:</strong> {{mont.orcamento}}</p>
-            <p><strong>Quantidade Peça Serviço:</strong> {{mont.quantPecaServico}}</p>
-            <p><strong>Valor Unitário:</strong> {{mont.valorUnitario}}</p>
-            <p><strong>Valor Total:</strong> {{mont.valorTotal}}</p>
-            <p><strong>Kit da Loja:</strong> {{mont.kitDaLoja ? 'Sim' : 'Não'}}</p>
-          </div>
-        </div>
-
-              <!-- Exibe detalhes dos orçamentos associados -->
-      <div *ngIf="mont.orcamentos && mont.orcamentos.length > 0" class="mt-4 bg-gray-800 p-4 rounded-md shadow-md">
-        <h3 class="text-lg font-semibold mb-2">Orçamentos Associados</h3>
-        <div *ngFor="let orcamento of mont.orcamentos" class="border-t border-gray-600 pt-4">
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div>
-              <p><strong>Produto:</strong> {{orcamento.produto}}</p>
-              <p><strong>Nome Serviço:</strong> {{orcamento.nomeServico}}</p>
-              <p><strong>Quantidade:</strong> {{orcamento.quantidade}}</p>
-              <p><strong>Valor Parcial:</strong> {{orcamento.valorParcial}}</p>
-              <p><strong>Valor Total:</strong> {{orcamento.valorTotal}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-  
-        <!-- Exibe detalhes do veículo associado -->
-        <div *ngIf="mont.veiculo" class="mt-4 bg-gray-800 p-4 rounded-md shadow-md">
-          <h3 class="text-lg font-semibold mb-2">Veículo Associado</h3>
-          <div class="h-1 bg-green-600 mb-4"></div>
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-            <div>
-              <p><strong>Carro:</strong> {{mont.veiculo.carro}}</p>
-              <p><strong>Placa:</strong> {{mont.veiculo.placa}}</p>
-              <p><strong>Chassi:</strong> {{mont.veiculo.chassi}}</p>
-              <p><strong>Cor:</strong> {{mont.veiculo.cor}}</p>
-              <p><strong>KM Atual:</strong> {{mont.veiculo.kmAtual}}</p>
-            </div>
-          </div>
-        </div>
-   
-      </div>
+    <!-- Botão Cadastrar Nova Montagem -->
+    <div class="ml-auto mt-4 md:mt-0">
+      <a 
+        href="/montagem-post" 
+        class="inline-block px-4 py-2 text-lg font-medium text-gray-200 bg-gray-800 border border-gray-600 rounded-lg shadow-lg hover:bg-gray-700 transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl"
+      >
+        Cadastrar Nova Montagem
+      </a>
     </div>
   </div>
+
   
+
+  <!-- Exibe detalhes das montagens -->
+  <div *ngIf="montagem.length > 0" class="space-y-4">
+    <div *ngFor="let mont of montagem" class="bg-gray-900 p-4 rounded-md shadow-md w-full">
+       <!-- Exibe detalhes do veículo associado -->
+       <div *ngIf="mont.veiculo" class="mt-4 bg-gray-800 p-4 rounded-md shadow-md">
+        <h3 class="text-lg font-semibold mb-2">Veículo Associado</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse border border-gray-300">
+            <tbody>
+              <tr>
+                <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Carro:</td>
+                <td class="border border-gray-300 px-4 py-2">{{mont.veiculo.carro}}</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Placa:</td>
+                <td class="border border-gray-300 px-4 py-2">{{mont.veiculo.placa}}</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Chassi:</td>
+                <td class="border border-gray-300 px-4 py-2">{{mont.veiculo.chassi}}</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Cor:</td>
+                <td class="border border-gray-300 px-4 py-2">{{mont.veiculo.cor}}</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">KM Atual:</td>
+                <td class="border border-gray-300 px-4 py-2">{{mont.veiculo.kmAtual}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+     
+    
+  
+
+      <h2 class="text-xl font-semibold mb-2">Detalhes da Montagem</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse border border-gray-300">
+          <tbody>
+            <tr>
+              <td class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">ID:</td>
+              <td class="border border-gray-300 px-4 py-2">{{mont.id}}</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Data:</td>
+              <td class="border border-gray-300 px-4 py-2">{{mont.data}}</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Geração Instaladores:</td>
+              <td class="border border-gray-300 px-4 py-2">{{mont.geracaoInstaladores}}</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Redutor Valor:</td>
+              <td class="border border-gray-300 px-4 py-2">{{mont.redutorMarca}}</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Número Série:</td>
+              <td class="border border-gray-300 px-4 py-2">{{mont.numeroSerie}}</td>
+            </tr>
+            <!-- Adicione mais linhas conforme necessário -->
+            <tr>
+              <td class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Valor Total:</td>
+              <td class="border border-gray-300 px-4 py-2">{{mont.valorTotal}}</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Kit da Loja:</td>
+              <td class="border border-gray-300 px-4 py-2">{{mont.kitDaLoja ? 'Sim' : 'Não'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Exibe detalhes dos orçamentos associados -->
+      <div *ngIf="mont.orcamentos && mont.orcamentos.length > 0" class="mt-4 bg-gray-800 p-4 rounded-md shadow-md">
+        <h3 class="text-lg font-semibold mb-2">Orçamentos Associados</h3>
+        <div *ngFor="let orcamento of mont.orcamentos" class="overflow-x-auto">
+          <table class="w-full border-collapse border border-gray-300">
+            <thead>
+              <tr>
+                <th class="border border-gray-300 bg-gray-900 px-4 py-2 font-semibold">Produto</th>
+                <th class="border border-gray-300 bg-gray-900 px-4 py-2 font-semibold">Nome Serviço</th>
+                <th class="border border-gray-300 bg-gray-900 px-4 py-2 font-semibold">Quantidade</th>
+                <th class="border border-gray-300 bg-gray-900 px-4 py-2 font-semibold">Valor Parcial</th>
+                <th class="border border-gray-300 bg-gray-900 px-4 py-2 font-semibold">Valor Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let orc of mont.orcamentos">
+                <td class="border border-gray-300 px-4 py-2">{{orc.produto}}</td>
+                <td class="border border-gray-300 px-4 py-2">{{orc.nomeServico}}</td>
+                <td class="border border-gray-300 px-4 py-2">{{orc.quantidade}}</td>
+                <td class="border border-gray-300 px-4 py-2">{{orc.valorParcial}}</td>
+                <td class="border border-gray-300 px-4 py-2">{{orc.valorTotal}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+     

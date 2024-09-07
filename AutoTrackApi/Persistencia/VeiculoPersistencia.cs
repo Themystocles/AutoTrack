@@ -25,8 +25,9 @@ namespace AutoTrackApi.Persistencia
             .Include(v => v.Cliente) // Inclui o cliente relacionado
             .Include(v => v.servicos)
             .ThenInclude(o => o.orcamentos)
-            .Include(m => m.montagens) // Inclui os serviços relacionados
-            .FirstOrDefaultAsync(v => v.Chassi == chassi);
+            .Include(m => m.montagens)
+            .ThenInclude(o => o.orcamentos) // Inclui os serviços relacionados
+            .FirstOrDefaultAsync(v => v.Chassi.ToLower() == chassi.ToLower());
 
         return veiculo;
            
@@ -44,7 +45,8 @@ namespace AutoTrackApi.Persistencia
             .Include(v => v.servicos)
             .ThenInclude(o => o.orcamentos) // Inclui os serviços relacionados
             .Include(m => m.montagens)
-            .FirstOrDefaultAsync(v => v.Placa == placa);
+            .ThenInclude(o => o.orcamentos)
+            .FirstOrDefaultAsync(v => v.Placa.ToLower() == placa.ToLower());
 
         return veiculo;
         }

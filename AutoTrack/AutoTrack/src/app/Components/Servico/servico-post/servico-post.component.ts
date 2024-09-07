@@ -3,7 +3,8 @@ import { Servico } from '../../../Models/ServicoMode';
 import { ServicoPostService } from '../../../Services/CRUD - Cliente/servico-post.service';
 import { Veiculo } from '../../../Models/VeiculoModel';
 import { OrcamentoPostComponent } from '../../Orcamento/orcamento-post/orcamento-post.component';
-import { Orcamento } from '../../../Models/OrcamentoModel'; // Adicione o modelo Orcamento se não estiver importado
+import { Orcamento } from '../../../Models/OrcamentoModel'; 
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-servico-post',
@@ -15,11 +16,15 @@ export class ServicoPostComponent {
   veiculo: Veiculo | null = null;
   servico: Servico = new Servico();
   showSuccessMessage: boolean = false;
-  orcamentos: Orcamento[] = []; 
+  orcamentos: Orcamento[] = [];
+  somaTotal: number = 0; // Adiciona a variável somaTotal
+  Tiposervico = {
+    requalificacao: 'Simples' // Valor padrão
+  };
 
   @ViewChild(OrcamentoPostComponent) orcamentoComponent?: OrcamentoPostComponent;
 
-  constructor(public servicoServices: ServicoPostService) { }
+  constructor(public servicoServices: ServicoPostService, public router: Router) { }
 
   GetVeiculoByPlaca() {
     if (!this.placaveiculo.trim()) {
@@ -42,12 +47,16 @@ export class ServicoPostComponent {
   }
 
   onSubmit(form: any) {
+    this.servico.totalorcamento = this.somaTotal;
+    this.servico.requalificacao = this.Tiposervico.requalificacao
+   
+    
     if (this.servico.veiculoId === 0 || 
         !this.servico.descricao?.trim() || 
-        
         !this.servico.formaPag?.trim() || 
         !this.servico.mecanico?.trim() || 
-        !this.servico.observacao?.trim() ) {
+        !this.servico.observacao?.trim() 
+        ) {
       alert('Por favor, preencha todos os campos obrigatórios.');
       return;
     }
@@ -62,6 +71,7 @@ export class ServicoPostComponent {
           }
         }
         this.showSuccessMessage = true;
+        setTimeout(() => this.router.navigate(['/servico-list']), 2000);
         form.reset();
         this.veiculo = null;
         this.servico = new Servico();
@@ -76,5 +86,9 @@ export class ServicoPostComponent {
 
   receiveOrcamentos(orcamentos: Orcamento[]) {
     this.orcamentos = orcamentos;
+  }
+
+  updateSomaTotal(somaTotal: number) {
+    this.somaTotal = somaTotal; // Atualiza a somaTotal com o valor recebido
   }
 }

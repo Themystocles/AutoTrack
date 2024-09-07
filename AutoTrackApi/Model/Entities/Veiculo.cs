@@ -10,7 +10,7 @@ namespace AutoTrackApi.Model
 {
     public int Id { get; set; }
     public string Carro { get; set; }
-    public string Placa { get; set; }
+    public string? Placa { get; set; }
     public string Especie { get; set; }
     public string Combustivel { get; set; }
     public string Potencia { get; set; }
@@ -21,8 +21,7 @@ namespace AutoTrackApi.Model
     public string Cor { get; set; }
     public string Observacao { get; set; }
     public string KmAtual { get; set; }
-    public string ProxManutencao { get; set; }
-    public string ProxTrocaFiltro { get; set; }
+   
     public string Garantia { get; set; }
     public string Renavam { get; set; }
     public int ClienteId { get; set; }

@@ -13,9 +13,12 @@ export class OrcamentoPostComponent implements OnInit {
   @Input() servicoId: number | null = null;
   @Input() montagemId: number | null = null;
   @Output() orcamentosChange = new EventEmitter<Orcamento[]>();
+  @Output() somaTotalChange = new EventEmitter<number>(); // Adiciona um EventEmitter para somaTotal
+  
+  somaTotal: number = 0;
   orcamentos: Orcamento[] = [];
   estoque: Estoque[] = [];
-
+  
   constructor(
     private orcamentoPostService: OrcamentoPostService, 
     private estoqueService: FiltroEstoqueService
@@ -26,6 +29,7 @@ export class OrcamentoPostComponent implements OnInit {
       this.orcamentos.push(this.createEmptyOrcamento(this.servicoId, this.montagemId));
     }
     this.loadEstoque();
+    this.recalcularSomaTotal();
   }
 
   private loadEstoque() {
@@ -62,6 +66,11 @@ export class OrcamentoPostComponent implements OnInit {
   removeOrcamento(index: number) {
     this.orcamentos.splice(index, 1);
   }
+  
+  recalcularSomaTotal() {
+    this.somaTotal = this.orcamentos.reduce((soma, orcamento) => soma + (orcamento.valorTotal || 0), 0);
+    this.somaTotalChange.emit(this.somaTotal); // Emite a somaTotal sempre que for recalculada
+  }
 
   submitOrcamentos() {
     if (this.servicoId === null && this.montagemId === null) {
@@ -83,6 +92,7 @@ export class OrcamentoPostComponent implements OnInit {
     });
 
     this.orcamentosChange.emit(this.orcamentos);
+    this.recalcularSomaTotal(); // Garante que a soma total seja recalculada ao enviar
   }
 
   getProdutoOptions() {
@@ -105,6 +115,7 @@ export class OrcamentoPostComponent implements OnInit {
   updateValorTotal(index: number) {
     const orcamento = this.orcamentos[index];
     orcamento.valorTotal = orcamento.valorParcial * orcamento.quantidade;
+    this.recalcularSomaTotal(); // Atualiza a soma total
   }
 
   updateQuantidade(index: number) {

@@ -59,19 +59,33 @@
       </a>
     </div>
   </div>
-
-  <!-- Exibe detalhes do cliente apenas se houver dados -->
-  <div *ngIf="Cliente && Cliente.nome" class="bg-gray-900 p-4 rounded-md shadow-md">
-    <h2 class="text-xl font-semibold mb-2">Detalhes do Cliente</h2>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-      <div>
-        <p><strong>Nome:</strong> {{Cliente.nome}}</p>
-        <p><strong>CPF:</strong> {{Cliente.cpf}}</p>
-        <p><strong>Inscrição Estadual:</strong> {{Cliente.insEstadual}}</p>
-        <p><strong>Telefone:</strong> {{Cliente.telefone}}</p>
-      </div>
-    </div>
+<!-- Exibe detalhes do cliente apenas se houver dados -->
+<div *ngIf="Cliente && Cliente.nome" class="bg-gray-900 p-4 rounded-md shadow-md w-full">
+  <h2 class="text-xl font-semibold mb-2">Detalhes do Cliente</h2>
+  <div class="overflow-x-auto">
+    <table class="w-full border-collapse border border-gray-300">
+      <tbody>
+        <tr>
+          <td class="border border-gray-300 bg-blue-900 px-4 py-2 font-semibold">Nome:</td>
+          <td class="border border-gray-300 px-4 py-2">{{Cliente.nome}}</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 bg-blue-900 px-4 py-2 font-semibold">CPF:</td>
+          <td class="border border-gray-300 px-4 py-2">{{Cliente.cpf}}</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 bg-blue-900 px-4 py-2 font-semibold">Inscrição Estadual:</td>
+          <td class="border border-gray-300 px-4 py-2">{{Cliente.insEstadual}}</td>
+        </tr>
+        <tr>
+          <td class="border border-gray-300 bg-blue-900 px-4 py-2 font-semibold">Telefone:</td>
+          <td class="border border-gray-300 px-4 py-2">{{Cliente.telefone}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</div>
+
 
   <!-- Lista de resultados de pesquisa -->
   <div *ngIf="searchResults.length" class="bg-gray-900 p-4 rounded-md shadow-md mt-4">
@@ -84,70 +98,171 @@
     </ul>
   </div>
 
-  <!-- Tabela para veículos apenas se houver dados -->
-  <div *ngIf="Cliente?.veiculos?.length" class="bg-gray-900 p-4 rounded-md shadow-md mt-4">
-    <h3 class="text-lg font-semibold mb-2">VEICULOS</h3>
-        <div *ngFor="let veiculo of Cliente.veiculos" class="bg-gray-800 p-4 rounded-md mb-4">
-          <h3 class="text-1xl font-bold mb-3 text-green-500 ">VEÍCULO {{veiculo.placa}}</h3>
+<!-- Tabela para veículos apenas se houver dados -->
+<div *ngIf="Cliente?.veiculos?.length" class="bg-gray-900 p-4 rounded-md shadow-md mt-4 w-full">
+  
+  <div *ngFor="let veiculo of Cliente.veiculos" class="mb-4">
+    <h3 class="text-xl font-bold mb-3 text-green-500">VEÍCULO {{veiculo.carro | uppercase}} {{veiculo.placa | uppercase}}</h3>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <p><strong>Carro:</strong> {{veiculo.carro}}</p>
-        <p><strong>Placa:</strong> {{veiculo.placa}}</p>
-        <p><strong>Chassi:</strong> {{veiculo.chassi}}</p>
-        
-      </div>
-       <!-- Lista de serviços -->
-       <div *ngIf="veiculo.servicos?.length" class="mt-4">
-        <h3 class="text-1xl font-bold mb-3 text-red-500 ">SERVIÇO</h3>
-        <ul class="space-y-2">
-          <li *ngFor="let servico of veiculo.servicos" class="bg-gray-700 p-4 rounded-md">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <p><strong>Descrição:</strong> {{servico.descricao}}</p>
-            <p><strong>Quantidade:</strong> {{servico.quantidade}}</p>
-            <p><strong>Peça Serviço:</strong> {{servico.peca_Servico}}</p>
-            <p><strong>Data:</strong> {{servico.dataServico}}</p>
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse border border-gray-300">
+        <tbody>
+          <tr>
+            <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Carro:</td>
+            <td class="border border-gray-300 px-4 py-2">{{veiculo.carro}}</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Placa:</td>
+            <td class="border border-gray-300 px-4 py-2">{{veiculo.placa}}</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Chassi:</td>
+            <td class="border border-gray-300 px-4 py-2">{{veiculo.chassi}}</td>
+          </tr>
+          <tr>
+            <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Renavam:</td>
+            <td class="border border-gray-300 px-4 py-2">{{veiculo.renavam}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Lista de serviços -->
+    <div *ngIf="veiculo.servicos?.length" class="mt-4 w-full">
+      
+      <ul class="space-y-4">
+        <li *ngFor="let servico of veiculo.servicos" class="bg-gray-900 p-4 rounded-md shadow-md">
+          <h3 class="text-xl font-bold mb-3 text-red-500">SERVIÇO</h3>
+          <div class="mt-4 w-full">
+            <table class="w-full border-collapse border border-gray-300">
+              <tbody>
+                <tr>
+                  <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Descrição:</td>
+                  <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.descricao}}</td>
+                </tr>
+                <tr>
+                  <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Forma de Pagamento:</td>
+                  <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.formaPag }}</td>
+                </tr>
+                <tr>
+                  <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Serviço Pago:</td>
+                  <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.pago ? 'Sim' : 'Não'}}</td>
+                </tr>
+                <tr>
+                  <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Valor Total Orçamento:</td>
+                  <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.totalorcamento | currency:'BRL'}}</td>
+                </tr>
+                <tr>
+                  <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Data:</td>
+                  <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.dataServico | date:'dd-MM-yyyy'}}</td>
+                </tr>
+                
+                <ng-container *ngIf="servico.requalificacao != 'Simples' && servico.requalificacao != null">
+                  
+                  <tr>
+                    <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">requalificadora:</td>
+                    <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.requalificadora}}</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">requalificadora:</td>
+                    <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.requalificadora}}</td>
+                  </tr>
+                </ng-container>
+                
+              </tbody>
+            </table>
           </div>
-            <!-- Tabela de Orçamentos do Serviço -->
-            <div *ngIf="servico.orcamentos?.length" class="mt-2">
-              <h5 class="text-md font-semibold mb-2">Orçamentos do Serviço</h5>
-              <ul class="space-y-2">
-                <li *ngFor="let orcamento of servico.orcamentos" class="bg-gray-600 p-2 rounded-md">
-                  <p><strong>ID:</strong> {{orcamento.id}}</p>
-                  <p><strong>Valor:</strong> {{orcamento.quantidade}}</p>
-                  <p><strong>Data:</strong> {{orcamento.nomeServico}}</p>
-                </li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-        
-        <!-- Lista de montagens -->
-<div *ngIf="veiculo.montagens?.length" class="bg-gray-900 p-4 rounded-md shadow-md mt-4">
-  <h3 class="text-1xl font-bold mb-3 text-yellow-500 ">MONTAGEM</h3>
-  <ul class="space-y-2">
-    <li *ngFor="let montagem of veiculo.montagens" class="bg-gray-800 p-4 rounded-md">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <p><strong>ID:</strong> {{montagem.id}}</p>
-        <p><strong>Descrição:</strong> {{montagem.formaPagamento}}</p>
-        <p><strong>KIT:</strong> {{montagem.kitDaLoja}}</p>
-        <p><strong>Data:</strong> {{montagem.data}}</p>
-        <p><strong>Marca Cilindro:</strong> {{montagem.marcaCilindro}}</p>
-        <p><strong>Pagamento:</strong> {{montagem.formaPagamento}}</p>
-      </div>
+    
+          <!-- Tabela de Orçamentos do Serviço -->
+          <div *ngIf="servico.orcamentos?.length" class="mt-4 overflow-x-auto">
+            <table class="w-full border-collapse border border-red-500">
+              <thead>
+                <tr>
+                  <th class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Orçamento</th>
+                  <th class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Quantidade</th>
+                  <th class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Valor Parcial</th>
+                  <th class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Valor Total</th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let orcamento of servico.orcamentos">
+                  <td class="border border-gray-900 px-4 py-2">{{orcamento.nomeServico}}</td>
+                  <td class="border border-gray-900 px-4 py-2">{{orcamento.quantidade}}</td>
+                  <td class="border border-gray-900 px-4 py-2">{{orcamento.valorParcial | currency:'BRL'}}</td>
+                  <td class="border border-gray-900 px-4 py-2">{{orcamento.valorTotal | currency:'BRL'}}</td>
+                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </li>
+      </ul>
+    </div>
+  
 
+
+        
+<!-- Lista de montagens -->
+<div *ngIf="veiculo.montagens?.length" class="mt-4 w-full">
+  <ul class="space-y-4">
+    <li *ngFor="let montagem of veiculo.montagens" class="bg-gray-900 p-4 rounded-md shadow-md">
+      <h3 class="text-xl font-bold mb-3 text-yellow-500">MONTAGEM</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse border border-gray-300">
+       
+          <tbody>
+            <tr>
+              <td class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">ID:</td>
+              <td colspan="3" class="border border-gray-300 px-4 py-2">{{montagem.id}}</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Descrição:</td>
+              <td colspan="3" class="border border-gray-300 px-4 py-2">{{montagem.formaPagamento}}</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">KIT:</td>
+              <td colspan="3" class="border border-gray-300 px-4 py-2">{{montagem.kitDaLoja}}</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Data:</td>
+              <td colspan="3" class="border border-gray-300 px-4 py-2">{{montagem.data}}</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Marca Cilindro:</td>
+              <td colspan="3" class="border border-gray-300 px-4 py-2">{{montagem.marcaCilindro}}</td>
+            </tr>
+            <tr>
+              <td class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Pagamento:</td>
+              <td colspan="3" class="border border-gray-300 px-4 py-2">{{montagem.formaPagamento}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    
       <!-- Tabela de Orçamentos da Montagem -->
-      <div *ngIf="montagem.orcamentos?.length" class="mt-4">
-        <h4 class="text-md font-semibold mb-2">Orçamentos da Montagem</h4>
-        <ul class="space-y-2">
-          <li *ngFor="let orcamento of montagem.orcamentos" class="bg-gray-700 p-2 rounded-md">
-            <p><strong>ID:</strong> {{orcamento.id}}</p>
-            <p><strong>Valor:</strong> {{orcamento.quantidade}}</p>
-            <p><strong>Data:</strong> {{orcamento.nomeServico}}</p>
-          </li>
-        </ul>
+      <div *ngIf="montagem.orcamentos?.length" class="mt-4 overflow-x-auto">
+        <table class="w-full border-collapse border border-gray-300">
+          <thead>
+            <tr>
+              <th class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Orçamento</th>
+              <th class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Quantidade</th>
+              <th class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Valor Parcial</th>
+              <th class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Valor Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let orcamento of montagem.orcamentos">
+              <td class="border border-gray-900 px-4 py-2">{{orcamento.nomeServico}}</td>
+              <td class="border border-gray-900 px-4 py-2">{{orcamento.quantidade}}</td>
+              <td class="border border-gray-900 px-4 py-2">{{orcamento.valorParcial | currency:'BRL'}}</td>
+              <td class="border border-gray-900 px-4 py-2">{{orcamento.valorTotal | currency:'BRL'}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </li>
   </ul>
 </div>
+
 

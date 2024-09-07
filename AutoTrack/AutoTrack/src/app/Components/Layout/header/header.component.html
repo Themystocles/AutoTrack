@@ -7,14 +7,21 @@
     <nav>
       <ul class="flex space-x-4 items-center">
         <li><a href="/" class="hover:text-gray-400">Home</a></li>
-        <li><a href="#" class="hover:text-gray-400">Perfil</a></li>
+        <li><a routerLink="/imprimir" class="hover:text-gray-400">Imprimir</a></li>
+        <li><a href="#" class="hover:text-gray-400">Notificação</a></li>
         <li class="relative">
-          <a href="#" class="hover:text-gray-400 flex items-center space-x-1">
-            <span>Notificações</span>
-            <!-- Badge de notificação -->
-            <span class="bg-red-500 text-white text-xs font-bold rounded-full h-4 w-4 flex items-center justify-center">
-              3 <!-- Número de notificações -->
+
+          <a class="hover:text-gray-400 flex items-center space-x-1">
+            
+            <span *ngIf="notificacaoServ"  routerLink="servico-notificacao" class="bg-red-500 text-white text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center animate-pulse">
+              {{notificacaoServ}}
             </span>
+            <span *ngIf="notificacaoMont" routerLink="montagem-notificacao" class="bg-yellow-500 text-black text-xs font-bold rounded-full h-6 w-6 flex items-center justify-center animate-pulse">
+              {{notificacaoMont}}
+            </span>
+            
+            
+                    
           </a>
         </li>
         <li><a href="#" class="hover:text-gray-400">Sair</a></li>

@@ -3,8 +3,10 @@ using AutoTrackApi.Model;
 using AutoTrackApi.Model.DTOs;
 using AutoTrackApi.Model.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Data.Sqlite;
 
 namespace AutoTrack.Controllers
 {
@@ -41,6 +43,7 @@ namespace AutoTrack.Controllers
             {
                 return BadRequest("Cliente is null");
             }
+            try{
             var Cliente = new Cliente
             {
                 Nome = clienteDto.Nome,
@@ -59,6 +62,15 @@ namespace AutoTrack.Controllers
 
             await _geralPersist.AddAsync(Cliente);
             return CreatedAtAction(nameof(GetClientes), new { id = Cliente.Id }, Cliente);
+
+            }
+            catch(DbUpdateException ex){
+                if (ex.InnerException is SqliteException sqliteEx && sqliteEx.SqliteErrorCode == 19)
+        {
+            return BadRequest("O CPF informado já está cadastrado.");
+        }
+         return StatusCode(500, "Ocorreu um erro ao salvar os dados.");
+            }   
         }
 
         [HttpPut("cliente/{id}")]
@@ -118,8 +130,6 @@ namespace AutoTrack.Controllers
             veiculoExistente.Cor = veiculoDto.Cor;
             veiculoExistente.Observacao = veiculoDto.Observacao;
             veiculoExistente.KmAtual = veiculoDto.KmAtual;
-            veiculoExistente.ProxManutencao = veiculoDto.ProxManutencao;
-            veiculoExistente.ProxTrocaFiltro = veiculoDto.ProxTrocaFiltro;
             veiculoExistente.Garantia = veiculoDto.Garantia;
             veiculoExistente.Renavam = veiculoDto.Renavam;
 
@@ -143,11 +153,24 @@ public async Task<IActionResult> PutServico(int id, [FromBody] ServicoDto servic
 
     // Atualizar o serviço
     servicoExistente.Descricao = servicoDto.Descricao;
-    
+    servicoExistente.pago = servicoDto.pago;
+    servicoExistente.dataalerta = servicoDto.dataalerta;
     servicoExistente.FormaPag = servicoDto.FormaPag;
     servicoExistente.Mecanico = servicoDto.Mecanico;
     servicoExistente.Observacao = servicoDto.Observacao;
     servicoExistente.DataServico = servicoDto.DataServico;
+    servicoExistente.Totalorcamento = servicoDto.Totalorcamento;
+    // Atribuições relacionadas à requalificação
+servicoExistente.Requalificacao = servicoDto.Requalificacao;
+servicoExistente.MarcaCilindro = servicoDto.MarcaCilindro;
+servicoExistente.NumeroCilindro = servicoDto.NumeroCilindro;
+servicoExistente.Requalificadora = servicoDto.Requalificadora;
+servicoExistente.Ordem = servicoDto.Ordem;
+servicoExistente.NotaDeServico = servicoDto.NotaDeServico;
+servicoExistente.Laudo = servicoDto.Laudo;
+servicoExistente.NotaDaValvula = servicoDto.NotaDaValvula;
+servicoExistente.MarcaValvula = servicoDto.MarcaValvula;
+servicoExistente.NumeroValvula = servicoDto.NumeroValvula;
 
     // Atualizar orçamentos associados
     foreach (var orcamentoDto in servicoDto.Orcamentos)
@@ -209,15 +232,16 @@ public async Task<IActionResult> PutServico(int id, [FromBody] ServicoDto servic
             // Mapear DTO para a entidade Montagem
             montagemExistente.data = montagemDto.Data;
             montagemExistente.GeracaoInstaladores = montagemDto.GeracaoInstaladores;
-            montagemExistente.RedutorValor = montagemDto.RedutorValor;
+            montagemExistente.RedutorMarca = montagemDto.RedutorMarca;
             montagemExistente.NumeroSerie = montagemDto.NumeroSerie;
             montagemExistente.FormaPagamento = montagemDto.FormaPagamento;
+            montagemExistente.pago = montagemDto.pago;
             montagemExistente.MarcaCilindro = montagemDto.MarcaCilindro;
             montagemExistente.NumeroCilindro = montagemDto.NumeroCilindro;
             montagemExistente.Quilo = montagemDto.Quilo;
             montagemExistente.Litro = montagemDto.Litro;
             montagemExistente.AnoFab = montagemDto.AnoFab;
-            montagemExistente.DocumentacaoAno = montagemDto.DocumentacaoAno;
+           
             montagemExistente.AnoReteste = montagemDto.AnoReteste;
             montagemExistente.Requalificadora = montagemDto.Requalificadora;
             montagemExistente.NumeroNFEquipamento = montagemDto.NumeroNFEquipamento;
@@ -227,11 +251,12 @@ public async Task<IActionResult> PutServico(int id, [FromBody] ServicoDto servic
             montagemExistente.NumeroNFServicoMontagem = montagemDto.NumeroNFServicoMontagem;
             montagemExistente.NumeroValvula = montagemDto.NumeroValvula;
             montagemExistente.Selo = montagemDto.Selo;
-            montagemExistente.Orcamento = montagemDto.Orcamento;
-            montagemExistente.QuantPecaServico = montagemDto.QuantPecaServico;
-            montagemExistente.ValorUnitario = montagemDto.ValorUnitario;
+           
+            
+            montagemExistente.Instaladores = montagemDto.Instaladores;
             montagemExistente.ValorTotal = montagemDto.ValorTotal;
             montagemExistente.KitDaLoja = montagemDto.KitDaLoja;
+            montagemExistente.ValorTotal = montagemDto.ValorTotal;
 
             // Atualizar orçamentos associados
             foreach (var orcamentoDto in montagemDto.Orcamentos)
@@ -314,7 +339,7 @@ public async Task<IActionResult> PostOrcamento([FromBody] OrcamentoDto orcamento
             {
                 return BadRequest("Veículo is null");
             }
-
+            try{
             var Veiculo = new Veiculo
             {
 
@@ -330,8 +355,6 @@ public async Task<IActionResult> PostOrcamento([FromBody] OrcamentoDto orcamento
                 Cor = veiculoPostDto.Cor,
                 Observacao = veiculoPostDto.Observacao,
                 KmAtual = veiculoPostDto.KmAtual,
-                ProxManutencao = veiculoPostDto.ProxManutencao,
-                ProxTrocaFiltro = veiculoPostDto.ProxTrocaFiltro,
                 Garantia = veiculoPostDto.Garantia,
                 Renavam = veiculoPostDto.Renavam,
                 ClienteId = veiculoPostDto.ClienteId
@@ -340,6 +363,15 @@ public async Task<IActionResult> PostOrcamento([FromBody] OrcamentoDto orcamento
 
             await _geralPersist.AddAsync(Veiculo);
             return CreatedAtAction(nameof(GetVeiculos), new { id = Veiculo.Id }, Veiculo);
+
+            } catch(DbUpdateException ex){
+                if (ex.InnerException is SqliteException sqliteEx && sqliteEx.SqliteErrorCode == 19)
+        {
+            return BadRequest("Atenção: a placa ou o chassi já estão cadastrados no sistema.");
+        }
+         return StatusCode(500, "Ocorreu um erro ao salvar os dados.");
+            }   
+        
         }
 
         [HttpGet("servicos")]
@@ -356,7 +388,8 @@ public async Task<IActionResult> PostOrcamento([FromBody] OrcamentoDto orcamento
             {
                 return BadRequest("Serviço is null");
             }
-
+            
+           
             await _geralPersist.AddAsync(servico);
             return CreatedAtAction(nameof(GetServicos), new { id = servico.Id }, servico);
         }

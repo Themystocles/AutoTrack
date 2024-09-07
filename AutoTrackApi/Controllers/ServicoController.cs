@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AutoTrack.Controllers
 {
-    [ApiController]
+[ApiController]
 [Route("api/[controller]")]
 public class ServicoController : ControllerBase
 {
@@ -39,6 +39,18 @@ public class ServicoController : ControllerBase
 
         return Ok(servicos);
     }
+    [HttpGet("alertservico/{dataAlert}")]
+    public async Task<ActionResult<IEnumerable<Servico>>> GetServicosByDateAlert(DateTime dataAlert)
+    {
+        var servicos = await _ServicoPersist.GetServicosByAlertDate(dataAlert);
+
+        if (servicos == null || !servicos.Any())
+        {
+            return NotFound();
+        }
+
+        return Ok(servicos);
+    }
       [HttpGet("servico/mecanico")]
     public async Task<ActionResult<IEnumerable<Servico>>> GetServicosByDate(string mecanico)
     {
@@ -63,6 +75,19 @@ public class ServicoController : ControllerBase
 
         return Ok(servicos);
     }
+[HttpGet("servicos/nao-pagos")]
+public async Task<IActionResult> GetCountServicosNaoPagos()
+{
+    var count = await _ServicoPersist.GetCountServicosNaoPagos();
+    return Ok(count);
+}
+[HttpGet("listServicos/nao-pagos")]
+public async Task<IActionResult> getServicosnãopagos()
+{
+    var servicos = await _ServicoPersist.GetServicosNaoPagos();
+    return Ok(servicos);
+}
+
 }
 
 }

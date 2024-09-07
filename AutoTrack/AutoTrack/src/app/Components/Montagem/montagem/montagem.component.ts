@@ -20,7 +20,12 @@ export class MontagemComponent {
   }
   GetMontagemByDate(){
   
-    this.montagemService.getMontagembydate(this.montDate).subscribe(res => this.montagem = res)
+    this.montagemService.getMontagembydate(this.montDate).subscribe(res => {
+      this.montagem = res},
+    
+    err=>{alert("Não há montagens na data selecionada")
+      this.montagem = []
+    })
     }
 
 }

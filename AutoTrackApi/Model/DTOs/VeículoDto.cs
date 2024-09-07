@@ -20,8 +20,6 @@ namespace AutoTrackApi.Model.DTOs
         public string Cor { get; set; }
         public string Observacao { get; set; }
         public string KmAtual { get; set; }
-        public string ProxManutencao { get; set; }
-        public string ProxTrocaFiltro { get; set; }
         public string Garantia { get; set; }
         public string Renavam { get; set; }
     }
@@ -40,8 +38,7 @@ namespace AutoTrackApi.Model.DTOs
         public string Cor { get; set; }
         public string Observacao { get; set; }
         public string KmAtual { get; set; }
-        public string ProxManutencao { get; set; }
-        public string ProxTrocaFiltro { get; set; }
+       
         public string Garantia { get; set; }
         public string Renavam { get; set; }
          public int ClienteId { get; set; }

@@ -18,6 +18,11 @@ namespace AutoTrackApi.Persistencia
             _context = context;
         }
 
+        public async Task<int> GetCountMontagensNaoPagos()
+        {
+            return await _context.montagens.CountAsync(m => !m.pago);
+        }
+
         public async Task<Montagem> GetMontagemById(int idMontagem)
         {
             return await _context.montagens
@@ -36,5 +41,33 @@ namespace AutoTrackApi.Persistencia
 
             return montagens;
         }
+
+        public async Task<IEnumerable<Montagem>> GetMontagensByMecanico(string Mecanico)
+        {
+            var montagens = await _context.montagens
+                .AsNoTracking() // Evita rastreamento de mudanças para melhorar a performance
+                .Include(v => v.veiculo)// Inclui apenas o veículo relacionado ao serviço
+                .Include(o => o.orcamentos) 
+                .Where(m => m.Instaladores == Mecanico) // Filtra pelos serviços com a data especificada
+                .ToListAsync(); // Converte o resultado para uma lista
+
+            return montagens;
+            
+        }
+
+        public async Task<IEnumerable<Montagem>> GetMontagensNaoPagos()
+        {
+            var montagem = await _context.montagens
+           .AsNoTracking()
+           .Include(v => v.veiculo)
+           .ThenInclude(c => c.Cliente)
+           .Include(o => o.orcamentos)
+           .Where(s => !s.pago)
+           .ToListAsync();
+
+           return montagem;
+        }
+
+      
     }
 }

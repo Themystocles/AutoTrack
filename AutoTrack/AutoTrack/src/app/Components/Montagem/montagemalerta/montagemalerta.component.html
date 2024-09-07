@@ -1,0 +1,84 @@
+<!-- Exibe detalhes das montagens -->
+<div class="space-y-4">
+  <div *ngFor="let mont of Montagem | paginate: { itemsPerPage: itemsPerPage, currentPage: currentPage }" class="bg-gray-900 p-4 rounded-md shadow-md">
+    
+    <!-- Tabela com detalhes do cliente e do veículo -->
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-700">
+        <thead class="bg-gray-800">
+          <tr>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Cliente</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Veículo</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Montagem</th>
+            <th class="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider">Orçamento</th>
+          </tr>
+        </thead>
+        <tbody class="bg-gray-800 divide-y divide-gray-700">
+          <tr>
+            <!-- Detalhes do cliente -->
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div *ngIf="mont.veiculo && mont.veiculo.cliente">
+                <p><strong>Nome:</strong> {{mont.veiculo.cliente.nome}}</p>
+                <p><strong>Telefone:</strong> {{mont.veiculo.cliente.telefone}}</p>
+                <p><strong>Endereço:</strong> {{mont.veiculo.cliente.endereco}}</p>
+              </div>
+            </td>
+            <!-- Detalhes do veículo -->
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div *ngIf="mont.veiculo">
+                <p><strong>Carro:</strong> {{mont.veiculo.carro}}</p>
+                <p><strong>Placa:</strong> {{mont.veiculo.placa}}</p>
+                <p><strong>Chassi:</strong> {{mont.veiculo.chassi}}</p>
+                <p><strong>Cor:</strong> {{mont.veiculo.cor}}</p>
+                <p><strong>KM Atual:</strong> {{mont.veiculo.kmAtual}}</p>
+              </div>
+            </td>
+            <!-- Detalhes da montagem -->
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div>
+                <p><strong>ID:</strong> {{mont.id}}</p>
+                <p><strong>Descrição:</strong> {{mont.kitDaLoja}}</p>
+                <p><strong>Data:</strong> {{mont.data}}</p>
+                <p><strong>Pago:</strong> {{mont.pago}}</p>
+                <p><strong>Ano Reteste:</strong> {{mont.anoReteste}}</p>
+                <button [routerLink]="['/montagem-put', mont.id]" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500 transition-all duration-300">
+                  Editar
+                </button>
+              </div>
+            </td>
+            <!-- Detalhes dos orçamentos -->
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div *ngIf="mont.orcamentos && mont.orcamentos.length > 0">
+                <div *ngFor="let orcamento of mont.orcamentos" class="border-t border-gray-600 pt-2">
+                  <p><strong>Produto:</strong> {{orcamento.produto}}</p>
+                  <p><strong>Nome Serviço:</strong> {{orcamento.nomeServico}}</p>
+                  <p><strong>Quantidade:</strong> {{orcamento.quantidade}}</p>
+                  <p><strong>Valor Parcial:</strong> {{orcamento.valorParcial}}</p>
+                  <p><strong>Valor Total:</strong> {{orcamento.valorTotal}}</p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Controle de paginação -->
+  <div class="flex justify-center mt-4">
+    <nav class="flex items-center space-x-2">
+      <!-- Botão de Página Anterior -->
+      <button (click)="currentPage = currentPage > 1 ? currentPage - 1 : 1" class="px-4 py-2 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-500 transition-colors duration-200 disabled:opacity-50" [attr.disabled]="currentPage === 1 ? true : null">
+        Anterior
+      </button>
+      
+      <!-- Texto da Página -->
+      <span class="text-gray-200 font-semibold">Página {{currentPage}}</span>
+      
+      <!-- Botão de Próxima Página -->
+      <button (click)="currentPage = currentPage + 1" class="px-4 py-2 bg-green-600 text-white rounded-lg shadow-md hover:bg-green-500 transition-colors duration-200">
+        Próxima
+      </button>
+    </nav>
+  </div>
+</div>

@@ -4,7 +4,7 @@
   <!-- Campo para Buscar Veículo -->
   <div class="mb-4">
     <label for="placaveiculo" class="block text-white mb-1">Buscar Veículo por Placa</label>
-    <input id="placaveiculo" name="placaveiculo" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="placaveiculo">
+    <input id="placaveiculo" name="placaveiculo" type="text" class="w-full p-3 rounded bg-gray-700 text-white uppercase" [(ngModel)]="placaveiculo" mask="AAA-AAAA">
     <button (click)="GetVeiculoByPlaca()" class="mt-2 w-full bg-blue-600 text-white p-3 rounded">Buscar Veículo</button>
   </div>
 
@@ -37,25 +37,108 @@
         </select>
       </div>
 
+   
+
+      <!-- Campo Data Alerta -->
+      <div>
+        <label for="dataalerta" class="block text-white mb-1">Data Alerta</label>
+        <input id="dataalerta" name="dataalerta" type="date" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.dataalerta" required>
+      </div>
+       <!-- Campo Tipo de serviço -->
+  <div>
+    <label for="requalificacao" class="block text-white mb-1">Tipo de Serviço</label>
+    <select id="requalificacao" name="requalificacao" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Tiposervico.requalificacao" required>
+      <option value="Simples">Simples</option>
+      <option value="Requalificação">Requalificação</option>
+      
+    </select>
+  </div>
+
+   
+
       <!-- Campo Mecânico -->
       <div>
         <label for="mecanico" class="block text-white mb-1">Mecânico</label>
         <input id="mecanico" name="mecanico" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.mecanico" required>
       </div>
+      
+   
+        
+    
+
     </div>
+    <div *ngIf="Tiposervico.requalificacao != 'Simples' ">
+      <div class="grid grid-cols-3 gap-4">
+        <div>
+          <label for="marcaCilindro" class="block text-white mb-1">Marca Cilindro</label>
+          <input id="marcaCilindro" name="marcaCilindro" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.marcaCilindro" >
+        </div>
+        <div>
+          <label for="numeroCilindro" class="block text-white mb-1">Número Cilindro</label>
+          <input id="numeroCilindro" name="numeroCilindro" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.numeroCilindro" >
+        </div>
+        <div>
+          <label for="requalificadora" class="block text-white mb-1">requalificadora</label>
+          <input id="requalificadora" name="requalificadora" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.requalificadora" >
+        </div>
+        <div>
+          <label for="Ordem" class="block text-white mb-1">Ordem</label>
+          <input id="Ordem" name="Ordem" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.ordem" >
+        </div>
+        <div>
+          <label for="notaDeServico" class="block text-white mb-1">Nota de Serviço</label>
+          <input id="notaDeServico" name="notaDeServico" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.notaDeServico" >
+        </div>
+        <div>
+          <label for="laudo" class="block text-white mb-1">Laudo</label>
+          <input id="laudo" name="laudo" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.laudo" >
+        </div>
+        <div>
+          <label for="notaDaValvula" class="block text-white mb-1">Nota da Valvula</label>
+          <input id="notaDaValvula" name="notaDaValvula" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.notaDaValvula" >
+        </div>
+        <div>
+          <label for="marcaValvula" class="block text-white mb-1">Marca Valvula</label>
+          <input id="marcaValvula" name="marcaValvula" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.marcaValvula" >
+        </div>
+        <div>
+          <label for="numeroValvula" class="block text-white mb-1">Número da valvula</label>
+          <input id="numeroValvula" name="numeroValvula" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.numeroValvula" >
+        </div>
+      </div>
+    </div>
+    
+       <!-- Campo Pago? -->
+       <div>
+        <label for="Pago" class="block text-white mb-1">Serviço Pago</label>
+        <input id="Pago" name="Pago" type="checkbox" class="form-checkbox h-6 w-6 text-blue-600 rounded border-blue-600 focus:ring focus:ring-blue-500 focus:ring-opacity-50" [(ngModel)]="servico.pago">
+      </div>
+           <!-- Campo Tipo Serviço -->
+
+           
+ 
 
     <!-- Campo Observação (Textarea ocupa toda a largura) -->
     <div class="mt-6">
       <label for="observacao" class="block text-white mb-1">Observação</label>
-      <textarea id="observacao" name="observacao" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.observacao" rows="4" required></textarea>
+      <textarea id="observacao" name="observacao" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.observacao" rows="4"></textarea>
     </div>
+
+    <!-- Exibição da Soma Total -->
+    <div class="mt-6">
+      <label for="Totalorcamento" class="block text-white mb-1">TOTAL</label>
+      <input id="Totalorcamento" name="Totalorcamento" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [value]="somaTotal" readonly>
+    </div>
+
+
+
+    
 
     <!-- Inclusão do componente OrcamentoPostComponent -->
     <div class="bg-gray-700 p-6 rounded-lg shadow-lg mt-8">
       <h3 class="text-white text-2xl mb-4">Adicionar Orçamentos</h3>
-      <app-orcamento-post (orcamentosChange)="receiveOrcamentos($event)"></app-orcamento-post>
+      <app-orcamento-post (orcamentosChange)="receiveOrcamentos($event)" (somaTotalChange)="updateSomaTotal($event)"></app-orcamento-post>
     </div>
-
     <!-- Botão de Submit -->
     <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded mt-6">Cadastrar Serviço</button>
   </form>

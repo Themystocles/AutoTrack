@@ -4,6 +4,7 @@ import { Cep } from 'src/app/Models/Cep';
 import { Cliente } from 'src/app/Models/ClienteModel';
 import { CepService } from 'src/app/Services/cep.service';
 import { ClientePostService } from 'src/app/Services/CRUD - Cliente/cliente-post.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cliente-post',
@@ -11,6 +12,7 @@ import { ClientePostService } from 'src/app/Services/CRUD - Cliente/cliente-post
   styleUrls: ['./cliente-post.component.scss']
 })
 export class ClientePostComponent {
+  errorMessage: string = '';
   Cliente: Cliente = {
     id: 0,
     nome: '',
@@ -31,7 +33,7 @@ export class ClientePostComponent {
 
   showSuccessMessage: boolean = false;
 
-  constructor(private clientePostService: ClientePostService, public cepService: CepService) { }
+  constructor(private clientePostService: ClientePostService, public cepService: CepService, private router: Router) { }
 
   PesquisaPorCep() {
     this.cepService.getEnderecoPorCep(this.cep).subscribe(res => {
@@ -52,6 +54,7 @@ export class ClientePostComponent {
       res => {
         console.log('Cliente cadastrado com sucesso', res);
         this.showSuccessMessage = true;
+        setTimeout(() => this.router.navigate(['/cliente-list']), 2000); // Redireciona após 2 segundos
 
         // Não limpar o campo CEP
         this.Cliente = {
@@ -74,7 +77,8 @@ export class ClientePostComponent {
         this.Cliente.cep = this.cep;
       },
       error => {
-        console.error('Erro ao cadastrar cliente', error);
+        console.error('Erro ao cadastrar cliente', error );
+        this.errorMessage = error.error;
       }
     );
   }

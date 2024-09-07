@@ -5,15 +5,15 @@ export class Montagem {
   id?: number;
   data?: string;
   geracaoInstaladores?: string;
-  redutorValor?: number;
+  redutorMarca?: string;
   numeroSerie?: string;
   formaPagamento?: string;
   marcaCilindro?: string;
-  numeroCilindro?: number;
+  numeroCilindro?: string;
   quilo?: number;
   litro?: number;
   anoFab?: number;
-  documentacaoAno?: number;
+  
   anoReteste?: number;
   requalificadora?: string;
   numeroNFEquipamento?: string;
@@ -23,9 +23,9 @@ export class Montagem {
   numeroNFServicoMontagem?: string;
   numeroValvula?: string;
   selo?: string;
-  orcamento?: number;
-  quantPecaServico?: number;
-  valorUnitario?: number;
+  pago?: boolean;
+  
+  instaladores?: string;
   valorTotal?: number;
   kitDaLoja?: boolean;
   veiculoId?: number;

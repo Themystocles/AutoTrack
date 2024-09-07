@@ -70,6 +70,9 @@
 
     <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded col-span-1 sm:col-span-2 lg:col-span-3 mt-4">Cadastrar</button>
   </form>
+  <div *ngIf="errorMessage" class="alert alert-danger" style="font-size: 1.2em; padding: 20px; border-radius: 5px; margin-top: 15px; border: 2px solid red; background-color: #f8d7da; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center; color: black;">
+    {{ errorMessage }}
+  </div>
 
   <!-- Mensagem de Sucesso -->
   <div *ngIf="showSuccessMessage" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">

@@ -97,15 +97,15 @@ namespace AutoTrack.Migrations
                     b.Property<int>("AnoReteste")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("DocumentacaoAno")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("FormaPagamento")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("GeracaoInstaladores")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Instaladores")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("KitDaLoja")
@@ -122,8 +122,9 @@ namespace AutoTrack.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("NumeroCilindro")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("NumeroCilindro")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("NumeroLaudoMontagem")
                         .IsRequired()
@@ -149,16 +150,11 @@ namespace AutoTrack.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Orcamento")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("QuantPecaServico")
-                        .HasColumnType("INTEGER");
-
                     b.Property<decimal>("Quilo")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("RedutorValor")
+                    b.Property<string>("RedutorMarca")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Requalificadora")
@@ -172,14 +168,14 @@ namespace AutoTrack.Migrations
                     b.Property<decimal>("ValorTotal")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("ValorUnitario")
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("VeiculoId")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("data")
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("pago")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -205,15 +201,54 @@ namespace AutoTrack.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Laudo")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MarcaCilindro")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MarcaValvula")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Mecanico")
                         .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NotaDaValvula")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NotaDeServico")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NumeroCilindro")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("NumeroValvula")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Observacao")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Ordem")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Requalificacao")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Requalificadora")
+                        .HasColumnType("TEXT");
+
+                    b.Property<decimal?>("Totalorcamento")
+                        .HasColumnType("TEXT");
+
                     b.Property<int>("VeiculoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime?>("dataalerta")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("pago")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
@@ -246,7 +281,6 @@ namespace AutoTrack.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Chassi")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("ClienteId")
@@ -277,18 +311,9 @@ namespace AutoTrack.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Placa")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Potencia")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProxManutencao")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ProxTrocaFiltro")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -298,7 +323,13 @@ namespace AutoTrack.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Chassi")
+                        .IsUnique();
+
                     b.HasIndex("ClienteId");
+
+                    b.HasIndex("Placa")
+                        .IsUnique();
 
                     b.ToTable("Veiculos");
                 });
@@ -322,7 +353,6 @@ namespace AutoTrack.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Cpf")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Endereco")
@@ -354,6 +384,9 @@ namespace AutoTrack.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Cpf")
+                        .IsUnique();
 
                     b.ToTable("Clientes");
                 });
