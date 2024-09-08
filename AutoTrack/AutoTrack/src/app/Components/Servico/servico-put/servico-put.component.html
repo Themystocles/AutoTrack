@@ -121,6 +121,14 @@
           <label for="nomeServico_{{orcamento.id}}" class="block text-white mb-1">Nome do Serviço</label>
           <input id="nomeServico_{{orcamento.id}}" name="nomeServico_{{orcamento.id}}" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.nomeServico">
         </div>
+        <div class="mb-4">
+          <label for="produto{{orcamento.id}}" class="block text-white mb-1">Produto</label>
+          <input id="produto{{orcamento.id}}" name="produto{{orcamento.id}}" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.produto">
+        </div>
+        <div class="mb-4">
+          <label for="kmAtual{{orcamento.id}}" class="block text-white mb-1">KM Atual</label>
+          <input id="kmAtual{{orcamento.id}}" name="kmAtual{{orcamento.id}}" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.kmAtual">
+        </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           <div class="mb-4">
             <label for="quantidade_{{orcamento.id}}" class="block text-white mb-1">Quantidade</label>

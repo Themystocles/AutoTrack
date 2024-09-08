@@ -11,7 +11,7 @@ import { Veiculo } from 'src/app/Models/VeiculoModel';
 export class ServicoPostService {
 
   public urlPlaca = 'http://localhost:5203/api/Veiculo/veiculo'
-  public url = 'http://localhost:5203/api/Geral/servicos'
+  public url = 'http://localhost:5203/api/Servico/servicos'
   public baseUrl = 'http://localhost:5203/api/Geral/Orcamento'
 
   constructor(public http : HttpClient) { }

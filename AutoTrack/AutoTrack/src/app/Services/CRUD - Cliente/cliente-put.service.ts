@@ -9,7 +9,7 @@ import { Cliente } from 'src/app/Models/ClienteModel';
 export class ClientePutService {
 
   public url = 'http://localhost:5203/api/Cliente/id'
-  public urlPut = 'http://localhost:5203/api/Geral/cliente'
+  public urlPut = 'http://localhost:5203/api/Cliente/cliente'
 
 
   constructor(public http : HttpClient) { }

@@ -15,7 +15,6 @@ export class Veiculo {
   chassi?: string;
   cor?: string;
   observacao?: string;
-  kmAtual?: string;
   garantia?: string;
   renavam?: string;
   clienteId?: number;

@@ -9,7 +9,7 @@ import { Servico } from 'src/app/Models/ServicoMode';
 export class ServicoPutService {
 
    public url = 'http://localhost:5203/api/Servico/idServico'
-  public urlPut = 'http://localhost:5203/api/Geral/servico'
+  public urlPut = 'http://localhost:5203/api/Servico/servico'
 
   constructor(public http : HttpClient) { }
 

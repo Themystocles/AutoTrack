@@ -17,6 +17,7 @@ namespace AutoTrackApi.Model.Entities
         public Servico? Servico { get; set; }
         public int? EstoqueId { get; set; }
         public Estoque? estoque { get; set; }
+         public string? KmAtual { get; set; }
         public int? MontagemId { get; set; }
         public Montagem? Montagem { get; set; }
     }

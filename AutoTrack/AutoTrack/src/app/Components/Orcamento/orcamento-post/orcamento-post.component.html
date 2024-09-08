@@ -21,6 +21,11 @@
             class="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:border-indigo-500 focus:ring-indigo-500"/>
         </div>
         <div>
+          <label for="produto-{{i}}" class="block text-sm font-medium">KM Atual:</label>
+          <input type="text" id="kmAtual-{{i}}" [(ngModel)]="orcamento.kmAtual" name="produto-{{i}}" 
+            class="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:border-indigo-500 focus:ring-indigo-500"/>
+        </div>
+        <div>
           <label for="valorParcial-{{i}}" class="block text-sm font-medium">Valor Parcial:</label>
           <input type="number" id="valorParcial-{{i}}" [(ngModel)]="orcamento.valorParcial" name="valorParcial-{{i}}" required
             class="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:border-indigo-500 focus:ring-indigo-500"/>

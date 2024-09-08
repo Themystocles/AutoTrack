@@ -3,6 +3,7 @@ using System;
 using AutoTrackApi.DataContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AutoTrack.Migrations
 {
     [DbContext(typeof(ConnectionContext))]
-    partial class ConnectionContextModelSnapshot : ModelSnapshot
+    [Migration("20240908122549_retirandokmatual")]
+    partial class retirandokmatual
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.3");
@@ -53,6 +56,7 @@ namespace AutoTrack.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("KmAtual")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("MontagemId")

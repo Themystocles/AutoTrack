@@ -20,7 +20,7 @@ namespace AutoTrackApi.Model
     public string Chassi { get; set; }
     public string Cor { get; set; }
     public string Observacao { get; set; }
-    public string KmAtual { get; set; }
+   
    
     public string Garantia { get; set; }
     public string Renavam { get; set; }

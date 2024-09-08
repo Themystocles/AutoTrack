@@ -37,6 +37,7 @@ export class ServicoPutComponent implements OnInit {
 
   onSubmit(form: any): void {
     if (form.valid) {
+     
       this.servicoService.UpdateServico(this.servicoId, this.servico).subscribe(
         () => {
           this.showSuccessMessage = true;

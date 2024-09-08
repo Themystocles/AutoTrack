@@ -14,6 +14,7 @@ namespace AutoTrackApi.Model.DTOs
         public string? Produto { get; set; }
         public decimal ValorParcial { get; set; }        
         public decimal ValorTotal { get; set; }   
+        public string? KmAtual { get; set; }
         public int? ServicoId { get; set; }
         public int? EstoqueId { get; set; }
         public int? MontagemId { get; set; }

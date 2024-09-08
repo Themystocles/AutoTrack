@@ -9,7 +9,7 @@ import { Veiculo } from 'src/app/Models/VeiculoModel';
 export class VeiculoPutService {
 
  public url = 'http://localhost:5203/api/Veiculo/id'
-  public urlPut = 'http://localhost:5203/api/Geral/veiculo'
+  public urlPut = 'http://localhost:5203/api/Veiculo/veiculo'
 
 
   constructor(public http : HttpClient) { }

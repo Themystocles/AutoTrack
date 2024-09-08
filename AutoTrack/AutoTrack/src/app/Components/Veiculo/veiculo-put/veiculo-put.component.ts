@@ -28,7 +28,7 @@ export class VeiculoPutComponent implements OnInit {
           this.showSuccessMessage = true;
           setTimeout(() => this.router.navigate(['/veiculo-list']), 2000); // Redireciona após 2 segundos
         },
-        error => console.error('Erro ao atualizar cliente:', error)
+        error => console.error('Erro ao atualizar Veículo:', error)
       );
     }
   }

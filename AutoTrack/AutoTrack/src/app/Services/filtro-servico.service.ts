@@ -12,7 +12,7 @@ import { valtot } from '../Models/ValTot';
 export class ServicoService {
 
   public url = 'http://localhost:5203/api/Servico/servico'
-  public urlallServ = 'http://localhost:5203/api/Geral/servicos'
+  public urlallServ = 'http://localhost:5203/api/Servico'
   public urlValTot = 'http://localhost:5203/api/Servico/com-valores-totais'
   public urlalert ='http://localhost:5203/api/Servico/alertservico'
 
