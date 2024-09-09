@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class FiltroOrcamentoService {
 
-  url='http://localhost:5203/api/Geral/orcamentos'
+  url='http://localhost:5203/Orçamento/orcamentos'
 
   constructor(public http : HttpClient) { }
 

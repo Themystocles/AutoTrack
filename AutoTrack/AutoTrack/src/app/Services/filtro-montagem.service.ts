@@ -11,7 +11,7 @@ import { Montagem } from '../Models/MontagemModel';
 export class MontagemService {
 
   public url = 'http://localhost:5203/api/Montagem/montagem'
-  public urlMont = 'http://localhost:5203/api/Geral/montagem'
+  public urlMont = 'http://localhost:5203/api/Montagem'
 
   constructor(public http : HttpClient) { }
 

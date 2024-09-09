@@ -42,14 +42,14 @@ namespace AutoTrackApi.Persistencia
             return montagens;
         }
 
-        public async Task<IEnumerable<Montagem>> GetMontagensByMecanico(string Mecanico)
+        public async Task<Montagem> GetMontagensByNFEVenda(string NFEVenda)
         {
             var montagens = await _context.montagens
                 .AsNoTracking() // Evita rastreamento de mudanças para melhorar a performance
                 .Include(v => v.veiculo)// Inclui apenas o veículo relacionado ao serviço
                 .Include(o => o.orcamentos) 
-                .Where(m => m.Instaladores == Mecanico) // Filtra pelos serviços com a data especificada
-                .ToListAsync(); // Converte o resultado para uma lista
+                .FirstOrDefaultAsync(m => m.NumeroNFEquipamento.ToLower().Contains(NFEVenda.ToLower())) ;
+                 // Converte o resultado para uma lista
 
             return montagens;
             

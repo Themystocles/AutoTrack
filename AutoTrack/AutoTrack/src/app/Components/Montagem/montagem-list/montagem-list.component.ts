@@ -33,7 +33,7 @@ export class MontagemListComponent implements OnInit{
     this.filteredMontagens = this.Montagem.filter(Montagem =>
       (Montagem.data?.toLowerCase().includes(term) || '') 
       ||
-      (Montagem.instaladores?.toLowerCase().includes(term) || '')
+      (Montagem.numeroNFEquipamento?.toLowerCase().includes(term) || '')
     );
   }
 

@@ -11,7 +11,7 @@ namespace AutoTrackApi.Interface
         Task<Montagem> GetMontagemById(int id);
         Task<IEnumerable<Montagem>> GetMontagemsByData(DateTime dataMont);
         Task<int> GetCountMontagensNaoPagos();
-        Task<IEnumerable<Montagem>> GetMontagensByMecanico(string Mecanico);
+        Task<Montagem> GetMontagensByNFEVenda(string NFEVenda);
 
         Task<IEnumerable<Montagem>> GetMontagensNaoPagos();
     }

@@ -9,7 +9,7 @@ import { Montagem } from 'src/app/Models/MontagemModel';
 export class MontagemPutService {
 
   public url = 'http://localhost:5203/api/Montagem/idmontagem'
- public urlPut = 'http://localhost:5203/api/Geral/montagem'
+ public urlPut = 'http://localhost:5203/api/Montagem/montagem'
 
  constructor(public http : HttpClient) { }
 

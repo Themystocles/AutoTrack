@@ -53,10 +53,10 @@ public class ServicoController : ControllerBase
 
         return Ok(servicos);
     }
-      [HttpGet("servico/mecanico")]
-    public async Task<ActionResult<IEnumerable<Servico>>> GetServicosByDate(string mecanico)
+      [HttpGet("servico/tiposerv")]
+    public async Task<ActionResult<IEnumerable<Servico>>> GetServicosByDate(string TipoServ)
     {
-        var servicos = await _ServicoPersist.GetServicosByMecanico(mecanico);
+        var servicos = await _ServicoPersist.GetServicosByTipo(TipoServ);
 
         if (servicos == null || !servicos.Any())
         {

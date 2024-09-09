@@ -68,7 +68,7 @@
 
     </div>
     <div *ngIf="Tiposervico.requalificacao != 'Simples' ">
-      <div class="grid grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         <div>
           <label for="marcaCilindro" class="block text-white mb-1">Marca Cilindro</label>
           <input id="marcaCilindro" name="marcaCilindro" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.marcaCilindro" >
@@ -78,7 +78,7 @@
           <input id="numeroCilindro" name="numeroCilindro" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.numeroCilindro" >
         </div>
         <div>
-          <label for="requalificadora" class="block text-white mb-1">requalificadora</label>
+          <label for="requalificadora" class="block text-white mb-1">Requalificadora</label>
           <input id="requalificadora" name="requalificadora" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.requalificadora" >
         </div>
         <div>
@@ -94,19 +94,20 @@
           <input id="laudo" name="laudo" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.laudo" >
         </div>
         <div>
-          <label for="notaDaValvula" class="block text-white mb-1">Nota da Valvula</label>
+          <label for="notaDaValvula" class="block text-white mb-1">Nota da Válvula</label>
           <input id="notaDaValvula" name="notaDaValvula" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.notaDaValvula" >
         </div>
         <div>
-          <label for="marcaValvula" class="block text-white mb-1">Marca Valvula</label>
+          <label for="marcaValvula" class="block text-white mb-1">Marca Válvula</label>
           <input id="marcaValvula" name="marcaValvula" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.marcaValvula" >
         </div>
         <div>
-          <label for="numeroValvula" class="block text-white mb-1">Número da valvula</label>
+          <label for="numeroValvula" class="block text-white mb-1">N° da Válvula</label>
           <input id="numeroValvula" name="numeroValvula" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.numeroValvula" >
         </div>
       </div>
     </div>
+    
     
        <!-- Campo Pago? -->
        <div>

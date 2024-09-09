@@ -11,8 +11,9 @@ namespace AutoTrackApi.Interface
         Task<Servico> GetServicoById(int id);
         Task<IEnumerable<Servico>> GetServicosByDate(DateTime dataserv);
 
-        Task<IEnumerable<Servico>> GetServicosByMecanico(string Mecanico);
+        Task<IEnumerable<Servico>> GetServicosByTipo(string TipoServico);
         Task<int> GetCountServicosNaoPagos();
+        
         Task<IEnumerable<Servico>> GetServicosNaoPagos();
 
         Task<IEnumerable<Servico>> GetServicosByAlertDate(DateTime dataalertaserv);

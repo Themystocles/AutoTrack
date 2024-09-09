@@ -7,7 +7,7 @@ import { Orcamento } from 'src/app/Models/OrcamentoModel';
   providedIn: 'root'
 })
 export class OrcamentoPostService {
-  public url = 'http://localhost:5203/api/Geral/Orcamento';
+  public url = 'http://localhost:5203/Orcamento/Orcamento';
 
   constructor(public http: HttpClient) { }
 

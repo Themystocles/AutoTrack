@@ -13,6 +13,8 @@ namespace AutoTrackApi.Interface
         Task Editar<T>(T entity) where T : class;
         Task<IEnumerable<T>> GetAll<T>() where T : class;
 
+        Task Deletar<T>(T entity) where T : class;
+
         Task<Cliente> GetClienteBynumeroTel(string telefone);
     }
 }

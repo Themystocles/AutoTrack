@@ -10,8 +10,8 @@ import { Veiculo } from 'src/app/Models/VeiculoModel';
 })
 export class MontagemPostService {
   public urlPlaca = 'http://localhost:5203/api/Veiculo/veiculo'
-  public url = 'http://localhost:5203/api/Geral/montagem'
-   public baseUrl = 'http://localhost:5203/api/Geral/Orcamento'
+  public url = 'http://localhost:5203/api/Montagem/montagem'
+   public baseUrl = 'http://localhost:5203/Orcamento/Orcamento'
   constructor(public http : HttpClient) { }
 
   GetveiculoByPlaca(placa : string):Observable<Veiculo>{

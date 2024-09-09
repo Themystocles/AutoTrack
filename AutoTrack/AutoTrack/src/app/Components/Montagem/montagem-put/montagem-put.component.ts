@@ -36,6 +36,7 @@ export class MontagemPutComponent implements OnInit {
   }
 
   onSubmit(form: any): void {
+    console.log(this.Montagem);
     if (form.valid) {
       this.MontagemServices.UpdateMontagem(this.MontagemId, this.Montagem).subscribe(
         () => {
