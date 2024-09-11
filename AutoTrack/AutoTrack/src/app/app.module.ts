@@ -42,6 +42,8 @@ import { PrintComponent } from './print/print.component';
 import { DataAlertaComponent } from './data-alerta/data-alerta.component';
 import { SelecionarprintComponent } from './selecionarprint/selecionarprint.component';
 import { PrintMontComponent } from './print-mont/print-mont.component';
+import { DataAlertaMontagemComponent } from './data-alerta-montagem/data-alerta-montagem.component';
+import { RelatoriofinanceiroComponent } from './relatoriofinanceiro/relatoriofinanceiro.component';
 
 
 
@@ -78,6 +80,8 @@ import { PrintMontComponent } from './print-mont/print-mont.component';
     DataAlertaComponent,
     SelecionarprintComponent,
     PrintMontComponent,
+    DataAlertaMontagemComponent,
+    RelatoriofinanceiroComponent,
  
     
    

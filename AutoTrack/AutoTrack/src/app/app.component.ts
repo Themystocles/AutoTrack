@@ -27,7 +27,7 @@ export class AppComponent {
            url.includes('/montagem-post') || url.includes('/cliente-list') || url.includes('/cliente-put') || 
            url.includes('/veiculo-list') || url.includes('/veiculo-put') || url.includes('/servico-list') || 
            url.includes('/servico-put') || url.includes('/montagem-list') || url.includes('/montagem-put') || 
-           url.includes('/servico-notificacao') || url.includes('/montagem-notificacao');
+           url.includes('/servico-notificacao') || url.includes('/montagem-notificacao') || url.includes('relatoriofinanceiro');
   }
 
   private isPrintRoute(url: string): boolean {

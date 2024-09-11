@@ -15,7 +15,7 @@ export class Veiculo {
   chassi?: string;
   cor?: string;
   observacao?: string;
-  garantia?: string;
+  
   renavam?: string;
   clienteId?: number;
   cliente? : Cliente;

@@ -84,7 +84,7 @@ namespace AutoTrack.Controllers
                 Chassi = veiculoPostDto.Chassi,
                 Cor = veiculoPostDto.Cor,
                 Observacao = veiculoPostDto.Observacao,
-                Garantia = veiculoPostDto.Garantia,
+                
                 Renavam = veiculoPostDto.Renavam,
                 ClienteId = veiculoPostDto.ClienteId
                 
@@ -128,7 +128,7 @@ namespace AutoTrack.Controllers
             veiculoExistente.Chassi = veiculoDto.Chassi;
             veiculoExistente.Cor = veiculoDto.Cor;
             veiculoExistente.Observacao = veiculoDto.Observacao;
-            veiculoExistente.Garantia = veiculoDto.Garantia;
+           
             veiculoExistente.Renavam = veiculoDto.Renavam;
 
             await _geralPersist.Editar(veiculoExistente);

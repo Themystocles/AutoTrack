@@ -28,7 +28,7 @@ export class VeiculoPostComponent {
     chassi: '',
     cor: '',
     observacao: '',
-       garantia: '',
+     
     renavam: '',
     clienteId: 0  // Este campo será atualizado com o ID do cliente selecionado
   };

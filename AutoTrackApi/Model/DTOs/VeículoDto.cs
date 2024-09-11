@@ -19,8 +19,6 @@ namespace AutoTrackApi.Model.DTOs
         public string Chassi { get; set; }
         public string Cor { get; set; }
         public string Observacao { get; set; }
-        
-        public string Garantia { get; set; }
         public string Renavam { get; set; }
     }
     public class VeiculoPostDto
@@ -37,8 +35,7 @@ namespace AutoTrackApi.Model.DTOs
         public string Chassi { get; set; }
         public string Cor { get; set; }
         public string Observacao { get; set; }
-       
-        public string Garantia { get; set; }
+
         public string Renavam { get; set; }
          public int ClienteId { get; set; }
 

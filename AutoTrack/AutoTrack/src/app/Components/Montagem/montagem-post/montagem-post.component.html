@@ -75,18 +75,48 @@
 
 <!-- Campo Ano de Fabricação -->
 <div class="mb-4 col-span-1">
-<label for="anoFab" class="block text-white mb-1">Ano de Fabricação</label>
-<input id="anoFab" name="anoFab" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.anoFab" mask="00-00-0000">
-</div>
+    <label for="anoFab" class="block text-white mb-1">Ano de Fabricação</label>
+    <input 
+      id="anoFab" 
+      name="anoFab" 
+      type="text" 
+      class="w-full p-3 rounded"
+      [ngClass]="{ 
+        'bg-gray-700 text-white': true, 
+        'border-red-500': anoFab.invalid && (anoFab.dirty || anoFab.touched) 
+      }"
+      [(ngModel)]="montagem.anoFab" 
+      mask="00-00-0000"
+      #anoFab="ngModel"
+      required
+    >
+    <div *ngIf="anoFab.invalid && (anoFab.dirty || anoFab.touched)" class="text-red-500 text-sm mt-1">
+      Preencha o campo no formato correto: 00-00-0000
+    </div>
+  </div>
 
 
 
-<!-- Campo Ano de Reteste -->
 <div class="mb-4 col-span-1">
-<label for="anoReteste" class="block text-white mb-1">Ano de Reteste</label>
-<input id="anoReteste" name="anoReteste" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.anoReteste" mask="00-00-0000">
-</div>
-
+    <label for="anoReteste" class="block text-white mb-1">Ano de Reteste</label>
+    <input 
+      id="anoReteste" 
+      name="anoReteste" 
+      type="text" 
+      class="w-full p-3 rounded"
+      [ngClass]="{ 
+        'bg-gray-700 text-white': true, 
+        'border-red-500': anoReteste.invalid && (anoReteste.dirty || anoReteste.touched) 
+      }"
+      [(ngModel)]="montagem.anoReteste" 
+      mask="00-00-0000"
+      #anoReteste="ngModel"
+      required
+    >
+    <div *ngIf="anoReteste.invalid && (anoReteste.dirty || anoReteste.touched)" class="text-red-500 text-sm mt-1">
+      Preencha o campo no formato correto: 00-00-0000
+    </div>
+  </div>
 <!-- Campo Requalificadora -->
 <div class="mb-4 col-span-1">
 <label for="requalificadora" class="block text-white mb-1">Requalificadora</label>
@@ -142,6 +172,18 @@
 <label for="instaladores" class="block text-white mb-1">Instaladores</label>
 <input id="instaladores" name="instaladores" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.instaladores">
 </div>  
+
+      <!-- Campo Data Alerta -->
+      <div>
+        <label for="dataalerta" class="block text-white mb-1">Data Alerta</label>
+        <input id="dataalerta" name="dataalerta" type="date" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.dataalerta" >
+      </div>
+
+        <!-- Campo Data Alerta -->
+        <div>
+          <label for="pago" class="block text-white mb-1">Pago</label>
+          <input id="pago" name="pago" type="checkbox" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="montagem.pago" >
+        </div>
          
 
 <!-- Campo Valor Total -->

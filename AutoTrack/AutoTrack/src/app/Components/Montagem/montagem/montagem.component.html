@@ -27,13 +27,11 @@
     </div>
   </div>
 
-  
-
   <!-- Exibe detalhes das montagens -->
   <div *ngIf="montagem.length > 0" class="space-y-4">
     <div *ngFor="let mont of montagem" class="bg-gray-900 p-4 rounded-md shadow-md w-full">
-       <!-- Exibe detalhes do veículo associado -->
-       <div *ngIf="mont.veiculo" class="mt-4 bg-gray-800 p-4 rounded-md shadow-md">
+      <!-- Exibe detalhes do veículo associado -->
+      <div *ngIf="mont.veiculo" class="mt-4 bg-gray-800 p-4 rounded-md shadow-md">
         <h3 class="text-lg font-semibold mb-2">Veículo Associado</h3>
         <div class="overflow-x-auto">
           <table class="w-full border-collapse border border-gray-300">
@@ -54,13 +52,10 @@
                 <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Cor:</td>
                 <td class="border border-gray-300 px-4 py-2">{{mont.veiculo.cor}}</td>
               </tr>
-            
             </tbody>
           </table>
         </div>
-     
-    
-  
+      </div>
 
       <h2 class="text-xl font-semibold mb-2">Detalhes da Montagem</h2>
       <div class="overflow-x-auto">
@@ -86,7 +81,6 @@
               <td class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Número Série:</td>
               <td class="border border-gray-300 px-4 py-2">{{mont.numeroSerie}}</td>
             </tr>
-            <!-- Adicione mais linhas conforme necessário -->
             <tr>
               <td class="border border-gray-300 bg-yellow-900 px-4 py-2 font-semibold">Valor Total:</td>
               <td class="border border-gray-300 px-4 py-2">{{mont.valorTotal}}</td>
@@ -102,7 +96,7 @@
       <!-- Exibe detalhes dos orçamentos associados -->
       <div *ngIf="mont.orcamentos && mont.orcamentos.length > 0" class="mt-4 bg-gray-800 p-4 rounded-md shadow-md">
         <h3 class="text-lg font-semibold mb-2">Orçamentos Associados</h3>
-        <div *ngFor="let orcamento of mont.orcamentos" class="overflow-x-auto">
+        <div class="overflow-x-auto">
           <table class="w-full border-collapse border border-gray-300">
             <thead>
               <tr>
@@ -125,5 +119,6 @@
           </table>
         </div>
       </div>
-
-     
+    </div>
+  </div>
+</div>

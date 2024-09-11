@@ -20,6 +20,7 @@ import { MontagemalertaComponent } from './Components/Montagem/montagemalerta/mo
 import { PrintComponent } from './print/print.component';
 import { SelecionarprintComponent } from './selecionarprint/selecionarprint.component';
 import { PrintMontComponent } from './print-mont/print-mont.component';
+import { RelatoriofinanceiroComponent } from './relatoriofinanceiro/relatoriofinanceiro.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'imprimir', component: SelecionarprintComponent},
   { path: 'imprimir/Serv', component: PrintComponent },
   { path: 'imprimir/Mont', component: PrintMontComponent},
+  { path: 'relatoriofinanceiro', component: RelatoriofinanceiroComponent},
 
  
   

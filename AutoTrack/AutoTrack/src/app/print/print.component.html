@@ -178,22 +178,60 @@
           </div>
         </div>
 
-        <!-- Observação em Linha Inteira -->
-        <div class="flex border-b border-gray-200 pb-2">
+       
+
+        <!-- Requalificação -->
+        <ng-container *ngIf="servico.requalificacao != 'Simples' && servico.requalificacao != null">
+          <div class="flex flex-wrap border-b border-gray-200 pb-2">
+            <div class="w-full sm:w-1/3">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Marca Cilindro:</span>
+              <span class="ml-2 text-gray-800">{{servico.marcaCilindro}}</span>
+            </div>
+            <div class="w-full sm:w-1/3">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">N° Cilindro:</span>
+              <span class="ml-2 text-gray-800">{{servico.numeroCilindro}}</span>
+            </div>
+            <div class="w-full sm:w-1/3">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Requalificadora:</span>
+              <span class="ml-2 text-gray-800">{{servico.requalificadora}}</span>
+            </div>
+          </div>
+        
+          <div class="flex flex-wrap border-b border-gray-200 pb-2">
+            <div class="w-full sm:w-1/3">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Ordem:</span>
+              <span class="ml-2 text-gray-800">{{servico.ordem}}</span>
+            </div>
+            <div class="w-full sm:w-1/3">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Nota de Serviço:</span>
+              <span class="ml-2 text-gray-800">{{servico.notaDeServico}}</span>
+            </div>
+            <div class="w-full sm:w-1/3">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Laudo:</span>
+              <span class="ml-2 text-gray-800">{{servico.laudo}}</span>
+            </div>
+          </div>
+        
+          <div class="flex flex-wrap border-b border-gray-200 pb-2">
+            <div class="w-full sm:w-1/3">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Nota da Válvula:</span>
+              <span class="ml-2 text-gray-800">{{servico.notaDaValvula}}</span>
+            </div>
+            <div class="w-full sm:w-1/3">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Marca Válvula:</span>
+              <span class="ml-2 text-gray-800">{{servico.marcaValvula}}</span>
+            </div>
+            <div class="w-full sm:w-1/3">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">N° Válvula:</span>
+              <span class="ml-2 text-gray-800">{{servico.numeroValvula}}</span>
+            </div>
+          </div>
+        </ng-container>
+         <!-- Observação em Linha Inteira -->
+         <div class="flex border-b border-gray-200 pb-2">
           <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Observação:</span>
           <span class="ml-2 text-gray-800 w-full">{{servico.observacao}}</span>
         </div>
-        <ng-container *ngIf="servico.requalificacao != 'Simples' && servico.requalificacao != null">
-                  
-          <div class="w-full sm:w-1/2">
-            <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">requalificadora</span>
-            <span class="ml-2 text-gray-800">{{servico.requalificadora}}</span>
-          </div>
-          <div class="w-full sm:w-1/2">
-            <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">requalificadora</span>
-            <span class="ml-2 text-gray-800">{{servico.requalificadora}}</span>
-          </div>
-        </ng-container>
 
         <!-- Exibe orçamentos relacionados ao serviço -->
         <div *ngIf="servico.orcamentos" class="mt-4">

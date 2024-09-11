@@ -81,26 +81,24 @@
           <input id="cor" name="cor" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="veiculo.cor" required>
       </div>
 
+       <!-- Campo Renavam -->
+       <div class="mb-4 col-span-1">
+        <label for="renavam" class="block text-white mb-1">Renavam</label>
+        <input id="renavam" name="renavam" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="veiculo.renavam" required>
+    </div>
+
       <!-- Campo Observação -->
       <div class="mb-4 col-span-1 md:col-span-2 lg:col-span-3">
           <label for="observacao" class="block text-white mb-1">Observação</label>
-          <input id="observacao" name="observacao" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="veiculo.observacao">
+          <textarea id="observacao" name="observacao" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="veiculo.observacao"></textarea>
       </div>
 
    
 
     
-      <!-- Campo Garantia -->
-      <div class="mb-4 col-span-1">
-          <label for="garantia" class="block text-white mb-1">Garantia</label>
-          <input id="garantia" name="garantia" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="veiculo.garantia">
-      </div>
+    
 
-      <!-- Campo Renavam -->
-      <div class="mb-4 col-span-1">
-          <label for="renavam" class="block text-white mb-1">Renavam</label>
-          <input id="renavam" name="renavam" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="veiculo.renavam" required>
-      </div>
+     
   
       <!-- Botão de Submit -->
       <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded col-span-1 md:col-span-2 lg:col-span-3 mt-4">Cadastrar Veículo</button>

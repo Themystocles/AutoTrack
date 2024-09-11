@@ -53,6 +53,8 @@ public async Task<IActionResult> PostOrcamento([FromBody] OrcamentoDto orcamento
         Produto = orcamentoDto.Produto,
         ValorParcial = orcamentoDto.ValorParcial,
         ValorTotal = orcamentoDto.ValorTotal,
+        Garantia = orcamentoDto.Garantia,
+        DataOrc = orcamentoDto.DataOrc,
         KmAtual = orcamentoDto.KmAtual,
         ServicoId = orcamentoDto.ServicoId != 0 ? orcamentoDto.ServicoId : (int?)null,
         MontagemId = orcamentoDto.MontagemId != 0 ? orcamentoDto.MontagemId : (int?)null,

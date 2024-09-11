@@ -84,6 +84,18 @@ public async Task<ActionResult <IEnumerable<Montagem>>> GetMontagembyNfeVendas(s
 
 
 }
+    [HttpGet("alertmontagem/{dataAlert}")]
+    public async Task<ActionResult<IEnumerable<Montagem>>> GetMontagemByDateAlert(DateTime dataAlert)
+    {
+        var montagem = await _MontagemPersist.GetMontagemByDataAlerta(dataAlert);
+
+        if (montagem == null || !montagem.Any())
+        {
+            return NotFound();
+        }
+
+        return Ok(montagem);
+    }
   [HttpPost("montagem")]
         public async Task<IActionResult> PostMontagem([FromBody] Montagem montagem)
         {
@@ -114,6 +126,7 @@ public async Task<ActionResult <IEnumerable<Montagem>>> GetMontagembyNfeVendas(s
 
             // Mapear DTO para a entidade Montagem
             montagemExistente.data = montagemDto.Data;
+            montagemExistente.dataalerta = montagemDto.dataalerta;
             montagemExistente.GeracaoInstaladores = montagemDto.GeracaoInstaladores;
             montagemExistente.RedutorMarca = montagemDto.RedutorMarca;
             montagemExistente.NumeroSerie = montagemDto.NumeroSerie;

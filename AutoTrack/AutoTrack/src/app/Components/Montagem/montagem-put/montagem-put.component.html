@@ -56,19 +56,50 @@
       <input id="litro" name="litro" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.litro">
     </div>
 
-    <!-- Campo Ano de Fabricação -->
-    <div class="mb-4 col-span-1">
-      <label for="anoFab" class="block text-white mb-1">Ano de Fabricação</label>
-      <input id="anoFab" name="anoFab" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.anoFab" mask="00-00-0000">
-    </div>
+   <!-- Campo Ano de Fabricação -->
+<div class="mb-4 col-span-1">
+  <label for="anoFab" class="block text-white mb-1">Ano de Fabricação</label>
+  <input 
+    id="anoFab" 
+    name="anoFab" 
+    type="text" 
+    class="w-full p-3 rounded"
+    [ngClass]="{ 
+      'bg-gray-700 text-white': true, 
+      'border-red-500': anoFab.invalid && (anoFab.dirty || anoFab.touched) 
+    }"
+    [(ngModel)]="Montagem.anoFab" 
+    mask="00-00-0000"
+    #anoFab="ngModel"
+    required
+  >
+  <div *ngIf="anoFab.invalid && (anoFab.dirty || anoFab.touched)" class="text-red-500 text-sm mt-1">
+    Preencha o campo no formato correto: 00-00-0000
+  </div>
+</div>
 
 
 
-    <!-- Campo Ano de Reteste -->
     <div class="mb-4 col-span-1">
       <label for="anoReteste" class="block text-white mb-1">Ano de Reteste</label>
-      <input id="anoReteste" name="anoReteste" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.anoReteste" mask="00-00-0000">
-    </div>
+      <input 
+        id="anoReteste" 
+        name="anoReteste" 
+        type="text" 
+        class="w-full p-3 rounded"
+        [ngClass]="{ 
+          'bg-gray-700 text-white': true, 
+          'border-red-500': anoReteste.invalid && (anoReteste.dirty || anoReteste.touched) 
+        }"
+        [(ngModel)]="Montagem.anoReteste" 
+        mask="00-00-0000"
+        #anoReteste="ngModel"
+        required
+      >
+      <div *ngIf="anoReteste.invalid && (anoReteste.dirty || anoReteste.touched)" class="text-red-500 text-sm mt-1">
+        Preencha o campo no formato correto: 00-00-0000
+      </div>
+    </div>>
 
     <!-- Campo Requalificadora -->
     <div class="mb-4 col-span-1">
@@ -142,6 +173,14 @@
      <div class="mb-4 flex items-center">
       <label for="Pago" class="block text-white mb-1 mr-2">Pago</label>
       <input id="Pago" name="Pago" type="checkbox" class="form-checkbox text-blue-600" [(ngModel)]="Montagem.pago">
+    </div>
+     <!-- Campo data alerta -->
+     <div>
+      <label *ngIf="Montagem.dataalerta" class="text-gray-700">
+        Data Alerta: {{ Montagem.dataalerta | date: 'dd/MM/yyyy' }}
+      </label>
+      <label for="dataalerta" class="block text-white mb-1">Data Alerta</label>
+      <input id="dataalerta" name="dataalerta" type="date" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.dataalerta" >
     </div>
 
   

@@ -13,6 +13,7 @@ namespace AutoTrackApi.Model
     {
         public int Id { get; set; } 
         public DateTime data { get; set; } = DateTime.Now;
+        public DateTime? dataalerta { get; set; }
         public string? GeracaoInstaladores { get; set; }
         public string? RedutorMarca { get; set; }
         public string? NumeroSerie { get; set; }

@@ -64,8 +64,12 @@ export class OrcamentoPostComponent implements OnInit {
   }
 
   removeOrcamento(index: number) {
+    // Remove o item da lista
     this.orcamentos.splice(index, 1);
-  }
+
+    // Recalcula a soma total após a remoção
+    this.recalcularSomaTotal();
+}
   
   recalcularSomaTotal() {
     this.somaTotal = this.orcamentos.reduce((soma, orcamento) => soma + (orcamento.valorTotal || 0), 0);

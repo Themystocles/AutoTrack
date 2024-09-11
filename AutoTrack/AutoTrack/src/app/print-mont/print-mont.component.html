@@ -145,7 +145,7 @@
       </div>
     </div>
   </div>
-  <!-- serviços -->
+  <!-- Montagem -->
   <div *ngIf="Veiculo && Veiculo.montagens" class="bg-white p-6 rounded-lg shadow-lg mt-4 border border-gray-300">
     <h3 class="text-2xl font-bold text-gray-800 mb-4">Montagem</h3>
     <div class="space-y-4">
@@ -154,29 +154,128 @@
         class="bg-gray-100 border border-gray-300 rounded-lg p-4 shadow-md"
       >
         <div class="flex flex-col space-y-4">
-          <!-- Descrição do Serviço e Forma de Pagamento -->
+          <!-- Linha 1 -->
           <div class="flex flex-wrap border-b border-gray-200 pb-2">
-            <div class="w-full sm:w-1/2 mb-2 sm:mb-0">
-              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Descrição:</span>
+            <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Geração:</span>
               <span class="ml-2 text-gray-800">{{montagem.geracaoInstaladores}}</span>
             </div>
-            <div class="w-full sm:w-1/2">
-              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Forma de Pagamento:</span>
-              <span class="ml-2 text-gray-800">{{montagem.pago}}</span>
+            <div class="w-full sm:w-1/3">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Kit da loja</span>
+              <span class="ml-2 text-gray-800">{{montagem.kitDaLoja}}</span>
+            </div>
+            <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Marca Redutor:</span>
+              <span class="ml-2 text-gray-800">{{montagem.redutorMarca}}</span>
             </div>
           </div>
-          
-          <!-- Mecânico e Valor Total -->
+          <!-- Linha 2 -->
           <div class="flex flex-wrap border-b border-gray-200 pb-2">
-            <div class="w-full sm:w-1/2 mb-2 sm:mb-0">
-              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Mecânico:</span>
+            <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">N° de série:</span>
+              <span class="ml-2 text-gray-800">{{montagem.numeroSerie}}</span>
+            </div>
+            <div class="w-full sm:w-1/3">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Forma de Pagamento:</span>
               <span class="ml-2 text-gray-800">{{montagem.formaPagamento}}</span>
             </div>
-            <div class="w-full sm:w-1/2">
-              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Valor Total:</span>
-              <span class="ml-2 text-gray-800">{{montagem.data}}</span>
+            <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Marca do cilindro:</span>
+              <span class="ml-2 text-gray-800">{{montagem.marcaCilindro}}</span>
             </div>
           </div>
+           <!-- Linha 3 -->
+           <div class="flex flex-wrap border-b border-gray-200 pb-2">
+            <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">N° do cilindro:</span>
+              <span class="ml-2 text-gray-800">{{montagem.numeroCilindro}}</span>
+            </div>
+            <div class="w-full sm:w-1/3">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Quilo:</span>
+              <span class="ml-2 text-gray-800">{{montagem.quilo}}</span>
+            </div>
+            <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+              <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Litro:</span>
+              <span class="ml-2 text-gray-800">{{montagem.litro}}</span>
+            </div>
+          </div>
+            <!-- Linha 4 -->
+            <div class="flex flex-wrap border-b border-gray-200 pb-2">
+              <div class="w-full sm:w-1/3">
+                <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Ano fabricação:</span>
+                <span class="ml-2 text-gray-800">{{montagem.anoFab}}</span>
+              </div>
+              <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+                <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Ano reteste:</span>
+                <span class="ml-2 text-gray-800">{{montagem.anoReteste}}</span>
+              </div>
+              <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+                <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">requalificadora:</span>
+                <span class="ml-2 text-gray-800">{{montagem.requalificadora}}</span>
+              </div>
+            </div>
+            <!-- Linha 5 -->
+            <div class="flex flex-wrap border-b border-gray-200 pb-2">
+              <div class="w-full sm:w-1/3">
+                <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Ano fabricação:</span>
+                <span class="ml-2 text-gray-800">{{montagem.anoFab}}</span>
+              </div>
+              <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+                <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Ano reteste:</span>
+                <span class="ml-2 text-gray-800">{{montagem.anoReteste}}</span>
+              </div>
+              <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+                <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">requalificadora:</span>
+                <span class="ml-2 text-gray-800">{{montagem.requalificadora}}</span>
+              </div>
+            </div>
+            <!-- Linha 6 -->
+            <div class="flex flex-wrap border-b border-gray-200 pb-2">
+              <div class="w-full sm:w-1/3">
+                <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">N° NF de venda:</span>
+                <span class="ml-2 text-gray-800">{{montagem.numeroNFEquipamento}}</span>
+              </div>
+              <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+                <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">N° Ordem requalificação:</span>
+                <span class="ml-2 text-gray-800">{{montagem.numeroOrdemRequalificacao}}</span>
+              </div>
+              <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+                <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">N° Laudo Montagem:</span>
+                <span class="ml-2 text-gray-800">{{montagem.numeroLaudoMontagem}}</span>
+              </div>
+            </div>
+              <!-- Linha 7 -->
+              <div class="flex flex-wrap border-b border-gray-200 pb-2">
+                <div class="w-full sm:w-1/3">
+                  <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Marca válvula:</span>
+                  <span class="ml-2 text-gray-800">{{montagem.marcaValvula}}</span>
+                </div>
+                <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+                  <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">N° NF Serviço Montagem:</span>
+                  <span class="ml-2 text-gray-800">{{montagem.numeroNFServicoMontagem}}</span>
+                </div>
+                <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+                  <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">N° Valvula:</span>
+                  <span class="ml-2 text-gray-800">{{montagem.numeroValvula}}</span>
+                </div>
+              </div>
+                   <!-- Linha 8 -->
+                   <div class="flex flex-wrap border-b border-gray-200 pb-2">
+                    <div class="w-full sm:w-1/3">
+                      <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Selo:</span>
+                      <span class="ml-2 text-gray-800">{{montagem.selo}}</span>
+                    </div>
+                    <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+                      <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">Instaladores:</span>
+                      <span class="ml-2 text-gray-800">{{montagem.instaladores}}</span>
+                    </div>
+                    <div class="w-full sm:w-1/3 mb-2 sm:mb-0">
+                      <span class="font-bold text-gray-600 bg-gray-100 p-2 rounded">total:</span>
+                      <span class="ml-2 text-gray-800">{{montagem.valorTotal}}</span>
+                    </div>
+                  </div>
+          
+         
   
           <!-- Observação em Linha Inteira -->
           <div class="flex border-b border-gray-200 pb-2">

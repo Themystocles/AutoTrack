@@ -17,6 +17,8 @@ namespace AutoTrackApi.Interface
         Task<IEnumerable<Servico>> GetServicosNaoPagos();
 
         Task<IEnumerable<Servico>> GetServicosByAlertDate(DateTime dataalertaserv);
+
+        
        
 
     }

@@ -9,6 +9,8 @@ namespace AutoTrackApi.Model.DTOs
     {
         public int Id { get; set; }
         public DateTime Data { get; set; }
+
+        public DateTime? dataalerta { get; set; }
         public string?   GeracaoInstaladores { get; set; }
         public string? RedutorMarca { get; set; }
         public string? NumeroSerie { get; set; }

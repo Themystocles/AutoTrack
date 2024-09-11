@@ -59,24 +59,50 @@
           </div>
   
           <!-- Orçamentos -->
-          <div class="bg-gray-700 p-4 rounded-lg mt-4">
-            <h4 class="font-semibold text-md mb-2">Orçamentos</h4>
+          <div *ngIf="serv.orcamentos"  class="bg-gray-700 p-4 rounded-lg mt-4">
+            
             <ul class="list-disc pl-5 text-sm space-y-2">
               <li *ngFor="let orc of serv.orcamentos">
+                <h4 class="font-semibold text-md mb-2 border-b border-gray-300">ORÇAMENTO</h4>
                 <div class="flex justify-between">
                   <span class="font-semibold">Descrição:</span>
                   <span>{{ orc.nomeServico }}</span>
                 </div>
                 <div class="flex justify-between">
-                  <span class="font-semibold">Valor:</span>
+                  <span class="font-semibold">Quantidade:</span>
                   <span>{{ orc.quantidade }}</span>
                 </div>
+                <div class="flex justify-between">
+                  <span class="font-semibold">Produto:</span>
+                  <span>{{ orc.produto }}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-semibold">Produto:</span>
+                  <span>{{ orc.produto }}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-semibold">Valor Parcial:</span>
+                  <span>{{ orc.valorParcial }}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-semibold">Valor Total:</span>
+                  <span>{{ orc.valorTotal }}</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="font-semibold">Valor Garantia:</span>
+                  <span>{{ orc.garantia }}</span>
+                </div>
+                
               </li>
             </ul>
           </div>
+
+          
+
+          
   
           <button (click)="navigateToServico(serv.id)" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-150">
-            Aqui
+            Ir Para Orçamento não pago
           </button>
         </div>
       </div>

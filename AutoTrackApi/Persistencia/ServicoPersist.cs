@@ -31,6 +31,8 @@ namespace AutoTrackApi.Persistencia
             .FirstOrDefaultAsync(S => S.Id == idServico);
         }
 
+      
+
         public async Task<IEnumerable<Servico>> GetServicosByAlertDate(DateTime dataalertserv)
         {
             var servicos = await _context.servicos

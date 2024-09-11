@@ -132,7 +132,10 @@
       
       <ul class="space-y-4">
         <li *ngFor="let servico of veiculo.servicos" class="bg-gray-900 p-4 rounded-md shadow-md">
-          <h3 class="text-xl font-bold mb-3 text-red-500">SERVIÇO</h3>
+          <div class="flex items-center">
+            <h3 class="text-xl font-bold mb-3 text-red-500">SERVIÇO</h3>
+            <h3 *ngIf="servico.requalificacao != 'Simples' && servico.requalificacao != null" class="text-xl font-bold mb-3 text-red-500 ml-4">REQUALIFICAÇÃO</h3>
+          </div>
           <div class="mt-4 w-full">
             <table class="w-full border-collapse border border-gray-300">
               <tbody>
@@ -160,13 +163,43 @@
                 <ng-container *ngIf="servico.requalificacao != 'Simples' && servico.requalificacao != null">
                   
                   <tr>
-                    <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">requalificadora:</td>
-                    <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.requalificadora}}</td>
+                    <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Marca Cilindro:</td>
+                    <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.marcaCilindro}}</td>
                   </tr>
+                  <tr>
+                    <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">N° Cilindro</td>
+                    <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.numeroCilindro}}</td>
+                  </tr>
+                  
                   <tr>
                     <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">requalificadora:</td>
                     <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.requalificadora}}</td>
                   </tr>
+                  <tr>
+                    <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Ordem:</td>
+                    <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.ordem}}</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Nota de serviço:</td>
+                    <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.ordem}}</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Laudo:</td>
+                    <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.laudo}}</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Nota da valvula:</td>
+                    <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.notaDaValvula}}</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Marca valvula:</td>
+                    <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.marcaValvula}}</td>
+                  </tr>
+                  <tr>
+                    <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">N° valvula:</td>
+                    <td colspan="3" class="border border-gray-300 px-4 py-2">{{servico.numeroValvula}}</td>
+                  </tr>
+                
                 </ng-container>
                 
               </tbody>

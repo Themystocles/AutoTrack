@@ -49,8 +49,14 @@ namespace AutoTrack.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime>("DataOrc")
+                        .HasColumnType("TEXT");
+
                     b.Property<int?>("EstoqueId")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Garantia")
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("KmAtual")
                         .HasColumnType("TEXT");
@@ -161,6 +167,9 @@ namespace AutoTrack.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("data")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("dataalerta")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("pago")
@@ -284,10 +293,6 @@ namespace AutoTrack.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Especie")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Garantia")
                         .IsRequired()
                         .HasColumnType("TEXT");
 

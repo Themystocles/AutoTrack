@@ -12,13 +12,18 @@ export class MontagemService {
 
   public url = 'http://localhost:5203/api/Montagem/montagem'
   public urlMont = 'http://localhost:5203/api/Montagem'
-
+  public urlalert ='http://localhost:5203/api/Montagem/alertmontagem'
   constructor(public http : HttpClient) { }
 
   getMontagembydate(id: string): Observable<Montagem[]>{
     const urlID = `${this.url}/${id}`
     return this.http.get<Montagem[]>(urlID)
   }
+  getMontagembydateAlert(id: string): Observable<Montagem[]>{
+    const urlIDAlert = `${this.urlalert}/${id}`
+    return this.http.get<Montagem[]>(urlIDAlert)
+  }
+
   getAllMontagem(): Observable<Montagem[]>{
        return this.http.get<Montagem[]>(this.urlMont)
   }

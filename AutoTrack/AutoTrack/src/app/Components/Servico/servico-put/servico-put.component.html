@@ -69,6 +69,7 @@
       <input id="mecanico" name="mecanico" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.mecanico">
     </div>
 
+  
    
 
     
@@ -129,6 +130,12 @@
           <label for="kmAtual{{orcamento.id}}" class="block text-white mb-1">KM Atual</label>
           <input id="kmAtual{{orcamento.id}}" name="kmAtual{{orcamento.id}}" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.kmAtual">
         </div>
+
+        <div class="mb-4">
+        <label for="garantia{{orcamento.id}}" class="block text-white mb-1">Garantia</label>
+        <input id="garantia{{orcamento.id}}" name="garantia{{orcamento.id}}" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.garantia">
+        </div>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           <div class="mb-4">
             <label for="quantidade_{{orcamento.id}}" class="block text-white mb-1">Quantidade</label>

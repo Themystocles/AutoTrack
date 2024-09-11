@@ -14,5 +14,6 @@ namespace AutoTrackApi.Interface
         Task<Montagem> GetMontagensByNFEVenda(string NFEVenda);
 
         Task<IEnumerable<Montagem>> GetMontagensNaoPagos();
+        Task<IEnumerable<Montagem>> GetMontagemByDataAlerta(DateTime dataalertamont);
     }
 }

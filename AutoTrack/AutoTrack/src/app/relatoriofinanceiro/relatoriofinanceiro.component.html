@@ -1,0 +1,80 @@
+<div class="p-6 max-w-6xl mx-auto bg-gray-900 text-gray-200 shadow-lg rounded-lg">
+    <h3 class="text-3xl font-bold mb-6 text-indigo-400">Relatórios Financeiros</h3>
+    
+    <!-- Filtros de Data -->
+    <div class="mb-6">
+        <div class="flex flex-col md:flex-row gap-4">
+            <input type="date" [(ngModel)]="datainicio" name="datainicio" placeholder="Data Início"
+                class="bg-gray-800 border border-gray-700 text-gray-200 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <input type="date" [(ngModel)]="dataFim" name="dataFim" placeholder="Data Fim"
+                class="bg-gray-800 border border-gray-700 text-gray-200 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <button (click)="loadRelatorios()"
+                class="bg-indigo-500 text-white p-2 rounded-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                Clique
+            </button>
+        </div>
+    </div>
+
+    <!-- Relatórios -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+        <!-- Relatório Pago -->
+        <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h4 class="text-2xl font-semibold text-blue-400 mb-4 flex items-center">
+                <svg class="w-6 h-6 mr-2 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2 2 5-5 5 5 7-7"></path>
+                </svg>
+                Relatório de Serviços Pagos <br>Total: {{ relPagoTotalPeriodo | currency:'BRL' }}
+            </h4>
+            
+            <p class="text-gray-400 mb-2"><span class="font-medium">Crédito Pago:</span> {{ creditoPago | currency:'BRL' }}</p>
+            <p class="text-gray-400 mb-2"><span class="font-medium">Débito Pago:</span> {{ debitoPago | currency:'BRL' }}</p>
+            <p class="text-gray-400 mb-2"><span class="font-medium">Dinheiro Pago:</span> {{ dinheiroPago | currency:'BRL' }}</p>
+            <p class="text-gray-400 mb-2"><span class="font-medium">Pix Pago:</span> {{ pixPago | currency:'BRL' }}</p>
+        </div>
+
+        <!-- Relatório Não Pago -->
+        <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h4 class="text-2xl font-semibold text-green-400 mb-4 flex items-center">
+                <svg class="w-6 h-6 mr-2 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m4-4H8"></path>
+                </svg>
+                Relatório de Serviços Não Pagos <br>Total: {{ relNaoPagoTotalPeriodo | currency:'BRL' }}
+            </h4>
+            
+            <p class="text-gray-400 mb-2"><span class="font-medium">Crédito Não Pago:</span> {{ creditoNaoPago | currency:'BRL' }}</p>
+            <p class="text-gray-400 mb-2"><span class="font-medium">Débito Não Pago:</span> {{ debitoNaoPago | currency:'BRL' }}</p>
+            <p class="text-gray-400 mb-2"><span class="font-medium">Dinheiro Não Pago:</span> {{ dinheiroNaoPago | currency:'BRL' }}</p>
+            <p class="text-gray-400 mb-2"><span class="font-medium">Pix Não Pago:</span> {{ pixNaoPago | currency:'BRL' }}</p>
+        </div>
+
+        <!-- Relatório Montagem Pago -->
+        <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h4 class="text-2xl font-semibold text-red-400 mb-4 flex items-center">
+                <svg class="w-6 h-6 mr-2 text-red-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3H3v5H1v14h2v-9h2v9h2v-5h2v5h2V7h2z"></path>
+                </svg>
+                Relatório de Montagens Pagos <br>Total: {{ relMonPagoTotalPeriodo | currency:'BRL' }}
+            </h4>
+          
+            <p class="text-gray-400 mb-2"><span class="font-medium">Crédito Pago Montagem:</span> {{ creditoMonPago | currency:'BRL' }}</p>
+            <p class="text-gray-400 mb-2"><span class="font-medium">Débito Pago Montagem:</span> {{ debitoMonPago | currency:'BRL' }}</p>
+            <p class="text-gray-400 mb-2"><span class="font-medium">Dinheiro Pago Montagem:</span> {{ dinheiroMonPago | currency:'BRL' }}</p>
+            <p class="text-gray-400 mb-2"><span class="font-medium">Pix Pago Montagem:</span> {{ pixMonPago | currency:'BRL' }}</p>
+        </div>
+
+        <!-- Relatório Montagem Não Pago -->
+        <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <h4 class="text-2xl font-semibold text-yellow-400 mb-4 flex items-center">
+                <svg class="w-6 h-6 mr-2 text-yellow-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7v10M12 7v10m5-10v10"></path>
+                </svg>
+                Relatório de Montagens Não Pagos <br>Total: {{ relMonNaoPagoTotalPeriodo | currency:'BRL' }}
+            </h4>
+           
+            <p class="text-gray-400 mb-2"><span class="font-medium">Crédito Não Pago Montagem:</span> {{ creditoMonNaoPago | currency:'BRL' }}</p>
+            <p class="text-gray-400 mb-2"><span class="font-medium">Débito Não Pago Montagem:</span> {{ debitoMonNaoPago | currency:'BRL' }}</p>
+            <p class="text-gray-400 mb-2"><span class="font-medium">Dinheiro Não Pago Montagem:</span> {{ dinheiroMonNaoPago | currency:'BRL' }}</p>
+            <p class="text-gray-400 mb-2"><span class="font-medium">Pix Não Pago Montagem:</span> {{ pixMonNaoPago | currency:'BRL' }}</p>
+        </div>
+    </div>
+</div>

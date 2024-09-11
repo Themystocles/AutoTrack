@@ -35,6 +35,11 @@
           <input type="number" id="valorTotal-{{i}}" [(ngModel)]="orcamento.valorTotal" name="valorTotal-{{i}}" readonly
             class="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:border-indigo-500 focus:ring-indigo-500"/>
         </div>
+        <div>
+          <label for="Garantia-{{i}}" class="block text-sm font-medium">Garantia</label>
+          <input type="string" id="Garantia{{i}}" [(ngModel)]="orcamento.garantia" name="Garantia-{{i}}" 
+            class="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:border-indigo-500 focus:ring-indigo-500"/>
+        </div>
         <button type="button" (click)="removeOrcamento(i)"
           class="col-span-full px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">Remover</button>
       </div>

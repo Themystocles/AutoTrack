@@ -5,6 +5,7 @@ export interface Orcamento {
     produto?: string;
     valorParcial: number;
     valorTotal: number;
+    garantia?: string;
     kmAtual?: string;
     servicoId: number;
     estoqueId: number;

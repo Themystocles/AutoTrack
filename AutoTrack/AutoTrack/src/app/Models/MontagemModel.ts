@@ -4,6 +4,7 @@ import { Veiculo } from "./VeiculoModel";
 export class Montagem {
   id?: number;
   data?: string;
+  dataalerta? : string;
   geracaoInstaladores?: string;
   redutorMarca?: string;
   numeroSerie?: string;

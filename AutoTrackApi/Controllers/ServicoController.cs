@@ -89,6 +89,7 @@ public async Task<IActionResult> getServicosnãopagos()
     var servicos = await _ServicoPersist.GetServicosNaoPagos();
     return Ok(servicos);
 }
+
  [HttpPost("servicos")]
         public async Task<IActionResult> PostServico([FromBody] Servico servico)
         {
@@ -147,11 +148,13 @@ servicoExistente.NumeroValvula = servicoDto.NumeroValvula;
             var novoOrcamento = new Orcamento
             {
                 Id = orcamentoDto.Id,
+                DataOrc = orcamentoDto.DataOrc,
                 Quantidade = orcamentoDto.Quantidade,
                 NomeServico = orcamentoDto.NomeServico,
                 Produto = orcamentoDto.Produto,
                 ValorParcial = orcamentoDto.ValorParcial,
                 ValorTotal = orcamentoDto.ValorTotal,
+                Garantia = orcamentoDto.Garantia,
                 KmAtual = orcamentoDto.KmAtual,
                 ServicoId = orcamentoDto.ServicoId,
                 EstoqueId = orcamentoDto.EstoqueId,
@@ -168,6 +171,7 @@ servicoExistente.NumeroValvula = servicoDto.NumeroValvula;
             orcamentoExistente.KmAtual = orcamentoDto.KmAtual;
             orcamentoExistente.ValorParcial = orcamentoDto.ValorParcial;
             orcamentoExistente.ValorTotal = orcamentoDto.ValorTotal;
+            orcamentoExistente.Garantia = orcamentoDto.Garantia;
             orcamentoExistente.EstoqueId = orcamentoDto.EstoqueId;
             orcamentoExistente.MontagemId = orcamentoDto.MontagemId;
 

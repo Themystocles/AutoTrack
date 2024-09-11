@@ -31,41 +31,41 @@
   <div *ngIf="servico.length > 0" class="space-y-4">
     <div *ngFor="let serv of servico" class="bg-gray-900 p-4 rounded-md shadow-md w-full">
 
-         <!-- Exibe detalhes do veículo associado -->
-         <div *ngIf="serv.veiculo" class="mt-4 bg-gray-800 p-4 rounded-md shadow-md">
-          <h3 class="text-lg font-semibold mb-2">Veículo Associado</h3>
-          <div class="overflow-x-auto">
-            <table class="w-full border-collapse border border-gray-300">
-              <tbody>
-                <tr>
-                  <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Carro:</td>
-                  <td class="border border-gray-300 px-4 py-2">{{serv.veiculo.carro}}</td>
-                </tr>
-                <tr>
-                  <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Placa:</td>
-                  <td class="border border-gray-300 px-4 py-2">{{serv.veiculo.placa}}</td>
-                </tr>
-                <tr>
-                  <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Chassi:</td>
-                  <td class="border border-gray-300 px-4 py-2">{{serv.veiculo.chassi}}</td>
-                </tr>
-                <tr>
-                  <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Cor:</td>
-                  <td class="border border-gray-300 px-4 py-2">{{serv.veiculo.cor}}</td>
-                </tr>
-               
-              </tbody>
-            </table>
-          </div>
-       
-    
-      
+      <!-- Exibe detalhes do veículo associado -->
+      <div *ngIf="serv.veiculo" class="mt-4 bg-gray-800 p-4 rounded-md shadow-md">
+        <h3 class="text-lg font-semibold mb-2">Veículo Associado</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full border-collapse border border-gray-300">
+            <tbody>
+              <tr>
+                <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Carro:</td>
+                <td class="border border-gray-300 px-4 py-2">{{serv.veiculo.carro}}</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Placa:</td>
+                <td class="border border-gray-300 px-4 py-2">{{serv.veiculo.placa}}</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Chassi:</td>
+                <td class="border border-gray-300 px-4 py-2">{{serv.veiculo.chassi}}</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 bg-green-900 px-4 py-2 font-semibold">Cor:</td>
+                <td class="border border-gray-300 px-4 py-2">{{serv.veiculo.cor}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
 
-      <h2 class="text-xl font-semibold mb-2">Detalhes do Serviço</h2>
+      <div class="flex items-center">
+        <h3 class="text-xl font-bold mb-3 text-red-500">SERVIÇO</h3>
+        <h3 *ngIf="serv.requalificacao != 'Simples' && serv.requalificacao != null" class="text-xl font-bold mb-3 text-red-500 ml-4">REQUALIFICAÇÃO</h3>
+      </div>
+
       <div class="overflow-x-auto">
         <table class="w-full border-collapse border border-gray-300">
           <tbody>
-          
             <tr>
               <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Descrição:</td>
               <td class="border border-gray-300 px-4 py-2">{{serv.descricao}}</td>
@@ -92,33 +92,73 @@
             </tr>
             <tr>
               <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Data:</td>
-              <td  type="data" class="border border-gray-300 px-4 py-2">{{serv.dataServico | date:'dd-MM-yyyy'}}</td>
+              <td class="border border-gray-300 px-4 py-2">{{serv.dataServico | date:'dd-MM-yyyy'}}</td>
             </tr>
+            <ng-container *ngIf="serv.requalificacao != 'Simples' && serv.requalificacao != null">
+              <tr>
+                <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Marca Cilindro:</td>
+                <td colspan="3" class="border border-gray-300 px-4 py-2">{{serv.marcaCilindro}}</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">N° Cilindro</td>
+                <td colspan="3" class="border border-gray-300 px-4 py-2">{{serv.numeroCilindro}}</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Requalificadora:</td>
+                <td colspan="3" class="border border-gray-300 px-4 py-2">{{serv.requalificadora}}</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Ordem:</td>
+                <td colspan="3" class="border border-gray-300 px-4 py-2">{{serv.ordem}}</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Nota de serviço:</td>
+                <td colspan="3" class="border border-gray-300 px-4 py-2">{{serv.ordem}}</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Laudo:</td>
+                <td colspan="3" class="border border-gray-300 px-4 py-2">{{serv.laudo}}</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Nota da válvula:</td>
+                <td colspan="3" class="border border-gray-300 px-4 py-2">{{serv.notaDaValvula}}</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">Marca válvula:</td>
+                <td colspan="3" class="border border-gray-300 px-4 py-2">{{serv.marcaValvula}}</td>
+              </tr>
+              <tr>
+                <td class="border border-gray-300 bg-red-900 px-4 py-2 font-semibold">N° válvula:</td>
+                <td colspan="3" class="border border-gray-300 px-4 py-2">{{serv.numeroValvula}}</td>
+              </tr>
+            </ng-container>
           </tbody>
         </table>
       </div>
 
-   
-
       <!-- Exibe detalhes dos orçamentos associados -->
       <div *ngIf="serv.orcamentos && serv.orcamentos.length > 0" class="mt-4 bg-gray-800 p-4 rounded-md shadow-md">
         <h3 class="text-lg font-semibold mb-2">Orçamentos Associados</h3>
-        <div *ngFor="let orcamento of serv.orcamentos" class="overflow-x-auto">
+        <div class="overflow-x-auto">
           <table class="w-full border-collapse border border-gray-300">
             <thead>
               <tr>
-                <th class="border border-gray-300 bg-gray-900 px-4 py-2 font-semibold">Produto</th>
-                <th class="border border-gray-300 bg-gray-900 px-4 py-2 font-semibold">Quantidade</th>
-                <th class="border border-gray-300 bg-gray-900 px-4 py-2 font-semibold">Valor Parcial</th>
-                <th class="border border-gray-300 bg-gray-900 px-4 py-2 font-semibold">Valor Total</th>
+                <th class="border border-gray-300 bg-gray-700 px-4 py-2 text-left">Descrição</th>
+                <th class="border border-gray-300 bg-gray-700 px-4 py-2 text-left">Produto</th>
+                <th class="border border-gray-300 bg-gray-700 px-4 py-2 text-left">Km Atual</th>
+                <th class="border border-gray-300 bg-gray-700 px-4 py-2 text-left">Valor Parcial</th>
+                <th class="border border-gray-300 bg-gray-700 px-4 py-2 text-left">Valor Total</th>
+                <th class="border border-gray-300 bg-gray-700 px-4 py-2 text-left">Garantia</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let orc of serv.orcamentos">
-                <td class="border border-gray-300 px-4 py-2">{{orc.produto}}</td>
-                <td class="border border-gray-300 px-4 py-2">{{orc.quantidade}}</td>
-                <td class="border border-gray-300 px-4 py-2">{{orc.valorParcial}}</td>
-                <td class="border border-gray-300 px-4 py-2">{{orc.valorTotal}}</td>
+              <tr *ngFor="let orcamento of serv.orcamentos">
+                <td class="border border-gray-300 px-4 py-2">{{orcamento.nomeServico}}</td>
+                <td class="border border-gray-300 px-4 py-2">{{orcamento.produto}}</td>
+                <td class="border border-gray-300 px-4 py-2">{{orcamento.kmAtual}}</td>
+                <td class="border border-gray-300 px-4 py-2">{{orcamento.valorParcial}}</td>
+                <td class="border border-gray-300 px-4 py-2">{{orcamento.valorTotal}}</td>
+                <td class="border border-gray-300 px-4 py-2">{{orcamento.garantia}}</td>
               </tr>
             </tbody>
           </table>
