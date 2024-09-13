@@ -4,7 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoTrackApi.DataContext;
 using AutoTrackApi.Interface;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoTrackApi.DataContext;
+using AutoTrackApi.Interface;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AutoTrackApi.Persistencia
 {
@@ -59,6 +69,15 @@ namespace AutoTrackApi.Persistencia
         {
             return await _context.Clientes.FirstOrDefaultAsync(c=> c.Id == idcliente);
         }
+
+  public async Task<bool> ClienteExistsAsync(string cpf)
+    {
+        
+         if (string.IsNullOrEmpty(cpf)){
+            return false;
+         }
+        return await _context.Clientes.AnyAsync(c => c.Cpf == cpf);
+    }
 
     }
 }

@@ -11,6 +11,8 @@ namespace AutoTrackApi.Interface
         Task<Veiculo> GetVeiculoByPlaca(string placa);
         Task<Veiculo> GetVeiculoByChassi(string chassi);
         Task<Veiculo> GetVeiculoByID(int ID);
+        Task<bool> VeiculoplacaoExistsAsync(string placa);
+        Task<bool> VeiculochassiExistsAsync(string chassi);
        
     }
 }

@@ -51,5 +51,24 @@ namespace AutoTrackApi.Persistencia
         return veiculo;
         }
 
+       
+
+        public async Task<bool> VeiculoplacaoExistsAsync (string placa)
+        {
+             if (string.IsNullOrEmpty(placa)){
+            return false;
+         }
+         return await _context.Veiculos.AnyAsync(v => v.Placa == placa);
+        
+        }
+
+        public async Task<bool> VeiculochassiExistsAsync(string chassi)
+        {
+            if (string.IsNullOrEmpty(chassi)){
+                return false;
+
+            }
+            return await _context.Veiculos.AnyAsync(v => v.Chassi == chassi);
+        }
     }
 }

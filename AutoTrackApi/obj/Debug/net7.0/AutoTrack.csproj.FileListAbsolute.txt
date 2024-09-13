@@ -71,3 +71,4 @@ C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrack
 C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\Newtonsoft.Json.dll
 C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
+C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\CsvHelper.dll

@@ -34,9 +34,8 @@ namespace AutoTrack.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Quantidade")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("Quantidade")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -192,11 +191,9 @@ namespace AutoTrack.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Descricao")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FormaPag")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Laudo")
@@ -209,7 +206,6 @@ namespace AutoTrack.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Mecanico")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("NotaDaValvula")
@@ -225,7 +221,6 @@ namespace AutoTrack.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Observacao")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Ordem")
@@ -263,19 +258,15 @@ namespace AutoTrack.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("AnoFab")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("AnoModelo")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Capacidade")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Carro")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Chassi")
@@ -285,41 +276,29 @@ namespace AutoTrack.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Combustivel")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Cor")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Especie")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Observacao")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Placa")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Potencia")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Renavam")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Chassi")
-                        .IsUnique();
-
                     b.HasIndex("ClienteId");
-
-                    b.HasIndex("Placa")
-                        .IsUnique();
 
                     b.ToTable("Veiculos");
                 });
@@ -374,9 +353,6 @@ namespace AutoTrack.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Cpf")
-                        .IsUnique();
 
                     b.ToTable("Clientes");
                 });

@@ -26,11 +26,16 @@
       <input id="numeroSerie" name="numeroSerie" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.numeroSerie">
     </div>
 
-    <!-- Campo Forma de Pagamento -->
-    <div class="mb-4 col-span-1">
-      <label for="formaPagamento" class="block text-white mb-1">Forma de Pagamento</label>
-      <input id="formaPagamento" name="formaPagamento" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.formaPagamento">
-    </div>
+   <!-- Campo Forma de Pagamento -->
+ <div>
+  <label for="formaPag" class="block text-white mb-1">Forma de Pagamento</label>
+  <select id="formaPag" name="formaPag" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.formaPagamento" required>
+    <option value="PIX">PIX</option>
+    <option value="Débito">Débito</option>
+    <option value="Crédito">Crédito</option>
+    <option value="Dinheiro">Dinheiro</option>
+  </select>
+</div>
 
     <!-- Campo Marca Cilindro -->
     <div class="mb-4 col-span-1">

@@ -23,7 +23,7 @@ namespace AutoTrackApi.DataContext
             
             if (!optionsBuilder.IsConfigured)
             {
-                // Usar a string de conexão do appsettings.json
+                // Usar a string de conexão do appsettings.jsond
                 optionsBuilder.UseSqlite("Data Source=AutoTrack.db");
                 
             }
@@ -32,29 +32,7 @@ namespace AutoTrackApi.DataContext
         {
             base.OnModelCreating(modelBuilder);
 
-           // Configura a propriedade Cpf como opcional e UNIQUE
-            modelBuilder.Entity<Cliente>()
-                .Property(c => c.Cpf)
-                .IsRequired(false); // Permite NULL
-            modelBuilder.Entity<Cliente>()
-                .HasIndex(c => c.Cpf)
-                .IsUnique();
-
-            // Configura a propriedade Placa como opcional e UNIQUE
-            modelBuilder.Entity<Veiculo>()
-                .Property(v => v.Placa)
-                .IsRequired(false); // Permite NULL
-            modelBuilder.Entity<Veiculo>()
-                .HasIndex(v => v.Placa)
-                .IsUnique();
-
-            // Configura a propriedade Chassi como opcional e UNIQUE
-            modelBuilder.Entity<Veiculo>()
-                .Property(v => v.Chassi)
-                .IsRequired(false); // Permite NULL
-            modelBuilder.Entity<Veiculo>()
-                .HasIndex(v => v.Chassi)
-                .IsUnique();
+          
         }
     }
 }

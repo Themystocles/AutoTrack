@@ -9,7 +9,7 @@ namespace AutoTrackApi.Model.Entities
     {
         public int Id { get; set; }
         public string Produto { get; set; }
-        public string Quantidade  { get; set; }
+        public int Quantidade  { get; set; }
         public decimal Preco { get; set; }
         public string DataUltAlt { get; set; }
     }

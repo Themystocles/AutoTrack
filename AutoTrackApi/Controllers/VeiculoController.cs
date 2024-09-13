@@ -69,7 +69,17 @@ namespace AutoTrack.Controllers
             {
                 return BadRequest("Veículo is null");
             }
-            try{
+            if(await _veiculoPersist.VeiculoplacaoExistsAsync(veiculoPostDto.Placa)){
+                return Conflict("Já Existe um veículo com essa placa");
+
+            }
+              if(await _veiculoPersist.VeiculochassiExistsAsync(veiculoPostDto.Chassi)){
+                return Conflict("Já existe um veículo com esse Chassi.");
+
+            }
+
+    
+            
             var Veiculo = new Veiculo
             {
 
@@ -93,13 +103,7 @@ namespace AutoTrack.Controllers
             await _geralPersist.AddAsync(Veiculo);
             return CreatedAtAction(nameof(GetVeiculos), new { id = Veiculo.Id }, Veiculo);
 
-            } catch(DbUpdateException ex){
-                if (ex.InnerException is SqliteException sqliteEx && sqliteEx.SqliteErrorCode == 19)
-        {
-            return BadRequest("Atenção: a placa ou o chassi já estão cadastrados no sistema.");
-        }
-         return StatusCode(500, "Ocorreu um erro ao salvar os dados.");
-            }   
+            
         
         }
          [HttpPut("veiculo/{id}")]

@@ -9,7 +9,7 @@ namespace AutoTrackApi.Model.DTOs
     {
     public int Id { get; set; }
     public string Nome { get; set; }
-    public string Cpf { get; set; }
+    public string? Cpf { get; set; }
     public string InsEstadual { get; set; }
     public string InsMunicipal { get; set; }
     public string Telefone { get; set; }

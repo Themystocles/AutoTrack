@@ -30,7 +30,7 @@
       <!-- Campo Placa -->
       <div class="mb-4 col-span-1">
           <label for="placa" class="block text-white mb-1">Placa</label>
-          <input id="placa" name="placa" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="veiculo.placa " required (ngModelChange)="veiculo.placa = veiculo.placa?.toUpperCase()" mask="AAA-AAAA">
+          <input id="placa" name="placa" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="veiculo.placa "  (ngModelChange)="veiculo.placa = veiculo.placa?.toUpperCase()" mask="AAA-AAAA">
       </div>
 
       <!-- Campo Espécie -->
@@ -72,7 +72,7 @@
       <!-- Campo Chassi -->
       <div class="mb-4 col-span-1">
           <label for="chassi" class="block text-white mb-1">Chassi</label>
-          <input id="chassi" name="chassi" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="veiculo.chassi" required>
+          <input id="chassi" name="chassi" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="veiculo.chassi" >
       </div>
 
       <!-- Campo Cor -->

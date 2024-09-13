@@ -61,6 +61,7 @@ export class OrcamentoPostComponent implements OnInit {
     const servicoId = this.servicoId !== null ? this.servicoId : 0;
     const montagemId = this.montagemId !== null ? this.montagemId : 0;
     this.orcamentos.push(this.createEmptyOrcamento(servicoId, montagemId));
+    
   }
 
   removeOrcamento(index: number) {

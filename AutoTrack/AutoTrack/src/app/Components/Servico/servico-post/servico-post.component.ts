@@ -53,9 +53,8 @@ export class ServicoPostComponent {
     
     if (this.servico.veiculoId === 0 || 
         !this.servico.descricao?.trim() || 
-        !this.servico.formaPag?.trim() || 
-        !this.servico.mecanico?.trim() || 
-        !this.servico.observacao?.trim() 
+        !this.servico.formaPag?.trim() 
+        
         ) {
       alert('Por favor, preencha todos os campos obrigatórios.');
       return;

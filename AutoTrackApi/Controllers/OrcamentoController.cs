@@ -16,10 +16,12 @@ namespace AutoTrackApi.Controllers
     public class OrcamentoController : ControllerBase
     {
         private readonly IGeralPersist _geralPersist;
+        private readonly IEstoquePersist _estoquepersist;
 
-        public OrcamentoController(IGeralPersist geralPersist)
+        public OrcamentoController(IGeralPersist geralPersist, IEstoquePersist estoquePersist)
         {
             _geralPersist = geralPersist;
+            _estoquepersist = estoquePersist;
         }
 
          [HttpGet("orcamentos")]
@@ -45,6 +47,7 @@ public async Task<IActionResult> PostOrcamento([FromBody] OrcamentoDto orcamento
         return BadRequest("Orçamento is null");
     }
     
+    
     var orcamento = new Orcamento
     {
         Id = orcamentoDto.Id,
@@ -61,7 +64,11 @@ public async Task<IActionResult> PostOrcamento([FromBody] OrcamentoDto orcamento
         EstoqueId = orcamentoDto.EstoqueId != 0 ? orcamentoDto.EstoqueId : (int?)null
     };
 
+    
+    
+
     await _geralPersist.AddAsync(orcamento);
+    await _estoquepersist.AtualizarEstoqueAsync(orcamento.NomeServico, orcamento.Quantidade);
     return CreatedAtAction(nameof(GetVeiculos), new { id = orcamento.Id }, orcamento);
 }
 

@@ -77,7 +77,13 @@ namespace AutoTrack.Controllers
             {
                 return BadRequest("Cliente is null");
             }
-            try{
+            // Verifica se o CPF já existe
+    if (await _clientePersist.ClienteExistsAsync(clienteDto.Cpf))
+    {
+        return Conflict("Cliente com este CPF já existe.");
+    }
+            
+           
             var Cliente = new Cliente
             {
                 Nome = clienteDto.Nome,
@@ -94,17 +100,12 @@ namespace AutoTrack.Controllers
 
             };
 
+            
+
             await _geralPersist.AddAsync(Cliente);
             return CreatedAtAction(nameof(GetClientes), new { id = Cliente.Id }, Cliente);
 
-            }
-            catch(DbUpdateException ex){
-                if (ex.InnerException is SqliteException sqliteEx && sqliteEx.SqliteErrorCode == 19)
-        {
-            return BadRequest("O CPF informado já está cadastrado.");
-        }
-         return StatusCode(500, "Ocorreu um erro ao salvar os dados.");
-            }   
+          
         }
 
         [HttpPut("cliente/{id}")]

@@ -57,10 +57,15 @@
     </div>
    
     <!-- Campo Forma de Pagamento -->
-    <div class="mb-4 col-span-1">
-      <label for="formaPag" class="block text-white mb-1">Forma de Pagamento</label>
-      <input id="formaPag" name="formaPag" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.formaPag">
-    </div>
+ <div>
+  <label for="formaPag" class="block text-white mb-1">Forma de Pagamento</label>
+  <select id="formaPag" name="formaPag" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="servico.formaPag" required>
+    <option value="PIX">PIX</option>
+    <option value="Débito">Débito</option>
+    <option value="Crédito">Crédito</option>
+    <option value="Dinheiro">Dinheiro</option>
+  </select>
+</div>
 
      
     <!-- Campo Mecânico -->

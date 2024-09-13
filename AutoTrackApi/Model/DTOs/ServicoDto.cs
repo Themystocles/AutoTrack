@@ -8,16 +8,16 @@ namespace AutoTrackApi.Model.DTOs
     public class ServicoDto
     {
     public int Id { get; set; }
-    public string Descricao { get; set; }
+    public string? Descricao { get; set; }
     
-    public string FormaPag { get; set; }
+    public string? FormaPag { get; set; }
     public decimal? Totalorcamento { get; set; }
 
      public bool pago { get; set; }
 
     public DateTime? dataalerta { get; set; }
-    public string Mecanico { get; set; }
-    public string Observacao { get; set; }
+    public string? Mecanico { get; set; }
+    public string? Observacao { get; set; }
     public DateTime DataServico { get; set; }
      //Quando for requalificação: {
          public string? Requalificacao { get; set; }

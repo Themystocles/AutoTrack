@@ -21,6 +21,7 @@ import { PrintComponent } from './print/print.component';
 import { SelecionarprintComponent } from './selecionarprint/selecionarprint.component';
 import { PrintMontComponent } from './print-mont/print-mont.component';
 import { RelatoriofinanceiroComponent } from './relatoriofinanceiro/relatoriofinanceiro.component';
+import { EstoqueComponent } from './Components/estoque/estoque.component';
 
 
 const routes: Routes = [
@@ -43,6 +44,8 @@ const routes: Routes = [
   { path: 'imprimir/Serv', component: PrintComponent },
   { path: 'imprimir/Mont', component: PrintMontComponent},
   { path: 'relatoriofinanceiro', component: RelatoriofinanceiroComponent},
+  { path: 'estoque', component: EstoqueComponent},
+  { path: 'estoque/:id', component: EstoqueComponent},
 
  
   
