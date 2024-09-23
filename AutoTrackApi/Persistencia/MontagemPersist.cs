@@ -40,6 +40,8 @@ namespace AutoTrackApi.Persistencia
         {
             return await _context.montagens
             .Include(m => m.orcamentos)
+            .ThenInclude(o => o.OrcamentoFuncionarios)
+             .ThenInclude(f => f.Funcionario)
             .FirstOrDefaultAsync(M => M.Id == idMontagem );
         }
 

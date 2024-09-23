@@ -22,6 +22,7 @@ import { SelecionarprintComponent } from './selecionarprint/selecionarprint.comp
 import { PrintMontComponent } from './print-mont/print-mont.component';
 import { RelatoriofinanceiroComponent } from './relatoriofinanceiro/relatoriofinanceiro.component';
 import { EstoqueComponent } from './Components/estoque/estoque.component';
+import { FolhadepagamentoComponent } from './folhadepagamento/folhadepagamento.component';
 
 
 const routes: Routes = [
@@ -46,6 +47,8 @@ const routes: Routes = [
   { path: 'relatoriofinanceiro', component: RelatoriofinanceiroComponent},
   { path: 'estoque', component: EstoqueComponent},
   { path: 'estoque/:id', component: EstoqueComponent},
+  { path: 'folhadepagamento', component: FolhadepagamentoComponent},
+
 
  
   

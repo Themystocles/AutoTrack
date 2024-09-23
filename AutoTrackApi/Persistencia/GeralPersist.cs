@@ -17,6 +17,7 @@ namespace AutoTrackApi.Persistencia
 
         public async Task AddAsync<T>(T entity) where T : class
         {
+            
             _context.Add(entity);
             await _context.SaveChangesAsync();
         }

@@ -1,0 +1,54 @@
+<div class="bg-gray-900 text-white min-h-screen p-6">
+    <h1 class="text-4xl font-extrabold mb-8 text-center">Funcionários e Orçamentos</h1>
+
+    <form (ngSubmit)="onSubmit()" class="bg-gray-800 p-4 rounded-lg shadow-lg max-w-2xl mx-auto">
+        <div class="flex flex-wrap -mx-2 mb-4">
+            <div class="w-full sm:w-1/2 px-2 mb-4 sm:mb-0">
+                <label for="dataInicio" class="block text-sm font-medium mb-1">Data Início:</label>
+                <input type="date" id="dataInicio" [(ngModel)]="dataInicio" name="dataInicio" required
+                    class="block w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-700 text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 sm:text-sm"/>
+            </div>
+            <div class="w-full sm:w-1/2 px-2">
+                <label for="dataFim" class="block text-sm font-medium mb-1">Data Fim:</label>
+                <input type="date" id="dataFim" [(ngModel)]="dataFim" name="dataFim" required
+                    class="block w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-700 text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 sm:text-sm"/>
+            </div>
+        </div>
+        <button type="submit" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md w-full mt-4">Buscar</button>
+    </form>
+
+    <div *ngIf="funcionarioOrcamentos && funcionarioOrcamentos.length" class="mt-8">
+        <h2 class="text-3xl font-semibold mb-6">Orçamentos</h2>
+        <div *ngFor="let funcionario of funcionarioOrcamentos" class="bg-gray-800 p-4 rounded-lg shadow-lg mb-6">
+            <h3 class="text-2xl font-bold mb-2">{{ funcionario.nomeFuncionario }} ({{ funcionario.cpfFuncionario }})</h3>
+            <p class="text-lg text-gray-300 mb-4">Quantidade de Orçamentos: {{ funcionario.orcamentos.length }}</p>
+            <div *ngIf="funcionario.orcamentos && funcionario.orcamentos.length">
+                <ul class="space-y-4">
+                    <li *ngFor="let orcamento of funcionario.orcamentos" class="p-4 bg-gray-700 rounded-md border border-gray-600">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <strong class="block mb-1 text-lg">Nome:</strong> {{ orcamento.nomeOrcamento }}
+                            </div>
+                            <div>
+                                <strong class="block mb-1 text-lg">Valor Total:</strong> {{ orcamento.valorTotal | currency:'BRL' }}
+                            </div>
+                            <div>
+                                <strong class="block mb-1 text-lg">Valor Parcial:</strong> {{ orcamento.valorParcial | currency:'BRL' }}
+                            </div>
+                            <div>
+                                <strong class="block mb-1 text-lg">Quantidade:</strong> {{ orcamento.quantidade }}
+                            </div>
+                            <div>
+                                <strong class="block mb-1 text-lg">Data:</strong> {{ orcamento.dataOrc | date:'dd/MM/yyyy' }}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="!funcionarioOrcamentos || funcionarioOrcamentos.length === 0" class="mt-8 text-center">
+        <p class="text-lg">Nenhum dado encontrado.</p>
+    </div>
+</div>

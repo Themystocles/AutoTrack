@@ -11,5 +11,9 @@ namespace AutoTrackApi.Interface
         Task<Estoque> GetEstoqueById(int id);
 
          Task AtualizarEstoqueAsync(string nomeServico, int quantidade);
+
+         Task <IEnumerable<Estoque>> Estoqueminimo();
+
+        
     }
 }

@@ -24,5 +24,10 @@ namespace AutoTrackApi.Model.Entities
          public string? KmAtual { get; set; }
         public int? MontagemId { get; set; }
         public Montagem? Montagem { get; set; }
+
+         public List<OrcamentoFuncionario>? OrcamentoFuncionarios { get; set; }
+
+        
+
     }
 }

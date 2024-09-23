@@ -4,6 +4,8 @@ import { MontagemPutService } from 'src/app/Services/CRUD - Cliente/montagem-put
 import { OrcamentoPostService } from 'src/app/Services/CRUD - Cliente/orcamento-post.service';
 import { Montagem } from 'src/app/Models/MontagemModel';
 import { Orcamento } from 'src/app/Models/OrcamentoModel';
+import { Funcionario } from 'src/app/Models/Funcionario';
+import { FuncionarioservicesService } from 'src/app/Services/CRUD - Cliente/funcionarioservices.service';
 
 @Component({
   selector: 'app-montagem-put',
@@ -15,23 +17,34 @@ export class MontagemPutComponent implements OnInit {
   Montagem: Montagem = {} as Montagem;
   showSuccessMessage = false;
   newOrcamento: Orcamento = {} as Orcamento; // Para adicionar um novo orçamento
+  funcionario: Funcionario[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private MontagemServices: MontagemPutService,
     private orcamentoPostService: OrcamentoPostService,
+    public funcionarioservices: FuncionarioservicesService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.MontagemId = this.route.snapshot.paramMap.get('id')!;
     this.loadMontagem();
+    this.getfuncionarios();
+    console.log(this.funcionario);
+    console.log(this.newOrcamento);
   }
 
   loadMontagem(): void {
     this.MontagemServices.GetMontagemById(this.MontagemId).subscribe(
       res => this.Montagem = res,
       error => console.error('Erro ao carregar a montagem:', error)
+    );
+  }
+  getfuncionarios() {
+    this.funcionarioservices.getfuncionarios().subscribe(
+      res => this.funcionario = res,
+      error => console.error('Erro ao carregar funcionários:', error)
     );
   }
 

@@ -26,6 +26,7 @@ namespace AutoTrackApi.Controllers
         public async Task<ActionResult<IEnumerable<Estoque>>> GetAllEstoque()
         {
             var Estoque = await _geralPersist.GetAll<Estoque>();
+            
             return Ok(Estoque);
         }
          [HttpGet("Estoque/{id}")]
@@ -34,10 +35,16 @@ namespace AutoTrackApi.Controllers
             var Estoque = await _estoquePersist.GetEstoqueById(id);
             return Ok(Estoque);
         }
+         [HttpGet("EstoqueMinimo")]
+        public async Task<ActionResult<Estoque>> EstoqueMinimo()
+        {
+            var Estoque = await _estoquePersist.Estoqueminimo();
+            return Ok(Estoque);
+        }
        [HttpPost("CadastrarItem")]
         public async Task<ActionResult<Estoque>> PostEstoque([FromBody]Estoque estoque)
         {
-             _geralPersist.AddAsync(estoque);
+            await _geralPersist.AddAsync(estoque);
 
              return CreatedAtAction(nameof(GetAllEstoque), new { id = estoque.Id }, estoque);
         }

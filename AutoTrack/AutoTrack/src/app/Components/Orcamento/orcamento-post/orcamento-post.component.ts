@@ -3,6 +3,8 @@ import { Orcamento } from 'src/app/Models/OrcamentoModel';
 import { OrcamentoPostService } from '../../../Services/CRUD - Cliente/orcamento-post.service';
 import { FiltroEstoqueService } from 'src/app/Services/filtro-estoque.service';
 import { Estoque } from 'src/app/Models/EstoqueModel';
+import { Funcionario } from 'src/app/Models/Funcionario';
+import { FuncionarioservicesService } from 'src/app/Services/CRUD - Cliente/funcionarioservices.service';
 
 @Component({
   selector: 'app-orcamento-post',
@@ -18,10 +20,12 @@ export class OrcamentoPostComponent implements OnInit {
   somaTotal: number = 0;
   orcamentos: Orcamento[] = [];
   estoque: Estoque[] = [];
-  
+  funcionario: Funcionario[] = [];
+
   constructor(
     private orcamentoPostService: OrcamentoPostService, 
-    private estoqueService: FiltroEstoqueService
+    private estoqueService: FiltroEstoqueService,
+    public funcionarioservices: FuncionarioservicesService
   ) {}
 
   ngOnInit() {
@@ -30,6 +34,7 @@ export class OrcamentoPostComponent implements OnInit {
     }
     this.loadEstoque();
     this.recalcularSomaTotal();
+    this.getfuncionarios();
   }
 
   private loadEstoque() {
@@ -43,6 +48,13 @@ export class OrcamentoPostComponent implements OnInit {
     );
   }
 
+  getfuncionarios() {
+    this.funcionarioservices.getfuncionarios().subscribe(
+      res => this.funcionario = res,
+      error => console.error('Erro ao carregar funcionários:', error)
+    );
+  }
+
   private createEmptyOrcamento(servicoId: number | null, montagemId: number | null): Orcamento {
     return {
       id: 0,
@@ -53,7 +65,8 @@ export class OrcamentoPostComponent implements OnInit {
       valorTotal: 0,
       servicoId: servicoId || 0,
       estoqueId: 0,
-      montagemId: montagemId || 0
+      montagemId: montagemId || 0,
+      funcionariosIds: []  // Para armazenar IDs dos funcionários selecionados
     };
   }
 
@@ -61,20 +74,16 @@ export class OrcamentoPostComponent implements OnInit {
     const servicoId = this.servicoId !== null ? this.servicoId : 0;
     const montagemId = this.montagemId !== null ? this.montagemId : 0;
     this.orcamentos.push(this.createEmptyOrcamento(servicoId, montagemId));
-    
   }
 
   removeOrcamento(index: number) {
-    // Remove o item da lista
     this.orcamentos.splice(index, 1);
-
-    // Recalcula a soma total após a remoção
     this.recalcularSomaTotal();
-}
-  
+  }
+
   recalcularSomaTotal() {
     this.somaTotal = this.orcamentos.reduce((soma, orcamento) => soma + (orcamento.valorTotal || 0), 0);
-    this.somaTotalChange.emit(this.somaTotal); // Emite a somaTotal sempre que for recalculada
+    this.somaTotalChange.emit(this.somaTotal);
   }
 
   submitOrcamentos() {
@@ -97,7 +106,7 @@ export class OrcamentoPostComponent implements OnInit {
     });
 
     this.orcamentosChange.emit(this.orcamentos);
-    this.recalcularSomaTotal(); // Garante que a soma total seja recalculada ao enviar
+    this.recalcularSomaTotal();
   }
 
   getProdutoOptions() {
@@ -114,16 +123,16 @@ export class OrcamentoPostComponent implements OnInit {
       this.orcamentos[index].valorParcial = 0;
     }
 
-    this.updateValorTotal(index); // Atualiza o valor total sempre que o valor parcial muda
+    this.updateValorTotal(index);
   }
 
   updateValorTotal(index: number) {
     const orcamento = this.orcamentos[index];
     orcamento.valorTotal = orcamento.valorParcial * orcamento.quantidade;
-    this.recalcularSomaTotal(); // Atualiza a soma total
+    this.recalcularSomaTotal();
   }
 
   updateQuantidade(index: number) {
-    this.updateValorTotal(index); // Atualiza o valor total sempre que a quantidade muda
+    this.updateValorTotal(index);
   }
 }

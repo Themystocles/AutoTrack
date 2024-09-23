@@ -14,11 +14,13 @@ public class ServicoController : ControllerBase
 {
     private readonly IGeralPersist _geralPersist;
     private readonly IServicoPersist _ServicoPersist;
+    private readonly IEstoquePersist _EstoquePersist;
 
-    public ServicoController(IGeralPersist geralPersist, IServicoPersist servicoPersist)
+    public ServicoController(IGeralPersist geralPersist, IServicoPersist servicoPersist, IEstoquePersist EstoquePersist)
     {
         _geralPersist = geralPersist;
         _ServicoPersist = servicoPersist;
+        _EstoquePersist = EstoquePersist;
     }
 
     [HttpGet]
@@ -48,7 +50,7 @@ public class ServicoController : ControllerBase
 
         if (servicos == null || !servicos.Any())
         {
-            return NotFound();
+            return Ok(new List<Servico>());
         }
 
         return Ok(servicos);
@@ -138,6 +140,8 @@ servicoExistente.MarcaValvula = servicoDto.MarcaValvula;
 servicoExistente.NumeroValvula = servicoDto.NumeroValvula;
 
     // Atualizar orçamentos associados
+    decimal somaValorTotalorc = 0;
+    int quantidadeEstoque = 0;
     foreach (var orcamentoDto in servicoDto.Orcamentos)
     {
         var orcamentoExistente = await _geralPersist.GetByIdAsync<Orcamento>(orcamentoDto.Id);
@@ -161,6 +165,9 @@ servicoExistente.NumeroValvula = servicoDto.NumeroValvula;
                 MontagemId = orcamentoDto.MontagemId
             };
             await _geralPersist.Editar(novoOrcamento);
+
+            somaValorTotalorc += novoOrcamento.ValorTotal;
+            quantidadeEstoque += novoOrcamento.Quantidade;
         }
         else
         {
@@ -176,9 +183,15 @@ servicoExistente.NumeroValvula = servicoDto.NumeroValvula;
             orcamentoExistente.MontagemId = orcamentoDto.MontagemId;
 
             await _geralPersist.Editar(orcamentoExistente);
+            somaValorTotalorc += orcamentoExistente.ValorTotal;
+            quantidadeEstoque += orcamentoExistente.Quantidade;
         }
     }
-
+    
+    
+           servicoExistente.Totalorcamento = somaValorTotalorc;
+        
+           
     await _geralPersist.Editar(servicoExistente);
 
     return Ok(servicoExistente);

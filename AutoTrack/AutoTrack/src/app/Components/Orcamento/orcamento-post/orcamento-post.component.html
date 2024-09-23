@@ -3,6 +3,10 @@
     <div *ngFor="let orcamento of orcamentos; let i = index" class="bg-gray-800 p-4 rounded-lg shadow-sm">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div>
+
+         
+
+        
           <label for="quantidade-{{i}}" class="block text-sm font-medium">Quantidade:</label>
           <input type="number" id="quantidade-{{i}}" [(ngModel)]="orcamento.quantidade" name="quantidade-{{i}}" required
             (input)="updateQuantidade(i)" 
@@ -39,7 +43,16 @@
           <label for="Garantia-{{i}}" class="block text-sm font-medium">Garantia</label>
           <input type="string" id="Garantia{{i}}" [(ngModel)]="orcamento.garantia" name="Garantia-{{i}}" 
             class="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:border-indigo-500 focus:ring-indigo-500"/>
-        </div>
+        </div><br>
+             <!-- Campo de seleção múltipla de funcionários -->
+             <div>
+              <label for="funcionarios-{{i}}" class="block text-sm font-medium">Selecionar Funcionários:</label>
+              <select id="funcionarios-{{i}}" [(ngModel)]="orcamento.funcionariosIds" name="funcionarios-{{i}}" multiple
+                class="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:border-indigo-500 focus:ring-indigo-500">
+                <option *ngFor="let func of funcionario" [value]="func.id">{{ func.nome }}</option>
+              </select>
+              <small class="text-gray-400">Pressione Ctrl (ou Cmd no Mac) para selecionar múltiplos funcionários.</small>
+            </div>
         <button type="button" (click)="removeOrcamento(i)"
           class="col-span-full px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">Remover</button>
       </div>
@@ -61,3 +74,10 @@
     </div>
   </form>
 </div>
+<ul>
+  aparece
+  <li *ngFor="let func of funcionario">
+    {{func.nome}}<br>
+    {{func.id}}
+  </li>
+</ul>

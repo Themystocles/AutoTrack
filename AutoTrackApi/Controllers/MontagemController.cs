@@ -91,7 +91,7 @@ public async Task<ActionResult <IEnumerable<Montagem>>> GetMontagembyNfeVendas(s
 
         if (montagem == null || !montagem.Any())
         {
-            return NotFound();
+            return Ok(new List<Montagem>());
         }
 
         return Ok(montagem);
@@ -121,7 +121,7 @@ public async Task<ActionResult <IEnumerable<Montagem>>> GetMontagembyNfeVendas(s
             var montagemExistente = await _geralPersist.GetByIdAsync<Montagem>(id);
             if (montagemExistente == null)
             {
-                return NotFound("Cliente não encontrado.");
+                return NotFound("montagem não encontrada.");
             }
 
             // Mapear DTO para a entidade Montagem
@@ -155,6 +155,7 @@ public async Task<ActionResult <IEnumerable<Montagem>>> GetMontagembyNfeVendas(s
             montagemExistente.ValorTotal = montagemDto.ValorTotal;
 
             // Atualizar orçamentos associados
+            decimal somaValorTotalorc = 0;
             foreach (var orcamentoDto in montagemDto.Orcamentos)
     {
         var orcamentoExistente = await _geralPersist.GetByIdAsync<Orcamento>(orcamentoDto.Id);
@@ -176,6 +177,7 @@ public async Task<ActionResult <IEnumerable<Montagem>>> GetMontagembyNfeVendas(s
                 MontagemId = orcamentoDto.MontagemId
             };
             await _geralPersist.Editar(novoOrcamento);
+            somaValorTotalorc += novoOrcamento.ValorTotal;
         }
         else
         {
@@ -190,10 +192,15 @@ public async Task<ActionResult <IEnumerable<Montagem>>> GetMontagembyNfeVendas(s
             orcamentoExistente.MontagemId = orcamentoDto.MontagemId;
 
             await _geralPersist.Editar(orcamentoExistente);
+
+             somaValorTotalorc += orcamentoExistente.ValorTotal;
+
+
         }
+         
     }
 
-
+              montagemExistente.ValorTotal = somaValorTotalorc;
             await _geralPersist.Editar(montagemExistente);
             return Ok(montagemExistente);
         }

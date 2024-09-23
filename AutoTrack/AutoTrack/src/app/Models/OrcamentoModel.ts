@@ -1,3 +1,10 @@
+import { Funcionario } from "./Funcionario";
+export interface OrcamentoFuncionario {
+  orcamentoId: number; 
+  funcionarioId: number;
+  funcionario?: Funcionario;
+}
+
 export interface Orcamento {
     id?: number;
     quantidade: number;
@@ -10,6 +17,10 @@ export interface Orcamento {
     servicoId: number;
     estoqueId: number;
     montagemId: number;
+    funcionariosIds?: number[];
+    funcionarios?: Funcionario[];
+    orcamentoFuncionarios?: OrcamentoFuncionario[];
+    
 
   }
   

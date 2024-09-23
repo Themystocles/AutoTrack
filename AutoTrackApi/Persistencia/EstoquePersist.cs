@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoTrackApi.DataContext;
 using AutoTrackApi.Interface;
 using AutoTrackApi.Model.Entities;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace AutoTrackApi.Persistencia
@@ -31,7 +32,17 @@ namespace AutoTrackApi.Persistencia
             await _context.SaveChangesAsync();
         }
     }
-        
+
+        public async Task<IEnumerable<Estoque>> Estoqueminimo()
+        {
+             var  estoquesminimos = await _context.estoques
+            .Where<Estoque>(E => E.Quantidade < E.DataUltAlt)
+            .ToListAsync();
+
+            
+
+            return estoquesminimos;
+        }
 
         public async  Task<Estoque> GetEstoqueById(int id)
         {

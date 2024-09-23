@@ -16,6 +16,10 @@ builder.Services.AddScoped<IServicoPersist, ServicoPersist>();
 builder.Services.AddScoped<IMontagemPersist, MontagemPersist>();
 builder.Services.AddScoped<IRelatorioFinanceiroPersist, RelatorioFinanceiroPersist>();
 builder.Services.AddScoped<IEstoquePersist, EstoquePersist>();
+builder.Services.AddScoped<IOrcamentoFuncionarioPersist, OrcamentoFuncionarioPersist>();
+builder.Services.AddScoped<IOrcamentoPersist, OrcamentoPersist>();
+
+
 
 // Adiciona serviços ao contêiner
 builder.Services.AddControllers()

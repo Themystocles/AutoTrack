@@ -22,6 +22,7 @@ namespace AutoTrackApi.Model.DTOs
         public int? ServicoId { get; set; }
         public int? EstoqueId { get; set; }
         public int? MontagemId { get; set; }
+        public List<int>? FuncionariosIds { get; set; } // IDs dos funcionários
        
     }
 }

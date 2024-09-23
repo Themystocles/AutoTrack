@@ -27,7 +27,10 @@ namespace AutoTrackApi.Persistencia
         public async Task<Servico> GetServicoById(int idServico)
         {
             return await _context.servicos
-             .Include(s => s.orcamentos) // Inclui os orçamentos relacionados
+             .Include(s => s.orcamentos)
+             .ThenInclude(o => o.OrcamentoFuncionarios)
+             .ThenInclude(f => f.Funcionario)
+              // Inclui os orçamentos relacionados
             .FirstOrDefaultAsync(S => S.Id == idServico);
         }
 

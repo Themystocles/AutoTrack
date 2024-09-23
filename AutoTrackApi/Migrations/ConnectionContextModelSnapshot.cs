@@ -23,9 +23,8 @@ namespace AutoTrack.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("DataUltAlt")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("DataUltAlt")
+                        .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Preco")
                         .HasColumnType("TEXT");
@@ -40,6 +39,63 @@ namespace AutoTrack.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("estoques");
+                });
+
+            modelBuilder.Entity("AutoTrackApi.Model.Entities.Funcionarios", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Bairro")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Celular1")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Celular2")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Cep")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Cidade")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Cpf")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("DataAdmissao")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("DataDemissao")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("DataFerias")
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime?>("DataNascimento")
+                        .HasColumnType("TEXT");
+
+                    b.Property<byte[]>("Foto")
+                        .HasColumnType("BLOB");
+
+                    b.Property<string>("Funcao")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Rua")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Situacao")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("id");
+
+                    b.ToTable("funcionarios");
                 });
 
             modelBuilder.Entity("AutoTrackApi.Model.Entities.Orcamento", b =>
@@ -91,6 +147,21 @@ namespace AutoTrack.Migrations
                     b.HasIndex("ServicoId");
 
                     b.ToTable("orcamentos");
+                });
+
+            modelBuilder.Entity("AutoTrackApi.Model.Entities.OrcamentoFuncionario", b =>
+                {
+                    b.Property<int>("OrcamentoId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("FuncionarioId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("OrcamentoId", "FuncionarioId");
+
+                    b.HasIndex("FuncionarioId");
+
+                    b.ToTable("OrcamentoFuncionarios");
                 });
 
             modelBuilder.Entity("AutoTrackApi.Model.Montagem", b =>
@@ -378,6 +449,25 @@ namespace AutoTrack.Migrations
                     b.Navigation("estoque");
                 });
 
+            modelBuilder.Entity("AutoTrackApi.Model.Entities.OrcamentoFuncionario", b =>
+                {
+                    b.HasOne("AutoTrackApi.Model.Entities.Funcionarios", "Funcionario")
+                        .WithMany("OrcamentoFuncionarios")
+                        .HasForeignKey("FuncionarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AutoTrackApi.Model.Entities.Orcamento", "Orcamento")
+                        .WithMany("OrcamentoFuncionarios")
+                        .HasForeignKey("OrcamentoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Funcionario");
+
+                    b.Navigation("Orcamento");
+                });
+
             modelBuilder.Entity("AutoTrackApi.Model.Montagem", b =>
                 {
                     b.HasOne("AutoTrackApi.Model.Veiculo", "veiculo")
@@ -409,6 +499,16 @@ namespace AutoTrack.Migrations
                         .IsRequired();
 
                     b.Navigation("Cliente");
+                });
+
+            modelBuilder.Entity("AutoTrackApi.Model.Entities.Funcionarios", b =>
+                {
+                    b.Navigation("OrcamentoFuncionarios");
+                });
+
+            modelBuilder.Entity("AutoTrackApi.Model.Entities.Orcamento", b =>
+                {
+                    b.Navigation("OrcamentoFuncionarios");
                 });
 
             modelBuilder.Entity("AutoTrackApi.Model.Montagem", b =>

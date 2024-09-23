@@ -11,6 +11,6 @@ namespace AutoTrackApi.Model.Entities
         public string Produto { get; set; }
         public int Quantidade  { get; set; }
         public decimal Preco { get; set; }
-        public string DataUltAlt { get; set; }
+        public int DataUltAlt { get; set; }
     }
 }

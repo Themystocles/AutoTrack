@@ -27,22 +27,66 @@
       <!-- Linha Separadora -->
       <li class="border-t border-gray-700 my-6"></li>
 
-      <!-- Seção Financeiro -->
-      <li>
-        <a routerLink="/relatoriofinanceiro" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out">
-          <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11v2m0 4v2m-6-2h12M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"></path></svg>Financeiro
-        </a>
-      </li>
+   <!-- Seção Financeiro -->
+<li>
+  <a routerLink="/relatoriofinanceiro" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out">
+    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11v2m0 4v2m-6-2h12M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z"></path>
+    </svg>
+    Financeiro
+  </a>
+  
+  <!-- Modificado: ícone de folha de ponto -->
+  <a routerLink="/folhadepagamento" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out">
+    <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6M9 16h6M13 4H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-6-4z"></path>
+    </svg>
+    Folha de pagamento
+  </a>
+</li>
 
       <!-- Linha Separadora -->
       <li class="border-t border-gray-700 my-6"></li>
 
       <!-- Seção Estoque -->
-      <li>
-        <a routerLink="/estoque" class="flex items-center p-3 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out">
-          <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15h12M6 9h12m-6 6V3"></path></svg>Estoque
-        </a>
+     <!-- Seção Estoque -->
+<!-- Seção Estoque -->
+<!-- Seção Estoque -->
+<!-- Seção Estoque -->
+<li class="relative">
+  <a routerLink="/estoque" 
+     class="flex items-center p-3 rounded-lg hover:bg-gray-700 hover:shadow-md transition duration-300 ease-in-out"
+     [ngClass]="{'estoque-alerta': ItensMinimo.length > 0}" 
+     (mouseenter)="showTooltip = true" 
+     (mouseleave)="showTooltip = false">
+     
+    <!-- Ícone Estoque Branco (SVG) -->
+    <svg class="w-6 h-6 mr-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15h12M6 9h12m-6 6V3"></path>
+    </svg>
+
+    <!-- Texto Estoque -->
+    <span class="font-semibold text-white">Estoque</span>
+
+    <!-- Ícone de Alerta com Animação -->
+    <svg *ngIf="ItensMinimo.length > 0" class="w-6 h-6 text-red-500 ml-2 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M12 2a10 10 0 100 20 10 10 0 000-20z"></path>
+    </svg>
+  </a>
+
+  <!-- Tooltip estilizado para exibir lista de itens -->
+  <div *ngIf="showTooltip && ItensMinimo.length > 0" class="absolute left-0 mt-2 w-48 bg-gray-800 text-white text-sm rounded-md p-4 shadow-lg z-10">
+    <p class="font-semibold mb-2">Itens com estoque baixo:</p>
+    <ul>
+      <li *ngFor="let item of ItensMinimo" class="mb-1">
+        <span class="text-gray-300">{{ item.produto }}</span>
       </li>
+    </ul>
+  </div>
+</li>
+
+
+
     </ul>
   </nav>
 </aside>

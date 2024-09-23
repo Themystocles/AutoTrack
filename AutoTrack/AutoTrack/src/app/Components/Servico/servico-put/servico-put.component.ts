@@ -4,6 +4,8 @@ import { ServicoPutService } from '../../../Services/CRUD - Cliente/servico-put.
 import { OrcamentoPostService } from 'src/app/Services/CRUD - Cliente/orcamento-post.service';
 import { Servico } from '../../../Models/ServicoMode';
 import { Orcamento } from 'src/app/Models/OrcamentoModel';
+import { Funcionario } from 'src/app/Models/Funcionario';
+import { FuncionarioservicesService } from 'src/app/Services/CRUD - Cliente/funcionarioservices.service';
 
 @Component({
   selector: 'app-servico-put',
@@ -15,17 +17,21 @@ export class ServicoPutComponent implements OnInit {
   servico: Servico = {} as Servico;
   showSuccessMessage = false;
   newOrcamento: Orcamento = {} as Orcamento;
+  funcionario: Funcionario[] = [];
+  
 
   constructor(
     private route: ActivatedRoute,
     private servicoService: ServicoPutService,
     private orcamentoPostService: OrcamentoPostService,
+    public funcionarioservices: FuncionarioservicesService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.servicoId = this.route.snapshot.paramMap.get('id')!;
     this.loadServico();
+    this.getfuncionarios()
   }
 
   loadServico(): void {
@@ -34,10 +40,17 @@ export class ServicoPutComponent implements OnInit {
       error => console.error('Erro ao carregar o serviço:', error)
     );
   }
+  getfuncionarios() {
+    this.funcionarioservices.getfuncionarios().subscribe(
+      res => this.funcionario = res,
+      error => console.error('Erro ao carregar funcionários:', error)
+    );
+  }
 
   onSubmit(form: any): void {
+
     if (form.valid) {
-     
+    
       this.servicoService.UpdateServico(this.servicoId, this.servico).subscribe(
         () => {
           this.showSuccessMessage = true;

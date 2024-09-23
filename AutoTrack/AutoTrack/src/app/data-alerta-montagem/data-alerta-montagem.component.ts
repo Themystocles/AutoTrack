@@ -17,7 +17,14 @@ export class DataAlertaMontagemComponent {
   constructor(public montagemservices: MontagemService, private router: Router) { } // Injetar Router
 
   ngOnInit(): void {
-    this.date = new Date().toISOString(); // Formato ISO 8601
+    const now = new Date();
+  
+    // Ajusta a data para o fuso horário local removendo o deslocamento do UTC
+    const localDate = new Date(now.getTime() - (now.getTimezoneOffset() * 60000))
+      .toISOString()
+      .split('T')[0];  // Pega apenas a parte da data (YYYY-MM-DD)
+  
+    this.date = localDate;
     this.GetservByAlert();
   }
 

@@ -8,6 +8,7 @@ import { Estoque } from 'src/app/Models/EstoqueModel';
 })
 export class CrudEstoqueService {
   urlGet='http://localhost:5203/api/Estoque/Estoque'
+  urlAlerta = 'http://localhost:5203/api/Estoque/EstoqueMinimo'
   urlGetById ='http://localhost:5203/api/Estoque/Estoque'
   urlPost = 'http://localhost:5203/api/Estoque/CadastrarItem'
   urlPut = 'http://localhost:5203/api/Estoque'
@@ -18,6 +19,9 @@ export class CrudEstoqueService {
 
   getAllEstoque(): Observable<Estoque[]>{
     return this.http.get<Estoque[]>(this.urlGet)
+  }
+  getAlerta(): Observable<Estoque[]>{
+    return this.http.get<Estoque[]>(this.urlAlerta)
   }
 
   getEstoquebyId(id: string):Observable<Estoque>{
