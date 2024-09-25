@@ -9,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ConnectionContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Registre suas interfaces e implementações
 builder.Services.AddScoped<IGeralPersist, GeralPersist>();
 builder.Services.AddScoped<IClientePersist, ClientePersist>();
 builder.Services.AddScoped<IVeiculoPersist, VeiculoPersist>();
@@ -18,8 +19,6 @@ builder.Services.AddScoped<IRelatorioFinanceiroPersist, RelatorioFinanceiroPersi
 builder.Services.AddScoped<IEstoquePersist, EstoquePersist>();
 builder.Services.AddScoped<IOrcamentoFuncionarioPersist, OrcamentoFuncionarioPersist>();
 builder.Services.AddScoped<IOrcamentoPersist, OrcamentoPersist>();
-
-
 
 // Adiciona serviços ao contêiner
 builder.Services.AddControllers()
@@ -53,6 +52,9 @@ if (app.Environment.IsDevelopment())
 // Usa o CORS configurado
 app.UseCors("AllowAll");
 
+// Configura o middleware para servir arquivos estáticos da pasta wwwroot
+app.UseStaticFiles(); // Para servir arquivos da pasta wwwroot
+
 // Remove a redireção para HTTPS no ambiente de desenvolvimento
 if (app.Environment.IsDevelopment())
 {
@@ -67,7 +69,11 @@ else
     app.UseHttpsRedirection();
 }
 
+// Mapeia as rotas de controle da API
 app.UseAuthorization();
-app.MapControllers();
+app.MapControllers(); // Isso deve estar antes do fallback
+
+// Adiciona fallback para que as rotas do Angular sejam tratadas corretamente
+app.MapFallbackToFile("index.html"); // Faz com que qualquer rota não-API vá para o Angular
 
 app.Run();
