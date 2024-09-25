@@ -164,6 +164,9 @@
             <ng-template #noFuncionarios>
               <span class="text-gray-300">Nenhum funcionário disponível.</span>
             </ng-template>
+            <button (click)="confirmDelete(orcamento.id!)" class="bg-red-500 text-white p-2 rounded mt-4">
+              Deletar Orçamento
+            </button>
           </div>
         </div>
       </div>

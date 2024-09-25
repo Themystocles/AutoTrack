@@ -28,7 +28,8 @@ export class AppComponent {
            url.includes('/veiculo-list') || url.includes('/veiculo-put') || url.includes('/servico-list') || 
            url.includes('/servico-put') || url.includes('/montagem-list') || url.includes('/montagem-put') || 
            url.includes('/servico-notificacao') || url.includes('/montagem-notificacao') || url.includes('relatoriofinanceiro')
-          || url.includes('estoque')|| url.includes('folhadepagamento');;
+          || url.includes('estoque')|| url.includes('folhadepagamento')|| url.includes('funcionarios')|| url.includes('funcionarioput')
+          || url.includes('funcionariopost');
   }
 
   private isPrintRoute(url: string): boolean {

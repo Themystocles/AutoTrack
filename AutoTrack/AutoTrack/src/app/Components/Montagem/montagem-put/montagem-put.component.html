@@ -104,7 +104,7 @@
       <div *ngIf="anoReteste.invalid && (anoReteste.dirty || anoReteste.touched)" class="text-red-500 text-sm mt-1">
         Preencha o campo no formato correto: 00-00-0000
       </div>
-    </div>>
+    </div>
 
     <!-- Campo Requalificadora -->
     <div class="mb-4 col-span-1">
@@ -221,6 +221,9 @@
           <ng-template #noFuncionarios>
             <span class="text-gray-300">Nenhum funcionário disponível.</span>
           </ng-template>
+          <button (click)="confirmDelete(orcamento.id!)" class="bg-red-500 text-white p-2 rounded mt-4">
+            Deletar Orçamento
+          </button>
         </div>
       </div>
     </div>
@@ -233,6 +236,10 @@
         <div class="mb-4">
           <label for="novoNomeServico" class="block text-white mb-1">Nome do Serviço</label>
           <input id="novoNomeServico" name="novoNomeServico" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.nomeServico" required>
+        </div>
+        <div class="mb-4">
+          <label for="Produto" class="block text-white mb-1">Produto</label>
+          <input id="Produto" name="Produto" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.produto" >
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           <div class="mb-4">
@@ -252,12 +259,17 @@
             <input id="garantia" name="novoValorgarantiaTotal" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.garantia" >
           </div>
           <div class="mb-4">
+            <label for="kmAtual" class="block text-white mb-1">KM Atual</label>
+            <input id="kmAtual" name="kmAtual" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.kmAtual" >
+          </div>
+          <div class="mb-4">
             <label for="funcionarios" class="block text-white mb-1">Selecionar Funcionários:</label>
             <select id="funcionarios" [(ngModel)]="newOrcamento.funcionariosIds" name="funcionarios" multiple class="w-full p-3 rounded bg-gray-600 text-white">
               <option *ngFor="let func of funcionario" [value]="func.id">{{ func.nome }}</option>
             </select>
             <small class="text-gray-400">Pressione Ctrl (ou Cmd no Mac) para selecionar múltiplos funcionários.</small>
           </div>
+      
       
         </div>
 

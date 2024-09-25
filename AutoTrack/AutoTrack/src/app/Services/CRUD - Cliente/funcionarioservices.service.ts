@@ -9,10 +9,17 @@ import { Funcionario } from 'src/app/Models/Funcionario';
 export class FuncionarioservicesService {
   url = 'http://localhost:5203/Funcionario/Funcionario'
 
+  
+
   constructor(public http: HttpClient) { }
 
 getfuncionarios():Observable<Funcionario[]>{
   return this.http.get<Funcionario[]>(this.url)
 }
+getfuncionariosbyId(id: string):Observable<Funcionario>{
+  const urlId = `${this.url}/${id}`;
+  return this.http.get<Funcionario>(urlId)
+}
+
 
 }

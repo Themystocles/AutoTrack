@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MontagemPutService } from 'src/app/Services/CRUD - Cliente/montagem-put.service';
 import { OrcamentoPostService } from 'src/app/Services/CRUD - Cliente/orcamento-post.service';
@@ -6,13 +6,14 @@ import { Montagem } from 'src/app/Models/MontagemModel';
 import { Orcamento } from 'src/app/Models/OrcamentoModel';
 import { Funcionario } from 'src/app/Models/Funcionario';
 import { FuncionarioservicesService } from 'src/app/Services/CRUD - Cliente/funcionarioservices.service';
+import { OrcamentodeleteService } from 'src/app/Services/CRUD - Cliente/orcamentodelete.service';
 
 @Component({
   selector: 'app-montagem-put',
   templateUrl: './montagem-put.component.html',
   styleUrls: ['./montagem-put.component.scss']
 })
-export class MontagemPutComponent implements OnInit {
+export class MontagemPutComponent implements OnInit, OnDestroy {
   MontagemId!: string;
   Montagem: Montagem = {} as Montagem;
   showSuccessMessage = false;
@@ -24,7 +25,8 @@ export class MontagemPutComponent implements OnInit {
     private MontagemServices: MontagemPutService,
     private orcamentoPostService: OrcamentoPostService,
     public funcionarioservices: FuncionarioservicesService,
-    private router: Router
+    private router: Router,
+    private orcamentodelete : OrcamentodeleteService
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +35,11 @@ export class MontagemPutComponent implements OnInit {
     this.getfuncionarios();
     console.log(this.funcionario);
     console.log(this.newOrcamento);
+  }
+  ngOnDestroy(): void {
+    // Chama o método onSubmit ao sair do componente
+    const form = { valid: true }; // Simula um formulário válido
+    this.onSubmit(form);
   }
 
   loadMontagem(): void {
@@ -47,14 +54,36 @@ export class MontagemPutComponent implements OnInit {
       error => console.error('Erro ao carregar funcionários:', error)
     );
   }
+  confirmDelete(id: number): void {
+    const confirmed = confirm('Você realmente deseja deletar este orçamento?');
 
+    if (confirmed) {
+      this.deleteorc(id); 
+      
+    }
+  }
+  deleteorc(id: number): void {
+   
+    this.orcamentodelete.DeleteOrcamento(id).subscribe({
+      next: () => {
+        // Sucesso no delete, atualize a página ou redirecione para outra rota
+        alert('Orçamento deletado com sucesso!');
+       
+        location.reload(); // Recarrega a página atual
+     
+      },
+      error: (err) => {
+        console.error('Erro ao deletar orçamento', err);
+      }
+    });
+  }
   onSubmit(form: any): void {
     console.log(this.Montagem);
     if (form.valid) {
       this.MontagemServices.UpdateMontagem(this.MontagemId, this.Montagem).subscribe(
         () => {
           this.showSuccessMessage = true;
-          setTimeout(() => this.router.navigate(['/montagem-list']), 2000);
+          setTimeout(() => this.router.navigate(['/montagem-list']), 1000);
         },
         error => console.error('Erro ao atualizar montagem:', error)
       );

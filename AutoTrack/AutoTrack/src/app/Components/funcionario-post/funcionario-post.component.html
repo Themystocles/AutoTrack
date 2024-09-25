@@ -1,0 +1,97 @@
+
+<div class="container mx-auto p-8 bg-gray-800 text-white rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold mb-6">Adicionar Funcionário</h2>
+  
+    <!-- Mensagem de sucesso -->
+    <div *ngIf="mensagemSucesso" class="mb-4 p-3 bg-green-600 rounded">
+      {{ mensagemSucesso }}
+    </div>
+  
+    <!-- Formulário para adicionar novo funcionário -->
+    <form (ngSubmit)="postfuncionario()" #novoFuncionarioForm="ngForm">
+  
+      <div class="mb-4">
+        <label for="nome" class="block text-sm font-medium mb-2">Nome:</label>
+        <input type="text" id="nome" class="block w-full p-3 border border-gray-600 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500" [(ngModel)]="novoFuncionario.nome" name="nome" required>
+      </div>
+  
+      <div class="mb-4">
+        <label for="cpf" class="block text-sm font-medium mb-2">CPF:</label>
+        <input type="text" id="cpf" class="block w-full p-3 border border-gray-600 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500" [(ngModel)]="novoFuncionario.cpf" name="cpf" required>
+      </div>
+  
+      <div class="mb-4">
+        <label for="dataAdmissao" class="block text-sm font-medium mb-2">Data de Admissão:</label>
+        <input type="date" id="dataAdmissao" class="block w-full p-3 border border-gray-600 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500" [(ngModel)]="novoFuncionario.dataAdmissao" name="dataAdmissao">
+      </div>
+  
+      <div class="mb-4">
+        <label for="dataDemissao" class="block text-sm font-medium mb-2">Data de Demissão:</label>
+        <input type="date" id="dataDemissao" class="block w-full p-3 border border-gray-600 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500" [(ngModel)]="novoFuncionario.dataDemissao" name="dataDemissao">
+      </div>
+  
+      <div class="mb-4">
+        <label for="situacao" class="block text-sm font-medium mb-2">Situação:</label>
+        <input type="text" id="situacao" class="block w-full p-3 border border-gray-600 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500" [(ngModel)]="novoFuncionario.situacao" name="situacao">
+      </div>
+  
+      <div class="mb-4">
+        <label for="dataFerias" class="block text-sm font-medium mb-2">Data de Férias:</label>
+        <input type="date" id="dataFerias" class="block w-full p-3 border border-gray-600 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500" [(ngModel)]="novoFuncionario.dataFerias" name="dataFerias">
+      </div>
+  
+      <div class="mb-4">
+        <label for="funcao" class="block text-sm font-medium mb-2">Função:</label>
+        <input type="text" id="funcao" class="block w-full p-3 border border-gray-600 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500" [(ngModel)]="novoFuncionario.funcao" name="funcao">
+      </div>
+  
+      <div class="mb-4">
+        <label for="dataNascimento" class="block text-sm font-medium mb-2">Data de Nascimento:</label>
+        <input type="date" id="dataNascimento" class="block w-full p-3 border border-gray-600 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500" [(ngModel)]="novoFuncionario.dataNascimento" name="dataNascimento">
+      </div>
+  
+      <div class="mb-4">
+        <label for="celular1" class="block text-sm font-medium mb-2">Celular 1:</label>
+        <input type="text" id="celular1" class="block w-full p-3 border border-gray-600 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500" [(ngModel)]="novoFuncionario.celular1" name="celular1">
+      </div>
+  
+      <div class="mb-4">
+        <label for="celular2" class="block text-sm font-medium mb-2">Celular 2:</label>
+        <input type="text" id="celular2" class="block w-full p-3 border border-gray-600 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500" [(ngModel)]="novoFuncionario.celular2" name="celular2">
+      </div>
+  
+      <div class="mb-4">
+        <label for="rua" class="block text-sm font-medium mb-2">Rua:</label>
+        <input type="text" id="rua" class="block w-full p-3 border border-gray-600 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500" [(ngModel)]="novoFuncionario.rua" name="rua">
+      </div>
+  
+      <div class="mb-4">
+        <label for="cep" class="block text-sm font-medium mb-2">CEP:</label>
+        <input type="text" id="cep" class="block w-full p-3 border border-gray-600 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500" [(ngModel)]="novoFuncionario.cep" name="cep">
+      </div>
+  
+      <div class="mb-4">
+        <label for="cidade" class="block text-sm font-medium mb-2">Cidade:</label>
+        <input type="text" id="cidade" class="block w-full p-3 border border-gray-600 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500" [(ngModel)]="novoFuncionario.cidade" name="cidade">
+      </div>
+  
+      <div class="mb-4">
+        <label for="bairro" class="block text-sm font-medium mb-2">Bairro:</label>
+        <input type="text" id="bairro" class="block w-full p-3 border border-gray-600 bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-blue-500" [(ngModel)]="novoFuncionario.bairro" name="bairro">
+      </div>
+  
+      <div class="mb-4">
+        <label for="foto" class="block text-sm font-medium mb-2">Foto:</label>
+        <input 
+          type="file" 
+          id="foto" 
+          
+          class="block w-full text-sm text-gray-500 border border-gray-600 bg-gray-700 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        >
+      </div>
+  
+      <button type="submit" class="w-full p-3 mt-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg transition duration-200" [disabled]="novoFuncionarioForm.invalid">Salvar</button>
+  
+    </form>
+  </div>
+  

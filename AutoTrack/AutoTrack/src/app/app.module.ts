@@ -46,6 +46,9 @@ import { DataAlertaMontagemComponent } from './data-alerta-montagem/data-alerta-
 import { RelatoriofinanceiroComponent } from './relatoriofinanceiro/relatoriofinanceiro.component';
 import { EstoqueComponent } from './Components/estoque/estoque.component';
 import { FolhadepagamentoComponent } from './folhadepagamento/folhadepagamento.component';
+import { FuncionarioComponent } from './Components/funcionario/funcionario.component';
+import { FuncionarioPutComponent } from './Components/funcionario-put/funcionario-put.component';
+import { FuncionarioPostComponent } from './Components/funcionario-post/funcionario-post.component';
 
 
 
@@ -86,6 +89,9 @@ import { FolhadepagamentoComponent } from './folhadepagamento/folhadepagamento.c
     RelatoriofinanceiroComponent,
     EstoqueComponent,
     FolhadepagamentoComponent,
+    FuncionarioComponent,
+    FuncionarioPutComponent,
+    FuncionarioPostComponent,
  
     
    

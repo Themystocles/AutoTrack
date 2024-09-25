@@ -23,6 +23,9 @@ import { PrintMontComponent } from './print-mont/print-mont.component';
 import { RelatoriofinanceiroComponent } from './relatoriofinanceiro/relatoriofinanceiro.component';
 import { EstoqueComponent } from './Components/estoque/estoque.component';
 import { FolhadepagamentoComponent } from './folhadepagamento/folhadepagamento.component';
+import { FuncionarioComponent } from './Components/funcionario/funcionario.component';
+import { FuncionarioPutComponent } from './Components/funcionario-put/funcionario-put.component';
+import { FuncionarioPostComponent } from './Components/funcionario-post/funcionario-post.component';
 
 
 const routes: Routes = [
@@ -48,6 +51,9 @@ const routes: Routes = [
   { path: 'estoque', component: EstoqueComponent},
   { path: 'estoque/:id', component: EstoqueComponent},
   { path: 'folhadepagamento', component: FolhadepagamentoComponent},
+  { path: 'funcionarios', component: FuncionarioComponent},
+  { path: 'funcionarioput/:id', component: FuncionarioPutComponent},
+  { path: 'funcionariopost', component: FuncionarioPostComponent},
 
 
  
