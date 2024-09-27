@@ -57,10 +57,10 @@
 
     <!-- Campo CEP -->
     <div class="mb-4 col-span-1">
-      <label for="cep" class="block text-white mb-1">CEP</label>
-      <input id="cep" name="cep" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="cep" required>
+      <label for="cep" class="block text-white mb-1">CEP </label>
+      <input id="cep" name="cep" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="cep" mask="00000-000" required>
     </div>
-    <button type="button" (click)="PesquisaPorCep()" class="w-full bg-blue-600 text-white p-3 rounded mt-2">Pesquisar CEP</button>
+    <button type="button" (click)="PesquisaPorCep()" class="w-full bg-blue-600 text-white p-3 rounded mt-2">Pesquisar CEP </button>
 
     <!-- Campo UF -->
     <div class="mb-4 col-span-1">

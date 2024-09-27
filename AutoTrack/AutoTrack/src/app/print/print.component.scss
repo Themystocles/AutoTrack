@@ -47,7 +47,8 @@
 /* Torna o cabeçalho visível apenas na impressão */
 @media print {
   .cabecalho {
-    display: block;
+    display: flex;
+    align-items: center;
   }
 }
 }

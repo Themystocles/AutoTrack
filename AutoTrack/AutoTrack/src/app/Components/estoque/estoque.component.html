@@ -1,6 +1,14 @@
+<div class="text-left mt-8">
+    <button (click)="openAddModal()"
+      class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+      Adicionar Novo
+    </button>
+  </div>
 <div class="p-6 bg-gray-900 text-white min-h-screen">
+    
     <!-- Título da página -->
     <h1 class="text-4xl font-extrabold mb-8">Estoque</h1>
+    
 
     <!-- Container de Grid para os itens de estoque -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
@@ -22,7 +30,7 @@
                        class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" readonly />
             </div>
             <div class="mb-4">
-                <label class="block text-gray-300 text-sm font-medium">Data da Última Alteração</label>
+                <label class="block text-gray-300 text-sm font-medium">Quantidade Minima</label>
                 <input [(ngModel)]="estoque.dataUltAlt" placeholder="Data da Última Alteração"
                        class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" readonly />
             </div>
@@ -40,11 +48,7 @@
         </div>
     </div>
 
-    <!-- Botão para abrir o modal de adicionar -->
-    <button (click)="openAddModal()"
-            class="mt-8 bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
-        Adicionar Novo
-    </button>
+  
 
     <!-- Modal para edição -->
     <div *ngIf="isEditModalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
