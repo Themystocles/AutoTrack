@@ -4,63 +4,74 @@
     <!-- Campo Nome -->
     <div class="mb-4 col-span-1">
       <label for="nome" class="block text-white mb-1">Nome</label>
-      <input id="nome" name="nome" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.nome" required>
+      <input id="nome" name="nome" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Cliente.nome" required>
     </div>
 
     <!-- Campo CPF -->
     <div class="mb-4 col-span-1">
       <label for="cpf" class="block text-white mb-1">CPF</label>
-      <input id="cpf" name="cpf" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.cpf" >
+      <input id="cpf" name="cpf" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Cliente.cpf">
     </div>
 
     <!-- Campo Inscrição Estadual -->
     <div class="mb-4 col-span-1">
       <label for="insEstadual" class="block text-white mb-1">Inscrição Estadual</label>
-      <input id="insEstadual" name="insEstadual" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.insEstadual">
+      <input id="insEstadual" name="insEstadual" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Cliente.insEstadual">
     </div>
 
     <!-- Campo Inscrição Municipal -->
     <div class="mb-4 col-span-1">
       <label for="insMunicipal" class="block text-white mb-1">Inscrição Municipal</label>
-      <input id="insMunicipal" name="insMunicipal" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.insMunicipal">
+      <input id="insMunicipal" name="insMunicipal" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Cliente.insMunicipal">
     </div>
 
     <!-- Campo Telefone -->
     <div class="mb-4 col-span-1">
       <label for="telefone" class="block text-white mb-1">Telefone Celular</label>
-      <input id="telefone" name="telefone" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.telefone" mask="(00) 00000-0000">
+      <input id="telefone" name="telefone" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Cliente.telefone" mask="(00) 00000-0000">
     </div>
 
     <!-- Campo Telefone 2 -->
     <div class="mb-4 col-span-1">
       <label for="insTelefone2" class="block text-white mb-1">Telefone Celular 2</label>
-      <input id="insTelefone2" name="insTelefone2" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.insTelefone2" mask="(00) 00000-0000">
+      <input id="insTelefone2" name="insTelefone2" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Cliente.insTelefone2" mask="(00) 00000-0000">
     </div>
 
     <!-- Campo Endereço -->
     <div class="mb-4 col-span-1 sm:col-span-2 lg:col-span-3">
       <label for="endereco" class="block text-white mb-1">Endereço</label>
-      <input id="endereco" name="endereco" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.endereco">
+      <input id="endereco" name="endereco" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Cliente.endereco">
     </div>
 
     <!-- Campo Bairro -->
     <div class="mb-4 col-span-1">
       <label for="bairro" class="block text-white mb-1">Bairro</label>
-      <input id="bairro" name="bairro" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.bairro">
+      <input id="bairro" name="bairro" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Cliente.bairro">
     </div>
 
     <!-- Campo Cidade -->
     <div class="mb-4 col-span-1">
       <label for="cidade" class="block text-white mb-1">Cidade</label>
-      <input id="cidade" name="cidade" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.cidade">
+      <input id="cidade" name="cidade" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Cliente.cidade">
     </div>
 
     <!-- Campo CEP -->
     <div class="mb-4 col-span-1">
       <label for="cep" class="block text-white mb-1">CEP </label>
-      <input id="cep" name="cep" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="cep" mask="00000-000" required>
+      <input id="cep" name="cep" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="cep"
+        mask="00000-000" required>
     </div>
-    <button type="button" (click)="PesquisaPorCep()" class="w-full bg-blue-600 text-white p-3 rounded mt-2">Pesquisar CEP </button>
+    <button type="button" (click)="PesquisaPorCep()" class="w-full bg-blue-600 text-white p-3 rounded mt-2">Pesquisar
+      CEP </button>
 
     <!-- Campo UF -->
     <div class="mb-4 col-span-1">
@@ -68,9 +79,11 @@
       <input id="uf" name="uf" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Cliente.uf">
     </div>
 
-    <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded col-span-1 sm:col-span-2 lg:col-span-3 mt-4">Cadastrar</button>
+    <button type="submit"
+      class="w-full bg-blue-600 text-white p-3 rounded col-span-1 sm:col-span-2 lg:col-span-3 mt-4">Cadastrar</button>
   </form>
-  <div *ngIf="errorMessage" class="alert alert-danger" style="font-size: 1.2em; padding: 20px; border-radius: 5px; margin-top: 15px; border: 2px solid red; background-color: #f8d7da; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center; color: black;">
+  <div *ngIf="errorMessage" class="alert alert-danger"
+    style="font-size: 1.2em; padding: 20px; border-radius: 5px; margin-top: 15px; border: 2px solid red; background-color: #f8d7da; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); text-align: center; color: black;">
     {{ errorMessage }}
   </div>
 

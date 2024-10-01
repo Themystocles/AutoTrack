@@ -73,8 +73,3 @@ C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrack
 C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\Newtonsoft.Json.Bson.dll
 C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\CsvHelper.dll
 C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\AutoTrack.staticwebassets.runtime.json
-C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\publish\web.config
-C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\publish\appsettings.Development.json
-C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\publish\appsettings.json
-C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\publish\AutoTrack.deps.json
-C:\Users\themy\OneDrive\Documentos\Programação\C e Angular\AutoTrack\AutoTrackApi\bin\Debug\net7.0\publish\AutoTrack.runtimeconfig.json

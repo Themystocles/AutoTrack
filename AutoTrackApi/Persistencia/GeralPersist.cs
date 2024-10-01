@@ -17,29 +17,29 @@ namespace AutoTrackApi.Persistencia
 
         public async Task AddAsync<T>(T entity) where T : class
         {
-            
+
             _context.Add(entity);
             await _context.SaveChangesAsync();
         }
 
         public async Task Deletar<T>(T entity) where T : class
         {
-              if (entity == null)
-        {
-            throw new ArgumentNullException(nameof(entity), "A entidade não pode ser nula.");
-        }
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity), "A entidade não pode ser nula.");
+            }
 
-        // Marca a entidade para remoção no contexto do EF Core
-        _context.Set<T>().Remove(entity);
+            // Marca a entidade para remoção no contexto do EF Core
+            _context.Set<T>().Remove(entity);
 
-        // Salva as alterações no banco de dados de forma assíncrona
-        await _context.SaveChangesAsync();
+            // Salva as alterações no banco de dados de forma assíncrona
+            await _context.SaveChangesAsync();
         }
 
         public async Task Editar<T>(T entity) where T : class
         {
             _context.Update(entity);
-             await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<T>> GetAll<T>() where T : class

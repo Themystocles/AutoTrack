@@ -16,9 +16,9 @@ namespace AutoTrack.Controllers
         private readonly IGeralPersist _geralPersist;
 
         private readonly IVeiculoPersist _veiculoPersist;
-        
 
-        public VeiculoController(IGeralPersist geralPersist,IVeiculoPersist veiculoPersist )
+
+        public VeiculoController(IGeralPersist geralPersist, IVeiculoPersist veiculoPersist)
         {
             _geralPersist = geralPersist;
             _veiculoPersist = veiculoPersist;
@@ -31,18 +31,18 @@ namespace AutoTrack.Controllers
             return Ok(veiculos);
         }
 
-   
-         [HttpGet("veiculo/{placa}")]
+
+        [HttpGet("veiculo/{placa}")]
         public async Task<ActionResult<IEnumerable<Veiculo>>> getVeiculoByPlaca(string placa)
         {
-             var veiculo = await _veiculoPersist.GetVeiculoByPlaca(placa);
+            var veiculo = await _veiculoPersist.GetVeiculoByPlaca(placa);
             if (veiculo == null)
             {
                 return NotFound();
             }
             return Ok(veiculo);
         }
-         [HttpGet("chassi/{chassi}")]
+        [HttpGet("chassi/{chassi}")]
         public async Task<ActionResult<IEnumerable<Veiculo>>> getVeiculoByChassi(string chassi)
         {
             var veiculo = await _veiculoPersist.GetVeiculoByChassi(chassi);
@@ -51,8 +51,8 @@ namespace AutoTrack.Controllers
                 return NotFound();
             }
             return Ok(veiculo);
-        } 
-         [HttpGet("id/{id}")]
+        }
+        [HttpGet("id/{id}")]
         public async Task<ActionResult<Veiculo>> GetVeiculoById(int id)
         {
             var veiculo = await _veiculoPersist.GetVeiculoByID(id);
@@ -62,24 +62,26 @@ namespace AutoTrack.Controllers
             }
             return Ok(veiculo);
         }
-         [HttpPost("veiculos")]
+        [HttpPost("veiculos")]
         public async Task<IActionResult> PostVeiculo([FromBody] VeiculoPostDto veiculoPostDto)
         {
             if (veiculoPostDto == null)
             {
                 return BadRequest("Veículo is null");
             }
-            if(await _veiculoPersist.VeiculoplacaoExistsAsync(veiculoPostDto.Placa)){
+            if (await _veiculoPersist.VeiculoplacaoExistsAsync(veiculoPostDto.Placa))
+            {
                 return Conflict("Já Existe um veículo com essa placa");
 
             }
-              if(await _veiculoPersist.VeiculochassiExistsAsync(veiculoPostDto.Chassi)){
+            if (await _veiculoPersist.VeiculochassiExistsAsync(veiculoPostDto.Chassi))
+            {
                 return Conflict("Já existe um veículo com esse Chassi.");
 
             }
 
-    
-            
+
+
             var Veiculo = new Veiculo
             {
 
@@ -94,19 +96,19 @@ namespace AutoTrack.Controllers
                 Chassi = veiculoPostDto.Chassi,
                 Cor = veiculoPostDto.Cor,
                 Observacao = veiculoPostDto.Observacao,
-                
+
                 Renavam = veiculoPostDto.Renavam,
                 ClienteId = veiculoPostDto.ClienteId
-                
+
             };
 
             await _geralPersist.AddAsync(Veiculo);
             return CreatedAtAction(nameof(GetVeiculos), new { id = Veiculo.Id }, Veiculo);
 
-            
-        
+
+
         }
-         [HttpPut("veiculo/{id}")]
+        [HttpPut("veiculo/{id}")]
         public async Task<IActionResult> putveiculo(int id, [FromBody] VeiculoDto veiculoDto)
         {
             if (id != veiculoDto.Id)
@@ -132,7 +134,7 @@ namespace AutoTrack.Controllers
             veiculoExistente.Chassi = veiculoDto.Chassi;
             veiculoExistente.Cor = veiculoDto.Cor;
             veiculoExistente.Observacao = veiculoDto.Observacao;
-           
+
             veiculoExistente.Renavam = veiculoDto.Renavam;
 
             await _geralPersist.Editar(veiculoExistente);

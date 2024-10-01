@@ -26,10 +26,11 @@ import { FolhadepagamentoComponent } from './folhadepagamento/folhadepagamento.c
 import { FuncionarioComponent } from './Components/funcionario/funcionario.component';
 import { FuncionarioPutComponent } from './Components/funcionario-put/funcionario-put.component';
 import { FuncionarioPostComponent } from './Components/funcionario-post/funcionario-post.component';
+import { PrintFinanceiroComponent } from './print-financeiro/print-financeiro.component';
 
 
 const routes: Routes = [
-  
+
   { path: 'cliente-post', component: ClientePostComponent },
   { path: 'cliente-list', component: ClienteListComponent },
   { path: 'cliente-put/:id', component: ClientePutComponent },
@@ -39,26 +40,27 @@ const routes: Routes = [
   { path: 'servico-post', component: ServicoPostComponent },
   { path: 'servico-list', component: ServicoListComponent },
   { path: 'servico-put/:id', component: ServicoPutComponent },
-  { path: 'servico-notificacao', component: AlertaComponent},
+  { path: 'servico-notificacao', component: AlertaComponent },
   { path: 'montagem-post', component: MontagemPostComponent },
   { path: 'montagem-list', component: MontagemListComponent },
-  { path: 'montagem-put/:id', component: MontagemPutComponent},
-  { path: 'montagem-notificacao', component: MontagemalertaComponent},
-  { path: 'imprimir', component: SelecionarprintComponent},
+  { path: 'montagem-put/:id', component: MontagemPutComponent },
+  { path: 'montagem-notificacao', component: MontagemalertaComponent },
+  { path: 'imprimir', component: SelecionarprintComponent },
   { path: 'imprimir/Serv', component: PrintComponent },
-  { path: 'imprimir/Mont', component: PrintMontComponent},
-  { path: 'relatoriofinanceiro', component: RelatoriofinanceiroComponent},
-  { path: 'estoque', component: EstoqueComponent},
-  { path: 'estoque/:id', component: EstoqueComponent},
-  { path: 'folhadepagamento', component: FolhadepagamentoComponent},
-  { path: 'funcionarios', component: FuncionarioComponent},
-  { path: 'funcionarioput/:id', component: FuncionarioPutComponent},
-  { path: 'funcionariopost', component: FuncionarioPostComponent},
+  { path: 'imprimir/Mont', component: PrintMontComponent },
+  { path: 'relatoriofinanceiro', component: RelatoriofinanceiroComponent },
+  { path: 'estoque', component: EstoqueComponent },
+  { path: 'estoque/:id', component: EstoqueComponent },
+  { path: 'folhadepagamento', component: FolhadepagamentoComponent },
+  { path: 'funcionarios', component: FuncionarioComponent },
+  { path: 'funcionarioput/:id', component: FuncionarioPutComponent },
+  { path: 'funcionariopost', component: FuncionarioPostComponent },
+  { path: 'printFinanceiro', component: PrintFinanceiroComponent },
 
 
- 
-  
-  
+
+
+
 
 ];
 

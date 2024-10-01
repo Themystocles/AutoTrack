@@ -1,0 +1,75 @@
+<div class="p-6 max-w-6xl mx-auto bg-white text-gray-800 shadow-lg rounded-lg">
+    <h3 class="text-4xl font-bold mb-6 text-indigo-600 text-center">Relatórios Financeiros</h3>
+
+    <!-- Filtros de Data -->
+    <div class="mb-6">
+        <div class="flex flex-col md:flex-row gap-4 mb-4">
+            <input type="date" [(ngModel)]="datainicio" name="datainicio" placeholder="Data Início"
+                class="bg-gray-100 border border-gray-300 text-gray-800 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <input type="date" [(ngModel)]="dataFim" name="dataFim" placeholder="Data Fim"
+                class="bg-gray-100 border border-gray-300 text-gray-800 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <button (click)="loadRelatorios()"
+                class="bg-indigo-600 text-white p-2 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                Gerar Relatório
+            </button>
+        </div>
+    </div>
+
+    <!-- Relatórios -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <!-- Serviços -->
+        <div>
+            <h4 class="text-3xl font-semibold text-indigo-500 mb-4">Serviços</h4>
+            <h5 class="text-2xl font-semibold text-green-500 mb-4">Pagos</h5>
+            <p class="text-lg mb-1"><span class="font-medium">Total: </span>{{ relPagoTotalPeriodo | currency:'BRL' }}
+            </p>
+            <p class="mb-1"><span class="font-medium">Crédito Pago: </span>{{ creditoPago | currency:'BRL' }}</p>
+            <p class="mb-1"><span class="font-medium">Débito Pago: </span>{{ debitoPago | currency:'BRL' }}</p>
+            <p class="mb-1"><span class="font-medium">Dinheiro Pago: </span>{{ dinheiroPago | currency:'BRL' }}</p>
+            <p class="mb-4"><span class="font-medium">Pix Pago: </span>{{ pixPago | currency:'BRL' }}</p>
+
+            <h5 class="text-2xl font-semibold text-red-500 mb-4">Não Pagos</h5>
+            <p class="text-lg mb-1"><span class="font-medium">Total: </span>{{ relNaoPagoTotalPeriodo | currency:'BRL'
+                }}</p>
+            <p class="mb-1"><span class="font-medium">Crédito Não Pago: </span>{{ creditoNaoPago | currency:'BRL' }}</p>
+            <p class="mb-1"><span class="font-medium">Débito Não Pago: </span>{{ debitoNaoPago | currency:'BRL' }}</p>
+            <p class="mb-1"><span class="font-medium">Dinheiro Não Pago: </span>{{ dinheiroNaoPago | currency:'BRL' }}
+            </p>
+            <p class="mb-4"><span class="font-medium">Pix Não Pago: </span>{{ pixNaoPago | currency:'BRL' }}</p>
+        </div>
+
+        <!-- Montagens -->
+        <div>
+            <h4 class="text-3xl font-semibold text-indigo-500 mb-4">Montagens</h4>
+            <h5 class="text-2xl font-semibold text-green-500 mb-4">Pagas</h5>
+            <p class="text-lg mb-1"><span class="font-medium">Total: </span>{{ relMonPagoTotalPeriodo | currency:'BRL'
+                }}</p>
+            <p class="mb-1"><span class="font-medium">Crédito Pago Montagem: </span>{{ creditoMonPago | currency:'BRL'
+                }}</p>
+            <p class="mb-1"><span class="font-medium">Débito Pago Montagem: </span>{{ debitoMonPago | currency:'BRL' }}
+            </p>
+            <p class="mb-1"><span class="font-medium">Dinheiro Pago Montagem: </span>{{ dinheiroMonPago | currency:'BRL'
+                }}</p>
+            <p class="mb-4"><span class="font-medium">Pix Pago Montagem: </span>{{ pixMonPago | currency:'BRL' }}</p>
+
+            <h5 class="text-2xl font-semibold text-red-500 mb-4">Não Pagas</h5>
+            <p class="text-lg mb-1"><span class="font-medium">Total: </span>{{ relMonNaoPagoTotalPeriodo |
+                currency:'BRL' }}</p>
+            <p class="mb-1"><span class="font-medium">Crédito Não Pago Montagem: </span>{{ creditoMonNaoPago |
+                currency:'BRL' }}</p>
+            <p class="mb-1"><span class="font-medium">Débito Não Pago Montagem: </span>{{ debitoMonNaoPago |
+                currency:'BRL' }}</p>
+            <p class="mb-1"><span class="font-medium">Dinheiro Não Pago Montagem: </span>{{ dinheiroMonNaoPago |
+                currency:'BRL' }}</p>
+            <p class="mb-4"><span class="font-medium">Pix Não Pago Montagem: </span>{{ pixMonNaoPago | currency:'BRL' }}
+            </p>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <button (click)="printReport()"
+            class="bg-indigo-600 text-white p-2 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            Imprimir Relatório
+        </button>
+    </div>
+</div>

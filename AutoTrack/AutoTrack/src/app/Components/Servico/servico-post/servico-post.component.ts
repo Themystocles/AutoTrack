@@ -3,7 +3,7 @@ import { Servico } from '../../../Models/ServicoMode';
 import { ServicoPostService } from '../../../Services/CRUD - Cliente/servico-post.service';
 import { Veiculo } from '../../../Models/VeiculoModel';
 import { OrcamentoPostComponent } from '../../Orcamento/orcamento-post/orcamento-post.component';
-import { Orcamento } from '../../../Models/OrcamentoModel'; 
+import { Orcamento } from '../../../Models/OrcamentoModel';
 import { Router } from '@angular/router';
 
 @Component({
@@ -49,13 +49,13 @@ export class ServicoPostComponent {
   onSubmit(form: any) {
     this.servico.totalorcamento = this.somaTotal;
     this.servico.requalificacao = this.Tiposervico.requalificacao
-   
-    
-    if (this.servico.veiculoId === 0 || 
-        !this.servico.descricao?.trim() || 
-        !this.servico.formaPag?.trim() 
-        
-        ) {
+
+
+    if (this.servico.veiculoId === 0 ||
+      !this.servico.descricao?.trim() ||
+      !this.servico.formaPag?.trim()
+
+    ) {
       alert('Por favor, preencha todos os campos obrigatórios.');
       return;
     }

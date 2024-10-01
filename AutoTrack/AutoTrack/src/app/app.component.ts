@@ -23,16 +23,16 @@ export class AppComponent {
   }
 
   private isCardRoute(url: string): boolean {
-    return url.includes('/cliente-post') || url.includes('/veiculo-post') || url.includes('/servico-post') || 
-           url.includes('/montagem-post') || url.includes('/cliente-list') || url.includes('/cliente-put') || 
-           url.includes('/veiculo-list') || url.includes('/veiculo-put') || url.includes('/servico-list') || 
-           url.includes('/servico-put') || url.includes('/montagem-list') || url.includes('/montagem-put') || 
-           url.includes('/servico-notificacao') || url.includes('/montagem-notificacao') || url.includes('relatoriofinanceiro')
-          || url.includes('estoque')|| url.includes('folhadepagamento')|| url.includes('funcionarios')|| url.includes('funcionarioput')
-          || url.includes('funcionariopost');
+    return url.includes('/cliente-post') || url.includes('/veiculo-post') || url.includes('/servico-post') ||
+      url.includes('/montagem-post') || url.includes('/cliente-list') || url.includes('/cliente-put') ||
+      url.includes('/veiculo-list') || url.includes('/veiculo-put') || url.includes('/servico-list') ||
+      url.includes('/servico-put') || url.includes('/montagem-list') || url.includes('/montagem-put') ||
+      url.includes('/servico-notificacao') || url.includes('/montagem-notificacao') || url.includes('relatoriofinanceiro')
+      || url.includes('estoque') || url.includes('folhadepagamento') || url.includes('funcionarios') || url.includes('funcionarioput')
+      || url.includes('funcionariopost');
   }
 
   private isPrintRoute(url: string): boolean {
-    return url === '/imprimir' || url === '/imprimir/Serv' || url === '/imprimir/Mont';
-}
+    return url === '/imprimir' || url === '/imprimir/Serv' || url === '/imprimir/Mont' || url === '/printFinanceiro';
+  }
 }

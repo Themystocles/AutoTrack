@@ -1,0 +1,40 @@
+@media print {
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    .bg-gray-900 {
+        background-color: white !important;
+    }
+
+    .bg-gray-800 {
+        background-color: white !important;
+        color: black !important;
+    }
+
+    .text-gray-200,
+    .text-gray-400 {
+        color: black !important;
+    }
+
+    .border-gray-700 {
+        border-color: black !important;
+    }
+
+    button {
+        display: none !important;
+        /* Esconde botões na impressão */
+    }
+
+    h3,
+    h4,
+    p {
+        margin: 0 !important;
+    }
+
+    /* Ajusta o layout das colunas */
+    .grid {
+        display: block !important;
+    }
+}

@@ -21,32 +21,32 @@ namespace AutoTrackApi.Persistencia
 
         public async Task AtualizarEstoqueAsync(string nomeServico, int quantidade)
         {
-             var produtoEstoque = await _context.estoques
-            .Where(e => e.Produto == nomeServico)
-            .FirstOrDefaultAsync();
+            var produtoEstoque = await _context.estoques
+        .Where(e => e.Produto == nomeServico)
+        .FirstOrDefaultAsync();
 
-        if (produtoEstoque != null)
-        {
-            produtoEstoque.Quantidade -= quantidade;
-            _context.estoques.Update(produtoEstoque);
-            await _context.SaveChangesAsync();
+            if (produtoEstoque != null)
+            {
+                produtoEstoque.Quantidade -= quantidade;
+                _context.estoques.Update(produtoEstoque);
+                await _context.SaveChangesAsync();
+            }
         }
-    }
 
         public async Task<IEnumerable<Estoque>> Estoqueminimo()
         {
-             var  estoquesminimos = await _context.estoques
-            .Where<Estoque>(E => E.Quantidade < E.DataUltAlt)
-            .ToListAsync();
+            var estoquesminimos = await _context.estoques
+           .Where<Estoque>(E => E.Quantidade < E.DataUltAlt)
+           .ToListAsync();
 
-            
+
 
             return estoquesminimos;
         }
 
-        public async  Task<Estoque> GetEstoqueById(int id)
+        public async Task<Estoque> GetEstoqueById(int id)
         {
-           return await _context.estoques.FirstOrDefaultAsync(E => E.Id == id);
+            return await _context.estoques.FirstOrDefaultAsync(E => E.Id == id);
         }
     }
 }

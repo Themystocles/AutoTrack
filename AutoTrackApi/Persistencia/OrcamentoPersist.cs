@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AutoTrackApi.Persistencia
 {
-    public  class OrcamentoPersist : IOrcamentoPersist
+    public class OrcamentoPersist : IOrcamentoPersist
     {
         private readonly ConnectionContext _context;
 
@@ -20,26 +20,26 @@ namespace AutoTrackApi.Persistencia
 
         public async Task<Orcamento> Delete(int id)
         {
-               // Encontrar o orçamento pelo ID
-        var orcamento = await _context.orcamentos.FindAsync(id);
-        if (orcamento == null)
-        {
-            return null; // Ou lançar uma exceção, dependendo da sua lógica
-        }
+            // Encontrar o orçamento pelo ID
+            var orcamento = await _context.orcamentos.FindAsync(id);
+            if (orcamento == null)
+            {
+                return null; // Ou lançar uma exceção, dependendo da sua lógica
+            }
 
-        // Remover o orçamento do contexto
-        _context.orcamentos.Remove(orcamento);
-        await _context.SaveChangesAsync();
+            // Remover o orçamento do contexto
+            _context.orcamentos.Remove(orcamento);
+            await _context.SaveChangesAsync();
 
-        return orcamento; // Retorna o orçamento excluído, se necessário
+            return orcamento; // Retorna o orçamento excluído, se necessário
         }
 
         public async Task<IEnumerable<Orcamento>> getAllorc()
         {
-             return await _context.orcamentos
-            .Include(o => o.OrcamentoFuncionarios)
-            
-            .ToListAsync();
+            return await _context.orcamentos
+           .Include(o => o.OrcamentoFuncionarios)
+
+           .ToListAsync();
         }
     }
 }

@@ -21,7 +21,7 @@ export class EstoqueComponent implements OnInit {
     public estoqueServices: CrudEstoqueService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getEstoque();
@@ -31,7 +31,7 @@ export class EstoqueComponent implements OnInit {
   getEstoque() {
     this.estoqueServices.getAllEstoque().subscribe(res => this.getestoque = res);
   }
-  getestoquebyid(){
+  getestoquebyid() {
     const id = String(this.route.snapshot.paramMap.get('id'));
     this.estoqueServices.getEstoquebyId(id).subscribe(res => this.estoqueid = res);
   }
@@ -76,16 +76,16 @@ export class EstoqueComponent implements OnInit {
       console.error('ID inválido ou estoqueput não definido');
     }
   }
-    deleteEstoque(id: number) {
-      if (confirm('Tem certeza que deseja excluir este item?')) {
-        this.estoqueServices.deleteEstoque(id.toString()).subscribe(
-          () => {
-            this.getEstoque(); // Atualiza a lista após exclusão
-          },
-          error => {
-            console.error('Erro ao excluir o estoque:', error);
-          }
-        );
-      }
+  deleteEstoque(id: number) {
+    if (confirm('Tem certeza que deseja excluir este item?')) {
+      this.estoqueServices.deleteEstoque(id.toString()).subscribe(
+        () => {
+          this.getEstoque(); // Atualiza a lista após exclusão
+        },
+        error => {
+          console.error('Erro ao excluir o estoque:', error);
+        }
+      );
+    }
   }
 }

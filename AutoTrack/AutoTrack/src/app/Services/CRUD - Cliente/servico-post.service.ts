@@ -14,19 +14,19 @@ export class ServicoPostService {
   public url = 'http://localhost:5203/api/Servico/servicos'
   public baseUrl = 'http://localhost:5203/api/Geral/Orcamento'
 
-  constructor(public http : HttpClient) { }
+  constructor(public http: HttpClient) { }
 
-  GetVeiculobyPlaca(placa : string):Observable<Veiculo>{
+  GetVeiculobyPlaca(placa: string): Observable<Veiculo> {
     const urlID = `${this.urlPlaca}/${placa}`;
     return this.http.get<Veiculo>(urlID)
   }
- PostServico(Servico : Servico):Observable<Servico>{
-  return this.http.post<Servico>(this.url, Servico );
- }
+  PostServico(Servico: Servico): Observable<Servico> {
+    return this.http.post<Servico>(this.url, Servico);
+  }
 
- PostOrcamento(orcamento: Orcamento): Observable<any> {
-  return this.http.post(`${this.baseUrl}/orcamentos`, orcamento);
-}
-  
-  
+  PostOrcamento(orcamento: Orcamento): Observable<any> {
+    return this.http.post(`${this.baseUrl}/orcamentos`, orcamento);
+  }
+
+
 }

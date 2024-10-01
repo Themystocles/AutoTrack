@@ -1,14 +1,14 @@
 <div class="text-left mt-8">
     <button (click)="openAddModal()"
-      class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
-      Adicionar Novo
+        class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+        Adicionar Novo
     </button>
-  </div>
+</div>
 <div class="p-6 bg-gray-900 text-white min-h-screen">
-    
+
     <!-- Título da página -->
     <h1 class="text-4xl font-extrabold mb-8">Estoque</h1>
-    
+
 
     <!-- Container de Grid para os itens de estoque -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
@@ -17,38 +17,38 @@
             <div class="mb-4">
                 <label class="block text-gray-300 text-sm font-medium">Produto </label>
                 <input [(ngModel)]="estoque.produto" placeholder="Produto"
-                       class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm " readonly/>
+                    class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm " readonly />
             </div>
             <div class="mb-4">
                 <label class="block text-gray-300 text-sm font-medium">Quantidade</label>
                 <input [(ngModel)]="estoque.quantidade" placeholder="Quantidade"
-                       class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" readonly />
+                    class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" readonly />
             </div>
             <div class="mb-4">
                 <label class="block text-gray-300 text-sm font-medium">Preço</label>
                 <input [(ngModel)]="estoque.preco" placeholder="Preço"
-                       class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" readonly />
+                    class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" readonly />
             </div>
             <div class="mb-4">
                 <label class="block text-gray-300 text-sm font-medium">Quantidade Minima</label>
                 <input [(ngModel)]="estoque.dataUltAlt" placeholder="Data da Última Alteração"
-                       class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" readonly />
+                    class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" readonly />
             </div>
             <!-- Botões de ação -->
             <div class="flex space-x-2 mt-4">
                 <button (click)="openEditModal(estoque)"
-                        class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    class="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     Editar
                 </button>
                 <button (click)="deleteEstoque(estoque.id)"
-                        class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
                     Excluir
                 </button>
             </div>
         </div>
     </div>
 
-  
+
 
     <!-- Modal para edição -->
     <div *ngIf="isEditModalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
@@ -57,30 +57,30 @@
             <div class="mb-4">
                 <label class="block text-gray-300 text-sm font-medium">Produto</label>
                 <input [(ngModel)]="estoqueput.produto" placeholder="Produto"
-                       class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
+                    class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
             </div>
             <div class="mb-4">
                 <label class="block text-gray-300 text-sm font-medium">Quantidade</label>
                 <input [(ngModel)]="estoqueput.quantidade" placeholder="Quantidade"
-                       class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
+                    class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
             </div>
             <div class="mb-4">
                 <label class="block text-gray-300 text-sm font-medium">Preço</label>
                 <input [(ngModel)]="estoqueput.preco" placeholder="Preço"
-                       class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
+                    class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
             </div>
             <div class="mb-4">
                 <label class="block text-gray-300 text-sm font-medium">Data da Última Alteração</label>
                 <input [(ngModel)]="estoqueput.dataUltAlt" placeholder="Data da Última Alteração"
-                       class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
+                    class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
             </div>
             <div class="flex justify-between mt-4">
                 <button (click)="updateEstoque()"
-                        class="bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                    class="bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500">
                     Atualizar
                 </button>
                 <button (click)="closeEditModal()"
-                        class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
                     Fechar
                 </button>
             </div>
@@ -94,30 +94,30 @@
             <div class="mb-4">
                 <label class="block text-gray-300 text-sm font-medium">Produto</label>
                 <input [(ngModel)]="estoquePost.produto" placeholder="Produto"
-                       class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
+                    class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
             </div>
             <div class="mb-4">
                 <label class="block text-gray-300 text-sm font-medium">Quantidade</label>
                 <input [(ngModel)]="estoquePost.quantidade" placeholder="Quantidade"
-                       class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
+                    class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
             </div>
             <div class="mb-4">
                 <label class="block text-gray-300 text-sm font-medium">Preço</label>
                 <input [(ngModel)]="estoquePost.preco" placeholder="Preço"
-                       class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
+                    class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
             </div>
             <div class="mb-4">
                 <label class="block text-gray-300 text-sm font-medium">Data da Última Alteração</label>
                 <input [(ngModel)]="estoquePost.dataUltAlt" placeholder="Data da Última Alteração"
-                       class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
+                    class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
             </div>
             <div class="flex justify-between mt-4">
                 <button (click)="postEstoque()"
-                        class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+                    class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
                     Adicionar
                 </button>
                 <button (click)="closeAddModal()"
-                        class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    class="bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
                     Fechar
                 </button>
             </div>
