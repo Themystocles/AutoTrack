@@ -27,6 +27,7 @@ import { FuncionarioComponent } from './Components/funcionario/funcionario.compo
 import { FuncionarioPutComponent } from './Components/funcionario-put/funcionario-put.component';
 import { FuncionarioPostComponent } from './Components/funcionario-post/funcionario-post.component';
 import { PrintFinanceiroComponent } from './print-financeiro/print-financeiro.component';
+import { FolhaDePagamentoPrintComponent } from './folha-de-pagamento-print/folha-de-pagamento-print.component';
 
 
 const routes: Routes = [
@@ -52,6 +53,7 @@ const routes: Routes = [
   { path: 'estoque', component: EstoqueComponent },
   { path: 'estoque/:id', component: EstoqueComponent },
   { path: 'folhadepagamento', component: FolhadepagamentoComponent },
+  { path: 'folhadepagamentoPrint', component: FolhaDePagamentoPrintComponent },
   { path: 'funcionarios', component: FuncionarioComponent },
   { path: 'funcionarioput/:id', component: FuncionarioPutComponent },
   { path: 'funcionariopost', component: FuncionarioPostComponent },

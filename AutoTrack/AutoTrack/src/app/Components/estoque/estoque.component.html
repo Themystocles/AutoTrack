@@ -4,20 +4,26 @@
         Adicionar Novo
     </button>
 </div>
+
 <div class="p-6 bg-gray-900 text-white min-h-screen">
 
     <!-- Título da página -->
     <h1 class="text-4xl font-extrabold mb-8">Estoque</h1>
 
+    <!-- Campo de pesquisa -->
+    <div class="mb-6">
+        <input [(ngModel)]="searchTerm" placeholder="Pesquisar Produto"
+            class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
+    </div>
 
     <!-- Container de Grid para os itens de estoque -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-        <div *ngFor="let estoque of getestoque" class="bg-gray-800 p-4 rounded-lg shadow-lg">
+        <div *ngFor="let estoque of getestoqueFiltered()" class="bg-gray-800 p-4 rounded-lg shadow-lg">
             <!-- Exibição dos detalhes do estoque -->
             <div class="mb-4">
-                <label class="block text-gray-300 text-sm font-medium">Produto </label>
+                <label class="block text-gray-300 text-sm font-medium">Produto</label>
                 <input [(ngModel)]="estoque.produto" placeholder="Produto"
-                    class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm " readonly />
+                    class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" readonly />
             </div>
             <div class="mb-4">
                 <label class="block text-gray-300 text-sm font-medium">Quantidade</label>
@@ -30,10 +36,11 @@
                     class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" readonly />
             </div>
             <div class="mb-4">
-                <label class="block text-gray-300 text-sm font-medium">Quantidade Minima</label>
+                <label class="block text-gray-300 text-sm font-medium">Minimo para Aviso</label>
                 <input [(ngModel)]="estoque.dataUltAlt" placeholder="Data da Última Alteração"
                     class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" readonly />
             </div>
+
             <!-- Botões de ação -->
             <div class="flex space-x-2 mt-4">
                 <button (click)="openEditModal(estoque)"
@@ -47,8 +54,6 @@
             </div>
         </div>
     </div>
-
-
 
     <!-- Modal para edição -->
     <div *ngIf="isEditModalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
@@ -70,7 +75,7 @@
                     class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
             </div>
             <div class="mb-4">
-                <label class="block text-gray-300 text-sm font-medium">Data da Última Alteração</label>
+                <label class="block text-gray-300 text-sm font-medium">Minimo para Aviso</label>
                 <input [(ngModel)]="estoqueput.dataUltAlt" placeholder="Data da Última Alteração"
                     class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
             </div>
@@ -107,7 +112,7 @@
                     class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
             </div>
             <div class="mb-4">
-                <label class="block text-gray-300 text-sm font-medium">Data da Última Alteração</label>
+                <label class="block text-gray-300 text-sm font-medium">Minimo para Aviso</label>
                 <input [(ngModel)]="estoquePost.dataUltAlt" placeholder="Data da Última Alteração"
                     class="bg-gray-700 text-white border border-gray-600 rounded-lg p-2 w-full text-sm" />
             </div>
@@ -123,4 +128,5 @@
             </div>
         </div>
     </div>
+
 </div>

@@ -7,6 +7,8 @@ import { Orcamento } from 'src/app/Models/OrcamentoModel';
 import { Funcionario } from 'src/app/Models/Funcionario';
 import { FuncionarioservicesService } from 'src/app/Services/CRUD - Cliente/funcionarioservices.service';
 import { OrcamentodeleteService } from 'src/app/Services/CRUD - Cliente/orcamentodelete.service';
+import { CrudEstoqueService } from 'src/app/Services/CRUD - Cliente/crud-estoque.service';
+import { Estoque } from 'src/app/Models/EstoqueModel';
 
 @Component({
   selector: 'app-montagem-put',
@@ -19,6 +21,7 @@ export class MontagemPutComponent implements OnInit, OnDestroy {
   showSuccessMessage = false;
   newOrcamento: Orcamento = {} as Orcamento; // Para adicionar um novo orçamento
   funcionario: Funcionario[] = [];
+  servicoEstoque: Estoque[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -26,8 +29,10 @@ export class MontagemPutComponent implements OnInit, OnDestroy {
     private orcamentoPostService: OrcamentoPostService,
     public funcionarioservices: FuncionarioservicesService,
     private router: Router,
-    private orcamentodelete : OrcamentodeleteService
-  ) {}
+    private orcamentodelete: OrcamentodeleteService,
+    private estoqueservices: CrudEstoqueService
+
+  ) { }
 
   ngOnInit(): void {
     this.MontagemId = this.route.snapshot.paramMap.get('id')!;
@@ -35,6 +40,10 @@ export class MontagemPutComponent implements OnInit, OnDestroy {
     this.getfuncionarios();
     console.log(this.funcionario);
     console.log(this.newOrcamento);
+    this.servicoestoque();
+  }
+  servicoestoque() {
+    this.estoqueservices.getAllEstoque().subscribe(res => this.servicoEstoque = res)
   }
   ngOnDestroy(): void {
     // Chama o método onSubmit ao sair do componente
@@ -58,19 +67,19 @@ export class MontagemPutComponent implements OnInit, OnDestroy {
     const confirmed = confirm('Você realmente deseja deletar este orçamento?');
 
     if (confirmed) {
-      this.deleteorc(id); 
-      
+      this.deleteorc(id);
+
     }
   }
   deleteorc(id: number): void {
-   
+
     this.orcamentodelete.DeleteOrcamento(id).subscribe({
       next: () => {
         // Sucesso no delete, atualize a página ou redirecione para outra rota
         alert('Orçamento deletado com sucesso!');
-       
+
         location.reload(); // Recarrega a página atual
-     
+
       },
       error: (err) => {
         console.error('Erro ao deletar orçamento', err);

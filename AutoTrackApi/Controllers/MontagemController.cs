@@ -13,11 +13,13 @@ namespace AutoTrackApi.Controllers
     {
         private readonly IGeralPersist _geralPersist;
         private readonly IMontagemPersist _MontagemPersist;
+        public readonly IEstoquePersist _estoquePersist;
 
-        public MontagemController(IGeralPersist geralPersist, IMontagemPersist montagemPersist)
+        public MontagemController(IGeralPersist geralPersist, IMontagemPersist montagemPersist, IEstoquePersist estoquePersist)
         {
             _geralPersist = geralPersist;
             _MontagemPersist = montagemPersist;
+            _estoquePersist = estoquePersist;
         }
 
         [HttpGet]
@@ -156,6 +158,7 @@ namespace AutoTrackApi.Controllers
             montagemExistente.ValorTotal = montagemDto.ValorTotal;
 
             // Atualizar orçamentos associados
+
             decimal somaValorTotalorc = 0;
             foreach (var orcamentoDto in montagemDto.Orcamentos)
             {
@@ -182,6 +185,11 @@ namespace AutoTrackApi.Controllers
                 }
                 else
                 {
+                    if (orcamentoDto.Quantidade != orcamentoExistente.Quantidade)
+                    {
+                        int Diferenca = orcamentoDto.Quantidade - orcamentoExistente.Quantidade;
+                        await _estoquePersist.AtualizarEstoqueExistenteAsync(orcamentoDto.NomeServico, Diferenca);
+                    }
                     // Atualizar o orçamento existente
                     orcamentoExistente.Quantidade = orcamentoDto.Quantidade;
                     orcamentoExistente.NomeServico = orcamentoDto.NomeServico;

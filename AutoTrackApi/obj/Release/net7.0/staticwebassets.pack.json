@@ -13,42 +13,6 @@
       "PackagePath": "staticwebassets\\assets\\User.png"
     },
     {
-      "Id": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\dist\\auto-track\\3rdpartylicenses.txt",
-      "PackagePath": "staticwebassets\\dist\\auto-track\\3rdpartylicenses.txt"
-    },
-    {
-      "Id": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\dist\\auto-track\\assets\\Logo.jpg",
-      "PackagePath": "staticwebassets\\dist\\auto-track\\assets\\Logo.jpg"
-    },
-    {
-      "Id": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\dist\\auto-track\\assets\\User.png",
-      "PackagePath": "staticwebassets\\dist\\auto-track\\assets\\User.png"
-    },
-    {
-      "Id": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\dist\\auto-track\\favicon.ico",
-      "PackagePath": "staticwebassets\\dist\\auto-track\\favicon.ico"
-    },
-    {
-      "Id": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\dist\\auto-track\\index.html",
-      "PackagePath": "staticwebassets\\dist\\auto-track\\index.html"
-    },
-    {
-      "Id": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\dist\\auto-track\\main.b70ca7a0e88b5d27.js",
-      "PackagePath": "staticwebassets\\dist\\auto-track\\main.b70ca7a0e88b5d27.js"
-    },
-    {
-      "Id": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\dist\\auto-track\\polyfills.3db4dfa23b7e9956.js",
-      "PackagePath": "staticwebassets\\dist\\auto-track\\polyfills.3db4dfa23b7e9956.js"
-    },
-    {
-      "Id": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\dist\\auto-track\\runtime.59c2d6530999de7f.js",
-      "PackagePath": "staticwebassets\\dist\\auto-track\\runtime.59c2d6530999de7f.js"
-    },
-    {
-      "Id": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\dist\\auto-track\\styles.f72b93dd08e70561.css",
-      "PackagePath": "staticwebassets\\dist\\auto-track\\styles.f72b93dd08e70561.css"
-    },
-    {
       "Id": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
@@ -57,8 +21,8 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
-      "Id": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\main.b70ca7a0e88b5d27.js",
-      "PackagePath": "staticwebassets\\main.b70ca7a0e88b5d27.js"
+      "Id": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\main.4fdee7f9757f3d14.js",
+      "PackagePath": "staticwebassets\\main.4fdee7f9757f3d14.js"
     },
     {
       "Id": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\polyfills.3db4dfa23b7e9956.js",
@@ -69,8 +33,8 @@
       "PackagePath": "staticwebassets\\runtime.59c2d6530999de7f.js"
     },
     {
-      "Id": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\styles.f72b93dd08e70561.css",
-      "PackagePath": "staticwebassets\\styles.f72b93dd08e70561.css"
+      "Id": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\styles.dbf1494ba9a23cff.css",
+      "PackagePath": "staticwebassets\\styles.dbf1494ba9a23cff.css"
     },
     {
       "Id": "obj\\Release\\net7.0\\staticwebassets\\msbuild.AutoTrack.Microsoft.AspNetCore.StaticWebAssets.props",

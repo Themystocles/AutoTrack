@@ -1,0 +1,34 @@
+@media print {
+
+    /* Oculta todos os elementos de pesquisa */
+    form,
+    button {
+        display: none;
+        /* Esconde o formulário e os botões na impressão */
+    }
+
+    /* Oculta o título principal */
+    h1 {
+        display: none;
+        /* Esconde o título na impressão */
+    }
+
+    /* Reduz o tamanho da fonte para o conteúdo impresso */
+    .bg-gray-900 {
+        font-size: 0.75rem;
+        /* Reduz o tamanho da fonte */
+    }
+
+    /* Ajusta os estilos dos cards */
+    .bg-gray-800 {
+        margin: 0;
+        /* Remove margens para uma apresentação mais compacta */
+    }
+
+    h2 {
+        margin-bottom: 1rem;
+        /* Ajusta o espaçamento inferior */
+    }
+
+    /* Se necessário, você pode adicionar mais estilos para formatação de impressão */
+}

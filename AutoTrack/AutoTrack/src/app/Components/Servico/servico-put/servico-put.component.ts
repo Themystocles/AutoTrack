@@ -8,6 +8,9 @@ import { Funcionario } from 'src/app/Models/Funcionario';
 import { FuncionarioservicesService } from 'src/app/Services/CRUD - Cliente/funcionarioservices.service';
 import { OrcamentodeleteService } from 'src/app/Services/CRUD - Cliente/orcamentodelete.service';
 import { from } from 'rxjs';
+import { ServicoDeleteService } from 'src/app/Services/CRUD - Cliente/servico-delete.service';
+import { CrudEstoqueService } from 'src/app/Services/CRUD - Cliente/crud-estoque.service';
+import { Estoque } from 'src/app/Models/EstoqueModel';
 
 @Component({
   selector: 'app-servico-put',
@@ -20,6 +23,7 @@ export class ServicoPutComponent implements OnInit, OnDestroy {
   showSuccessMessage = false;
   newOrcamento: Orcamento = {} as Orcamento;
   funcionario: Funcionario[] = [];
+  servicoEstoque: Estoque[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -27,13 +31,20 @@ export class ServicoPutComponent implements OnInit, OnDestroy {
     private orcamentoPostService: OrcamentoPostService,
     public funcionarioservices: FuncionarioservicesService,
     private router: Router,
-    private orcamentodelete: OrcamentodeleteService
-  ) {}
+    private orcamentodelete: OrcamentodeleteService,
+    private servicodelete: ServicoDeleteService,
+    private estoqueservices: CrudEstoqueService
+  ) { }
 
   ngOnInit(): void {
     this.servicoId = this.route.snapshot.paramMap.get('id')!;
     this.loadServico();
     this.getfuncionarios();
+    this.servicoestoque();
+  }
+
+  servicoestoque() {
+    this.estoqueservices.getAllEstoque().subscribe(res => this.servicoEstoque = res)
   }
 
   ngOnDestroy(): void {
@@ -109,6 +120,23 @@ export class ServicoPutComponent implements OnInit, OnDestroy {
       );
     } else {
       console.error('Preencha todos os campos do orçamento.');
+    }
+
+
+  }
+  deleteServico() {
+    // Exibe a mensagem de confirmação para o usuário
+    const confirmacao = confirm('Ao deletar o serviço, você estará deletando todos os orçamentos atrelados. Deseja continuar?');
+
+    // Verifica se o usuário confirmou a ação
+    if (confirmacao) {
+      this.servicodelete.deleteServico(this.servicoId).subscribe(res => {
+        alert('Serviço deletado com sucesso');
+        setTimeout(() => this.router.navigate(['/servico-list']), 2000);
+      });
+    } else {
+      // Caso o usuário cancele, pode exibir uma mensagem ou não fazer nada
+      alert('Ação cancelada');
     }
   }
 }

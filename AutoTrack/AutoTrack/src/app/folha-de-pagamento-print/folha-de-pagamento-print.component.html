@@ -1,7 +1,7 @@
-<div class="bg-gray-900 text-white min-h-screen p-6">
-    <button routerLink="/folhadepagamentoPrint">Imprimir</button>
-    <h1 class="text-4xl font-extrabold mb-8 text-center">Funcionários e Orçamentos</h1>
-    <div class="text-center mb-6">
+<div class="bg-gray-900 text-white min-h-screen p-6" id="printableArea">
+
+    <h1 class="text-2xl font-bold mb-4 text-center impressao">Funcionários e Orçamentos</h1>
+    <div class="text-center mb-6 impressao">
         <button routerLink="/funcionarios"
             class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-md shadow transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
             Funcionários
@@ -26,11 +26,11 @@
     </form>
 
     <div *ngIf="funcionarioOrcamentos && funcionarioOrcamentos.length" class="mt-8">
-        <h2 class="text-3xl font-semibold mb-6">Orçamentos</h2>
+        <h2 class="text-xl font-semibold mb-4 impressao">Orçamentos</h2>
         <div *ngFor="let funcionario of funcionarioOrcamentos" class="bg-gray-800 p-2 rounded-lg shadow-lg mb-4">
             <div class="flex justify-between items-center mb-1">
-                <h2 class="text-xl font-bold">{{ funcionario.nomeFuncionario }}</h2>
-                <p class="text-sm text-gray-300">Orçamentos: {{ funcionario.orcamentos.length }}</p>
+                <h2 class="text-lg font-bold impressao">{{ funcionario.nomeFuncionario }}</h2>
+                <p class="text-sm text-gray-300 impressao">Orçamentos: {{ funcionario.orcamentos.length }}</p>
             </div>
             <div *ngIf="funcionario.orcamentos && funcionario.orcamentos.length">
                 <ul class="space-y-2">

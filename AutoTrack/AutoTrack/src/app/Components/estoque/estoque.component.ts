@@ -9,6 +9,7 @@ import { CrudEstoqueService } from 'src/app/Services/CRUD - Cliente/crud-estoque
   styleUrls: ['./estoque.component.scss']
 })
 export class EstoqueComponent implements OnInit {
+  searchTerm: string = '';
 
   getestoque?: Estoque[];
   estoquePost: Estoque = { id: 0, preco: 0, produto: '', quantidade: '', dataUltAlt: '' };
@@ -34,6 +35,15 @@ export class EstoqueComponent implements OnInit {
   getestoquebyid() {
     const id = String(this.route.snapshot.paramMap.get('id'));
     this.estoqueServices.getEstoquebyId(id).subscribe(res => this.estoqueid = res);
+  }
+  // Filtro para a lista de estoque
+  getestoqueFiltered() {
+    if (!this.searchTerm) {
+      return this.getestoque;
+    }
+    return this.getestoque!.filter(estoque =>
+      estoque.produto.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
   }
 
   openEditModal(estoque: Estoque) {

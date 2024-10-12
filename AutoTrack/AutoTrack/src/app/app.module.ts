@@ -50,6 +50,7 @@ import { FuncionarioComponent } from './Components/funcionario/funcionario.compo
 import { FuncionarioPutComponent } from './Components/funcionario-put/funcionario-put.component';
 import { FuncionarioPostComponent } from './Components/funcionario-post/funcionario-post.component';
 import { PrintFinanceiroComponent } from './print-financeiro/print-financeiro.component';
+import { FolhaDePagamentoPrintComponent } from './folha-de-pagamento-print/folha-de-pagamento-print.component';
 
 
 
@@ -94,6 +95,7 @@ import { PrintFinanceiroComponent } from './print-financeiro/print-financeiro.co
     FuncionarioPutComponent,
     FuncionarioPostComponent,
     PrintFinanceiroComponent,
+    FolhaDePagamentoPrintComponent,
  
     
    

@@ -2,105 +2,95 @@
   <h2 class="text-white text-3xl mb-6 text-center">Editar Montagem</h2>
 
   <!-- Formulário para editar montagem -->
-  <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" *ngIf="Montagem">
+  <form (ngSubmit)="onSubmit(f)" #f="ngForm" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+    *ngIf="Montagem">
     <!-- Campo Data -->
     <div class="mb-4">
       <label for="data" class="block text-white mb-1">Data</label>
-      <input id="data" name="data" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.data" required>
+      <input id="data" name="data" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Montagem.data" required>
     </div>
     <!-- Campo Geração de Instaladores -->
     <div class="mb-4 col-span-1">
       <label for="geracaoInstaladores" class="block text-white mb-1">Geração Instaladores</label>
-      <input id="geracaoInstaladores" name="geracaoInstaladores" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.geracaoInstaladores">
+      <input id="geracaoInstaladores" name="geracaoInstaladores" type="text"
+        class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.geracaoInstaladores">
     </div>
 
     <!-- Campo Redutor Valor -->
     <div class="mb-4 col-span-1">
       <label for="redutorValor" class="block text-white mb-1">Redutor Valor</label>
-      <input id="redutorValor" name="redutorValor" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.redutorMarca">
+      <input id="redutorValor" name="redutorValor" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Montagem.redutorMarca">
     </div>
 
     <!-- Campo Número Série -->
     <div class="mb-4 col-span-1">
       <label for="numeroSerie" class="block text-white mb-1">Número Série</label>
-      <input id="numeroSerie" name="numeroSerie" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.numeroSerie">
+      <input id="numeroSerie" name="numeroSerie" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Montagem.numeroSerie">
     </div>
 
-   <!-- Campo Forma de Pagamento -->
- <div>
-  <label for="formaPag" class="block text-white mb-1">Forma de Pagamento</label>
-  <select id="formaPag" name="formaPag" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.formaPagamento" required>
-    <option value="PIX">PIX</option>
-    <option value="Débito">Débito</option>
-    <option value="Crédito">Crédito</option>
-    <option value="Dinheiro">Dinheiro</option>
-  </select>
-</div>
+    <!-- Campo Forma de Pagamento -->
+    <div>
+      <label for="formaPag" class="block text-white mb-1">Forma de Pagamento</label>
+      <select id="formaPag" name="formaPag" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Montagem.formaPagamento" required>
+        <option value="PIX">PIX</option>
+        <option value="Débito">Débito</option>
+        <option value="Crédito">Crédito</option>
+        <option value="Dinheiro">Dinheiro</option>
+      </select>
+    </div>
 
     <!-- Campo Marca Cilindro -->
     <div class="mb-4 col-span-1">
       <label for="marcaCilindro" class="block text-white mb-1">Marca Cilindro</label>
-      <input id="marcaCilindro" name="marcaCilindro" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.marcaCilindro">
+      <input id="marcaCilindro" name="marcaCilindro" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Montagem.marcaCilindro">
     </div>
 
     <!-- Campo Número Cilindro -->
     <div class="mb-4 col-span-1">
       <label for="numeroCilindro" class="block text-white mb-1">Número Cilindro</label>
-      <input id="numeroCilindro" name="numeroCilindro" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.numeroCilindro">
+      <input id="numeroCilindro" name="numeroCilindro" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Montagem.numeroCilindro">
     </div>
 
     <!-- Campo Quilo -->
     <div class="mb-4 col-span-1">
       <label for="quilo" class="block text-white mb-1">Quilo</label>
-      <input id="quilo" name="quilo" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.quilo">
+      <input id="quilo" name="quilo" type="number" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Montagem.quilo">
     </div>
 
     <!-- Campo Litro -->
     <div class="mb-4 col-span-1">
       <label for="litro" class="block text-white mb-1">Litro</label>
-      <input id="litro" name="litro" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.litro">
+      <input id="litro" name="litro" type="number" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Montagem.litro">
     </div>
 
-   <!-- Campo Ano de Fabricação -->
-<div class="mb-4 col-span-1">
-  <label for="anoFab" class="block text-white mb-1">Ano de Fabricação</label>
-  <input 
-    id="anoFab" 
-    name="anoFab" 
-    type="text" 
-    class="w-full p-3 rounded"
-    [ngClass]="{ 
+    <!-- Campo Ano de Fabricação -->
+    <div class="mb-4 col-span-1">
+      <label for="anoFab" class="block text-white mb-1">Ano de Fabricação</label>
+      <input id="anoFab" name="anoFab" type="text" class="w-full p-3 rounded" [ngClass]="{ 
       'bg-gray-700 text-white': true, 
       'border-red-500': anoFab.invalid && (anoFab.dirty || anoFab.touched) 
-    }"
-    [(ngModel)]="Montagem.anoFab" 
-    mask="00-00-0000"
-    #anoFab="ngModel"
-    required
-  >
-  <div *ngIf="anoFab.invalid && (anoFab.dirty || anoFab.touched)" class="text-red-500 text-sm mt-1">
-    Preencha o campo no formato correto: 00-00-0000
-  </div>
-</div>
+    }" [(ngModel)]="Montagem.anoFab" mask="00-00-0000" #anoFab="ngModel" required>
+      <div *ngIf="anoFab.invalid && (anoFab.dirty || anoFab.touched)" class="text-red-500 text-sm mt-1">
+        Preencha o campo no formato correto: 00-00-0000
+      </div>
+    </div>
 
 
 
     <div class="mb-4 col-span-1">
       <label for="anoReteste" class="block text-white mb-1">Ano de Reteste</label>
-      <input 
-        id="anoReteste" 
-        name="anoReteste" 
-        type="text" 
-        class="w-full p-3 rounded"
-        [ngClass]="{ 
+      <input id="anoReteste" name="anoReteste" type="text" class="w-full p-3 rounded" [ngClass]="{ 
           'bg-gray-700 text-white': true, 
           'border-red-500': anoReteste.invalid && (anoReteste.dirty || anoReteste.touched) 
-        }"
-        [(ngModel)]="Montagem.anoReteste" 
-        mask="00-00-0000"
-        #anoReteste="ngModel"
-        required
-      >
+        }" [(ngModel)]="Montagem.anoReteste" mask="00-00-0000" #anoReteste="ngModel" required>
       <div *ngIf="anoReteste.invalid && (anoReteste.dirty || anoReteste.touched)" class="text-red-500 text-sm mt-1">
         Preencha o campo no formato correto: 00-00-0000
       </div>
@@ -109,49 +99,57 @@
     <!-- Campo Requalificadora -->
     <div class="mb-4 col-span-1">
       <label for="requalificadora" class="block text-white mb-1">Requalificadora</label>
-      <input id="requalificadora" name="requalificadora" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.requalificadora">
+      <input id="requalificadora" name="requalificadora" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Montagem.requalificadora">
     </div>
 
     <!-- Campo Número NF Equipamento -->
     <div class="mb-4 col-span-1">
       <label for="numeroNFEquipamento" class="block text-white mb-1">Número NF Equipamento</label>
-      <input id="numeroNFEquipamento" name="numeroNFEquipamento" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.numeroNFEquipamento">
+      <input id="numeroNFEquipamento" name="numeroNFEquipamento" type="text"
+        class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.numeroNFEquipamento">
     </div>
 
     <!-- Campo Número Ordem Requalificação -->
     <div class="mb-4 col-span-1">
       <label for="numeroOrdemRequalificacao" class="block text-white mb-1">Número Ordem Requalificação</label>
-      <input id="numeroOrdemRequalificacao" name="numeroOrdemRequalificacao" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.numeroOrdemRequalificacao">
+      <input id="numeroOrdemRequalificacao" name="numeroOrdemRequalificacao" type="text"
+        class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.numeroOrdemRequalificacao">
     </div>
 
     <!-- Campo Número Laudo Montagem -->
     <div class="mb-4 col-span-1">
       <label for="numeroLaudoMontagem" class="block text-white mb-1">Número Laudo Montagem</label>
-      <input id="numeroLaudoMontagem" name="numeroLaudoMontagem" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.numeroLaudoMontagem">
+      <input id="numeroLaudoMontagem" name="numeroLaudoMontagem" type="text"
+        class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.numeroLaudoMontagem">
     </div>
 
     <!-- Campo Marca Válvula -->
     <div class="mb-4 col-span-1">
       <label for="marcaValvula" class="block text-white mb-1">Marca Válvula</label>
-      <input id="marcaValvula" name="marcaValvula" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.marcaValvula">
+      <input id="marcaValvula" name="marcaValvula" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Montagem.marcaValvula">
     </div>
 
     <!-- Campo Número NF Serviço Montagem -->
     <div class="mb-4 col-span-1">
       <label for="numeroNFServicoMontagem" class="block text-white mb-1">Número NF Serviço Montagem</label>
-      <input id="numeroNFServicoMontagem" name="numeroNFServicoMontagem" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.numeroNFServicoMontagem">
+      <input id="numeroNFServicoMontagem" name="numeroNFServicoMontagem" type="text"
+        class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.numeroNFServicoMontagem">
     </div>
 
     <!-- Campo Número Válvula -->
     <div class="mb-4 col-span-1">
       <label for="numeroValvula" class="block text-white mb-1">Número Válvula</label>
-      <input id="numeroValvula" name="numeroValvula" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.numeroValvula">
+      <input id="numeroValvula" name="numeroValvula" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Montagem.numeroValvula">
     </div>
 
     <!-- Campo Selo -->
     <div class="mb-4 col-span-1">
       <label for="selo" class="block text-white mb-1">Selo</label>
-      <input id="selo" name="selo" type="text" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.selo">
+      <input id="selo" name="selo" type="text" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Montagem.selo">
     </div>
 
 
@@ -159,125 +157,148 @@
     <!-- Campo Valor Unitário -->
     <div class="mb-4 col-span-1">
       <label for="valorUnitario" class="block text-white mb-1">Valor Unitário</label>
-      <input id="valorUnitario" name="valorUnitario" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.instaladores">
+      <input id="valorUnitario" name="valorUnitario" type="number" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Montagem.instaladores">
     </div>
 
     <!-- Campo Valor Total -->
     <div class="mb-4 col-span-1">
       <label for="valorTotal" class="block text-white mb-1">Valor Total</label>
-      <input id="valorTotal" name="valorTotal" type="number" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.valorTotal">
+      <input id="valorTotal" name="valorTotal" type="number" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Montagem.valorTotal">
     </div>
 
-   
+
     <!-- Campo Kit da Loja -->
     <div class="mb-4 flex items-center">
       <label for="kitDaLoja" class="block text-white mb-1 mr-2">Kit da Loja</label>
-      <input id="kitDaLoja" name="kitDaLoja" type="checkbox" class="form-checkbox text-blue-600" [(ngModel)]="Montagem.kitDaLoja">
+      <input id="kitDaLoja" name="kitDaLoja" type="checkbox" class="form-checkbox text-blue-600"
+        [(ngModel)]="Montagem.kitDaLoja">
     </div>
-     <!-- Pago -->
-     <div class="mb-4 flex items-center">
+    <!-- Pago -->
+    <div class="mb-4 flex items-center">
       <label for="Pago" class="block text-white mb-1 mr-2">Pago</label>
       <input id="Pago" name="Pago" type="checkbox" class="form-checkbox text-blue-600" [(ngModel)]="Montagem.pago">
     </div>
-     <!-- Campo data alerta -->
-     <div>
+    <!-- Campo data alerta -->
+    <div>
       <label *ngIf="Montagem.dataalerta" class="text-gray-700">
         Data Alerta: {{ Montagem.dataalerta | date: 'dd/MM/yyyy' }}
       </label>
       <label for="dataalerta" class="block text-white mb-1">Data Alerta</label>
-      <input id="dataalerta" name="dataalerta" type="date" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.dataalerta" >
+      <input id="dataalerta" name="dataalerta" type="date" class="w-full p-3 rounded bg-gray-700 text-white"
+        [(ngModel)]="Montagem.dataalerta">
     </div>
 
-  
 
-  <!-- Lista de Orçamentos -->
-  <div *ngIf="Montagem.orcamentos && Montagem.orcamentos.length > 0" class="col-span-full mb-6 mt-8">
-    <h3 class="text-white text-2xl mb-4">Orçamentos</h3>
-    <div *ngFor="let orcamento of Montagem.orcamentos" class="bg-gray-700 p-4 rounded mb-4">
-      <div class="mb-4">
-        <label for="nomeServico_{{orcamento.id}}" class="block text-white mb-1">Nome do Serviço</label>
-        <input id="nomeServico_{{orcamento.id}}" name="nomeServico_{{orcamento.id}}" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.nomeServico">
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+    <!-- Lista de Orçamentos -->
+    <div *ngIf="Montagem.orcamentos && Montagem.orcamentos.length > 0" class="col-span-full mb-6 mt-8">
+      <h3 class="text-white text-2xl mb-4">Orçamentos</h3>
+      <div *ngFor="let orcamento of Montagem.orcamentos" class="bg-gray-700 p-4 rounded mb-4">
         <div class="mb-4">
-          <label for="quantidade_{{orcamento.id}}" class="block text-white mb-1">Quantidade</label>
-          <input id="quantidade_{{orcamento.id}}" name="quantidade_{{orcamento.id}}" type="number" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.quantidade">
+          <label for="nomeServico_{{orcamento.id}}" class="block text-white mb-1">Nome do Serviço</label>
+          <input id="nomeServico_{{orcamento.id}}" name="nomeServico_{{orcamento.id}}" type="text"
+            class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.nomeServico">
         </div>
-        <div class="mb-4">
-          <label for="valorParcial_{{orcamento.id}}" class="block text-white mb-1">Valor Parcial</label>
-          <input id="valorParcial_{{orcamento.id}}" name="valorParcial_{{orcamento.id}}" type="number" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.valorParcial">
-        </div>
-        <div class="mb-4">
-          <label for="valorTotal_{{orcamento.id}}" class="block text-white mb-1">Valor Total</label>
-          <input id="valorTotal_{{orcamento.id}}" name="valorTotal_{{orcamento.id}}" type="number" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.valorTotal">
-        </div>
-        <div class="mb-4">
-          <h4 class="text-white">Funcionários:</h4>
-          <div *ngIf="orcamento.orcamentoFuncionarios && orcamento.orcamentoFuncionarios.length > 0; else noFuncionarios">
-            <div *ngFor="let orcamentoFuncionario of orcamento.orcamentoFuncionarios">
-              <span class="text-gray-300">{{ orcamentoFuncionario.funcionario?.nome }}</span>
-            </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="mb-4">
+            <label for="quantidade_{{orcamento.id}}" class="block text-white mb-1">Quantidade</label>
+            <input id="quantidade_{{orcamento.id}}" name="quantidade_{{orcamento.id}}" type="number"
+              class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.quantidade">
           </div>
-          <ng-template #noFuncionarios>
-            <span class="text-gray-300">Nenhum funcionário disponível.</span>
-          </ng-template>
-          <button (click)="confirmDelete(orcamento.id!)" class="bg-red-500 text-white p-2 rounded mt-4">
-            Deletar Orçamento
-          </button>
+          <div class="mb-4">
+            <label for="valorParcial_{{orcamento.id}}" class="block text-white mb-1">Valor Parcial</label>
+            <input id="valorParcial_{{orcamento.id}}" name="valorParcial_{{orcamento.id}}" type="number"
+              class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.valorParcial">
+          </div>
+          <div class="mb-4">
+            <label for="valorTotal_{{orcamento.id}}" class="block text-white mb-1">Valor Total</label>
+            <input id="valorTotal_{{orcamento.id}}" name="valorTotal_{{orcamento.id}}" type="number"
+              class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.valorTotal">
+          </div>
+          <div class="mb-4">
+            <h4 class="text-white">Funcionários:</h4>
+            <div
+              *ngIf="orcamento.orcamentoFuncionarios && orcamento.orcamentoFuncionarios.length > 0; else noFuncionarios">
+              <div *ngFor="let orcamentoFuncionario of orcamento.orcamentoFuncionarios">
+                <span class="text-gray-300">{{ orcamentoFuncionario.funcionario?.nome }}</span>
+              </div>
+            </div>
+            <ng-template #noFuncionarios>
+              <span class="text-gray-300">Nenhum funcionário disponível.</span>
+            </ng-template>
+            <button (click)="confirmDelete(orcamento.id!)" class="bg-red-500 text-white p-2 rounded mt-4">
+              Deletar Orçamento
+            </button>
+          </div>
         </div>
       </div>
     </div>
-      </div>
 
- <!-- Formulário para Novo Orçamento -->
+    <!-- Formulário para Novo Orçamento -->
     <div class="col-span-1 md:col-span-2 lg:col-span-3 mb-6">
       <h3 class="text-white text-2xl mb-4">Adicionar Novo Orçamento</h3>
       <form (ngSubmit)="addOrcamento()" #orcamentoForm="ngForm">
         <div class="mb-4">
           <label for="novoNomeServico" class="block text-white mb-1">Nome do Serviço</label>
-          <input id="novoNomeServico" name="novoNomeServico" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.nomeServico" required>
+          <select id="novoNomeServico" name="novoNomeServico" class="w-full p-3 rounded bg-gray-600 text-white"
+            [(ngModel)]="newOrcamento.nomeServico" required>
+            <option *ngFor="let estoque of servicoEstoque" [value]="estoque.produto">
+              {{ estoque.produto }}
+            </option>
+          </select>
         </div>
         <div class="mb-4">
           <label for="Produto" class="block text-white mb-1">Produto</label>
-          <input id="Produto" name="Produto" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.produto" >
+          <input id="Produto" name="Produto" type="text" class="w-full p-3 rounded bg-gray-600 text-white"
+            [(ngModel)]="newOrcamento.produto">
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           <div class="mb-4">
             <label for="novoQuantidade" class="block text-white mb-1">Quantidade</label>
-            <input id="novoQuantidade" name="novoQuantidade" type="number" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.quantidade" required>
+            <input id="novoQuantidade" name="novoQuantidade" type="number"
+              class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.quantidade" required>
           </div>
           <div class="mb-4">
             <label for="novoValorParcial" class="block text-white mb-1">Valor Parcial</label>
-            <input id="novoValorParcial" name="novoValorParcial" type="number" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.valorParcial" required>
+            <input id="novoValorParcial" name="novoValorParcial" type="number"
+              class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.valorParcial" required>
           </div>
           <div class="mb-4">
             <label for="novoValorTotal" class="block text-white mb-1">Valor Total</label>
-            <input id="novoValorTotal" name="novoValorTotal" type="number" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.valorTotal" required>
+            <input id="novoValorTotal" name="novoValorTotal" type="number"
+              class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.valorTotal" required>
           </div>
           <div class="mb-4">
             <label for="garantia" class="block text-white mb-1">garantia</label>
-            <input id="garantia" name="novoValorgarantiaTotal" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.garantia" >
+            <input id="garantia" name="novoValorgarantiaTotal" type="text"
+              class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.garantia">
           </div>
           <div class="mb-4">
             <label for="kmAtual" class="block text-white mb-1">KM Atual</label>
-            <input id="kmAtual" name="kmAtual" type="text" class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.kmAtual" >
+            <input id="kmAtual" name="kmAtual" type="text" class="w-full p-3 rounded bg-gray-600 text-white"
+              [(ngModel)]="newOrcamento.kmAtual">
           </div>
           <div class="mb-4">
             <label for="funcionarios" class="block text-white mb-1">Selecionar Funcionários:</label>
-            <select id="funcionarios" [(ngModel)]="newOrcamento.funcionariosIds" name="funcionarios" multiple class="w-full p-3 rounded bg-gray-600 text-white">
+            <select id="funcionarios" [(ngModel)]="newOrcamento.funcionariosIds" name="funcionarios" multiple
+              class="w-full p-3 rounded bg-gray-600 text-white">
               <option *ngFor="let func of funcionario" [value]="func.id">{{ func.nome }}</option>
             </select>
             <small class="text-gray-400">Pressione Ctrl (ou Cmd no Mac) para selecionar múltiplos funcionários.</small>
           </div>
-      
-      
+
+
         </div>
 
-      <button  type="submit"class="flex items-center p-3 bg-gray-700 text-white rounded-full shadow-lg hover:bg-gray-600 focus:outline-none focus:ring-4 focus:ring-gray-400 transition duration-300 ease-in-out"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7H5"></path>
-      </svg></button>
-    </form>
-  </div>
+        <button type="submit"
+          class="flex items-center p-3 bg-gray-700 text-white rounded-full shadow-lg hover:bg-gray-600 focus:outline-none focus:ring-4 focus:ring-gray-400 transition duration-300 ease-in-out"><svg
+            class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m7-7H5"></path>
+          </svg></button>
+      </form>
+    </div>
     <!-- Botão para Atualizar Montagem -->
     <div class="col-span-full">
       <button type="submit" class="bg-green-500 text-white p-3 rounded w-full md:w-auto">Atualizar Montagem</button>

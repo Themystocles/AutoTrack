@@ -33,6 +33,6 @@ export class AppComponent {
   }
 
   private isPrintRoute(url: string): boolean {
-    return url === '/imprimir' || url === '/imprimir/Serv' || url === '/imprimir/Mont' || url === '/printFinanceiro';
+    return url === '/imprimir' || url === '/imprimir/Serv' || url === '/imprimir/Mont' || url === '/printFinanceiro' || url === '/folhadepagamentoPrint';
   }
 }

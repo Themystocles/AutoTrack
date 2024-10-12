@@ -13,13 +13,15 @@ namespace AutoTrackApi.Interface
 
         Task<IEnumerable<Servico>> GetServicosByTipo(string TipoServico);
         Task<int> GetCountServicosNaoPagos();
-        
+
         Task<IEnumerable<Servico>> GetServicosNaoPagos();
 
         Task<IEnumerable<Servico>> GetServicosByAlertDate(DateTime dataalertaserv);
 
-        
-       
+        Task<Servico> DeleteServico(int id);
+
+
+
 
     }
 }
