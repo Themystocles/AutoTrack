@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FuncionarioOrcamentosResponse } from 'src/app/Models/OrcamentoFuncionarioModel';
-import { FolhadepagamentoService } from '../Services/CRUD - Cliente/folhadepagamento.service';
+import { FolhadepagamentoService } from '../../../Services/CRUD - Cliente/folhadepagamento.service';
 
 @Component({
-  selector: 'app-folha-de-pagamento-print',
-  templateUrl: './folha-de-pagamento-print.component.html',
-  styleUrls: ['./folha-de-pagamento-print.component.scss']
+  selector: 'app-folhadepagamento',
+  templateUrl: './folhadepagamento.component.html',
+  styleUrls: ['./folhadepagamento.component.scss']
 })
-export class FolhaDePagamentoPrintComponent implements OnInit {
-
+export class FolhadepagamentoComponent implements OnInit {
   funcionarioOrcamentos: FuncionarioOrcamentosResponse = [];
   dataInicio: string = ''; // Usar string para se ajustar ao formato do input date
   dataFim: string = ''; // Usar string para se ajustar ao formato do input date
@@ -32,6 +31,7 @@ export class FolhaDePagamentoPrintComponent implements OnInit {
     }
   }
 
+
   getFuncionarioOrcamentos(dataInicio: Date, dataFim: Date): void {
     this.folhadepagamentoService.getfuncionarioseorcamentos(dataInicio, dataFim)
       .subscribe({
@@ -44,8 +44,5 @@ export class FolhaDePagamentoPrintComponent implements OnInit {
         }
       });
   }
+
 }
-
-
-
-

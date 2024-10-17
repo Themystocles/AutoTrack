@@ -20,6 +20,8 @@ namespace AutoTrackApi.Interface
 
         Task<Servico> DeleteServico(int id);
 
+        Task<IEnumerable<Servico>> GetServicosByStatus(string Status);
+
 
 
 

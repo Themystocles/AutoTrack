@@ -189,6 +189,14 @@
       <input id="dataalerta" name="dataalerta" type="date" class="w-full p-3 rounded bg-gray-700 text-white"
         [(ngModel)]="Montagem.dataalerta">
     </div>
+    <!-- Status -->
+    <div>
+      <label for="Status" class="block text-white mb-1">Status</label>
+      <select id="Status" name="Status" class="w-full p-3 rounded bg-gray-700 text-white" [(ngModel)]="Montagem.status">
+        <option value="Em Andamento">Em Andamento</option>
+        <option value="Finalizado">Finalizado</option>
+      </select>
+    </div>
 
 
 
@@ -217,6 +225,7 @@
             <input id="valorTotal_{{orcamento.id}}" name="valorTotal_{{orcamento.id}}" type="number"
               class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="orcamento.valorTotal">
           </div>
+
           <div class="mb-4">
             <h4 class="text-white">Funcionários:</h4>
             <div
@@ -270,6 +279,8 @@
             <input id="novoValorTotal" name="novoValorTotal" type="number"
               class="w-full p-3 rounded bg-gray-600 text-white" [(ngModel)]="newOrcamento.valorTotal" required>
           </div>
+
+
           <div class="mb-4">
             <label for="garantia" class="block text-white mb-1">garantia</label>
             <input id="garantia" name="novoValorgarantiaTotal" type="text"

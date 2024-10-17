@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { RelatorioFinanceiroService } from '../Services/CRUD - Cliente/relatorio-financeiro.service';
-import { ActivatedRoute } from '@angular/router';
+
+import { Router } from '@angular/router';
+import { RelatorioFinanceiroService } from 'src/app/Services/CRUD - Cliente/relatorio-financeiro.service';
 
 @Component({
-  selector: 'app-print-financeiro',
-  templateUrl: './print-financeiro.component.html',
-  styleUrls: ['./print-financeiro.component.scss']
+  selector: 'app-relatoriofinanceiro',
+  templateUrl: './relatoriofinanceiro.component.html',
+  styleUrls: ['./relatoriofinanceiro.component.scss']
 })
-export class PrintFinanceiroComponent {
+export class RelatoriofinanceiroComponent implements OnInit {
+
+
   datainicio!: Date
   dataFim!: Date
   relPagoTotalPeriodo: number = 0;
@@ -34,10 +37,9 @@ export class PrintFinanceiroComponent {
   dinheiroMonNaoPago: number = 0;
   pixMonNaoPago: number = 0;
 
-  constructor(public relatorioservices: RelatorioFinanceiroService, private route: ActivatedRoute) { }
+  constructor(public relatorioservices: RelatorioFinanceiroService, private router: Router) { }
 
   ngOnInit(): void {
-
 
   }
 
@@ -65,11 +67,18 @@ export class PrintFinanceiroComponent {
     this.relatorioservices.getDebitoMonNaoPago(this.datainicio, this.dataFim).subscribe(res => this.debitoMonNaoPago = res);
     this.relatorioservices.getDinheiroMonNaoPago(this.datainicio, this.dataFim).subscribe(res => this.dinheiroMonNaoPago = res);
     this.relatorioservices.getPixMonNaoPago(this.datainicio, this.dataFim).subscribe(res => this.pixMonNaoPago = res);
+
+
+
   }
-  printReport() {
-    window.print();
+  imprimirRelatorio() {
+    // Supondo que você tenha `datainicio` e `dataFim` como filtros
+    this.router.navigate(['/printFinanceiro'], {
+      queryParams: {
+        datainicio: this.datainicio,
+        dataFim: this.dataFim
+      }
+    });
   }
+
 }
-
-
-

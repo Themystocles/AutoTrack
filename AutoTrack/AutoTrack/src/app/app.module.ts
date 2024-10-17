@@ -43,14 +43,19 @@ import { DataAlertaComponent } from './data-alerta/data-alerta.component';
 import { SelecionarprintComponent } from './selecionarprint/selecionarprint.component';
 import { PrintMontComponent } from './print-mont/print-mont.component';
 import { DataAlertaMontagemComponent } from './data-alerta-montagem/data-alerta-montagem.component';
-import { RelatoriofinanceiroComponent } from './relatoriofinanceiro/relatoriofinanceiro.component';
+
 import { EstoqueComponent } from './Components/estoque/estoque.component';
-import { FolhadepagamentoComponent } from './folhadepagamento/folhadepagamento.component';
-import { FuncionarioComponent } from './Components/funcionario/funcionario.component';
-import { FuncionarioPutComponent } from './Components/funcionario-put/funcionario-put.component';
-import { FuncionarioPostComponent } from './Components/funcionario-post/funcionario-post.component';
-import { PrintFinanceiroComponent } from './print-financeiro/print-financeiro.component';
-import { FolhaDePagamentoPrintComponent } from './folha-de-pagamento-print/folha-de-pagamento-print.component';
+import { FolhadepagamentoComponent } from './Components/FolhaPagamento/folhadepagamento/folhadepagamento.component';
+import { FuncionarioComponent } from './Components/funcionarios/funcionario/funcionario.component';
+import { FuncionarioPutComponent } from './Components/funcionarios/funcionario-put/funcionario-put.component';
+import { FuncionarioPostComponent } from './Components/funcionarios/funcionario-post/funcionario-post.component';
+
+
+import { PendentesComponent } from './Components/Pendentes/pendentes/pendentes.component';
+import { PendentesMontComponent } from './Components/Pendentes/pendentes-mont/pendentes-mont.component';
+import { FolhaDePagamentoPrintComponent } from './Components/FolhaPagamento/folha-de-pagamento-print/folha-de-pagamento-print.component';
+import { RelatoriofinanceiroComponent } from './Components/Financeiro/relatoriofinanceiro/relatoriofinanceiro.component';
+import { PrintFinanceiroComponent } from './Components/Financeiro/print-financeiro/print-financeiro.component';
 
 
 
@@ -96,12 +101,14 @@ import { FolhaDePagamentoPrintComponent } from './folha-de-pagamento-print/folha
     FuncionarioPostComponent,
     PrintFinanceiroComponent,
     FolhaDePagamentoPrintComponent,
- 
-    
-   
-    
-  
-   
+    PendentesComponent,
+    PendentesMontComponent,
+
+
+
+
+
+
   ],
   imports: [
     BrowserModule,
@@ -110,11 +117,11 @@ import { FolhaDePagamentoPrintComponent } from './folha-de-pagamento-print/folha
     FormsModule,
     NgxMaskModule.forRoot(),
     NgxPaginationModule
-    
-    
-    
-    
-    
+
+
+
+
+
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

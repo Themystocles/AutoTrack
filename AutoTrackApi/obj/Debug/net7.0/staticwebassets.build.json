@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DBtEm/ILAHKmeVOvKbQq0vAow6hWN3SHbDJnzCNCms4=",
+  "Hash": "sU9G4J7+AeZokpKaSwCmFvIy7vWy36HJhaqxIWFHWt8=",
   "Source": "AutoTrack",
   "BasePath": "_content/AutoTrack",
   "Mode": "Default",
@@ -102,12 +102,12 @@
       "OriginalItemSpec": "wwwroot\\index.html"
     },
     {
-      "Identity": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\main.4fdee7f9757f3d14.js",
+      "Identity": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\main.ff3cf5c05fea243c.js",
       "SourceId": "AutoTrack",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\",
       "BasePath": "_content/AutoTrack",
-      "RelativePath": "main.4fdee7f9757f3d14.js",
+      "RelativePath": "main.ff3cf5c05fea243c.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -116,7 +116,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\main.4fdee7f9757f3d14.js"
+      "OriginalItemSpec": "wwwroot\\main.ff3cf5c05fea243c.js"
     },
     {
       "Identity": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\polyfills.3db4dfa23b7e9956.js",
@@ -153,12 +153,12 @@
       "OriginalItemSpec": "wwwroot\\runtime.59c2d6530999de7f.js"
     },
     {
-      "Identity": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\styles.dbf1494ba9a23cff.css",
+      "Identity": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\styles.da7d79d4fc2a3b16.css",
       "SourceId": "AutoTrack",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\themy\\OneDrive\\Documentos\\Programação\\C e Angular\\AutoTrack\\AutoTrackApi\\wwwroot\\",
       "BasePath": "_content/AutoTrack",
-      "RelativePath": "styles.dbf1494ba9a23cff.css",
+      "RelativePath": "styles.da7d79d4fc2a3b16.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -167,7 +167,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\styles.dbf1494ba9a23cff.css"
+      "OriginalItemSpec": "wwwroot\\styles.da7d79d4fc2a3b16.css"
     }
   ]
 }

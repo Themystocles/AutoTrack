@@ -4,7 +4,7 @@ import { Veiculo } from "./VeiculoModel";
 export class Montagem {
   id?: number;
   data?: string;
-  dataalerta? : string;
+  dataalerta?: string;
   geracaoInstaladores?: string;
   redutorMarca?: string;
   numeroSerie?: string;
@@ -14,7 +14,7 @@ export class Montagem {
   quilo?: number;
   litro?: number;
   anoFab?: number;
-  
+
   anoReteste?: number;
   requalificadora?: string;
   numeroNFEquipamento?: string;
@@ -25,7 +25,7 @@ export class Montagem {
   numeroValvula?: string;
   selo?: string;
   pago?: boolean;
-  
+  status?: string;
   instaladores?: string;
   valorTotal?: number;
   kitDaLoja?: boolean;
@@ -33,8 +33,9 @@ export class Montagem {
   veiculo?: Veiculo;
   orcamentos?: Orcamento[];
 
-    constructor(init?: Partial<Montagem>) {
-      Object.assign(this, init);
-    }
+  showDetails?: boolean;
+
+  constructor(init?: Partial<Montagem>) {
+    Object.assign(this, init);
   }
-  
+}

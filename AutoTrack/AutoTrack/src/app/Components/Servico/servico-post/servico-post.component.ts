@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Servico } from '../../../Models/ServicoMode';
 import { ServicoPostService } from '../../../Services/CRUD - Cliente/servico-post.service';
 import { Veiculo } from '../../../Models/VeiculoModel';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './servico-post.component.html',
   styleUrls: ['./servico-post.component.scss']
 })
-export class ServicoPostComponent {
+export class ServicoPostComponent implements OnInit {
   placaveiculo: string = '';
   veiculo: Veiculo | null = null;
   servico: Servico = new Servico();
@@ -25,6 +25,11 @@ export class ServicoPostComponent {
   @ViewChild(OrcamentoPostComponent) orcamentoComponent?: OrcamentoPostComponent;
 
   constructor(public servicoServices: ServicoPostService, public router: Router) { }
+  ngOnInit(): void {
+    this.servico = {
+      status: 'Em Andamento' // Definindo o status inicial como "Em Andamento"
+    };
+  }
 
   GetVeiculoByPlaca() {
     if (!this.placaveiculo.trim()) {

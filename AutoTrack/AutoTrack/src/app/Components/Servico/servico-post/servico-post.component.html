@@ -69,6 +69,15 @@
           [(ngModel)]="servico.mecanico">
       </div>
 
+      <!-- Status -->
+      <div>
+        <label for="Status" class="block text-white mb-1">Status</label>
+        <select id="Status" name="Status" class="w-full p-3 rounded bg-gray-700 text-white"
+          [(ngModel)]="servico.status">
+          <option value="Em Andamento">Em Andamento</option>
+          <option value="Finalizado">Finalizado</option>
+        </select>
+      </div>
 
 
 

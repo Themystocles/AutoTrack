@@ -1,0 +1,78 @@
+<div class="flex items-center mb-4">
+    <!-- Campo de pesquisa com tema escuro -->
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Pesquisar por Cliente ou Placa"
+        class="border border-gray-600 bg-gray-800 text-white rounded-lg px-3 py-2 mr-2 focus:outline-none focus:ring focus:ring-green-500"
+        (input)="filterMontagens()" /> <!-- Chama a função de filtro -->
+
+    <button routerLink="/Pendentes"
+        class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-blue-500 transition-all">
+        Serviços
+    </button>
+</div>
+
+<!-- Exibe detalhes das montagens em cards compactos -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div *ngFor="let mont of filteredMontagens"
+        class="bg-gray-800 p-4 rounded-lg shadow-md hover:shadow-lg transition-all">
+        <!-- Detalhes do cliente -->
+        <div class="mb-3">
+            <h3 class="text-md font-bold text-white">Cliente</h3>
+            <p class="text-gray-400 text-sm"><span class="font-semibold">Nome:</span> {{ mont.veiculo?.cliente?.nome }}
+            </p>
+            <p class="text-gray-400 text-sm"><span class="font-semibold">CPF:</span> {{ mont.veiculo?.cliente?.cpf }}
+            </p>
+            <p class="text-gray-400 text-sm"><span class="font-semibold">Telefone:</span> {{
+                mont.veiculo?.cliente?.telefone }}</p>
+            <button [routerLink]="['/cliente-put', mont.veiculo?.cliente?.id]"
+                class="bg-blue-600 text-white text-xs px-3 py-1 rounded mt-2 hover:bg-blue-500 transition-all">
+                Editar Cliente
+            </button>
+        </div>
+
+        <!-- Botão para alternar os detalhes do serviço -->
+        <button (click)="mont.showDetails = !mont.showDetails"
+            class="bg-gray-600 text-white text-xs px-3 py-1 rounded mt-2 hover:bg-gray-500 transition-all">
+            {{ mont.showDetails ? 'Ocultar Detalhes' : 'Mostrar Detalhes' }}
+        </button>
+
+        <!-- Detalhes do veículo e serviço -->
+        <div *ngIf="mont.showDetails">
+            <div *ngIf="mont.veiculo" class="mb-3">
+                <h3 class="text-md font-bold text-white">Veículo</h3>
+                <p class="text-gray-400 text-sm"><span class="font-semibold">Carro:</span> {{ mont.veiculo.carro }}</p>
+                <p class="text-gray-400 text-sm"><span class="font-semibold">Placa:</span> {{ mont.veiculo.placa }}</p>
+                <p class="text-gray-400 text-sm"><span class="font-semibold">Chassi:</span> {{ mont.veiculo.chassi }}
+                </p>
+                <button [routerLink]="['/veiculo-put', mont.veiculo.id]"
+                    class="bg-blue-600 text-white text-xs px-3 py-1 rounded mt-2 hover:bg-blue-500 transition-all">
+                    Editar Veículo
+                </button>
+            </div>
+
+            <div class="mb-3">
+                <h3 class="text-md font-bold text-white">Montagem</h3>
+                <p class="text-gray-400 text-sm"><span class="font-semibold">Descrição:</span> {{ mont.redutorMarca }}
+                </p>
+                <p class="text-gray-400 text-sm"><span class="font-semibold">Forma de Pagamento:</span> {{
+                    mont.formaPagamento }}</p>
+                <button [routerLink]="['/servico-put', mont.id]"
+                    class="bg-blue-600 text-white text-xs px-3 py-1 rounded mt-2 hover:bg-blue-500 transition-all">
+                    Editar Serviço
+                </button>
+            </div>
+
+            <!-- Detalhes dos orçamentos -->
+            <div *ngIf="mont.orcamentos && mont.orcamentos.length > 0">
+                <h3 class="text-md font-bold text-white">Orçamentos</h3>
+                <div *ngFor="let orcamento of mont.orcamentos" class="border-t border-gray-700 pt-2 mt-2">
+                    <p class="text-gray-400 text-sm"><span class="font-semibold">Qtd:</span> {{ orcamento.quantidade }}
+                    </p>
+                    <p class="text-gray-400 text-sm"><span class="font-semibold">Valor Parcial:</span> {{
+                        orcamento.valorParcial | currency }}</p>
+                    <p class="text-gray-400 text-sm"><span class="font-semibold">Valor Total:</span> {{
+                        orcamento.valorTotal | currency }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

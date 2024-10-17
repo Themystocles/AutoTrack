@@ -79,6 +79,21 @@ namespace AutoTrackApi.Persistencia
             return servicos;
         }
 
+        public async Task<IEnumerable<Servico>> GetServicosByStatus(string Status)
+        {
+            var ServicosNFinalizados = await _context.servicos
+              .AsNoTracking()
+              .Include(v => v.veiculo)// Inclui apenas o veículo relacionado ao serviço
+                .ThenInclude(c => c.Cliente)
+                .Include(o => o.orcamentos)
+                .Where(s => s.Status.ToLower() == Status.ToLower())
+                .ToListAsync(); // Converte o resultado para uma lista
+
+
+
+            return ServicosNFinalizados;
+        }
+
         public async Task<IEnumerable<Servico>> GetServicosByTipo(string TipoServ)
         {
             var servicos = await _context.servicos

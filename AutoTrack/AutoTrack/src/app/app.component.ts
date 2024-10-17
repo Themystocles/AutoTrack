@@ -29,7 +29,7 @@ export class AppComponent {
       url.includes('/servico-put') || url.includes('/montagem-list') || url.includes('/montagem-put') ||
       url.includes('/servico-notificacao') || url.includes('/montagem-notificacao') || url.includes('relatoriofinanceiro')
       || url.includes('estoque') || url.includes('folhadepagamento') || url.includes('funcionarios') || url.includes('funcionarioput')
-      || url.includes('funcionariopost');
+      || url.includes('funcionariopost') || url.includes('Pendentes') || url.includes('MontPendentes');
   }
 
   private isPrintRoute(url: string): boolean {

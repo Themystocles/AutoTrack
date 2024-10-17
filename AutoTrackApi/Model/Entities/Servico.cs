@@ -12,7 +12,7 @@ namespace AutoTrackApi.Model
     {
         public int Id { get; set; }
         public string? Descricao { get; set; }
-        
+
         public string? FormaPag { get; set; }
         public decimal? Totalorcamento { get; set; }
 
@@ -24,24 +24,26 @@ namespace AutoTrackApi.Model
         public DateTime DataServico { get; set; } = DateTime.Now;
         public int VeiculoId { get; set; }
         public Veiculo? veiculo { get; set; }
-         public List<Orcamento>? orcamentos { get; set; } 
+        public List<Orcamento>? orcamentos { get; set; }
 
-         //Quando for requalificação: {
-         public string? Requalificacao { get; set; }
-         public string? MarcaCilindro { get; set; }
-         public string? NumeroCilindro { get; set; }
-         public string? Requalificadora { get; set; }
-         public string? Ordem { get; set; }
-         public string? NotaDeServico { get; set; }
-         public string? Laudo { get; set; }
-         public string? NotaDaValvula { get; set; }
-         public string? MarcaValvula { get; set; }
-         public string? NumeroValvula { get; set; }
+        public string? Status { get; set; }
 
-         //}
-        
-        
-       
+        //Quando for requalificação: {
+        public string? Requalificacao { get; set; }
+        public string? MarcaCilindro { get; set; }
+        public string? NumeroCilindro { get; set; }
+        public string? Requalificadora { get; set; }
+        public string? Ordem { get; set; }
+        public string? NotaDeServico { get; set; }
+        public string? Laudo { get; set; }
+        public string? NotaDaValvula { get; set; }
+        public string? MarcaValvula { get; set; }
+        public string? NumeroValvula { get; set; }
+
+        //}
+
+
+
 
 
 

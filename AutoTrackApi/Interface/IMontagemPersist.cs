@@ -15,5 +15,7 @@ namespace AutoTrackApi.Interface
 
         Task<IEnumerable<Montagem>> GetMontagensNaoPagos();
         Task<IEnumerable<Montagem>> GetMontagemByDataAlerta(DateTime dataalertamont);
+
+        Task<IEnumerable<Montagem>> GetMontagemByStatus(string Status);
     }
 }

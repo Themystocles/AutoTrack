@@ -127,6 +127,7 @@ namespace AutoTrack.Controllers
             servicoExistente.Observacao = servicoDto.Observacao;
             servicoExistente.DataServico = servicoDto.DataServico;
             servicoExistente.Totalorcamento = servicoDto.Totalorcamento;
+            servicoExistente.Status = servicoDto.Status;
             servicoExistente.Requalificacao = servicoDto.Requalificacao;
             servicoExistente.MarcaCilindro = servicoDto.MarcaCilindro;
             servicoExistente.NumeroCilindro = servicoDto.NumeroCilindro;
@@ -217,8 +218,16 @@ namespace AutoTrack.Controllers
 
             return Ok(deleteServico); // Retorna 200 com o orçamento excluído
         }
+        [HttpGet("servicos/{status}")]
+        public async Task<IActionResult> GetServicosByStatus(string status)
+        {
+            var servico = await _ServicoPersist.GetServicosByStatus(status);
+            return Ok(servico);
+        }
 
     }
+
+
 
 
 }

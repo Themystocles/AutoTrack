@@ -150,6 +150,7 @@ namespace AutoTrackApi.Controllers
             montagemExistente.NumeroNFServicoMontagem = montagemDto.NumeroNFServicoMontagem;
             montagemExistente.NumeroValvula = montagemDto.NumeroValvula;
             montagemExistente.Selo = montagemDto.Selo;
+            montagemExistente.Status = montagemDto.Status;
 
 
             montagemExistente.Instaladores = montagemDto.Instaladores;
@@ -216,7 +217,12 @@ namespace AutoTrackApi.Controllers
 
 
 
-
+        [HttpGet("Montagem/mont/{status}")]
+        public async Task<IActionResult> GetMontagemByStatus(string status)
+        {
+            var montagems = await _MontagemPersist.GetMontagemByStatus(status);
+            return Ok(montagems);
+        }
 
 
 

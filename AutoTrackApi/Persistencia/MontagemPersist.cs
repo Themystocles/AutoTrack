@@ -11,7 +11,7 @@ namespace AutoTrackApi.Persistencia
 {
     public class MontagemPersist : IMontagemPersist
     {
-    private readonly ConnectionContext _context;
+        private readonly ConnectionContext _context;
 
         public MontagemPersist(ConnectionContext context)
         {
@@ -29,8 +29,8 @@ namespace AutoTrackApi.Persistencia
                 .AsNoTracking() // Evita rastreamento de mudanças para melhorar a performance
                 .Include(v => v.veiculo)// Inclui apenas o veículo relacionado ao serviço
                 .ThenInclude(c => c.Cliente)
-                .Include(o => o.orcamentos) 
-                .Where(m => m.dataalerta.HasValue && m.dataalerta.Value.Date == dataalertamont.Date  && m.pago == false) // Filtra pelos serviços com a data especificada
+                .Include(o => o.orcamentos)
+                .Where(m => m.dataalerta.HasValue && m.dataalerta.Value.Date == dataalertamont.Date && m.pago == false) // Filtra pelos serviços com a data especificada
                 .ToListAsync(); // Converte o resultado para uma lista
 
             return montagem;
@@ -42,17 +42,32 @@ namespace AutoTrackApi.Persistencia
             .Include(m => m.orcamentos)
             .ThenInclude(o => o.OrcamentoFuncionarios)
              .ThenInclude(f => f.Funcionario)
-            .FirstOrDefaultAsync(M => M.Id == idMontagem );
+            .FirstOrDefaultAsync(M => M.Id == idMontagem);
+        }
+
+        public async Task<IEnumerable<Montagem>> GetMontagemByStatus(string Status)
+        {
+            var MontagemNFinalizados = await _context.montagens
+              .AsNoTracking()
+              .Include(v => v.veiculo)// Inclui apenas o veículo relacionado ao serviço
+                .ThenInclude(c => c.Cliente)
+                .Include(o => o.orcamentos)
+                .Where(s => s.Status.ToLower() == Status.ToLower())
+                .ToListAsync(); // Converte o resultado para uma lista
+
+
+
+            return MontagemNFinalizados;
         }
 
         public async Task<IEnumerable<Montagem>> GetMontagemsByData(DateTime dataMont)
         {
-             var montagens = await _context.montagens
-                .AsNoTracking() // Evita rastreamento de mudanças para melhorar a performance
-                .Include(v => v.veiculo)
-                .Include(o => o.orcamentos)  // Inclui apenas o veículo relacionado ao serviço
-                .Where(m => m.data.Date == dataMont.Date) // Filtra pelos serviços com a data especificada
-                .ToListAsync(); // Converte o resultado para uma lista
+            var montagens = await _context.montagens
+               .AsNoTracking() // Evita rastreamento de mudanças para melhorar a performance
+               .Include(v => v.veiculo)
+               .Include(o => o.orcamentos)  // Inclui apenas o veículo relacionado ao serviço
+               .Where(m => m.data.Date == dataMont.Date) // Filtra pelos serviços com a data especificada
+               .ToListAsync(); // Converte o resultado para uma lista
 
             return montagens;
         }
@@ -62,12 +77,12 @@ namespace AutoTrackApi.Persistencia
             var montagens = await _context.montagens
                 .AsNoTracking() // Evita rastreamento de mudanças para melhorar a performance
                 .Include(v => v.veiculo)// Inclui apenas o veículo relacionado ao serviço
-                .Include(o => o.orcamentos) 
-                .FirstOrDefaultAsync(m => m.NumeroNFEquipamento.ToLower().Contains(NFEVenda.ToLower())) ;
-                 // Converte o resultado para uma lista
+                .Include(o => o.orcamentos)
+                .FirstOrDefaultAsync(m => m.NumeroNFEquipamento.ToLower().Contains(NFEVenda.ToLower()));
+            // Converte o resultado para uma lista
 
             return montagens;
-            
+
         }
 
         public async Task<IEnumerable<Montagem>> GetMontagensNaoPagos()
@@ -80,10 +95,10 @@ namespace AutoTrackApi.Persistencia
            .Where(s => !s.pago)
            .ToListAsync();
 
-           return montagem;
+            return montagem;
         }
-        
 
-      
+
+
     }
 }

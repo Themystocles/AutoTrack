@@ -11,7 +11,7 @@ namespace AutoTrackApi.Model
     [Table("montagens")]
     public class Montagem
     {
-        public int Id { get; set; } 
+        public int Id { get; set; }
         public DateTime data { get; set; } = DateTime.Now;
         public DateTime? dataalerta { get; set; }
         public string? GeracaoInstaladores { get; set; }
@@ -24,7 +24,7 @@ namespace AutoTrackApi.Model
         public decimal? Quilo { get; set; }
         public decimal? Litro { get; set; }
         public int? AnoFab { get; set; }
-       
+
         public int? AnoReteste { get; set; }
         public string? Requalificadora { get; set; }
         public string? NumeroNFEquipamento { get; set; }
@@ -34,13 +34,14 @@ namespace AutoTrackApi.Model
         public string? NumeroNFServicoMontagem { get; set; }
         public string? NumeroValvula { get; set; }
         public string? Selo { get; set; }
-        
+        public string? Status { get; set; }
+
         public string? Instaladores { get; set; }
         public decimal? ValorTotal { get; set; }
         public bool? KitDaLoja { get; set; }
         public int VeiculoId { get; set; }
         public Veiculo? veiculo { get; set; }
 
-        public List<Orcamento>? orcamentos { get; set; } 
+        public List<Orcamento>? orcamentos { get; set; }
     }
 }
