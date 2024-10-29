@@ -14,22 +14,27 @@ namespace AutoTrackApi.Model.Entities
         public Funcionarios Funcionario { get; set; } // Navegação para Funcionarios
     }
     public class FuncionarioOrcamentosDTO
-{
-    public string NomeFuncionario { get; set; }
-    public string CpfFuncionario { get; set; }
-    public List<string> NomesOrcamentos { get; set; }
-    public List<decimal> ValoresTotais { get; set; }
-     public List<OrcamentoFuncionarioDTO> Orcamentos { get; set; }
-}
-public class OrcamentoFuncionarioDTO
-{
-    public string NomeOrcamento { get; set; }
-    public decimal ValorTotal { get; set; }
-    public decimal valorParcial { get; set; }
-    public int Quantidade { get; set; }
-    public DateTime DataOrc { get; set; }
-    
-}
+    {
+        public string NomeFuncionario { get; set; }
+        public string CpfFuncionario { get; set; }
+        public List<string> NomesOrcamentos { get; set; }
+        public List<decimal> ValoresTotais { get; set; }
+        public List<OrcamentoFuncionarioDTO> Orcamentos { get; set; }
+    }
+    public class OrcamentoFuncionarioDTO
+    {
+        public string NomeOrcamento { get; set; }
+        public decimal ValorTotal { get; set; }
+        public decimal valorParcial { get; set; }
+        public int Quantidade { get; set; }
+        public DateTime DataOrc { get; set; }
+
+        // Propriedades adicionais para armazenar o nome do serviço e informações do veículo
+        public string NomeServico { get; set; }
+        public string EspecieVeiculo { get; set; }
+        public string PlacaVeiculo { get; set; }
+
+    }
 
 
 }

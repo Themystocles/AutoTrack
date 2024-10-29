@@ -1,61 +1,66 @@
-<div class="bg-gray-900 text-white min-h-screen p-6" id="printableArea">
-
-    <h1 class="text-2xl font-bold mb-4 text-center impressao">Funcionários e Orçamentos</h1>
-    <div class="text-center mb-6 impressao">
+<div class="bg-gray-900 text-white min-h-screen p-4" id="printableArea">
+    <h1 class="text-xl font-bold mb-2 text-center impressao">Funcionários e Orçamentos</h1>
+    <div class="text-center mb-4 impressao">
         <button routerLink="/funcionarios"
-            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-4 py-2 rounded-md shadow transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-2 py-1 rounded shadow focus:outline-none focus:ring-2 focus:ring-blue-500">
             Funcionários
         </button>
     </div>
 
-    <form (ngSubmit)="onSubmit()" class="bg-gray-800 p-4 rounded-lg shadow-lg max-w-2xl mx-auto">
-        <div class="flex flex-wrap -mx-2 mb-4">
-            <div class="w-full sm:w-1/2 px-2 mb-4 sm:mb-0">
-                <label for="dataInicio" class="block text-sm font-medium mb-1">Data Início:</label>
+    <form (ngSubmit)="onSubmit()" class="bg-gray-800 p-3 rounded shadow max-w-xl mx-auto">
+        <div class="flex flex-wrap -mx-1 mb-3">
+            <div class="w-1/2 px-1 mb-2 sm:mb-0">
+                <label for="dataInicio" class="block text-xs font-medium mb-1">Data Início:</label>
                 <input type="date" id="dataInicio" [(ngModel)]="dataInicio" name="dataInicio" required
-                    class="block w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-700 text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 sm:text-sm" />
+                    class="block w-full px-2 py-1 border border-gray-600 rounded bg-gray-700 text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 sm:text-xs" />
             </div>
-            <div class="w-full sm:w-1/2 px-2">
-                <label for="dataFim" class="block text-sm font-medium mb-1">Data Fim:</label>
+            <div class="w-1/2 px-1">
+                <label for="dataFim" class="block text-xs font-medium mb-1">Data Fim:</label>
                 <input type="date" id="dataFim" [(ngModel)]="dataFim" name="dataFim" required
-                    class="block w-full px-3 py-2 border border-gray-600 rounded-md bg-gray-700 text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 sm:text-sm" />
+                    class="block w-full px-2 py-1 border border-gray-600 rounded bg-gray-700 text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600 sm:text-xs" />
             </div>
         </div>
         <button type="submit"
-            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-md w-full mt-4">Buscar</button>
+            class="px-2 py-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded w-full mt-2">Buscar</button>
     </form>
 
-    <div *ngIf="funcionarioOrcamentos && funcionarioOrcamentos.length" class="mt-8">
-        <h2 class="text-xl font-semibold mb-4 impressao">Orçamentos</h2>
-        <div *ngFor="let funcionario of funcionarioOrcamentos" class="bg-gray-800 p-2 rounded-lg shadow-lg mb-4">
+    <div *ngIf="funcionarioOrcamentos && funcionarioOrcamentos.length" class="mt-6">
+        <h2 class="text-lg font-semibold mb-2 impressao">Orçamentos</h2>
+        <div *ngFor="let funcionario of funcionarioOrcamentos" class="bg-gray-800 p-2 rounded shadow mb-3">
             <div class="flex justify-between items-center mb-1">
-                <h2 class="text-lg font-bold impressao">{{ funcionario.nomeFuncionario }}</h2>
-                <p class="text-sm text-gray-300 impressao">Orçamentos: {{ funcionario.orcamentos.length }}</p>
+                <h3 class="text-base font-bold impressao">{{ funcionario.nomeFuncionario }}</h3>
+                <p class="text-xs text-gray-300 impressao">Orçamentos: {{ funcionario.orcamentos.length }}</p>
             </div>
             <div *ngIf="funcionario.orcamentos && funcionario.orcamentos.length">
-                <ul class="space-y-2">
+                <ul class="space-y-1">
                     <li *ngFor="let orcamento of funcionario.orcamentos"
-                        class="p-2 bg-gray-700 rounded-md border border-gray-600">
+                        class="p-2 bg-gray-700 rounded border border-gray-600">
                         <div class="mb-1">
-                            <span class="font-semibold">{{ orcamento.nomeOrcamento }}</span>
+                            <span class="font-semibold text-sm">{{ orcamento.nomeOrcamento }}</span>
                         </div>
-                        <div class="grid grid-cols-4 text-sm gap-1">
-                            <div class="flex flex-col items-center">
-                                <span class="font-semibold">Valor Total:</span>
-                                <span>{{ orcamento.valorTotal | currency:'BRL' }}</span>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <span class="font-semibold">Valor Parcial:</span>
-                                <span>{{ orcamento.valorParcial | currency:'BRL' }}</span>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <span class="font-semibold">Quantidade:</span>
-                                <span>{{ orcamento.quantidade }}</span>
-                            </div>
+                        <div class="flex text-xs gap-2 justify-between">
                             <div class="flex flex-col items-center">
                                 <span class="font-semibold">Data:</span>
                                 <span>{{ orcamento.dataOrc | date:'dd/MM/yyyy' }}</span>
                             </div>
+
+                            <div class="flex flex-col items-center">
+                                <span class="font-semibold">Carro:</span>
+                                <span>{{ orcamento.especieVeiculo }}</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <span class="font-semibold">Placa Veiculo:</span>
+                                <span>{{ orcamento.placaVeiculo }}</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <span class="font-semibold">Descrição:</span>
+                                <span>{{ orcamento.nomeServico }}</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <span class="font-semibold">Valor Total:</span>
+                                <span>{{ orcamento.valorTotal | currency:'BRL' }}</span>
+                            </div>
+
                         </div>
                     </li>
                 </ul>
@@ -63,7 +68,7 @@
         </div>
     </div>
 
-    <div *ngIf="!funcionarioOrcamentos || funcionarioOrcamentos.length === 0" class="mt-8 text-center">
-        <p class="text-lg">Nenhum dado encontrado.</p>
+    <div *ngIf="!funcionarioOrcamentos || funcionarioOrcamentos.length === 0" class="mt-6 text-center">
+        <p class="text-sm">Nenhum dado encontrado.</p>
     </div>
 </div>

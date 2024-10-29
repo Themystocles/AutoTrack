@@ -13,22 +13,49 @@
         /* Esconde o título na impressão */
     }
 
-    /* Reduz o tamanho da fonte para o conteúdo impresso */
+    /* Estilização para o fundo escuro */
     .bg-gray-900 {
         font-size: 0.75rem;
         /* Reduz o tamanho da fonte */
+        color: #000000;
+        /* Define a cor do texto como preto */
     }
 
     /* Ajusta os estilos dos cards */
     .bg-gray-800 {
         margin: 0;
         /* Remove margens para uma apresentação mais compacta */
+        color: #000000;
+        /* Define a cor do texto como preto */
     }
 
     h2 {
         margin-bottom: 1rem;
         /* Ajusta o espaçamento inferior */
+        color: #000000;
+        /* Define a cor do texto como preto */
+    }
+
+    /* Aumenta a legibilidade dos textos */
+    .text-white {
+        color: #000000 !important;
+        /* Garante que o texto seja preto */
+    }
+
+    /* Exclui o fundo de elementos ao imprimir */
+    .bg-gray-700 {
+        background-color: transparent;
+        /* Remove a cor de fundo para impressão */
     }
 
     /* Se necessário, você pode adicionar mais estilos para formatação de impressão */
+    /* Aumenta o tamanho da fonte do texto no card */
+    .bg-gray-700,
+    .bg-gray-800,
+    .bg-gray-900 {
+        font-size: 0.85rem;
+        /* Aumenta um pouco o tamanho da fonte */
+        color: #000000;
+        /* Garante que o texto seja preto */
+    }
 }

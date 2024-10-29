@@ -20,16 +20,11 @@ import { MontagemalertaComponent } from './Components/Montagem/montagemalerta/mo
 import { PrintComponent } from './print/print.component';
 import { SelecionarprintComponent } from './selecionarprint/selecionarprint.component';
 import { PrintMontComponent } from './print-mont/print-mont.component';
-
 import { EstoqueComponent } from './Components/estoque/estoque.component';
 import { FolhadepagamentoComponent } from './Components/FolhaPagamento/folhadepagamento/folhadepagamento.component';
 import { FuncionarioComponent } from './Components/funcionarios/funcionario/funcionario.component';
 import { FuncionarioPutComponent } from './Components/funcionarios/funcionario-put/funcionario-put.component';
 import { FuncionarioPostComponent } from './Components/funcionarios/funcionario-post/funcionario-post.component';
-
-
-
-
 import { PendentesComponent } from './Components/Pendentes/pendentes/pendentes.component';
 import { PendentesMontComponent } from './Components/Pendentes/pendentes-mont/pendentes-mont.component';
 import { FolhaDePagamentoPrintComponent } from './Components/FolhaPagamento/folha-de-pagamento-print/folha-de-pagamento-print.component';

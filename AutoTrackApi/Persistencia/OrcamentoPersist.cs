@@ -38,6 +38,8 @@ namespace AutoTrackApi.Persistencia
         {
             return await _context.orcamentos
            .Include(o => o.OrcamentoFuncionarios)
+           .Include(s => s.Servico)
+           .ThenInclude(v => v.veiculo)
 
            .ToListAsync();
         }

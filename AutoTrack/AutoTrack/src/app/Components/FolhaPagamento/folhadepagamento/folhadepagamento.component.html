@@ -35,26 +35,31 @@
             <div *ngIf="funcionario.orcamentos && funcionario.orcamentos.length">
                 <ul class="space-y-2">
                     <li *ngFor="let orcamento of funcionario.orcamentos"
-                        class="p-2 bg-gray-700 rounded-md border border-gray-600">
+                        class="p-2 bg-gray-700 rounded border border-gray-600">
                         <div class="mb-1">
-                            <span class="font-semibold">{{ orcamento.nomeOrcamento }}</span>
+                            <span class="font-semibold text-sm">{{ orcamento.nomeOrcamento }}</span>
                         </div>
-                        <div class="grid grid-cols-4 text-sm gap-1">
-                            <div class="flex flex-col items-center">
-                                <span class="font-semibold">Valor Total:</span>
-                                <span>{{ orcamento.valorTotal | currency:'BRL' }}</span>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <span class="font-semibold">Valor Parcial:</span>
-                                <span>{{ orcamento.valorParcial | currency:'BRL' }}</span>
-                            </div>
-                            <div class="flex flex-col items-center">
-                                <span class="font-semibold">Quantidade:</span>
-                                <span>{{ orcamento.quantidade }}</span>
-                            </div>
+                        <div class="flex text-xs gap-2 justify-between">
                             <div class="flex flex-col items-center">
                                 <span class="font-semibold">Data:</span>
                                 <span>{{ orcamento.dataOrc | date:'dd/MM/yyyy' }}</span>
+                            </div>
+
+                            <div class="flex flex-col items-center">
+                                <span class="font-semibold">Carro:</span>
+                                <span>{{ orcamento.especieVeiculo }}</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <span class="font-semibold">Placa Veiculo:</span>
+                                <span>{{ orcamento.placaVeiculo }}</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <span class="font-semibold">Descrição:</span>
+                                <span>{{ orcamento.nomeServico }}</span>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <span class="font-semibold">Valor Total:</span>
+                                <span>{{ orcamento.valorTotal | currency:'BRL' }}</span>
                             </div>
                         </div>
                     </li>
